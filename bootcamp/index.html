@@ -427,6 +427,23 @@
   .sub1{font-size:16px;color:var(--ink-2);max-width:48em;line-height:1.9}
   .gloss{display:inline-block;font-size:12.5px;color:var(--ink-3);background:#F1F5F3;border-radius:6px;padding:2px 8px;margin-top:6px}
 
+  /* chat vs code */
+  .cmp{margin-top:22px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+  .cmp-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;padding:12px 18px;background:#F6F9F7;border-bottom:1px solid var(--line)}
+  .cmp-h b{font-size:16px;font-weight:900}
+  .cmp-h span{font-size:12.5px;color:var(--ink-3)}
+  .cmp-g{display:grid;grid-template-columns:1fr 1fr}
+  .cmp-c{padding:18px 20px 16px;border-right:1px solid var(--line)}
+  .cmp-c:last-child{border-right:0}
+  .cmp-c.on{background:var(--green-soft)}
+  .cmp-t{font-family:var(--latin);font-weight:700;font-size:12px;letter-spacing:.14em;color:var(--ink-3);margin-bottom:8px}
+  .cmp-c.on .cmp-t{color:var(--green-deep)}
+  .cmp-io{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:900;font-size:16px;line-height:1.3}
+  .cmp-io i{font-style:normal;color:var(--green);font-size:20px}
+  .cmp-c p{font-size:13.5px;color:var(--ink-2);margin:8px 0 10px}
+  .cmp-f{display:inline-block;font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:#EEF2F0;color:var(--ink-2)}
+  .cmp-c.on .cmp-f{background:var(--green-deep);color:#fff}
+  @media (max-width:760px){.cmp-g{grid-template-columns:1fr}.cmp-c{border-right:0;border-bottom:1px solid var(--line)}.cmp-c:last-child{border-bottom:0}}
   /* outcome trio */
   .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
   .trio .o{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
@@ -676,6 +693,13 @@
         <div class="bd"><div class="n">03</div><h3>人がすること・AIがすること・専門家がすることの線が引ける</h3><p>自社の全業務を3列に分けます。「明日から何をAIに渡すか」が決まった状態で帰る。人を減らすためではなく、人を人にしかできない仕事に戻すためです。</p><span class="gloss">結果として、経営判断にAIを自分で使えるようになる</span></div>
       </div>
     </div>
+    <div class="cmp">
+      <div class="cmp-h"><b>「チャット」と「コード」は、何が違う？</b><span>ブートキャンプで身につけるのは、右側です。</span></div>
+      <div class="cmp-g">
+        <div class="cmp-c"><div class="cmp-t">チャットAI</div><div class="cmp-io"><span>聞く</span><i>›</i><span>答えが返る（文章）</span></div><p>「見積の作り方を教えて」→ 手順の説明が返る。作るのは、自分。</p><div class="cmp-f">作業は、自分でやる</div></div>
+        <div class="cmp-c on"><div class="cmp-t">コードAI</div><div class="cmp-io"><span>頼む</span><i>›</i><span>仕事が終わる（ファイル・数字・接続）</span></div><p>「先月の受注から見積を三社分作って」→ 見積ファイルが3つできる。会計につなげば、粗利も返る。</p><div class="cmp-f">人は、決める</div></div>
+      </div>
+    </div>
     <div class="concl"><div class="ct">この3つがそろうと</div><p>AIは「知っている」から「使いこなせる」に変わります。<span class="y">翌朝の経営会議から、判断の材料と速さが変わります。</span></p></div>
     <a class="mlink" href="../manga2/#p09"><i>MANGA</i>田村社長がこの3つを手に入れるまでを、漫画で読む ›</a>
   </section>
@@ -810,7 +834,7 @@
     <svg class="bigR" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#8FE0C4"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
     <div>
       <p class="eb">Application</p>
-      <h2>いつからやるなら、<br>今日から。</h2>
+      <h2>いつAIやるの、<br>今でしょ。</h2>
       <p class="sub">経営者優先枠／先着順。申込後、15〜20分の事前ヒアリング（オンライン）を行い、日程を確定します。</p>
       <ul class="get">
         <li>Claude Code と Codex が、自分のPCで動く</li>
