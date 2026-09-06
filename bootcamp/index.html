@@ -351,19 +351,19 @@
   @media (max-width:1000px){.hrow{grid-template-columns:1fr;gap:14px}.hero .cta{flex-wrap:wrap}}
   @media (max-width:760px){.hero h1{white-space:normal}.hero .txt{padding:28px 22px 16px}}
   /* evolution band */
-  .evo{position:relative;aspect-ratio:21/9;background:#07221E url(media/boot-evo-poster.jpg) center 40%/cover no-repeat;overflow:hidden}
-  .evo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:0;transition:opacity 1.2s ease}
+  .evo{position:relative;aspect-ratio:1.9;background:#07221E url(media/boot-evo-poster.jpg) center top/cover no-repeat;overflow:hidden}
+  .evo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0;transition:opacity 1.2s ease}
   .evo video.ready{opacity:1}
   .evo:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,#07221E 0%,rgba(7,34,30,0) 16%,rgba(7,34,30,0) 68%,rgba(7,34,30,.9) 100%)}
-  .stages{position:absolute;inset:0;z-index:2;pointer-events:none;--x1:32%;--x2:61%;--x3:90%}
-  .stg{position:absolute;left:var(--x);bottom:9%;transform:translateX(-50%) translateY(14px);display:flex;flex-direction:column;align-items:center;color:#fff;opacity:0;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
-  .stg i{order:-1;display:block;width:2px;height:46px;margin-bottom:8px;background:linear-gradient(180deg,rgba(143,224,196,0),#8FE0C4);transform-origin:bottom;transform:scaleY(0);transition:transform .5s ease .15s}
+  .stages{position:absolute;inset:0;z-index:2;pointer-events:none;--x1:9%;--x2:35%;--x3:70%}
+  .stg{position:absolute;left:var(--x);bottom:5%;transform:translateX(-50%) translateY(14px);display:flex;flex-direction:column;align-items:center;color:#fff;opacity:0;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .stg i{order:-1;display:block;width:2px;height:28px;margin-bottom:8px;background:linear-gradient(180deg,rgba(143,224,196,0),#8FE0C4);transform-origin:bottom;transform:scaleY(0);transition:transform .5s ease .15s}
   .stg b{display:block;font-size:17px;font-weight:900;letter-spacing:.08em;text-shadow:0 2px 14px rgba(0,0,0,.7)}
   .stg span{display:block;font-size:11.5px;color:var(--green-lt);letter-spacing:.04em;margin-top:2px}
   .stg.show{opacity:1;transform:translateX(-50%) translateY(0)}
   .stg.show i{transform:scaleY(1)}
   .stg:nth-child(3) b{font-size:21px;color:var(--yellow)}
-  .arrow{position:absolute;z-index:2;left:32%;right:10%;bottom:3.5%;height:1.5px;background:linear-gradient(90deg,rgba(143,224,196,.15),rgba(143,224,196,.9));opacity:0;transform:scaleX(0);transform-origin:left;transition:opacity .6s,transform 1.2s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+  .arrow{position:absolute;z-index:2;left:9%;right:30%;bottom:2.5%;height:1.5px;background:linear-gradient(90deg,rgba(143,224,196,.15),rgba(143,224,196,.9));opacity:0;transform:scaleX(0);transform-origin:left;transition:opacity .6s,transform 1.2s cubic-bezier(.2,.7,.2,1);pointer-events:none}
   .arrow:after{content:"";position:absolute;right:-2px;top:-4px;border:5px solid transparent;border-left:8px solid #8FE0C4;border-right:0}
   .arrow span{position:absolute;left:50%;top:-22px;transform:translateX(-50%);font-family:var(--latin);font-weight:700;font-size:11px;letter-spacing:.2em;color:var(--green-lt)}
   .arrow.show{opacity:1;transform:scaleX(1)}
@@ -372,7 +372,7 @@
   .replay.show{display:inline-flex}
   .hfoot{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;padding:20px 56px 30px}
   .hfoot .firm{margin:0}
-  @media (max-width:760px){.evo{aspect-ratio:16/9}.stg b{font-size:13px}.stg:nth-child(3) b{font-size:15px}.stg span{display:none}.stg i{height:26px}.hfoot{padding:16px 22px 24px}}
+  @media (max-width:760px){.evo{aspect-ratio:16/9}.stg{bottom:3%}.stg b{font-size:12px}.stg:nth-child(3) b{font-size:15px}.stg span{display:none}.stg i{height:26px}.hfoot{padding:16px 22px 24px}}
   .facts{display:flex;flex-wrap:wrap;margin-top:0;border:1px solid rgba(255,255,255,.22);border-radius:10px;overflow:hidden;max-width:560px}
   .facts div{flex:1;min-width:120px;padding:12px 16px;border-right:1px solid rgba(255,255,255,.18);font-size:12.5px;color:rgba(255,255,255,.75)}
   .facts div:last-child{border-right:0}
@@ -583,7 +583,7 @@
     </div>
     <div class="evo" aria-label="初心者から中級者、上級者への進化">
       <video id="heroVideo" muted playsinline preload="auto" autoplay poster="media/boot-evo-poster.jpg"><source src="media/boot-evo.mp4" type="video/mp4"></video>
-      <div class="stages" id="stages"><div class="stg" style="--x:var(--x1)" data-at="0.1"><b>初心者</b><span>AIを知っている</span><i></i></div><div class="stg" style="--x:var(--x2)" data-at="0.45"><b>中級者</b><span>AIを自分で動かせる</span><i></i></div><div class="stg" style="--x:var(--x3)" data-at="0.8"><b>上級者</b><span>AIチームを率いる</span><i></i></div></div>
+      <div class="stages" id="stages"><div class="stg" style="--x:var(--x1)" data-at="0.1"><b>初心者</b><span>AIで自分の仕事をこなす</span><i></i></div><div class="stg" style="--x:var(--x2)" data-at="0.45"><b>中級者</b><span>AIを組織に組み込み、仕事をさせる</span><i></i></div><div class="stg" style="--x:var(--x3)" data-at="0.8"><b>上級者</b><span>AIが中心のチームを運営する</span><i></i></div></div>
       <div class="arrow" aria-hidden="true"><span>5時間</span></div>
       <button type="button" class="replay" id="replay" aria-label="もう一度再生"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2.5 8a5.5 5.5 0 1 0 1.6-3.9"/><path d="M2 2.5v3h3"/></svg>もう一度</button>
     </div>
