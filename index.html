@@ -853,7 +853,7 @@
     tripbg:{src:'tripbg.mp4',inp:0.15,focus:'50% 50%',sat:0.55},
     phonebg:{src:'phonebg.mp4',inp:0.15,focus:'50% 50%',sat:0.55},
     legacy:{src:'legacy.mp4',inp:0.15,focus:'50% 50%'},
-    finale:{src:'finale.mp4',inp:0.15,focus:'50% 55%'},
+    finale:{src:'finale.mp4',inp:0.05,focus:'50% 55%'},
     montage:{src:'montage.mp4',inp:0.0,focus:'50% 50%'},
     strideA:{src:'strideA.mp4',inp:0.15,focus:'50% 45%'},
     cutin:{src:'cutin.mp4',inp:0.0,focus:'50% 50%'}
@@ -875,10 +875,10 @@
     {t0:59.35, t1:64.55, clip:'montage', tr:'sweep', lines:[[0.00,'経営者たちは、選ばれる会社を目指し、','']]},
     {t0:64.55, t1:67.95, clip:'strideA', tr:'fold', lines:[[0.00,'<b>働き方を、設計し直す。</b>','big'],[2.07,'世は、まさに――','mid']]},
     {t0:67.95, t1:71.25, clip:'cutin', tr:null, title:true, lines:[[0.00,'働き方4.0<span class="br"><br></span>時代！','huge']]},
-    {t0:71.25, t1:76.47, clip:'finale', tr:'fold', endfade:true, lines:[[0.00,'選べる働き方を、<b>会社の側から。</b>',''],[2.43,'それが、働き方4.0。','']]}
+    {t0:71.25, t1:76.85, clip:'finale', tr:'fold', endfade:true, lines:[[0.00,'選べる働き方を、<b>会社の側から。</b>',''],[2.63,'それが、働き方4.0。','']]}
   ];
   var CINE_ROGER=41.95, CINE_TITLE=67.95;
-  var TOTAL=76.5, time=0, running=false, last=0, raf=null, cur=-1, curClip=null, useA=true, seen=false, musicOn=false, partic=[], ctx=null, W=0,H=0, sprite=null, lineEls=[], sceneStart=0, lastSync=0;
+  var TOTAL=76.8, time=0, running=false, last=0, raf=null, cur=-1, curClip=null, useA=true, seen=false, musicOn=false, partic=[], ctx=null, W=0,H=0, sprite=null, lineEls=[], sceneStart=0, lastSync=0;
   function vid(){return useA?vA:vB} function other(){return useA?vB:vA}
   function setClip(name){
     if(name===curClip) return;
@@ -982,10 +982,14 @@
   // 追いつくための飛びは異常ではなく、音声と絵を合わせるために必要な動作。
   function tick(now){
     if(!running) return;
-    if(musicOn && !audio.paused && isFinite(audio.currentTime)) time=Math.min(TOTAL,audio.currentTime);
+    var live=musicOn&&!audio.paused&&isFinite(audio.currentTime);
+    if(live) time=Math.min(TOTAL,audio.currentTime);
     else time=Math.min(TOTAL,time+(now-last)/1000);
     last=now; render(time); syncVideo(now);
-    if(time<TOTAL) raf=requestAnimationFrame(tick); else finish();
+    // 音が鳴っている間は TOTAL では締めない。TOTAL は台本の尺で、音声はそれより
+    // 少し長い（音楽の締めのフェード）。ここで切ると余韻が切れて途中終了に聞こえる。
+    // 実際の終わりは audio の ended が決める。
+    if(live||time<TOTAL) raf=requestAnimationFrame(tick); else finish();
   }
   function reset(){ time=0; cur=-1; curClip=null; clearLines(); cine.classList.remove('out'); cine.style.opacity=''; vA.classList.remove('on'); vB.classList.remove('on'); trip.classList.remove('on','flat'); phone.classList.remove('on','q'); }
   function play(){ if(raf) cancelAnimationFrame(raf); reset(); document.documentElement.classList.add('cine-playing'); cine.classList.add('on'); cine.setAttribute('aria-hidden','false'); rep.classList.remove('show'); initParticles(); running=true; last=performance.now(); raf=requestAnimationFrame(tick); preload((S[0]&&S[0].clip)||(S[1]&&S[1].clip)); }

@@ -33,7 +33,7 @@ FX = [
 ]
 INP = {"old1": .5, "new1": .5, "old2": .5, "new2": .5, "old3": .5, "new3": .5,
        "commute": 1.0, "rooftop": .5, "climax": 1.0,
-       "intro": .15, "tripbg": .15, "phonebg": .15, "legacy": .15, "finale": .15,
+       "intro": .15, "tripbg": .15, "phonebg": .15, "legacy": .15, "finale": .05,
        "montage": 0.0, "strideA": .15, "cutin": 0.0}
 FOCUS = {"old1": ("60% 50%", .7), "new1": ("50% 55%", None), "old2": ("50% 45%", .7),
          "new2": ("40% 50%", None), "old3": ("45% 50%", .7), "new3": ("60% 50%", None),
