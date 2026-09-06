@@ -692,6 +692,51 @@
   @media (max-width:700px){.spk{grid-template-columns:1fr}}
   .fine{font-size:11.5px;color:var(--ink-3);line-height:1.7;margin-top:14px}
   .final h2{font-size:clamp(26px,3.2vw,38px)}
+
+  /* ===== collab (K-Drive blue x Relic green) ===== */
+  :root{--kd:#2B6FE0;--kd-deep:#173F8F;--kd-soft:#EAF1FF}
+  .lock{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+  .lock .co{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:8px 14px 8px 10px}
+  .lock .co b{display:block;font-size:14px;font-weight:900;color:#fff;line-height:1.2;letter-spacing:.02em}
+  .lock .co small{display:block;font-size:10.5px;color:rgba(255,255,255,.72);font-weight:500;margin-top:2px}
+  .lock .co .mk{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;flex:none}
+  .lock .co.kd .mk{background:var(--kd)}
+  .lock .co.rl .mk{background:var(--green)}
+  .lock .x{font-family:var(--latin);font-weight:700;font-size:26px;color:var(--yellow);line-height:1}
+  .hero .card{background:linear-gradient(115deg,#0F2A5C 0%,#0B2F3A 42%,#07221E 70%)}
+  .nav .brand svg{display:none}
+  .nav .brand .duo{display:flex;align-items:center;gap:6px;margin-right:2px}
+  .nav .brand .duo i{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;font-style:normal;font-family:var(--latin);font-weight:700;font-size:12px;color:#fff}
+  .nav .brand .duo i.k{background:var(--kd)}.nav .brand .duo i.r{background:var(--green)}
+  .nav .brand .duo em{font-style:normal;font-weight:700;color:var(--ink-3);font-size:11px}
+  .chap.kd{background:none}
+  .chap.kd .in:before,.chap.kd .in .l,.chap.kd .in{background:linear-gradient(135deg,var(--kd-deep) 0%,var(--kd) 100%)}
+  .chap.kd .in .r{background:linear-gradient(135deg,#0F5F52,#2B6FE0)}
+  .part.k .hd{background:var(--kd)}
+  .stat4 div{background:var(--kd-deep)}
+  .steps3 .k{color:var(--green-deep)}
+  .why2{display:grid;grid-template-columns:1fr 64px 1fr;gap:0;margin-top:20px;align-items:stretch}
+  .why2 .side{border-radius:16px;padding:22px 22px 20px;position:relative;overflow:hidden;color:#fff}
+  .why2 .side.kd{background:var(--kd-deep)}
+  .why2 .side.kd:before{content:'';position:absolute;inset:0;background:url(media/kd-wave.jpg) right bottom/70% no-repeat;opacity:.28;mix-blend-mode:screen}
+  .why2 .side.rl{background:var(--green-deep)}
+  .why2 .side>*{position:relative}
+  .why2 .side .co{font-family:var(--latin);font-weight:700;font-size:11px;letter-spacing:.16em;opacity:.8}
+  .why2 .side h3{font-size:19px;font-weight:900;margin:6px 0 10px;line-height:1.35}
+  .why2 .side p{font-size:13.5px;line-height:1.75;opacity:.92;margin:0}
+  .why2 .side ul{margin:12px 0 0;padding:0;list-style:none;font-size:13px}
+  .why2 .side li{padding:6px 0;border-top:1px solid rgba(255,255,255,.18)}
+  .why2 .side li b{color:var(--yellow)}
+  .why2 .mid{display:grid;place-items:center}
+  .why2 .mid span{width:48px;height:48px;border-radius:50%;background:#fff;border:2px solid var(--line);display:grid;place-items:center;font-family:var(--latin);font-weight:700;font-size:24px;color:var(--ink)}
+  .why2 .goal{grid-column:1/-1;margin-top:12px;border:2px solid var(--ink);border-radius:14px;padding:16px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .why2 .goal b{font-size:17px;font-weight:900}
+  .why2 .goal span{font-size:13px;color:var(--ink-2)}
+  @media (max-width:800px){.why2{grid-template-columns:1fr}.why2 .mid{padding:10px 0}}
+  .final{background:linear-gradient(115deg,#0F2A5C 0%,#0F5F52 60%)}
+  .final .firm{display:none}
+  .final .lock{margin:18px 0 0}
+  .final .lock .co{background:rgba(255,255,255,.08)}
 </style>
 
 <div class="ribbon rb-tl" aria-hidden="true"><svg viewBox="0 0 560 420"><path d="M-40 60 C120 -20 260 40 330 140 C400 240 330 380 120 420 L-40 420Z" fill="#14A07A" opacity=".85"/><path d="M-40 140 C90 60 210 100 250 190 C290 280 220 380 60 420 L-40 420Z" fill="#0F5F52" opacity=".9"/><path d="M-40 230 C60 190 130 220 150 290 C170 360 110 410 20 420 L-40 420Z" fill="#8FE0C4" opacity=".55"/></svg></div>
@@ -699,8 +744,8 @@
 <nav class="nav" aria-label="ページ内">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="レリック社会保険労務士法人">
-      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
-      <span>レリック<small>社会保険労務士法人 × K-Drive</small></span>
+      <span class="duo" aria-hidden="true"><i class="k">K</i><em>×</em><i class="r">R</i></span>
+      <span>K-Drive × レリック<small>共催セミナー 2026.09.16</small></span>
     </a>
     <div class="nav-links">
       <a href="#why">なぜ今</a><a href="#program">内容</a><a href="#ten">10の手法</a><a href="#flow">当日の流れ</a><a href="#speakers">登壇</a><a href="#faq">Q&amp;A</a>
@@ -712,6 +757,7 @@
 <header class="hero page" id="top">
   <div class="card">
     <div class="txt">
+      <div class="lock" aria-label="主催"><div class="co kd"><span class="mk"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M3 18c4-9 8-9 12 0s6 0 6 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span><div><b>K-Drive株式会社</b><small>健康経営優良法人の取得支援</small></div></div><span class="x">×</span><div class="co rl"><span class="mk"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#fff"/><path d="M18 24l12 12h-8L12 26z" fill="#CFF5E6"/></svg></span><div><b>レリック社会保険労務士法人</b><small>働き方4.0・働き方の再設計</small></div></div></div>
       <p class="eb">共催セミナー ｜ 経営者・人事責任者向け ｜ オンライン</p>
       <p class="q">法改正ラッシュに、人件費を増やさず対応する方法。</p>
       <h1>働き方を設計し直すと、<br>健康経営と社会保険が同時に整う。</h1>
@@ -726,7 +772,6 @@
         <a class="btn btn-primary" href="#apply" style="background:#14A07A">無料で申し込む <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         <a class="btn btn-ghost on-dark" href="#program">セミナーの内容</a>
       </div>
-      <div class="cohost">主催<span>K-Drive株式会社</span><span>レリック社会保険労務士法人</span></div>
     </div>
     <div class="vis" aria-hidden="true"><img src="media/sem-hero.jpg" alt=""></div>
   </div>
@@ -748,11 +793,18 @@
     </div>
     <p class="fine">施行日・対象は今後の政令等により変更される場合があります。当日、最新の情報でご説明します。</p>
     <div class="concl"><div class="ct">このセミナーの答え</div><p>対応の「原資」を、人件費の外から作る。<span class="y">健康経営で採用と定着を強くし、働き方の再設計で原資を生む。</span>その二つは、別々にやるより、同時にやる方が早い。</p></div>
+    <h3 style="margin-top:26px;font-size:18px;font-weight:900">なぜ、この2社が組むのか</h3>
+    <div class="why2">
+      <div class="side kd"><span class="co">K-DRIVE</span><h3>健康経営で、採用と定着を強くする</h3><p>健康経営優良法人の申請書類作成・提出代行と、従業員ケア・助成金の案内をワンパッケージで。認定は採用・融資・入札の「加点」になります。</p><ul><li><b>取る</b>：今年の申請に間に合わせる段取り</li><li><b>活かす</b>：採用・融資・入札・ビザ審査の優遇</li></ul></div>
+      <div class="mid"><span>×</span></div>
+      <div class="side rl"><span class="co">RELIC SR</span><h3>働き方を設計し直して、原資を生む</h3><p>誰がどの仕事をするかを実態に合わせると、結果として社会保険が整い、法改正対応と福利厚生の原資が生まれます。減る面も先に示します。</p><ul><li><b>設計</b>：業務・契約・報酬の形を実態に</li><li><b>確認</b>：増える面と減る面を社労士が並べる</li></ul></div>
+      <div class="goal"><b>健康経営の要件（福利厚生・労働時間・健康）と、働き方の再設計は、同じ制度を扱う。</b><span>だから、別々に頼むより、一度に設計する方が早く、ズレません。第3部で、御社の順番をその場で整理します。</span></div>
+    </div>
     <div class="note" style="margin-top:18px"><b>申請の締切について。</b>健康経営優良法人の申請受付は例年8月末から10月末です。9月16日のセミナーでは、今年の申請に間に合わせる段取りを、そのままお伝えします。</div>
   </section>
 </div>
 
-<div class="chap" id="program">
+<div class="chap kd" id="program">
   <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">02</div><h2>セミナーの内容</h2><p>第1部は「攻め」の健康経営。第2部は働き方の再設計。<br><b>第3部で、二つをつなぎます。</b></p></div><div class="r" style="background:linear-gradient(135deg,#1E6FC2,#2E6A8A 60%,#0F5F52)"></div></div>
 </div>
 <div class="page">
@@ -793,7 +845,7 @@
   </section>
 </div>
 
-<div class="chap" id="flow">
+<div class="chap kd" id="flow">
   <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">04</div><h2>当日の流れと、こんな方に</h2><p>90分、オンライン。<br><b>質問は、その場で両社がお答えします。</b></p></div><div class="r" style="background:linear-gradient(135deg,#0B4A40,#0F5F52 50%,#2E6A8A)"></div></div>
 </div>
 <div class="page">
@@ -819,8 +871,8 @@
     <p class="eb">Speakers</p>
     <h2 class="t">登壇</h2>
     <div class="spk">
-      <div><span class="co">K-DRIVE INC.</span><b>K-Drive株式会社</b><p>健康経営優良法人の申請書類作成・提出代行を中心に、従業員ケア（ストレスチェック・健康相談）、助成金の案内、経営ダッシュボードを一体で提供。中小規模法人部門の取得支援に強み。</p></div>
-      <div><span class="co">RELIC SR</span><b>レリック社会保険労務士法人</b><p>「働き方4.0」を掲げ、業務・契約・報酬の再設計から、社会保険を含む働く条件の整備までを一貫して支援。減る面も先に示し、従業員と一緒に決める進め方を採ります。</p></div>
+      <div><span class="co">K-DRIVE INC.</span><b>K-Drive株式会社 ｜ 代表取締役 藤原雄一郎</b><p>健康経営優良法人の申請書類作成・提出代行を中心に、従業員ケア（ストレスチェック・健康相談）、助成金の案内、経営ダッシュボードを一体で提供。中小規模法人部門の取得支援に強み。</p></div>
+      <div><span class="co">RELIC SR</span><b>レリック社会保険労務士法人 ｜ 五味田（社会保険労務士）</b><p>「働き方4.0」を掲げ、業務・契約・報酬の再設計から、社会保険を含む働く条件の整備までを一貫して支援。減る面も先に示し、従業員と一緒に決める進め方を採ります。</p></div>
     </div>
   </section>
 
@@ -851,6 +903,7 @@
         <li>両社への質疑応答（個別相談の案内あり）</li>
       </ul>
       <p class="firm">K-Drive株式会社 × レリック社会保険労務士法人<small>JOINT SEMINAR ｜ 2026.09.16</small></p>
+      <div class="lock" aria-label="主催"><div class="co kd"><span class="mk"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M3 18c4-9 8-9 12 0s6 0 6 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span><div><b>K-Drive株式会社</b><small>健康経営優良法人の取得支援</small></div></div><span class="x">×</span><div class="co rl"><span class="mk"><svg viewBox="0 0 40 40" width="18" height="18" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#fff"/><path d="M18 24l12 12h-8L12 26z" fill="#CFF5E6"/></svg></span><div><b>レリック社会保険労務士法人</b><small>働き方4.0・働き方の再設計</small></div></div></div>
     </div>
     <form class="cf" id="cform" novalidate>
       <div class="row"><label>会社名<input type="text" name="company" placeholder="株式会社〇〇" required></label><label>お名前・役職<input type="text" name="name" placeholder="山田 太郎（代表取締役）" required></label></div>
