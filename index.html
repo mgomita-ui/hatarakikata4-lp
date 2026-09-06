@@ -359,34 +359,62 @@
   footer p{max-width:60em;line-height:1.7}
   footer a{color:var(--green-deep)}
 
-  /* ===== opening (大海賊時代風) ===== */
-  .cine{position:absolute;top:0;left:0;right:0;height:min(100%,100svh);z-index:6;color:#fff;overflow:hidden;background:radial-gradient(120% 90% at 50% 110%,#0F5F52 0%,#0B2F3A 45%,#07141F 100%);display:none}
+  /* ===== opening v2 (3D stage, single clock) ===== */
+  .cine{position:absolute;top:0;left:0;right:0;height:min(100%,100svh);z-index:6;color:#F3F5EF;overflow:hidden;background:radial-gradient(120% 90% at 50% 110%,#0F5F52 0%,#0B2F3A 45%,#07141F 100%);display:none;font-family:'Noto Sans JP',sans-serif}
   .cine.on{display:block}
-  .cine:before{content:"";position:absolute;left:0;right:0;top:62%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent)}
-  .cine .rays{position:absolute;inset:0;background:conic-gradient(from 180deg at 50% 62%,transparent 0 40%,rgba(255,255,255,.06) 42%,transparent 44%,transparent 56%,rgba(255,255,255,.06) 58%,transparent 60%);opacity:0;transition:opacity 1.2s}
-  .cine.burst .rays{opacity:1}
-  .cine .sea{position:absolute;left:-10%;right:-10%;top:62%;bottom:0;background:repeating-linear-gradient(180deg,rgba(255,255,255,.035) 0 2px,transparent 2px 18px);transform:translateY(0);animation:cineSea 6s linear infinite;opacity:.8}
-  @keyframes cineSea{to{transform:translateY(18px)}}
-  .cine .sc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 8%;opacity:0;transition:opacity .6s}
-  .cine .sc.on{opacity:1}
-  .cine .sc p{margin:0 0 .55em;font-size:clamp(18px,2.6vw,34px);font-weight:700;line-height:1.55;opacity:0;transform:translateY(14px);transition:opacity .7s,transform .7s;letter-spacing:.02em;text-shadow:0 2px 12px rgba(0,0,0,.35)}
-  .cine .sc p.in{opacity:1;transform:none}
-  .cine .sc p b{color:var(--yellow);font-weight:900}
-  .cine .sc p.sm{font-size:clamp(13px,1.4vw,17px);font-weight:500;color:rgba(255,255,255,.7);letter-spacing:.18em}
-  .cine .sc p.big{font-size:clamp(28px,4.6vw,64px);font-weight:900;line-height:1.2;letter-spacing:.04em}
-  .cine .sc p.huge{font-size:clamp(34px,6.2vw,88px);font-weight:900;line-height:1.1;color:var(--yellow);text-shadow:0 0 40px rgba(255,215,0,.35),0 4px 18px rgba(0,0,0,.4)}
-  .cine .sc p.huge.in{animation:cinePop .9s cubic-bezier(.2,.9,.2,1.2)}
-  @keyframes cinePop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.06);opacity:1}100%{transform:scale(1)}}
-  .cine .flash{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(255,215,0,.5),transparent 60%);opacity:0;pointer-events:none}
-  .cine.burst .flash{animation:cineFlash 1.4s ease-out}
-  @keyframes cineFlash{0%{opacity:0}15%{opacity:1}100%{opacity:0}}
-  .cine .skip{position:absolute;top:16px;right:16px;z-index:2;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
-  .cine .skip:hover{background:rgba(255,255,255,.22)}
-  .cine .prog{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--yellow);transition:width .3s linear}
-  .cine .ico{display:flex;gap:clamp(18px,4vw,48px);margin-bottom:14px;opacity:0;transition:opacity .8s}
-  .cine .ico.in{opacity:1}
-  .cine .ico svg{width:clamp(28px,4vw,44px);height:auto;stroke:rgba(255,255,255,.8);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-  .cine.out{animation:cineOut .9s ease forwards}
+  .cine .cam{position:absolute;inset:0;perspective:1100px;perspective-origin:50% 58%}
+  .cine .world{position:absolute;inset:0;transform-style:preserve-3d}
+  .cine .mp{position:absolute;inset:-6%;transform:translateZ(-140px) scale(1.18);--open:1;--zoom:1;--dark:0}
+  .cine .mp.fold{-webkit-mask-image:linear-gradient(to bottom,transparent calc(58% - var(--open)*62% - .2%),#000 calc(58% - var(--open)*62%),#000 calc(58% + var(--open)*62%),transparent calc(58% + var(--open)*62% + .2%));mask-image:linear-gradient(to bottom,transparent calc(58% - var(--open)*62% - .2%),#000 calc(58% - var(--open)*62%),#000 calc(58% + var(--open)*62%),transparent calc(58% + var(--open)*62% + .2%))}
+  .cine .mp video,.cine .mp img.still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--focus,50% 50%);opacity:0;transition:opacity .25s;transform:scale(var(--zoom));filter:saturate(var(--sat,1)) brightness(calc(1 - var(--dark)))}
+  .cine .mp video.on,.cine .mp img.still.on{opacity:1}
+  .cine .mp:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(3,13,22,.85),transparent 60%),linear-gradient(90deg,rgba(3,24,24,.35),transparent 50%)}
+  .cine .hz{position:absolute;left:8%;width:84%;top:58%;height:1px;background:linear-gradient(90deg,transparent,#FFD700 48%,#E8F5D2 52%,transparent);box-shadow:0 0 16px rgba(255,215,0,.35);transform:translateZ(-20px) scaleX(var(--ls,1));opacity:var(--lo,1)}
+  .cine .open{position:absolute;left:0;right:0;top:58%;height:2px;margin-top:-1px;background:linear-gradient(90deg,transparent,rgba(255,215,0,.85),rgba(232,245,210,.95),rgba(255,215,0,.85),transparent);transform:translateZ(10px) scaleY(var(--oy,0));opacity:var(--oo,0);transform-origin:center;box-shadow:0 0 60px rgba(255,215,0,.35)}
+  .cine .wf{position:absolute;inset:14% 11%;border:1px solid rgba(205,224,218,.32);transform:translateZ(25px) scaleX(var(--fs,1));opacity:var(--fo,0)}
+  .cine .trip{position:absolute;inset:0;transform-style:preserve-3d;opacity:0;transition:opacity .4s}
+  .cine .trip.on{opacity:1}
+  .cine .trip img{position:absolute;top:24%;width:27%;aspect-ratio:16/9;object-fit:cover;border:1px solid rgba(255,215,0,.25);box-shadow:0 20px 45px rgba(0,0,0,.4);transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .5s;opacity:0}
+  .cine .trip img:nth-child(1){left:7%;transform:translateZ(-30px) rotateY(12deg) translateY(30px)}
+  .cine .trip img:nth-child(2){left:36.5%;transform:translateZ(40px) translateY(30px)}
+  .cine .trip img:nth-child(3){left:66%;transform:translateZ(-30px) rotateY(-12deg) translateY(30px)}
+  .cine .trip.on img{opacity:1}
+  .cine .trip.flat img:nth-child(1){transform:translateZ(0) rotateY(0) translateY(0)}
+  .cine .trip.flat img:nth-child(2){transform:translateZ(0) translateY(0)}
+  .cine .trip.flat img:nth-child(3){transform:translateZ(0) rotateY(0) translateY(0)}
+  .cine .trip:after{content:"";position:absolute;left:7%;right:7%;top:calc(24% + 27% * 9 / 16 + 14px);height:1px;background:linear-gradient(90deg,transparent,#FFD700,transparent);opacity:0;transition:opacity .6s .5s}
+  .cine .trip.flat:after{opacity:.9}
+  @media (max-width:700px){.cine .trip img{width:58%;top:22%}.cine .trip img:nth-child(1){left:2%;transform:translateZ(-60px) rotateY(14deg) translateY(20px)}.cine .trip img:nth-child(2){left:21%;transform:translateZ(40px) translateY(20px)}.cine .trip img:nth-child(3){left:40%;transform:translateZ(-60px) rotateY(-14deg) translateY(20px)}.cine .trip.flat img:nth-child(1){transform:translateZ(-60px) rotateY(14deg)}.cine .trip.flat img:nth-child(2){transform:translateZ(40px)}.cine .trip.flat img:nth-child(3){transform:translateZ(-60px) rotateY(-14deg)}.cine .trip:after{left:6%;right:6%;top:calc(22% + 58% * 9 / 16 + 30px)}}
+  .cine .phone{position:absolute;left:50%;top:40%;width:84px;height:150px;border-radius:20px;transform:translate(-50%,-50%) translateZ(20px) rotateX(16deg);background:linear-gradient(160deg,#AECAC4,#143940);box-shadow:0 0 55px rgba(131,198,181,.3),0 30px 100px rgba(255,215,0,.12);opacity:0;transition:opacity .5s}
+  .cine .phone.on{opacity:1}
+  .cine .phone i{position:absolute;width:8px;height:8px;border-radius:50%;background:#FFD700;box-shadow:0 0 12px #FFD700;left:50%;top:50%;opacity:0}
+  .cine .phone.q i.a{animation:cineDot .5s ease-out forwards}
+  .cine .phone.q i.b{animation:cineDot2 .5s .2s ease-out forwards}
+  @keyframes cineDot{0%{opacity:1;transform:translate(-50%,-50%)}100%{opacity:0;transform:translate(-50%,-260%)}}
+  @keyframes cineDot2{0%{opacity:0;transform:translate(-50%,-260%)}20%{opacity:1}100%{opacity:1;transform:translate(-50%,-50%)}}
+  .cine .copy{position:absolute;inset:10% 8%;transform-style:preserve-3d;pointer-events:none;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .cine .copy.bl{justify-content:flex-end;align-items:flex-start;text-align:left}
+  .cine .ln{margin:0 0 .5em;font-size:clamp(20px,2.6vw,34px);font-weight:700;line-height:1.5;letter-spacing:.02em;text-shadow:0 2px 18px #031116,0 0 2px rgba(15,95,82,.6);opacity:0;transform:translateZ(-80px);transition:opacity .28s,transform .3s cubic-bezier(.16,1,.3,1);will-change:transform,opacity}
+  .cine .ln.in{opacity:1;transform:translateZ(90px)}
+  .cine .ln.out{opacity:0;transform:translateZ(65px);transition:opacity .2s,transform .2s}
+  .cine .ln b{color:#FFD700;font-weight:900}
+  .cine .ln.sm{font-size:clamp(12px,1.3vw,16px);font-weight:500;color:rgba(243,245,239,.72);letter-spacing:.2em}
+  .cine .ln.mid{font-size:clamp(24px,3.4vw,46px);font-weight:900;line-height:1.3}
+  .cine .ln.big{font-size:clamp(26px,4vw,52px);font-weight:900;line-height:1.25}
+  .cine .ln.huge{font-size:clamp(34px,6vw,86px);font-weight:900;line-height:1.15;color:#FFD700;text-shadow:0 0 34px rgba(255,215,0,.35),0 6px 22px rgba(0,0,0,.5);transform:translateZ(-380px) rotateX(9deg);transition:none}
+  .cine .ln.huge.in{animation:cineTitle .36s cubic-bezier(.16,1,.3,1) forwards}
+  @keyframes cineTitle{0%{opacity:0;transform:translateZ(-380px) rotateX(9deg)}50%{opacity:1;transform:translateZ(130px) rotateX(0)}100%{opacity:1;transform:translateZ(90px) rotateX(0)}}
+  .cine .ln.huge .br{display:none}
+  @media (max-width:600px){.cine .ln.huge .br{display:inline}.cine .cam{perspective:1500px}.cine .ln{font-size:clamp(18px,5vw,24px)}.cine .ln.mid{font-size:clamp(22px,6vw,30px)}.cine .ln.big{font-size:clamp(24px,6.5vw,34px)}.cine .copy{inset:8% 6%}}
+  .cine canvas.pt{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .cine .sweep{position:absolute;inset:-20%;pointer-events:none;background:linear-gradient(105deg,transparent 42%,rgba(255,215,0,.08) 47%,rgba(240,248,211,.5) 50%,transparent 57%);mix-blend-mode:screen;transform:translateX(var(--sx,-120%));opacity:var(--so,0)}
+  .cine .glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 40% at 50% 58%,rgba(255,215,0,.35),transparent 70%);opacity:var(--go,0)}
+  .cine .ui{position:absolute;top:14px;right:14px;z-index:5;display:flex;gap:8px}
+  .cine .ui button{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
+  .cine .ui button:hover{background:rgba(255,255,255,.22)}
+  .cine .ui button.music.on{background:#FFD700;color:#1a1a1a;border-color:#FFD700}
+  .cine .prog{position:absolute;left:0;bottom:0;height:3px;width:0;background:#FFD700}
+  .cine.out{animation:cineOut .8s ease forwards}
   @keyframes cineOut{to{opacity:0;visibility:hidden}}
   .cine-replay{position:absolute;top:14px;right:14px;z-index:4;display:none;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:999px;padding:7px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit}
   .cine-replay.show{display:inline-flex}
@@ -413,16 +441,21 @@
 <header class="hero page" id="top">
   <div class="card">
     <div class="cine" id="cine" aria-hidden="true">
-      <div class="sea"></div><div class="rays"></div><div class="flash"></div>
-      <button class="skip" type="button" id="cineSkip">スキップ ›</button>
-      <div class="sc" data-dur="4500"><p class="sm" data-at="0">本屋。番組。売り場。</p><p data-at="900">かつて、欲しいものは<b>「そこ」</b>にあった。</p></div>
-      <div class="sc" data-dur="10000"><div class="ico" data-at="0"><svg viewBox="0 0 24 24"><path d="M4 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H4z"/><path d="M20 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z"/></svg><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg><svg viewBox="0 0 24 24"><path d="M4 9h16l-1.5 11h-13z"/><path d="M8 9V7a4 4 0 0 1 8 0v2"/></svg></div><p data-at="300">本屋で選んだ。<b>いまは、手のひらで選ぶ。</b></p><p data-at="3300">番組を待った。<b>いまは、好きな時間に観る。</b></p><p data-at="6300">売り場を歩いた。<b>いまは、比べてから決める。</b></p></div>
-      <div class="sc" data-dur="6000"><p data-at="0">共通するのは、</p><p class="big" data-at="900"><b>時間と場所を、自分で選べること。</b></p></div>
-      <div class="sc" data-dur="7000"><p data-at="0">聞けば、すぐ返ってくる。</p><p data-at="1800">待たされないのが、<b>当たり前</b>になった。</p></div>
-      <div class="sc" data-dur="9500"><p data-at="0">その人たちが、朝、会社に来る。</p><p data-at="3200">時間。場所。決まった型のやり取り。</p><p data-at="5400">仕事だけが、昔のままで<b>いられるだろうか。</b></p></div>
-      <div class="sc" data-dur="8500" data-burst="4300"><p data-at="0">人々は、選べる働き方を求めて、動き出した。</p><p class="big" data-at="3000">世は、まさに――</p><p class="huge" data-at="4300">働き方4.0時代！</p></div>
-      <div class="sc" data-dur="4200"><p data-at="0">選べる働き方を、<b>会社の側から設計する。</b></p><p data-at="1500">それが、働き方4.0。</p></div>
+      <div class="cam"><div class="world">
+        <div class="mp fold" id="mp"><video id="vA" muted playsinline preload="none"></video><video id="vB" muted playsinline preload="none"></video><img class="still" id="still" alt=""></div>
+        <div class="hz" id="hz"></div>
+        <div class="open" id="openLine"></div>
+        <div class="wf" id="wf"></div>
+        <div class="trip" id="trip"><img src="media/cine/new1_p.jpg" alt=""><img src="media/cine/new2_p.jpg" alt=""><img src="media/cine/new3_p.jpg" alt=""></div>
+        <div class="phone" id="phone"><i class="a"></i><i class="b"></i></div>
+        <div class="copy" id="copy"></div>
+      </div></div>
+      <canvas class="pt" id="pt"></canvas>
+      <div class="sweep" id="sweep"></div>
+      <div class="glow" id="glow"></div>
+      <div class="ui"><button type="button" class="music" id="cineMusic" aria-pressed="false">♪ 音楽オン</button><button type="button" id="cineSkip">スキップ ›</button></div>
       <div class="prog" id="cineProg"></div>
+      <audio id="cineAudio" preload="none" src="media/cine/opening.m4a"></audio>
     </div>
     <button class="cine-replay" type="button" id="cineReplay" aria-label="オープニングをもう一度見る">▶ オープニングをもう一度</button>
     <div class="bg" aria-hidden="true"></div>
@@ -761,32 +794,145 @@
 
 <script>
 (function(){
-  var cine=document.getElementById('cine'),skip=document.getElementById('cineSkip'),prog=document.getElementById('cineProg'),rep=document.getElementById('cineReplay');
-  if(!cine)return;
-  var scenes=[].slice.call(cine.querySelectorAll('.sc')),timers=[],raf=null,total=0,startAt=0,playing=false;
-  scenes.forEach(function(sc){total+=parseInt(sc.dataset.dur,10)});
-  function clear(){timers.forEach(clearTimeout);timers=[];if(raf)cancelAnimationFrame(raf);raf=null;}
-  function reset(){scenes.forEach(function(sc){sc.classList.remove('on');[].forEach.call(sc.querySelectorAll('[data-at]'),function(el){el.classList.remove('in')})});cine.classList.remove('burst','out');prog.style.width='0';}
-  function finish(){clear();cine.classList.add('out');playing=false;try{sessionStorage.setItem('cineSeen','1')}catch(e){}
-    setTimeout(function(){cine.classList.remove('on','out');cine.setAttribute('aria-hidden','true');rep.classList.add('show');},950);}
-  function play(){clear();reset();cine.classList.add('on');cine.setAttribute('aria-hidden','false');rep.classList.remove('show');playing=true;startAt=performance.now();
-    var t=0;
-    scenes.forEach(function(sc,i){
-      var dur=parseInt(sc.dataset.dur,10),base=t;
-      timers.push(setTimeout(function(){scenes.forEach(function(o){o.classList.remove('on')});sc.classList.add('on');},base));
-      [].forEach.call(sc.querySelectorAll('[data-at]'),function(el){timers.push(setTimeout(function(){el.classList.add('in')},base+parseInt(el.dataset.at,10)+150));});
-      if(sc.dataset.burst){timers.push(setTimeout(function(){cine.classList.add('burst')},base+parseInt(sc.dataset.burst,10)+100));}
-      t+=dur;
-    });
-    timers.push(setTimeout(finish,t));
-    (function tick(){var e=performance.now()-startAt;prog.style.width=Math.min(100,e/total*100)+'%';if(playing)raf=requestAnimationFrame(tick);})();
+  var cine=document.getElementById('cine'); if(!cine) return;
+  var $=function(id){return document.getElementById(id)};
+  var mp=$('mp'),vA=$('vA'),vB=$('vB'),still=$('still'),hz=$('hz'),openLine=$('openLine'),wf=$('wf'),trip=$('trip'),phone=$('phone'),copy=$('copy'),
+      pt=$('pt'),sweep=$('sweep'),glow=$('glow'),musicBtn=$('cineMusic'),skipBtn=$('cineSkip'),prog=$('cineProg'),audio=$('cineAudio'),rep=$('cineReplay');
+  var MEDIA='media/cine/';
+  // clip: src, in-point(s), focus (object-position), saturation
+  var CLIP={
+    old1:{src:'old1.mp4',inp:0.5,focus:'60% 50%',sat:.7},  new1:{src:'new1.mp4',inp:0.5,focus:'50% 55%'},
+    old2:{src:'old2.mp4',inp:0.5,focus:'50% 45%',sat:.7},  new2:{src:'new2.mp4',inp:0.5,focus:'40% 50%'},
+    old3:{src:'old3.mp4',inp:0.5,focus:'45% 50%',sat:.7},  new3:{src:'new3.mp4',inp:0.5,focus:'60% 50%'},
+    commute:{src:'commute.mp4',inp:1.0,focus:'50% 55%'}, rooftop:{src:'rooftop.mp4',inp:1.0,focus:'55% 45%'}, climax:{src:'climax.mp4',inp:1.0,focus:'50% 55%'}
+  };
+  // scenes: t0,t1, clip|null, transition at t0 ('fold'|'sweep'|'zoom'|null), lines [at, html, cls], flags
+  var S=[
+    {t0:0,   t1:3,   clip:null, tr:null,  lines:[[0.25,'本屋。番組。売り場。','sm'],[0.85,'かつて、欲しいものは<b>「そこ」</b>にあった。','']]},
+    {t0:3,   t1:6,   clip:'old1', tr:'fold', bl:true, lines:[[0.3,'本屋で選んだ。','']]},
+    {t0:6,   t1:9.5, clip:'new1', tr:'zoom', lines:[[0.3,'いまは、<b>アマゾン</b>で選ぶ。','mid']]},
+    {t0:9.5, t1:12.5,clip:'old2', tr:'fold', bl:true, lines:[[0.3,'番組を待った。','']]},
+    {t0:12.5,t1:16,  clip:'new2', tr:'sweep',lines:[[0.3,'いまは、<b>YouTube</b>で観る。','mid']]},
+    {t0:16,  t1:19,  clip:'old3', tr:'fold', bl:true, lines:[[0.3,'百貨店を歩いた。','']]},
+    {t0:19,  t1:22.5,clip:'new3', tr:'zoom', lines:[[0.3,'いまは、<b>ECサイト</b>で比べる。','mid']]},
+    {t0:22.5,t1:26.5,clip:null, tr:'fold', trip:true, lines:[[0.4,'共通するのは、',''],[1.3,'<b>時間と場所を、自分で選べること。</b>','big']]},
+    {t0:26.5,t1:30,  clip:null, tr:'fold', phone:true, lines:[[0.35,'聞けば、すぐ返ってくる。',''],[1.6,'待たされないのが、<b>当たり前</b>になった。','']]},
+    {t0:30,  t1:37,  clip:'commute', tr:'sweep', wf:true, lines:[[0.3,'その人たちが、朝、会社に来る。',''],[2.3,'時間。場所。決まった型のやり取り。',''],[4.4,'仕事だけが、昔のままで<b>いられるだろうか。</b>','']]},
+    {t0:37,  t1:45,  clip:'rooftop', tr:'fold', roger:true, lines:[[0.3,'AI時代の活躍の仕方か？',''],[2.0,'欲しければ、くれてやる。',''],[4.0,'すべて、未来に託してきた。',''],[6.0,'<b>働き方4.0</b>は、実在する。','big']]},
+    {t0:45,  t1:52,  clip:'climax', tr:'sweep', title:true, lines:[[0.25,'経営者たちは、選ばれる会社を目指し、働き方を設計し直す。',''],[3.5,'世は、まさに――','mid'],[4.95,'働き方4.0<span class="br"><br></span>時代！','huge']]},
+    {t0:52,  t1:55,  clip:'climax', tr:null, endfade:true, lines:[[0.35,'選べる働き方を、<b>会社の側から設計する。</b>',''],[1.8,'それが、働き方4.0。','']]}
+  ];
+  var TOTAL=55, time=0, running=false, last=0, raf=null, cur=-1, curClip=null, useA=true, seen=false, musicOn=false, partic=[], ctx=null, W=0,H=0, sprite=null, lineEls=[], sceneStart=0, lastSync=0;
+  function vid(){return useA?vA:vB} function other(){return useA?vB:vA}
+  function setClip(name){
+    if(name===curClip) return;
+    var prev=vid();
+    if(!name){ prev.classList.remove('on'); try{prev.pause()}catch(e){} curClip=null; return; }
+    var c=CLIP[name], v=other();
+    if(v.dataset.name!==name){ v.src=MEDIA+c.src; v.dataset.name=name; v.load(); }
+    v.style.setProperty('--focus',c.focus||'50% 50%'); v.style.setProperty('--sat',c.sat||1);
+    try{ v.currentTime=c.inp; }catch(e){}
+    var p=v.play(); if(p&&p.catch) p.catch(function(){});
+    v.classList.add('on'); prev.classList.remove('on'); setTimeout(function(){try{prev.pause()}catch(e){}},300);
+    useA=!useA; curClip=name; lastSync=performance.now();
   }
-  skip.addEventListener('click',finish);
-  rep.addEventListener('click',function(){play();cine.scrollIntoView({block:'start'});});
-  var q=location.search,reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var seen=false;try{seen=sessionStorage.getItem('cineSeen')==='1'}catch(e){}
+  function preload(name){ if(!name) return; var c=CLIP[name], v=other(); if(v.dataset.name!==name){ v.src=MEDIA+c.src; v.dataset.name=name; v.load(); try{v.currentTime=c.inp}catch(e){} } }
+  function clearLines(){ copy.innerHTML=''; lineEls=[]; }
+  function enterScene(i){
+    var sc=S[i]; cur=i; sceneStart=sc.t0;
+    copy.className='copy'+(sc.bl?' bl':'');
+    clearLines();
+    sc.lines.forEach(function(l){ var p=document.createElement('p'); p.className='ln '+l[2]; p.innerHTML=l[1]; p.dataset.at=l[0]; copy.appendChild(p); lineEls.push(p); });
+    if(sc.clip) setClip(sc.clip); else if(!sc.keepClip) setClip(null);
+    trip.classList.toggle('on',!!sc.trip); trip.classList.remove('flat');
+    phone.classList.toggle('on',!!sc.phone); phone.classList.remove('q');
+    wf.style.setProperty('--fo',sc.wf?1:0); wf.style.setProperty('--fs',1.25);
+    if(sc.trip){ setTimeout(function(){ if(cur===i) trip.classList.add('flat'); },900); }
+    if(sc.phone){ setTimeout(function(){ if(cur===i) phone.classList.add('q'); },500); }
+    var nx=S[i+1]; if(nx&&nx.clip&&nx.clip!==sc.clip) preload(nx.clip);
+  }
+  function tr(t){ // transitions around scene boundaries
+    var open=1, sx=-120, so=0, zoom=1, dark=0;
+    for(var i=1;i<S.length;i++){
+      var b=S[i].t0, d=t-b, kind=S[i].tr; if(!kind) continue;
+      if(kind==='fold'){ var a=Math.abs(d); if(a<0.32){ open=Math.min(open, Math.max(0.02,a/0.32)); } }
+      else if(kind==='sweep'){ if(d>-0.21&&d<0.21){ so=1; sx=-120+((d+0.21)/0.42)*240; } }
+      else if(kind==='zoom'){ if(d>-0.28&&d<0){ zoom=1+(d+0.28)/0.28*0.10; dark=(d+0.28)/0.28*0.85; } else if(d>=0&&d<0.28){ zoom=1.05-(d/0.28)*0.05; dark=(1-d/0.28)*0.5; } }
+    }
+    mp.style.setProperty('--open',open); mp.style.setProperty('--zoom',zoom.toFixed(3));
+    vA.style.setProperty('--dark',dark.toFixed(3)); vB.style.setProperty('--dark',dark.toFixed(3));
+    sweep.style.setProperty('--sx',sx+'%'); sweep.style.setProperty('--so',so);
+  }
+  function fx(t){
+    // horizon line grows 0-1.2s, dims during full-bleed video scenes
+    var ls=t<1.2?t/1.2:1; hz.style.setProperty('--ls',ls);
+    var sc=S[cur]||S[0]; var lo=(sc.clip&&!sc.roger&&!sc.title)?0.35:1; if(sc.trip||sc.phone) lo=0.9; hz.style.setProperty('--lo',lo);
+    // roger 43s: line opens as a plane
+    var oo=0, oy=0, go=0;
+    if(t>=43.0&&t<43.6){ var k=(t-43.0)/0.6; oo=1-k; oy=1+k*40; go=0.6*(1-k); }
+    if(t>=42.8&&t<43.0){ vA.style.setProperty('--dark',0.15); vB.style.setProperty('--dark',0.15); }
+    // title 49.95: local glow
+    if(t>=49.9&&t<50.5){ var k2=(t-49.9)/0.6; go=Math.max(go,0.9*(1-k2)); }
+    openLine.style.setProperty('--oo',oo); openLine.style.setProperty('--oy',oy); glow.style.setProperty('--go',go);
+    // work frame closes at 32.3, fades at 34.4
+    if(cur>=0&&S[cur].wf){ var st=t-S[cur].t0; var fs=st<2.3?1.25:(st<2.9?1.25-((st-2.3)/0.6)*0.25:1); var fo=st<4.4?1:Math.max(0,1-(st-4.4)/0.6); wf.style.setProperty('--fs',fs); wf.style.setProperty('--fo',fo); }
+    // world dim before title
+    if(t>=48.5&&t<49.95){ var dd=0.35*Math.min(1,(t-48.5)/0.8); vA.style.setProperty('--dark',dd); vB.style.setProperty('--dark',dd); }
+    // end fade
+    if(t>=53.6){ cine.style.opacity=String(Math.max(0,1-(t-53.6)/1.4)); } else { cine.style.opacity=''; }
+  }
+  function lines(t){
+    var sc=S[cur]; if(!sc) return; var st=t-sc.t0;
+    lineEls.forEach(function(p){ var at=parseFloat(p.dataset.at); if(st>=at&&!p.classList.contains('in')) p.classList.add('in'); });
+    // fade lines out 0.25s before scene end (except last scene)
+    if(cur<S.length-1&&t>sc.t1-0.25){ lineEls.forEach(function(p){ if(!p.classList.contains('huge')) p.classList.add('out'); }); }
+  }
+  function syncVideo(now){
+    var v=vid(); if(!curClip||now-lastSync<250) return; lastSync=now; var sc=S[cur]; if(!sc||!sc.clip) return;
+    var c=CLIP[curClip]; var expect=c.inp+(time-sceneStart); if(isFinite(v.duration)&&expect>v.duration-0.05) return;
+    if(Math.abs(v.currentTime-expect)>0.18){ try{v.currentTime=expect}catch(e){} }
+    if(v.paused){ var p=v.play(); if(p&&p.catch)p.catch(function(){}); }
+  }
+  // particles
+  function initParticles(){
+    var dpr=Math.min(1.5,window.devicePixelRatio||1); W=cine.clientWidth; H=cine.clientHeight; pt.width=W*dpr/2; pt.height=H*dpr/2; ctx=pt.getContext('2d'); ctx.scale(dpr/2,dpr/2);
+    var n=window.innerWidth<700?16:32; partic=[]; var seed=7;
+    function rnd(){ seed=(seed*9301+49297)%233280; return seed/233280; }
+    for(var i=0;i<n;i++) partic.push({x:rnd()*W,y:rnd()*H,z:rnd(),phase:rnd()*6.28});
+    sprite=document.createElement('canvas'); sprite.width=sprite.height=16; var g=sprite.getContext('2d'); var gr=g.createRadialGradient(8,8,0,8,8,8); gr.addColorStop(0,'rgba(255,240,180,1)'); gr.addColorStop(1,'rgba(255,240,180,0)'); g.fillStyle=gr; g.fillRect(0,0,16,16);
+  }
+  function drawParticles(t){
+    if(!ctx) return; ctx.clearRect(0,0,W,H); var burst=(t>=43&&t<43.6)||(t>=49.95&&t<50.6);
+    for(var i=0;i<partic.length;i++){ var p=partic[i]; var speed=3+p.z*10; var x=p.x+Math.sin(t*.16+p.phase)*(2+p.z*5); var y=((p.y-t*speed)%H+H)%H; var size=(.7+p.z*1.8)*(burst?2.2:1);
+      ctx.globalAlpha=(.06+p.z*.12)*(burst?2:1); ctx.drawImage(sprite,x,y,size*4,size*4); }
+    ctx.globalAlpha=1;
+  }
+  function render(t){
+    var i=0; for(var k=0;k<S.length;k++){ if(t>=S[k].t0) i=k; }
+    if(i!==cur) enterScene(i);
+    tr(t); fx(t); lines(t); drawParticles(t); prog.style.width=Math.min(100,t/TOTAL*100)+'%';
+  }
+  function tick(now){ if(!running) return; time=Math.min(TOTAL,time+(now-last)/1000); last=now; render(time); syncVideo(now); if(time<TOTAL) raf=requestAnimationFrame(tick); else finish(); }
+  function reset(){ time=0; cur=-1; curClip=null; clearLines(); cine.classList.remove('out'); cine.style.opacity=''; vA.classList.remove('on'); vB.classList.remove('on'); trip.classList.remove('on','flat'); phone.classList.remove('on','q'); }
+  function play(){ if(raf) cancelAnimationFrame(raf); reset(); cine.classList.add('on'); cine.setAttribute('aria-hidden','false'); rep.classList.remove('show'); initParticles(); running=true; last=performance.now(); raf=requestAnimationFrame(tick); preload('old1'); }
+  function finish(){ running=false; if(raf) cancelAnimationFrame(raf); raf=null; try{vA.pause();vB.pause();}catch(e){} if(musicOn){ audio.pause(); } cine.classList.add('out'); try{sessionStorage.setItem('cineSeen','1')}catch(e){}
+    setTimeout(function(){ cine.classList.remove('on','out'); cine.style.opacity=''; cine.setAttribute('aria-hidden','true'); rep.classList.add('show'); },850); }
+  skipBtn.addEventListener('click',finish);
+  rep.addEventListener('click',function(){ play(); cine.scrollIntoView({block:'start'}); if(musicOn){ try{audio.currentTime=0; audio.play();}catch(e){} } });
+  musicBtn.addEventListener('click',function(){
+    if(musicOn){ audio.pause(); musicOn=false; }
+    else { try{ audio.currentTime=Math.min(time,54.9); var p=audio.play(); if(p&&p.then) p.then(function(){musicOn=true; musicBtn.classList.add('on'); musicBtn.textContent='♪ 音楽オフ'; musicBtn.setAttribute('aria-pressed','true');}).catch(function(){}); return; }catch(e){} }
+    musicBtn.classList.toggle('on',musicOn); musicBtn.textContent=musicOn?'♪ 音楽オフ':'♪ 音楽オン'; musicBtn.setAttribute('aria-pressed',String(musicOn));
+  });
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden&&running&&cine.classList.contains('on')){ last=performance.now(); lastSync=0; if(musicOn){ try{audio.currentTime=time; audio.play();}catch(e){} } } });
+  window.addEventListener('resize',function(){ if(running) initParticles(); });
+  window.cineSeek=function(t){ if(!cine.classList.contains('on')) play(); time=t; cur=-1; curClip=null; vA.classList.remove('on'); vB.classList.remove('on'); vA.dataset.name=''; vB.dataset.name=''; render(time); lastSync=0; if(musicOn){ try{audio.currentTime=t}catch(e){} } };
+  window.cineState=function(){ return {time:time,running:running,cur:cur,clip:curClip}; };
+  var q=location.search, reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  try{seen=sessionStorage.getItem('cineSeen')==='1'}catch(e){}
+  var saveData=navigator.connection&&navigator.connection.saveData;
   var force=/[?&]cine=1/.test(q);
-  if(force||(!reduced&&!/[?&]end=1/.test(q)&&!location.hash&&!seen)){play();}else{rep.classList.add('show');}
+  if(force||(!reduced&&!saveData&&!/[?&]end=1/.test(q)&&!location.hash&&!seen)){ play(); } else { rep.classList.add('show'); }
 })();
 </script>
 
