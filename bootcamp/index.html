@@ -862,7 +862,7 @@
     /* hero evolution: labels keyed to video time, play once, stop on last frame */
     (function(){
       var v=document.getElementById('heroVideo'),stg=qa('.stg'),rp=document.getElementById('replay'),ar=document.querySelector('.evo .arrow');if(!v)return;
-      function sync(){var d=v.duration||15,p=v.currentTime/d;stg.forEach(function(s){s.classList.toggle('show',p>=parseFloat(s.getAttribute('data-at')));});if(ar)ar.classList.toggle('show',p>=0.86);}
+      function sync(){if(v.paused&&v.currentTime===0)return;var d=v.duration||15,p=v.currentTime/d;stg.forEach(function(s){s.classList.toggle('show',p>=parseFloat(s.getAttribute('data-at')));});if(ar)ar.classList.toggle('show',p>=0.86);}
       function finish(){stg.forEach(function(s){s.classList.add('show');});if(ar)ar.classList.add('show');if(rp)rp.classList.add('show');}
       v.addEventListener('timeupdate',sync);
       v.addEventListener('ended',finish);
