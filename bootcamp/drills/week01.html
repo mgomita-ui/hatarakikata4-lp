@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>相棒が動くことを、毎晩確かめる｜帰ってからも伸びる：毎週届く15分のドリル</title>
+</head>
+<body style="margin:0;padding:0;background:#f6f5f2;color:#1a1a1a;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;font-size:15px;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#f6f5f2;">
+<tr><td align="center" style="padding:24px 12px;">
+<table cellpadding="0" cellspacing="0" border="0" width="640" style="max-width:640px;width:100%;background:#ffffff;border:1px solid #e3e3e3;border-radius:8px;">
+<tr><td style="padding:28px 28px 8px;border-top:6px solid #c8a24a;border-radius:8px 8px 0 0;">
+  <div style="font-size:12px;color:#555555;">レリック社会保険労務士法人　AI経営 × クエスト型ブートキャンプ</div>
+  <div style="font-size:13px;letter-spacing:.12em;color:#c8a24a;font-weight:700;">WEEKLY DRILL ｜ WEEK 1</div>
+  <div style="font-size:40px;font-weight:800;line-height:1;margin:6px 0 4px;">第1週</div>
+  <h1 style="font-size:22px;margin:4px 0 6px;line-height:1.5;">相棒が動くことを、毎晩確かめる</h1>
+  <div style="font-size:13px;color:#555555;">1回15分。頼む → 動かす → 確かめる → 直す。決めるのは、あなた。</div>
+</td></tr>
+<tr><td style="padding:8px 28px 28px;">
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">ねらい</h3>
+<p style="margin:0 0 12px;line-height:1.9;">合宿で立ち上げた Claude Code と Codex が、自分のPCでまだ動くことを確かめます。そして「頼む → 動かす → 確かめる → 直す」を、15分の日課にします。今週は、練習用の受注データを AI に作らせるところまで。</p>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">15分の手順</h3>
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">時間</th><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">すること</th></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">0〜2分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;">ターミナルで <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">ai-drill</code> に移動し、<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">claude</code> を動かす</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">2〜8分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;">下のプロンプトで、練習用の受注データ（CSV）を作ってもらう</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">8〜11分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>確かめる</strong>：できた CSV を Excel で開く。行数・列名・金額の単位を見る</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">11〜13分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>直す</strong>：気になった点を一つ、言葉で頼んで直してもらう</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">13〜15分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>記録</strong>：<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">drill_log.md</code> に今日の1行を書かせる</td></tr></table>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">使うプロンプト例</h3>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">このフォルダに、練習用の受注データを CSV で作って。
+列は「受注日, 顧客名, 品目, 数量, 単価, 担当」、30行、直近3か月分。
+顧客名と品目は実在しないものにして。
+作る前に、前提（金額の単位・税込か税抜か・日付の形式）を先に言ってから作って。</pre>
+<p style="margin:0 0 12px;line-height:1.9;">直すとき：</p>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">単価は税抜に統一して、右端に「金額」（数量×単価）の列を足して。
+直した箇所だけ教えて。</pre>
+<p style="margin:0 0 12px;line-height:1.9;">記録するとき：</p>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">drill_log.md に「第1週（今日の日付）：受注CSVを作成。（できた／詰まった点を一言）」と1行追記して。</pre>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">もう片方の相棒でも</h3>
+<p style="margin:0 0 12px;line-height:1.9;">同じ最初のプロンプトを <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">codex</code> でも頼んでみてください。返事の仕方、聞き返し方が違います。どちらが自分の言葉に合うか、感触をつかむのが今週の隠れた課題です。</p>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">できたかの確認</h3>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;">☐ <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">claude</code> と <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">codex</code> の両方が、自分のPCで動いた</li>
+<li style="margin:2px 0;">☐ 作る前に「前提」を先に言ってきた（言ってこなければ、次から頼み方に足す）</li>
+<li style="margin:2px 0;">☐ CSV が Excel で開けて、30行・金額列がある</li>
+<li style="margin:2px 0;">☐ <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">drill_log.md</code> に1行増えた</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;"><strong>今週のAI係数</strong>：前提を出させた（作る前に前提を言わせる）</p>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">今週の変更点（2026年9月6日時点）</h3>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;"><strong>Claude Code に「差分パネル」が付きました。</strong> 全画面モードで <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">/diff</code> と入力すると、AI が直した箇所が会話の横に並んで出ます。今週の「11〜13分：直す」で開くと、どこが変わったかが一目で分かります。（Claude Code 2.1.260、2026年9月3日）</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;">出典：<a href="https://code.claude.com/docs/en/changelog" style="color:#1d4ed8;word-break:break-all;">https://code.claude.com/docs/en/changelog</a></p>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;"><strong>Codex の既定モデルが GPT-6-Astra になりました。</strong> 何も設定していなければ、この新しいモデルで動きます。<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">/model</code> で今どれが選ばれているか見ておいてください。（Codex CLI 0.153.4、2026年9月4日）</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;">出典：<a href="https://developers.openai.com/codex/changelog" style="color:#1d4ed8;word-break:break-all;">https://developers.openai.com/codex/changelog</a></p>
+<hr style="border:0;border-top:1px solid #e3e3e3;margin:24px 0;">
+</td></tr>
+<tr><td style="padding:18px 28px 24px;border-top:1px solid #e3e3e3;font-size:12px;color:#555555;line-height:1.8;">
+  このドリルは、AI の新機能や仕様変更に合わせて改定しています（最終更新：2026年9月6日）。<br>
+  詰まった点は、月次1on1でお持ちください。ご質問は <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> まで。<br>
+  記載の所要時間は当プログラムの設計値です。効果を保証するものではありません。Claude Code、Codex、Claude、MCP はそれぞれの権利者の商標または名称です。<br>
+  © 2026 レリック社会保険労務士法人
+</td></tr>
+</table>
+</td></tr>
+</table>
+</body>
+</html>

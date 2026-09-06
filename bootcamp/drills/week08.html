@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>計算は Codex、文章は Claude｜帰ってからも伸びる：毎週届く15分のドリル</title>
+</head>
+<body style="margin:0;padding:0;background:#f6f5f2;color:#1a1a1a;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;font-size:15px;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#f6f5f2;">
+<tr><td align="center" style="padding:24px 12px;">
+<table cellpadding="0" cellspacing="0" border="0" width="640" style="max-width:640px;width:100%;background:#ffffff;border:1px solid #e3e3e3;border-radius:8px;">
+<tr><td style="padding:28px 28px 8px;border-top:6px solid #c8a24a;border-radius:8px 8px 0 0;">
+  <div style="font-size:12px;color:#555555;">レリック社会保険労務士法人　AI経営 × クエスト型ブートキャンプ</div>
+  <div style="font-size:13px;letter-spacing:.12em;color:#c8a24a;font-weight:700;">WEEKLY DRILL ｜ WEEK 8</div>
+  <div style="font-size:40px;font-weight:800;line-height:1;margin:6px 0 4px;">第8週</div>
+  <h1 style="font-size:22px;margin:4px 0 6px;line-height:1.5;">計算は Codex、文章は Claude</h1>
+  <div style="font-size:13px;color:#555555;">1回15分。頼む → 動かす → 確かめる → 直す。決めるのは、あなた。</div>
+</td></tr>
+<tr><td style="padding:8px 28px 28px;">
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">ねらい</h3>
+<p style="margin:0 0 12px;line-height:1.9;">合宿の3枚目「AI を分けて組み合わせ、三通り出させる」。計算は答えが一つに決まる仕事、文章は読み手で変わる仕事。だから相棒を分けます。Codex に部門別の粗利率を計算させ、その結果を Claude に渡して経営会議向けの報告文にする。最後に、文章の中の数字が Codex の数字と一致するかを確かめます。</p>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">15分の手順</h3>
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">時間</th><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">すること</th></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">0〜5分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">codex</code> で、第6週の CSV から部門別（または顧客別）の粗利率を計算し、<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">gross_margin.csv</code> に書き出してもらう</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">5〜9分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">claude</code> で、その CSV を読ませ、経営会議向けの5行の報告文を作ってもらう</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">9〜12分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>確かめる</strong>：報告文の数字を、<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">gross_margin.csv</code> と1つずつ照合する。数字が変わっていないか</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">12〜14分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>三通り</strong>：同じ報告文を「社員向け／銀行向け／自分用」で三通り出してもらう</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">14〜15分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>記録</strong>：<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">drill_log.md</code> に1行</td></tr></table>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">使うプロンプト例</h3>
+<p style="margin:0 0 12px;line-height:1.9;">Codex に（計算）：</p>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">売上.csv と原価.csv から、部門別の売上・原価・粗利・粗利率を計算して gross_margin.csv に書き出して。
+計算式も表示して。数字の丸めは小数1桁。</pre>
+<p style="margin:0 0 12px;line-height:1.9;">Claude に（文章）：</p>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">gross_margin.csv を読んで、明日の経営会議向けの報告文を5行で。
+数字は CSV のまま、1つも変えないで。
+最後に「この数字の前提」と「注意点」を1行ずつ。</pre>
+<p style="margin:0 0 12px;line-height:1.9;">三通り：</p>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">同じ内容を「社員向け（30秒で読める）」「銀行向け（丁寧に）」「自分用（打ち手だけ）」の三通りで。
+数字は変えないで。</pre>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">できたかの確認</h3>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;">☐ Codex の CSV と Claude の文章で、数字が全部一致した（1つでもずれたら、「数字は変えないで」を頼み方に必ず入れる）</li>
+<li style="margin:2px 0;">☐ 三通りが2分以内に出た</li>
+<li style="margin:2px 0;">☐ 明日の会議で使う1通りを自分で選んだ</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;"><strong>今週のAI係数</strong>：比較させた（三通りの文章）／改善に使った（数字の照合）</p>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">今週の変更点（2026年9月6日時点）</h3>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;"><strong>Codex の新モデル GPT-6-Astra が出ました。</strong> 「複雑な問題を解く知性と、複数手順の仕事をやり切って、整った文書・表計算・スライドを作る力」をうたっています。Codex は既定でこのモデルになるので、今週の「計算」はそのまま新モデルで動きます。（2026年9月3〜4日）</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;">出典：<a href="https://openai.com/products/release-notes/" style="color:#1d4ed8;word-break:break-all;">https://openai.com/products/release-notes/</a> ／ <a href="https://9to5mac.com/2026/09/04/openai-releasing-major-upgrade-to-chatgpt-and-codex-with-gpt-6-astra-details-here/" style="color:#1d4ed8;word-break:break-all;">https://9to5mac.com/2026/09/04/openai-releasing-major-upgrade-to-chatgpt-and-codex-with-gpt-6-astra-details-here/</a></p>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;"><strong>Codex で、古いモデル（GPT-5.4 系）がアカウント連携では選べなくなりました。</strong> <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">/model</code> で選択肢が変わっています。以前のモデル名で設定を固定していた方は、見直してください。（2026年8月31日）</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;">出典：<a href="https://developers.openai.com/codex/changelog" style="color:#1d4ed8;word-break:break-all;">https://developers.openai.com/codex/changelog</a></p>
+<hr style="border:0;border-top:1px solid #e3e3e3;margin:24px 0;">
+</td></tr>
+<tr><td style="padding:18px 28px 24px;border-top:1px solid #e3e3e3;font-size:12px;color:#555555;line-height:1.8;">
+  このドリルは、AI の新機能や仕様変更に合わせて改定しています（最終更新：2026年9月6日）。<br>
+  詰まった点は、月次1on1でお持ちください。ご質問は <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> まで。<br>
+  記載の所要時間は当プログラムの設計値です。効果を保証するものではありません。Claude Code、Codex、Claude、MCP はそれぞれの権利者の商標または名称です。<br>
+  © 2026 レリック社会保険労務士法人
+</td></tr>
+</table>
+</td></tr>
+</table>
+</body>
+</html>

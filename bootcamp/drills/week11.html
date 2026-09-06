@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>小さなツールを、同僚が使える形に｜帰ってからも伸びる：毎週届く15分のドリル</title>
+</head>
+<body style="margin:0;padding:0;background:#f6f5f2;color:#1a1a1a;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;font-size:15px;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#f6f5f2;">
+<tr><td align="center" style="padding:24px 12px;">
+<table cellpadding="0" cellspacing="0" border="0" width="640" style="max-width:640px;width:100%;background:#ffffff;border:1px solid #e3e3e3;border-radius:8px;">
+<tr><td style="padding:28px 28px 8px;border-top:6px solid #c8a24a;border-radius:8px 8px 0 0;">
+  <div style="font-size:12px;color:#555555;">レリック社会保険労務士法人　AI経営 × クエスト型ブートキャンプ</div>
+  <div style="font-size:13px;letter-spacing:.12em;color:#c8a24a;font-weight:700;">WEEKLY DRILL ｜ WEEK 11</div>
+  <div style="font-size:40px;font-weight:800;line-height:1;margin:6px 0 4px;">第11週</div>
+  <h1 style="font-size:22px;margin:4px 0 6px;line-height:1.5;">小さなツールを、同僚が使える形に</h1>
+  <div style="font-size:13px;color:#555555;">1回15分。頼む → 動かす → 確かめる → 直す。決めるのは、あなた。</div>
+</td></tr>
+<tr><td style="padding:8px 28px 28px;">
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">ねらい</h3>
+<p style="margin:0 0 12px;line-height:1.9;">合宿の「自分で、小さなツールを作る。作ったものが翌日の仕事で使える」。第3週の見積スクリプト、または第9週の納期リスクを、AI を使ったことのない同僚が「読んで動かせる」形にします。README 3行、入力ファイルの置き場所、エラーのときの表示。作るのは AI、確かめるのは自分、渡すのは翌日。</p>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">15分の手順</h3>
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">時間</th><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">すること</th></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">0〜2分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">claude</code> で、渡すツールを1つ選ぶ（見積スクリプト or 納期リスク）</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">2〜7分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;">下のプロンプトで、README・置き場所・エラー表示を整えてもらう</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">7〜11分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>確かめる</strong>：別のフォルダにコピーし、README だけを見て自分で動かす</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">11〜14分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>直す</strong>：README で詰まった箇所を直してもらう。Codex に「詰まりそうな点3つ」を予想させる</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">14〜15分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>記録</strong>：<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">drill_log.md</code> に1行。渡す相手と日を決める</td></tr></table>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">使うプロンプト例</h3>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">このフォルダの見積スクリプトを、AI を使ったことのない同僚が使える形にして。
+① README.md（3行：何ができる・どこにファイルを置く・どう動かす）
+② 入力ファイルの置き場所を「input」フォルダに固定
+③ エラーのときは、原因と直し方を日本語で1行表示
+先に、変える点を箇条書きで言ってから直して。</pre>
+<p style="margin:0 0 12px;line-height:1.9;">Codex に（見直し）：</p>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">README.md とスクリプトを読んで、初めての人が詰まりそうな点を3つ予想して。直すかは私が決める。</pre>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">できたかの確認</h3>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;">☐ 別フォルダにコピーして、README だけで動いた</li>
+<li style="margin:2px 0;">☐ エラー時の表示が日本語で、直し方まで書いてある</li>
+<li style="margin:2px 0;">☐ 渡す相手と日が決まった（翌日が理想）</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;"><strong>今週のAI係数</strong>：リスクを出させた（詰まりそうな点3つ）／改善に使った（README を直す）</p>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">今週の変更点（2026年9月6日時点）</h3>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;"><strong>Codex に、プラグインを配布元（マーケットプレイス）から入れる・消すコマンドが付きました。</strong> 社内で作った道具を「配る」仕組みの入口です。今は自分のツールをフォルダで渡すだけで十分ですが、社員展開の先にこの形があります。（Codex CLI 0.153.0、2026年9月3日）</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;">出典：<a href="https://developers.openai.com/codex/changelog" style="color:#1d4ed8;word-break:break-all;">https://developers.openai.com/codex/changelog</a></p>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;"><strong>Claude Code に <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">/skill-doctor</code> が付きました。</strong> 入れたけれど使っていないスキル（道具）と、それが場所を取っている量を見せてくれます。道具を配る前に、自分の手元を片付けるのに使えます。（Claude Code 2.1.261、2026年9月4日）</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;">出典：<a href="https://code.claude.com/docs/en/changelog" style="color:#1d4ed8;word-break:break-all;">https://code.claude.com/docs/en/changelog</a></p>
+<hr style="border:0;border-top:1px solid #e3e3e3;margin:24px 0;">
+</td></tr>
+<tr><td style="padding:18px 28px 24px;border-top:1px solid #e3e3e3;font-size:12px;color:#555555;line-height:1.8;">
+  このドリルは、AI の新機能や仕様変更に合わせて改定しています（最終更新：2026年9月6日）。<br>
+  詰まった点は、月次1on1でお持ちください。ご質問は <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> まで。<br>
+  記載の所要時間は当プログラムの設計値です。効果を保証するものではありません。Claude Code、Codex、Claude、MCP はそれぞれの権利者の商標または名称です。<br>
+  © 2026 レリック社会保険労務士法人
+</td></tr>
+</table>
+</td></tr>
+</table>
+</body>
+</html>

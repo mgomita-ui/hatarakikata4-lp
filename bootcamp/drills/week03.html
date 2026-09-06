@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>作らせて、確かめて、直す（AI駆動開発）｜帰ってからも伸びる：毎週届く15分のドリル</title>
+</head>
+<body style="margin:0;padding:0;background:#f6f5f2;color:#1a1a1a;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;font-size:15px;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#f6f5f2;">
+<tr><td align="center" style="padding:24px 12px;">
+<table cellpadding="0" cellspacing="0" border="0" width="640" style="max-width:640px;width:100%;background:#ffffff;border:1px solid #e3e3e3;border-radius:8px;">
+<tr><td style="padding:28px 28px 8px;border-top:6px solid #c8a24a;border-radius:8px 8px 0 0;">
+  <div style="font-size:12px;color:#555555;">レリック社会保険労務士法人　AI経営 × クエスト型ブートキャンプ</div>
+  <div style="font-size:13px;letter-spacing:.12em;color:#c8a24a;font-weight:700;">WEEKLY DRILL ｜ WEEK 3</div>
+  <div style="font-size:40px;font-weight:800;line-height:1;margin:6px 0 4px;">第3週</div>
+  <h1 style="font-size:22px;margin:4px 0 6px;line-height:1.5;">作らせて、確かめて、直す（AI駆動開発）</h1>
+  <div style="font-size:13px;color:#555555;">1回15分。頼む → 動かす → 確かめる → 直す。決めるのは、あなた。</div>
+</td></tr>
+<tr><td style="padding:8px 28px 28px;">
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">ねらい</h3>
+<p style="margin:0 0 12px;line-height:1.9;">第2週の見積作りを「毎月使える手順」にします。ここでの主役は「確かめる」です。確認の手順そのものを AI に用意させ、わざと壊れたデータを入れて、ちゃんと止まるかを見ます。AI に作らせて、人が確かめて直す（AI駆動開発）の一番小さな形です。</p>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">15分の手順</h3>
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">時間</th><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">すること</th></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">0〜2分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">ai-drill</code> で <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">claude</code> を動かす</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">2〜7分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;">下のプロンプトで、見積作りを「毎月使える手順（スクリプト）」にし、確認手順も付けてもらう</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">7〜10分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>動かす</strong>：その手順を実行してもらい、自動の確認が通るのを見る</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">10〜13分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>確かめる</strong>：CSV に、単価が空欄の行を1行わざと足す。もう一度動かして、どう止まるか見る</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">13〜15分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>直す</strong>：止まり方が不親切なら直してもらい、<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">drill_log.md</code> に1行</td></tr></table>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">使うプロンプト例</h3>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">先週作った見積のたたき台を、毎月くり返し使える手順（スクリプト）にして。
+実行する前に「確認手順」も作って。少なくとも
+・3ファイルの合計が、CSV から計算した合計と一致するか
+・単価や数量が空欄の行があれば、そこで止まって行番号を教える
+の2つは自動で確かめるように。
+まず、どんな作りにするかを3行で先に言ってから作って。</pre>
+<p style="margin:0 0 12px;line-height:1.9;">壊して確かめるとき：</p>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">受注データ.csv の10行目の単価を空欄にしてから、もう一度実行して。
+止まったら、何が原因で、どの行かを私に分かる言葉で表示して。</pre>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">もう片方の相棒でも</h3>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">このフォルダのスクリプトを読んで、確認が抜けている点を3つ挙げて。直すのは私が決める。</pre>
+<p style="margin:0 0 12px;line-height:1.9;">これを <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">codex</code> に頼みます。作った相棒と、見直す相棒を分けると、抜けが見つかります。</p>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">できたかの確認</h3>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;">☐ 「確認手順」が自動で走り、正常なときは通った</li>
+<li style="margin:2px 0;">☐ 壊れた行を入れたら、行番号つきで止まった</li>
+<li style="margin:2px 0;">☐ Codex が挙げた「抜け」のうち、直すものを自分で1つ決めた</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;"><strong>今週のAI係数</strong>：リスクを出させた（壊れた行で止まるか）／改善に使った（Codex の指摘で直す）</p>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">今週の変更点（2026年9月6日時点）</h3>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;"><strong>Codex の会話を、そのまま Markdown に書き出せます。</strong> <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">/export</code> と入力すると、今日のやり取りがファイルになります。「なぜこの作りにしたか」を社員に渡す資料になります。（Codex CLI 0.148.0、2026年8月17日）</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;">出典：<a href="https://developers.openai.com/codex/changelog" style="color:#1d4ed8;word-break:break-all;">https://developers.openai.com/codex/changelog</a></p>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;"><strong>Claude Code で、ファイルを消す操作の安全確認が強くなりました。</strong> <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">rm -rf</code> のような消去命令は、変数経由でも確認が入ります。「作らせて確かめる」の途中で、うっかり消される心配が一段減りました。（Claude Code 2.1.260、2026年9月3日）</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;">出典：<a href="https://code.claude.com/docs/en/changelog" style="color:#1d4ed8;word-break:break-all;">https://code.claude.com/docs/en/changelog</a></p>
+<hr style="border:0;border-top:1px solid #e3e3e3;margin:24px 0;">
+</td></tr>
+<tr><td style="padding:18px 28px 24px;border-top:1px solid #e3e3e3;font-size:12px;color:#555555;line-height:1.8;">
+  このドリルは、AI の新機能や仕様変更に合わせて改定しています（最終更新：2026年9月6日）。<br>
+  詰まった点は、月次1on1でお持ちください。ご質問は <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> まで。<br>
+  記載の所要時間は当プログラムの設計値です。効果を保証するものではありません。Claude Code、Codex、Claude、MCP はそれぞれの権利者の商標または名称です。<br>
+  © 2026 レリック社会保険労務士法人
+</td></tr>
+</table>
+</td></tr>
+</table>
+</body>
+</html>

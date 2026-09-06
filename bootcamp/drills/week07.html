@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>議事録：会議中に｜帰ってからも伸びる：毎週届く15分のドリル</title>
+</head>
+<body style="margin:0;padding:0;background:#f6f5f2;color:#1a1a1a;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;font-size:15px;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#f6f5f2;">
+<tr><td align="center" style="padding:24px 12px;">
+<table cellpadding="0" cellspacing="0" border="0" width="640" style="max-width:640px;width:100%;background:#ffffff;border:1px solid #e3e3e3;border-radius:8px;">
+<tr><td style="padding:28px 28px 8px;border-top:6px solid #c8a24a;border-radius:8px 8px 0 0;">
+  <div style="font-size:12px;color:#555555;">レリック社会保険労務士法人　AI経営 × クエスト型ブートキャンプ</div>
+  <div style="font-size:13px;letter-spacing:.12em;color:#c8a24a;font-weight:700;">WEEKLY DRILL ｜ WEEK 7</div>
+  <div style="font-size:40px;font-weight:800;line-height:1;margin:6px 0 4px;">第7週</div>
+  <h1 style="font-size:22px;margin:4px 0 6px;line-height:1.5;">議事録：会議中に</h1>
+  <div style="font-size:13px;color:#555555;">1回15分。頼む → 動かす → 確かめる → 直す。決めるのは、あなた。</div>
+</td></tr>
+<tr><td style="padding:8px 28px 28px;">
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">ねらい</h3>
+<p style="margin:0 0 12px;line-height:1.9;">合宿の「議事録：2時間 → 会議中に」を、次の会議で。録音の文字起こし（スマホの録音アプリや会議ツールの文字起こし）を渡し、決定事項・宿題・保留に分けてもらいます。あいまいな箇所には「要確認」の印を付けさせ、聞き返してもらう。会議が終わる前に、議事録が終わっている状態を作ります。</p>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">15分の手順</h3>
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">時間</th><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">すること</th></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">0〜2分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;">会議の文字起こしテキストを <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">ai-drill/meeting.txt</code> として置く（無ければ、直近の会議を思い出して10行メモでも可）</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">2〜7分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;">下のプロンプトで、議事録のたたき台を作ってもらう</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">7〜11分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>確かめる</strong>：決定事項の数を、自分の記憶と照合。「要確認」の印がある箇所に答える</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">11〜14分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>直す</strong>：宿題に「担当・期限」が欠けていれば足してもらい、<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">議事録_YYMMDD.md</code> で保存</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">14〜15分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>記録</strong>：<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">drill_log.md</code> に1行</td></tr></table>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">使うプロンプト例</h3>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">meeting.txt は今朝の会議の文字起こし。議事録のたたき台を作って。
+「決定事項」「宿題（担当・期限）」「保留」の3つに分けて、決定事項だけは箇条書きで。
+文字起こしがあいまいで判断できない箇所は「要確認」と印を付けて、私に聞き返して。
+先に、会議の目的と参加者をどう読み取ったかを2行で言ってから始めて。</pre>
+<p style="margin:0 0 12px;line-height:1.9;">直すとき：</p>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">宿題の2つ目、担当は田中、期限は今月末。反映して、議事録_0913.md として保存して。</pre>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">できたかの確認</h3>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;">☐ 決定事項・宿題・保留の3つに分かれた</li>
+<li style="margin:2px 0;">☐ 「要確認」の印が付き、聞き返しが来た（来なければ、頼み方に「聞き返して」を足す）</li>
+<li style="margin:2px 0;">☐ 宿題に担当・期限が全部入った</li>
+<li style="margin:2px 0;">☐ 次の会議で「会議中に」試す日を決めた</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;"><strong>今週のAI係数</strong>：聞き返した（要確認の印）／改善に使った（担当・期限の追記）</p>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">今週の変更点（2026年9月6日時点）</h3>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;"><strong>Claude Desktop の Cowork に、Claude 専用のブラウザが付きました。</strong> 議事録の宿題に「○○社のサイトで料金を調べる」があれば、そのまま Cowork に頼めます。あなたのブラウザとは別物で、「タブ・ブックマーク・パスワードは Claude からは見えません」。Pro・Max・Team に順次展開。（2026年8月26日）</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;">出典：<a href="https://claude.com/blog/cowork-built-in-browser" style="color:#1d4ed8;word-break:break-all;">https://claude.com/blog/cowork-built-in-browser</a></p>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;"><strong>Claude Code で、日時の表記を日本時間・24時間に固定できます。</strong> 設定 <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">timeFormat</code> と <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">timeZone</code>。議事録の「期限」を日本時間で揃えたいときに。（Claude Code 2.1.257、2026年9月1日）</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;">出典：<a href="https://code.claude.com/docs/en/changelog" style="color:#1d4ed8;word-break:break-all;">https://code.claude.com/docs/en/changelog</a></p>
+<hr style="border:0;border-top:1px solid #e3e3e3;margin:24px 0;">
+</td></tr>
+<tr><td style="padding:18px 28px 24px;border-top:1px solid #e3e3e3;font-size:12px;color:#555555;line-height:1.8;">
+  このドリルは、AI の新機能や仕様変更に合わせて改定しています（最終更新：2026年9月6日）。<br>
+  詰まった点は、月次1on1でお持ちください。ご質問は <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> まで。<br>
+  記載の所要時間は当プログラムの設計値です。効果を保証するものではありません。Claude Code、Codex、Claude、MCP はそれぞれの権利者の商標または名称です。<br>
+  © 2026 レリック社会保険労務士法人
+</td></tr>
+</table>
+</td></tr>
+</table>
+</body>
+</html>

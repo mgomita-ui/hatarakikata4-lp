@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MCP の1本目：自社のフォルダをつなぐ｜帰ってからも伸びる：毎週届く15分のドリル</title>
+</head>
+<body style="margin:0;padding:0;background:#f6f5f2;color:#1a1a1a;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;font-size:15px;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#f6f5f2;">
+<tr><td align="center" style="padding:24px 12px;">
+<table cellpadding="0" cellspacing="0" border="0" width="640" style="max-width:640px;width:100%;background:#ffffff;border:1px solid #e3e3e3;border-radius:8px;">
+<tr><td style="padding:28px 28px 8px;border-top:6px solid #c8a24a;border-radius:8px 8px 0 0;">
+  <div style="font-size:12px;color:#555555;">レリック社会保険労務士法人　AI経営 × クエスト型ブートキャンプ</div>
+  <div style="font-size:13px;letter-spacing:.12em;color:#c8a24a;font-weight:700;">WEEKLY DRILL ｜ WEEK 5</div>
+  <div style="font-size:40px;font-weight:800;line-height:1;margin:6px 0 4px;">第5週</div>
+  <h1 style="font-size:22px;margin:4px 0 6px;line-height:1.5;">MCP の1本目：自社のフォルダをつなぐ</h1>
+  <div style="font-size:13px;color:#555555;">1回15分。頼む → 動かす → 確かめる → 直す。決めるのは、あなた。</div>
+</td></tr>
+<tr><td style="padding:8px 28px 28px;">
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">ねらい</h3>
+<p style="margin:0 0 12px;line-height:1.9;">合宿で通した MCP の1本を、自分のPCでもう一度。今週は一番身近な「フォルダ」をつなぎます。AI は渡した情報しか知りません。MCP はその「配線口」です。つながると、ファイルを毎回貼らなくても「先月の上位3顧客は？」に答えてくれます。</p>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">15分の手順</h3>
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">時間</th><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">すること</th></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">0〜5分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;">Claude Desktop の「設定 → コネクタ（拡張機能）」で、ローカルフォルダ（Filesystem）を追加し、<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">ai-drill</code> を許可する</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">5〜9分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;">Claude Desktop のチャットで、下のプロンプト。ファイルを貼らずに答えが返るかを見る</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">9〜12分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>確かめる</strong>：返ってきた上位3社を、Excel の並べ替えで照合する</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">12〜14分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>直す</strong>：「どのファイルを読んだか」を先に言わせる形に、頼み方を直す</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">14〜15分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>記録</strong>：<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">drill_log.md</code> に1行</td></tr></table>
+<p style="margin:0 0 12px;line-height:1.9;">Claude Code でつなぐ場合は、ターミナルで次を動かします（フォルダの場所は自分のものに）。</p>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">claude mcp add drill-files -- npx -y @modelcontextprotocol/server-filesystem ~/Desktop/ai-drill</pre>
+<p style="margin:0 0 12px;line-height:1.9;">つながったかは <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">claude</code> の中で <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">/mcp</code> と入力すると一覧で見えます。</p>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">使うプロンプト例</h3>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">ai-drill フォルダの受注データ.csv を読んで、先月の受注金額が多い顧客を上から3社、金額つきで。
+読む前に、どのファイルのどの列を使うかを先に言って。</pre>
+<p style="margin:0 0 12px;line-height:1.9;">直すとき：</p>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">「担当」別にも同じ表を出して。数字の根拠になった行数も添えて。</pre>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">もう片方の相棒でも</h3>
+<p style="margin:0 0 12px;line-height:1.9;">Codex にも同じフォルダをつなげます。</p>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">codex mcp add drill-files -- npx -y @modelcontextprotocol/server-filesystem ~/Desktop/ai-drill</pre>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">できたかの確認</h3>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;">☐ ファイルを貼らずに、フォルダの中身をもとに答えが返った</li>
+<li style="margin:2px 0;">☐ 上位3社が、Excel の並べ替えと一致した</li>
+<li style="margin:2px 0;">☐ 「どのファイル・どの列を使ったか」を AI が先に言った</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;"><strong>今週のAI係数</strong>：前提を出させた（どのファイル・どの列か）</p>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">今週の変更点（2026年9月6日時点）</h3>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;"><strong>MCP の新しい仕様（2026-07-28版）が出ました。</strong> サーバー側が「普通の Web サービスと同じ形」で動かせるようになり、会計・勤怠などの SaaS 各社が MCP を出しやすくなりました。受講者への影響は「つなげる先が増える」こと。お使いの会計ソフトに MCP があるか、Claude Desktop のコネクタ一覧で月に一度見てください。無ければ CSV 書き出し → フォルダ MCP で十分です。（2026年7月28日公開、8月以降に各社対応）</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;">出典：<a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/" style="color:#1d4ed8;word-break:break-all;">https://blog.modelcontextprotocol.io/posts/2026-07-28/</a></p>
+<ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
+<li style="margin:2px 0;"><strong>Claude Code に、会社として全員に同じ MCP を配る設定が付きました。</strong> <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">managedMcpServers</code> という管理者向けの設定で、社員全員の Claude Code に同じ接続先を配れます。第11週の「社員に配る」で使います。（Claude Code 2.1.259、2026年9月2日）</li>
+</ul>
+<p style="margin:0 0 12px;line-height:1.9;">出典：<a href="https://code.claude.com/docs/en/changelog" style="color:#1d4ed8;word-break:break-all;">https://code.claude.com/docs/en/changelog</a></p>
+<hr style="border:0;border-top:1px solid #e3e3e3;margin:24px 0;">
+</td></tr>
+<tr><td style="padding:18px 28px 24px;border-top:1px solid #e3e3e3;font-size:12px;color:#555555;line-height:1.8;">
+  このドリルは、AI の新機能や仕様変更に合わせて改定しています（最終更新：2026年9月6日）。<br>
+  詰まった点は、月次1on1でお持ちください。ご質問は <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> まで。<br>
+  記載の所要時間は当プログラムの設計値です。効果を保証するものではありません。Claude Code、Codex、Claude、MCP はそれぞれの権利者の商標または名称です。<br>
+  © 2026 レリック社会保険労務士法人
+</td></tr>
+</table>
+</td></tr>
+</table>
+</body>
+</html>
