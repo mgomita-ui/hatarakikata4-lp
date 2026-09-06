@@ -405,7 +405,8 @@
   .cine .ln.huge.in{animation:cineTitle .36s cubic-bezier(.16,1,.3,1) forwards}
   @keyframes cineTitle{0%{opacity:0;transform:translateZ(-380px) rotateX(9deg)}50%{opacity:1;transform:translateZ(130px) rotateX(0)}100%{opacity:1;transform:translateZ(90px) rotateX(0)}}
   .cine .ln.huge .br{display:none}
-  @media (max-width:600px){.cine .ln.huge .br{display:inline}.cine .cam{perspective:1500px}.cine .ln{font-size:clamp(18px,5vw,24px)}.cine .ln.mid{font-size:clamp(22px,6vw,30px)}.cine .ln.big{font-size:clamp(24px,6.5vw,34px)}.cine .copy{inset:8% 6%}}
+  .cine .ln{max-width:100%;overflow-wrap:anywhere}
+  @media (max-width:600px){.cine .ln.huge .br{display:inline}.cine .cam{perspective:1500px}.cine .ln{font-size:clamp(17px,4.6vw,24px)}.cine .ln.mid{font-size:clamp(20px,5.4vw,30px)}.cine .ln.big{font-size:clamp(22px,5.8vw,34px)}.cine .ln.huge{font-size:clamp(28px,8.6vw,52px)}.cine .copy{inset:7% 5%}}
   .cine canvas.pt{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
   .cine .sweep{position:absolute;inset:-20%;pointer-events:none;background:linear-gradient(105deg,transparent 42%,rgba(255,215,0,.08) 47%,rgba(240,248,211,.5) 50%,transparent 57%);mix-blend-mode:screen;transform:translateX(var(--sx,-120%));opacity:var(--so,0)}
   .cine .glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 40% at 50% 58%,rgba(255,215,0,.35),transparent 70%);opacity:var(--go,0)}
@@ -415,7 +416,11 @@
   .cine .ui button.music.on{background:#FFD700;color:#1a1a1a;border-color:#FFD700}
   /* 再生中は画面全体を占有する。absolute のままだと下にスクロールしたときに
      オーバーレイごと画面外へ流れ、スキップ/音声ボタンに手が届かなくなる。 */
-  .cine.on,.cine.out{position:fixed;inset:0;height:100svh;width:100%;z-index:9999}
+  /* 端末によっては初期包含ブロックが表示領域より広くなり、fixed の overlay が
+     画面からはみ出して文字やボタンが切れる。横方向のはみ出しを断ち、
+     overlay の幅は left/right で決めさせる（width:100% は使わない）。 */
+  html,body{overflow-x:clip}
+  .cine.on,.cine.out{position:fixed;top:0;left:0;right:0;bottom:0;height:100svh;max-width:100vw;z-index:9999}
   /* .hero .card が isolation:isolate で重ね合わせ文脈を作るため、.cine の z-index は
      カードの内側で完結してしまう。sticky な .nav(z-index:30) に勝てるよう、
      再生中だけカード自体を前面へ出し、ナビを下げる。 */
@@ -869,7 +874,7 @@
     {t0:51.28, t1:59.35, clip:'rooftop', tr:'fold', lines:[[0.00,'働く人々を、<b>動かした。</b>',''],[1.81,'「AI時代の、活躍の仕方か？」',''],[4.17,'「<b>欲しければ、くれてやる。</b>」',''],[5.36,'「<b>探せ。</b>すべて、この会社に置いてきた。」','mid']]},
     {t0:59.35, t1:64.55, clip:'montage', tr:'sweep', lines:[[0.00,'経営者たちは、選ばれる会社を目指し、','']]},
     {t0:64.55, t1:67.95, clip:'strideA', tr:'fold', lines:[[0.00,'<b>働き方を、設計し直す。</b>','big'],[2.07,'世は、まさに――','mid']]},
-    {t0:67.95, t1:71.25, clip:'cutin', tr:null, title:true, lines:[[0.00,'働き方4.0<br>時代！','huge']]},
+    {t0:67.95, t1:71.25, clip:'cutin', tr:null, title:true, lines:[[0.00,'働き方4.0<span class="br"><br></span>時代！','huge']]},
     {t0:71.25, t1:76.47, clip:'finale', tr:'fold', endfade:true, lines:[[0.00,'選べる働き方を、<b>会社の側から。</b>',''],[2.43,'それが、働き方4.0。','']]}
   ];
   var CINE_ROGER=41.95, CINE_TITLE=67.95;
@@ -884,8 +889,16 @@
     v.style.setProperty('--focus',c.focus||'50% 50%'); v.style.setProperty('--sat',c.sat||1);
     try{ v.currentTime=c.inp; }catch(e){}
     var p=v.play(); if(p&&p.catch) p.catch(function(){});
-    v.classList.add('on'); prev.classList.remove('on'); setTimeout(function(){try{prev.pause()}catch(e){}},300);
     useA=!useA; curClip=name; lastSync=performance.now();
+    // 新しい映像が1フレーム出せるようになるまで、前の絵を出したままにする。
+    // 即入れ替えすると、読み込みの遅い端末で「映像が消えて音声だけ」になる。
+    var swap=function(){
+      if(curClip!==name) return;              // その間にシーンが進んでいたら何もしない
+      v.classList.add('on'); prev.classList.remove('on');
+      setTimeout(function(){ try{prev.pause()}catch(e){} },300);
+    };
+    if(v.readyState>=2) swap();
+    else { v.addEventListener('loadeddata',swap,{once:true}); setTimeout(swap,1500); }
   }
   function preload(name){ if(!name) return; var c=CLIP[name], v=other(); if(v.dataset.name!==name){ v.src=MEDIA+c.src; v.dataset.name=name; v.load(); try{v.currentTime=c.inp}catch(e){} } }
   function clearLines(){ copy.innerHTML=''; lineEls=[]; }
@@ -975,7 +988,7 @@
     if(time<TOTAL) raf=requestAnimationFrame(tick); else finish();
   }
   function reset(){ time=0; cur=-1; curClip=null; clearLines(); cine.classList.remove('out'); cine.style.opacity=''; vA.classList.remove('on'); vB.classList.remove('on'); trip.classList.remove('on','flat'); phone.classList.remove('on','q'); }
-  function play(){ if(raf) cancelAnimationFrame(raf); reset(); document.documentElement.classList.add('cine-playing'); cine.classList.add('on'); cine.setAttribute('aria-hidden','false'); rep.classList.remove('show'); initParticles(); running=true; last=performance.now(); raf=requestAnimationFrame(tick); preload('old1'); }
+  function play(){ if(raf) cancelAnimationFrame(raf); reset(); document.documentElement.classList.add('cine-playing'); cine.classList.add('on'); cine.setAttribute('aria-hidden','false'); rep.classList.remove('show'); initParticles(); running=true; last=performance.now(); raf=requestAnimationFrame(tick); preload((S[0]&&S[0].clip)||(S[1]&&S[1].clip)); }
   function finish(){ if(!running&&!cine.classList.contains('on')) return; running=false; if(raf) cancelAnimationFrame(raf); raf=null; try{vA.pause();vB.pause();}catch(e){} if(musicOn){ audio.pause(); } cine.classList.add('out'); try{sessionStorage.setItem('cineSeen','1')}catch(e){}
     document.documentElement.classList.remove('cine-playing');
     setTimeout(function(){ cine.classList.remove('on','out'); cine.style.opacity=''; cine.setAttribute('aria-hidden','true'); rep.innerHTML='\u25b6 \u30aa\u30fc\u30d7\u30cb\u30f3\u30b0\u3092\u3082\u3046\u4e00\u5ea6'; rep.classList.add('show'); },850); }
