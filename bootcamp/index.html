@@ -511,15 +511,15 @@
 
   /* timeline */
   .tl{margin-top:18px}
-  .tl .bar{display:grid;grid-template-columns:30fr 20fr 15fr 70fr 15fr 45fr 75fr 30fr;gap:4px;height:64px}
+  .tl .bar{display:grid;grid-template-columns:30fr 20fr 15fr 70fr 15fr 60fr 60fr 30fr;gap:4px;height:64px}
   .tl .bar{height:auto;min-height:96px}
   .tl .bar div{border-radius:8px;color:#fff;font-size:12px;font-weight:700;display:flex;flex-direction:column;justify-content:flex-start;padding:8px 8px 10px;line-height:1.35;overflow:hidden}
   .tl .bar div i{display:block;font-style:normal;font-family:var(--latin);font-size:11px;opacity:.85;margin-bottom:4px}
   .tl .bar div small{display:block;font-weight:400;font-size:11px;opacity:.9;margin-top:2px}
   .tl .a{background:var(--slate)}.tl .b{background:var(--green-deep)}.tl .l{background:var(--gold)}
-  .tl .ticks{display:grid;grid-template-columns:30fr 20fr 15fr 70fr 15fr 45fr 75fr 30fr;gap:4px;margin-top:6px}
+  .tl .ticks{display:grid;grid-template-columns:30fr 20fr 15fr 70fr 15fr 60fr 60fr 30fr;gap:4px;margin-top:6px}
   .tl .ticks div{font-family:var(--latin);font-size:11px;color:var(--ink-3)}
-  .tl .half{display:grid;grid-template-columns:135fr 165fr;gap:4px;margin-top:10px}
+  .tl .half{display:grid;grid-template-columns:210fr 90fr;gap:4px;margin-top:10px}
   .tl .half div{border-top:3px solid;padding-top:8px;font-size:13.5px}
   .tl .half div:first-child{border-color:var(--slate)}.tl .half div:last-child{border-color:var(--green-deep)}
   .tl .half b{display:block;font-size:15px}
@@ -748,21 +748,21 @@
 <div class="page">
   <section class="card">
     <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
-    <h2 class="one">午前は<span class="y">反復</span>、午後は<span class="y">勝負</span>。</h2>
+    <h2 class="one">前半は<span class="y">反復</span>、後半は<span class="y">勝負</span>。</h2>
     <p class="sub1">説明は最初の30分だけ。あとは手を動かす時間です。</p>
     <div class="tl">
       <div class="bar">
         <div class="a"><i>10:00</i>危機感<br>インストール</div>
         <div class="a"><i>10:30</i>セット<br>アップ</div>
         <div class="a"><i>10:50</i>課題<br>設定</div>
-        <div class="a"><i>11:05</i>反復AIドリル<small>集める・要約・比べる・洗い出す・分析する。MCP接続もここで</small></div>
+        <div class="a"><i>11:05</i>反復AIドリル 前半<small>集める・要約・比べる・洗い出す・分析する</small></div>
         <div class="l"><i>12:15</i>昼15分</div>
-        <div class="b"><i>12:30</i>出店バトル<small>区画を選び、計画を組む</small></div>
-        <div class="b"><i>13:15</i>経営勝負<small>プレゼン・採点・サドンデス</small></div>
+        <div class="a"><i>12:30</i>反復AIドリル 後半<small>MCP接続を1本通す。作らせて確かめて直す</small></div>
+        <div class="b"><i>13:30</i>駅ナカ出店バトル<small>区画を選び、計画を組み、プレゼン・採点・サドンデス</small></div>
         <div class="b"><i>14:30</i>振り返り<small>次アクション</small></div>
       </div>
-      <div class="ticks"><div>10:00</div><div>10:30</div><div>10:50</div><div>11:05</div><div>12:15</div><div>12:30</div><div>13:15</div><div>14:30–15:00</div></div>
-      <div class="half"><div><b>前半：技を掴む</b>短い課題を次々クリア。選んだ分だけAI筋トレが効く。Claude Code・Codexの立ち上げと、MCP接続を1本通す。</div><div><b>後半：勝負して差を体感</b>身につけた技でチーム対抗。市場分析、価格・採用・出店を決め、スコアで差を体感する。</div></div>
+      <div class="ticks"><div>10:00</div><div>10:30</div><div>10:50</div><div>11:05</div><div>12:15</div><div>12:30</div><div>13:30</div><div>14:30–15:00</div></div>
+      <div class="half"><div><b>前半（3時間半）：技を掴む</b>短い課題を次々クリア。選んだ分だけAI筋トレが効く。Claude Code・Codexの立ち上げと、MCP接続を1本通す。</div><div><b>後半（1時間）：勝負</b>身につけた技でチーム対抗。区画・価格・採用を決め、スコアで差を体感する。</div></div>
     </div>
     <p class="note">休憩は15分、ご飯を食べながら。「5時間、他の仕事は捨てる」が唯一のルールです。</p>
   </section>
