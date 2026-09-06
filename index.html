@@ -413,6 +413,18 @@
   .cine .ui button{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
   .cine .ui button:hover{background:rgba(255,255,255,.22)}
   .cine .ui button.music.on{background:#FFD700;color:#1a1a1a;border-color:#FFD700}
+  /* 再生中は画面全体を占有する。absolute のままだと下にスクロールしたときに
+     オーバーレイごと画面外へ流れ、スキップ/音声ボタンに手が届かなくなる。 */
+  .cine.on,.cine.out{position:fixed;inset:0;height:100svh;width:100%;z-index:9999}
+  /* .hero .card が isolation:isolate で重ね合わせ文脈を作るため、.cine の z-index は
+     カードの内側で完結してしまう。sticky な .nav(z-index:30) に勝てるよう、
+     再生中だけカード自体を前面へ出し、ナビを下げる。 */
+  .cine-playing .hero .card{z-index:9999}
+  .cine-playing .nav{z-index:1}
+  /* 操作ボタンは常に見える位置と大きさに。動画の上でも視認できるよう背景を濃く */
+  .cine .ui{top:max(14px,env(safe-area-inset-top));right:max(14px,env(safe-area-inset-right));gap:10px}
+  .cine .ui button{padding:11px 18px;font-size:13.5px;background:rgba(8,20,28,.62);border-color:rgba(255,255,255,.5);backdrop-filter:blur(6px);box-shadow:0 4px 16px rgba(0,0,0,.45)}
+  @media (max-width:600px){.cine .ui button{padding:10px 14px;font-size:12.5px}}
   .cine .prog{position:absolute;left:0;bottom:0;height:3px;width:0;background:#FFD700}
   .cine.out{animation:cineOut .8s ease forwards}
   @keyframes cineOut{to{opacity:0;visibility:hidden}}
@@ -457,8 +469,8 @@
 <header class="hero page" id="top">
   <div class="card">
     <div class="cine-gate" id="cineGate">
-      <p class="eb">OPENING MOVIE ｜ 55 SEC</p>
-      <h2>なぜ、いま<b>働き方4.0</b>なのか。<br>55秒の映像で、ご覧いただけます。</h2>
+      <p class="eb">OPENING MOVIE ｜ 77 SEC</p>
+      <h2>なぜ、いま<b>働き方4.0</b>なのか。<br>77秒の映像で、ご覧いただけます。</h2>
       <div class="btns"><button type="button" class="go" id="cineGo">▶ オープニングを見る</button><button type="button" class="no" id="cineNo">そのままページを見る</button></div>
       <p class="note">音楽は再生後、右上のボタンでオンにできます。</p>
     </div>
@@ -475,7 +487,7 @@
       <canvas class="pt" id="pt"></canvas>
       <div class="sweep" id="sweep"></div>
       <div class="glow" id="glow"></div>
-      <div class="ui"><button type="button" class="music" id="cineMusic" aria-pressed="false">♪ 音楽オン</button><button type="button" id="cineSkip">スキップ ›</button></div>
+      <div class="ui"><button type="button" class="music" id="cineMusic" aria-pressed="false">♪ 音声オン</button><button type="button" id="cineSkip">スキップ ›</button></div>
       <div class="prog" id="cineProg"></div>
       <audio id="cineAudio" preload="none" src="media/cine/opening.m4a"></audio>
     </div>
@@ -823,28 +835,45 @@
   var MEDIA='media/cine/';
   // clip: src, in-point(s), focus (object-position), saturation
   var CLIP={
-    old1:{src:'old1.mp4',inp:0.5,focus:'60% 50%',sat:.7},  new1:{src:'new1.mp4',inp:0.5,focus:'50% 55%'},
-    old2:{src:'old2.mp4',inp:0.5,focus:'50% 45%',sat:.7},  new2:{src:'new2.mp4',inp:0.5,focus:'40% 50%'},
-    old3:{src:'old3.mp4',inp:0.5,focus:'45% 50%',sat:.7},  new3:{src:'new3.mp4',inp:0.5,focus:'60% 50%'},
-    commute:{src:'commute.mp4',inp:1.0,focus:'50% 55%'}, rooftop:{src:'rooftop.mp4',inp:1.0,focus:'55% 45%'}, climax:{src:'climax.mp4',inp:1.0,focus:'50% 55%'}
+    old1:{src:'old1.mp4',inp:0.5,focus:'60% 50%',sat:0.7},
+    new1:{src:'new1.mp4',inp:0.5,focus:'50% 55%'},
+    old2:{src:'old2.mp4',inp:0.5,focus:'50% 45%',sat:0.7},
+    new2:{src:'new2.mp4',inp:0.5,focus:'40% 50%'},
+    old3:{src:'old3.mp4',inp:0.5,focus:'45% 50%',sat:0.7},
+    new3:{src:'new3.mp4',inp:0.5,focus:'60% 50%'},
+    commute:{src:'commute.mp4',inp:1.0,focus:'50% 55%'},
+    rooftop:{src:'rooftop.mp4',inp:0.5,focus:'55% 45%'},
+    climax:{src:'climax.mp4',inp:1.0,focus:'50% 55%'},
+    intro:{src:'intro.mp4',inp:0.15,focus:'50% 55%',sat:0.8},
+    tripbg:{src:'tripbg.mp4',inp:0.15,focus:'50% 50%',sat:0.55},
+    phonebg:{src:'phonebg.mp4',inp:0.15,focus:'50% 50%',sat:0.55},
+    legacy:{src:'legacy.mp4',inp:0.15,focus:'50% 50%'},
+    finale:{src:'finale.mp4',inp:0.15,focus:'50% 55%'},
+    montage:{src:'montage.mp4',inp:0.0,focus:'50% 50%'},
+    strideA:{src:'strideA.mp4',inp:0.15,focus:'50% 45%'},
+    cutin:{src:'cutin.mp4',inp:0.0,focus:'50% 50%'}
   };
   // scenes: t0,t1, clip|null, transition at t0 ('fold'|'sweep'|'zoom'|null), lines [at, html, cls], flags
   var S=[
-    {t0:0,   t1:3,   clip:null, tr:null,  lines:[[0.25,'本屋。番組。売り場。','sm'],[0.85,'<span class=\"w\">かつて、欲しいものは</span><span class=\"w\"><b>「そこ」</b>にあった。</span>','']]},
-    {t0:3,   t1:6,   clip:'old1', tr:'fold', bl:true, lines:[[0.3,'本屋で選んだ。','']]},
-    {t0:6,   t1:9.5, clip:'new1', tr:'zoom', lines:[[0.3,'いまは、<b>アマゾン</b>で選ぶ。','mid']]},
-    {t0:9.5, t1:12.5,clip:'old2', tr:'fold', bl:true, lines:[[0.3,'番組を待った。','']]},
-    {t0:12.5,t1:16,  clip:'new2', tr:'sweep',lines:[[0.3,'いまは、<b>YouTube</b>で観る。','mid']]},
-    {t0:16,  t1:19,  clip:'old3', tr:'fold', bl:true, lines:[[0.3,'百貨店を歩いた。','']]},
-    {t0:19,  t1:22.5,clip:'new3', tr:'zoom', lines:[[0.3,'いまは、<b>ECサイト</b>で比べる。','mid']]},
-    {t0:22.5,t1:26.5,clip:null, tr:'fold', trip:true, lines:[[0.4,'共通するのは、',''],[1.3,'<b><span class=\"w\">時間と場所を、</span><span class=\"w\">自分で選べること。</span></b>','big']]},
-    {t0:26.5,t1:30,  clip:null, tr:'fold', phone:true, lines:[[0.35,'聞けば、すぐ返ってくる。',''],[1.6,'<span class=\"w\">待たされないのが、</span><span class=\"w\"><b>当たり前</b>になった。</span>','']]},
-    {t0:30,  t1:37,  clip:'commute', tr:'sweep', wf:true, lines:[[0.3,'<span class=\"w\">その人たちが、</span><span class=\"w\">朝、会社に来る。</span>',''],[2.3,'<span class=\"w\">時間。場所。</span><span class=\"w\">決まった型のやり取り。</span>',''],[4.4,'<span class=\"w\">仕事だけが、</span><span class=\"w\">昔のままで<b>いられるだろうか。</b></span>','']]},
-    {t0:37,  t1:45,  clip:'rooftop', tr:'fold', roger:true, lines:[[0.3,'AI時代の活躍の仕方か？',''],[2.0,'欲しければ、くれてやる。',''],[4.0,'すべて、未来に託してきた。',''],[6.0,'<span class=\"w\"><b>働き方4.0</b>は、</span><span class=\"w\">実在する。</span>','big']]},
-    {t0:45,  t1:52,  clip:'climax', tr:'sweep', title:true, lines:[[0.25,'<span class=\"w\">経営者たちは、選ばれる会社を目指し、</span><span class=\"w\">働き方を設計し直す。</span>',''],[3.5,'世は、まさに――','mid'],[4.95,'働き方4.0<span class="br"><br></span>時代！','huge']]},
-    {t0:52,  t1:55,  clip:'climax', tr:null, endfade:true, lines:[[0.35,'<span class=\"w\">選べる働き方を、</span><span class=\"w\"><b>会社の側から設計する。</b></span>',''],[1.8,'それが、働き方4.0。','']]}
+    {t0:0.0, t1:6.54, clip:'intro', tr:null, lines:[[0.00,'本屋。番組。売り場。','sm'],[2.71,'かつて、欲しいものは<b>「そこ」</b>にしか、なかった。','']]},
+    {t0:6.54, t1:9.54, clip:'old1', tr:'fold', bl:true, lines:[[0.00,'本屋で、選んだ。','']]},
+    {t0:9.54, t1:12.54, clip:'new1', tr:'zoom', lines:[[0.00,'いまは、<b>アマゾン</b>で選ぶ。','mid']]},
+    {t0:12.54, t1:15.54, clip:'old2', tr:'fold', bl:true, lines:[[0.00,'放送を、待った。','']]},
+    {t0:15.54, t1:18.54, clip:'new2', tr:'sweep', lines:[[0.00,'いまは、<b>ユーチューブ</b>で観る。','mid']]},
+    {t0:18.54, t1:21.54, clip:'old3', tr:'fold', bl:true, lines:[[0.00,'百貨店を、歩いた。','']]},
+    {t0:21.54, t1:24.54, clip:'new3', tr:'zoom', lines:[[0.00,'いまは、<b>画面の中</b>で比べる。','mid']]},
+    {t0:24.54, t1:28.7, clip:'tripbg', tr:'fold', trip:true, lines:[[0.00,'共通するのは、ひとつ。',''],[1.44,'<b>時間と場所を、自分で選べること。</b>','big']]},
+    {t0:28.7, t1:35.41, clip:'phonebg', tr:'fold', phone:true, lines:[[0.00,'聞けば、すぐ返ってくる。',''],[1.46,'待たされないのが、<b>当たり前</b>になった。',''],[3.75,'その人たちが、朝、会社に来る。','']]},
+    {t0:35.41, t1:41.95, clip:'commute', tr:'sweep', wf:true, lines:[[0.00,'時間。場所。決まった型のやり取り。',''],[3.06,'仕事だけが、昔のままで<b>いられるだろうか。</b>','']]},
+    {t0:41.95, t1:51.28, clip:'legacy', tr:'fold', roger:true, lines:[[0.00,'人も、時間も、選ばれる理由も。',''],[2.85,'その<b>すべてを手に入れた</b>会社が、あった。','mid'],[5.50,'その経営者が、退き際に放った一言が、','']]},
+    {t0:51.28, t1:59.35, clip:'rooftop', tr:'fold', lines:[[0.00,'働く人々を、<b>動かした。</b>',''],[1.81,'「AI時代の、活躍の仕方か？」',''],[4.17,'「<b>欲しければ、くれてやる。</b>」',''],[5.36,'「<b>探せ。</b>すべて、この会社に置いてきた。」','mid']]},
+    {t0:59.35, t1:64.55, clip:'montage', tr:'sweep', lines:[[0.00,'経営者たちは、選ばれる会社を目指し、','']]},
+    {t0:64.55, t1:67.95, clip:'strideA', tr:'fold', lines:[[0.00,'<b>働き方を、設計し直す。</b>','big'],[2.07,'世は、まさに――','mid']]},
+    {t0:67.95, t1:71.25, clip:'cutin', tr:null, title:true, lines:[[0.00,'働き方4.0<br>時代！','huge']]},
+    {t0:71.25, t1:76.47, clip:'finale', tr:'fold', endfade:true, lines:[[0.00,'選べる働き方を、<b>会社の側から。</b>',''],[2.43,'それが、働き方4.0。','']]}
   ];
-  var TOTAL=55, time=0, running=false, last=0, raf=null, cur=-1, curClip=null, useA=true, seen=false, musicOn=false, partic=[], ctx=null, W=0,H=0, sprite=null, lineEls=[], sceneStart=0, lastSync=0;
+  var CINE_ROGER=41.95, CINE_TITLE=67.95;
+  var TOTAL=76.5, time=0, running=false, last=0, raf=null, cur=-1, curClip=null, useA=true, seen=false, musicOn=false, partic=[], ctx=null, W=0,H=0, sprite=null, lineEls=[], sceneStart=0, lastSync=0;
   function vid(){return useA?vA:vB} function other(){return useA?vB:vA}
   function setClip(name){
     if(name===curClip) return;
@@ -891,15 +920,15 @@
     var sc=S[cur]||S[0]; var lo=(sc.clip&&!sc.roger&&!sc.title)?0.35:1; if(sc.trip||sc.phone) lo=0.9; hz.style.setProperty('--lo',lo);
     // roger 43s: line opens as a plane
     var oo=0, oy=0, go=0;
-    if(t>=43.0&&t<43.6){ var k=(t-43.0)/0.6; oo=1-k; oy=1+k*40; go=0.6*(1-k); }
-    if(t>=42.8&&t<43.0){ vA.style.setProperty('--dark',0.15); vB.style.setProperty('--dark',0.15); }
+    if(t>=CINE_ROGER&&t<CINE_ROGER+0.6){ var k=(t-CINE_ROGER)/0.6; oo=1-k; oy=1+k*40; go=0.6*(1-k); }
+    if(t>=CINE_ROGER-0.2&&t<CINE_ROGER){ vA.style.setProperty('--dark',0.15); vB.style.setProperty('--dark',0.15); }
     // title 49.95: local glow
-    if(t>=49.9&&t<50.5){ var k2=(t-49.9)/0.6; go=Math.max(go,0.9*(1-k2)); }
+    if(t>=CINE_TITLE&&t<CINE_TITLE+0.6){ var k2=(t-CINE_TITLE)/0.6; go=Math.max(go,0.9*(1-k2)); }
     openLine.style.setProperty('--oo',oo); openLine.style.setProperty('--oy',oy); glow.style.setProperty('--go',go);
     // work frame closes at 32.3, fades at 34.4
     if(cur>=0&&S[cur].wf){ var st=t-S[cur].t0; var fs=st<2.3?1.25:(st<2.9?1.25-((st-2.3)/0.6)*0.25:1); var fo=st<4.4?1:Math.max(0,1-(st-4.4)/0.6); wf.style.setProperty('--fs',fs); wf.style.setProperty('--fo',fo); }
     // world dim before title
-    if(t>=48.5&&t<49.95){ var dd=0.35*Math.min(1,(t-48.5)/0.8); vA.style.setProperty('--dark',dd); vB.style.setProperty('--dark',dd); }
+    if(t>=CINE_TITLE-1.45&&t<CINE_TITLE){ var dd=0.35*Math.min(1,(t-(CINE_TITLE-1.45))/0.8); vA.style.setProperty('--dark',dd); vB.style.setProperty('--dark',dd); }
     // end fade
     if(t>=53.6){ cine.style.opacity=String(Math.max(0,1-(t-53.6)/1.4)); } else { cine.style.opacity=''; }
   }
@@ -913,7 +942,7 @@
     var v=vid(); if(!curClip||now-lastSync<250) return; lastSync=now; var sc=S[cur]; if(!sc||!sc.clip) return;
     var c=CLIP[curClip]; var expect=c.inp+(time-sceneStart); if(isFinite(v.duration)&&expect>v.duration-0.05) return;
     if(Math.abs(v.currentTime-expect)>0.18){ try{v.currentTime=expect}catch(e){} }
-    if(v.paused){ var p=v.play(); if(p&&p.catch)p.catch(function(){}); }
+    if(v.paused&&!v.ended){ var p=v.play(); if(p&&p.catch)p.catch(function(){}); }
   }
   // particles
   function initParticles(){
@@ -924,7 +953,7 @@
     sprite=document.createElement('canvas'); sprite.width=sprite.height=16; var g=sprite.getContext('2d'); var gr=g.createRadialGradient(8,8,0,8,8,8); gr.addColorStop(0,'rgba(255,240,180,1)'); gr.addColorStop(1,'rgba(255,240,180,0)'); g.fillStyle=gr; g.fillRect(0,0,16,16);
   }
   function drawParticles(t){
-    if(!ctx) return; ctx.clearRect(0,0,W,H); var burst=(t>=43&&t<43.6)||(t>=49.95&&t<50.6);
+    if(!ctx) return; ctx.clearRect(0,0,W,H); var burst=(t>=CINE_ROGER&&t<CINE_ROGER+0.6)||(t>=CINE_TITLE&&t<CINE_TITLE+0.65);
     for(var i=0;i<partic.length;i++){ var p=partic[i]; var speed=3+p.z*10; var x=p.x+Math.sin(t*.16+p.phase)*(2+p.z*5); var y=((p.y-t*speed)%H+H)%H; var size=(.7+p.z*1.8)*(burst?2.2:1);
       ctx.globalAlpha=(.06+p.z*.12)*(burst?2:1); ctx.drawImage(sprite,x,y,size*4,size*4); }
     ctx.globalAlpha=1;
@@ -934,17 +963,38 @@
     if(i!==cur) enterScene(i);
     tr(t); fx(t); lines(t); drawParticles(t); prog.style.width=Math.min(100,t/TOTAL*100)+'%';
   }
-  function tick(now){ if(!running) return; time=Math.min(TOTAL,time+(now-last)/1000); last=now; render(time); syncVideo(now); if(time<TOTAL) raf=requestAnimationFrame(tick); else finish(); }
+  // 音声にナレーションが入っているので、鳴っている間は音声を基準時計にする。
+  // 音声が無いときは実時間どおり進める。dt に上限を掛けてはいけない:
+  // rAF が絞られると映像だけ実時間から取り残され、「止まらない」「途中で終わる」の原因になる。
+  // 追いつくための飛びは異常ではなく、音声と絵を合わせるために必要な動作。
+  function tick(now){
+    if(!running) return;
+    if(musicOn && !audio.paused && isFinite(audio.currentTime)) time=Math.min(TOTAL,audio.currentTime);
+    else time=Math.min(TOTAL,time+(now-last)/1000);
+    last=now; render(time); syncVideo(now);
+    if(time<TOTAL) raf=requestAnimationFrame(tick); else finish();
+  }
   function reset(){ time=0; cur=-1; curClip=null; clearLines(); cine.classList.remove('out'); cine.style.opacity=''; vA.classList.remove('on'); vB.classList.remove('on'); trip.classList.remove('on','flat'); phone.classList.remove('on','q'); }
-  function play(){ if(raf) cancelAnimationFrame(raf); reset(); cine.classList.add('on'); cine.setAttribute('aria-hidden','false'); rep.classList.remove('show'); initParticles(); running=true; last=performance.now(); raf=requestAnimationFrame(tick); preload('old1'); }
-  function finish(){ running=false; if(raf) cancelAnimationFrame(raf); raf=null; try{vA.pause();vB.pause();}catch(e){} if(musicOn){ audio.pause(); } cine.classList.add('out'); try{sessionStorage.setItem('cineSeen','1')}catch(e){}
+  function play(){ if(raf) cancelAnimationFrame(raf); reset(); document.documentElement.classList.add('cine-playing'); cine.classList.add('on'); cine.setAttribute('aria-hidden','false'); rep.classList.remove('show'); initParticles(); running=true; last=performance.now(); raf=requestAnimationFrame(tick); preload('old1'); }
+  function finish(){ if(!running&&!cine.classList.contains('on')) return; running=false; if(raf) cancelAnimationFrame(raf); raf=null; try{vA.pause();vB.pause();}catch(e){} if(musicOn){ audio.pause(); } cine.classList.add('out'); try{sessionStorage.setItem('cineSeen','1')}catch(e){}
+    document.documentElement.classList.remove('cine-playing');
     setTimeout(function(){ cine.classList.remove('on','out'); cine.style.opacity=''; cine.setAttribute('aria-hidden','true'); rep.innerHTML='\u25b6 \u30aa\u30fc\u30d7\u30cb\u30f3\u30b0\u3092\u3082\u3046\u4e00\u5ea6'; rep.classList.add('show'); },850); }
+  // 音声を基準時計にしているので、終了も音声で確定させる。
+  // rAF だけに頼ると、裏タブや省電力で進行が止まったときに終了判定が走らない。
+  audio.addEventListener('ended',function(){ if(running) finish(); });
   skipBtn.addEventListener('click',finish);
-  rep.addEventListener('click',function(){ play(); cine.scrollIntoView({block:'start'}); if(musicOn){ try{audio.currentTime=0; audio.play();}catch(e){} } });
+  rep.addEventListener('click',function(){ play(); cine.scrollIntoView({block:'start'}); startAudio(0); });
+  // 音声はナレーションと音楽を1本に焼き込んである。▶ の操作を起点に鳴らし、♪ はミュート切替。
+  function syncBtn(){ musicBtn.classList.toggle('on',musicOn); musicBtn.textContent=musicOn?'\u266a \u97f3\u58f0\u30aa\u30d5':'\u266a \u97f3\u58f0\u30aa\u30f3'; musicBtn.setAttribute('aria-pressed',String(musicOn)); }
+  function startAudio(at){
+    try{ audio.currentTime=Math.min(at,TOTAL-0.1); }catch(e){}
+    audio.muted=false;
+    var p=audio.play();
+    if(p&&p.then) p.then(function(){ musicOn=true; syncBtn(); }).catch(function(){ musicOn=false; syncBtn(); });
+  }
   musicBtn.addEventListener('click',function(){
-    if(musicOn){ audio.pause(); musicOn=false; }
-    else { try{ audio.currentTime=Math.min(time,54.9); var p=audio.play(); if(p&&p.then) p.then(function(){musicOn=true; musicBtn.classList.add('on'); musicBtn.textContent='♪ 音楽オフ'; musicBtn.setAttribute('aria-pressed','true');}).catch(function(){}); return; }catch(e){} }
-    musicBtn.classList.toggle('on',musicOn); musicBtn.textContent=musicOn?'♪ 音楽オフ':'♪ 音楽オン'; musicBtn.setAttribute('aria-pressed',String(musicOn));
+    if(musicOn){ audio.muted=true; audio.pause(); musicOn=false; syncBtn(); }
+    else { startAudio(time); }
   });
   document.addEventListener('visibilitychange',function(){ if(!document.hidden&&running&&cine.classList.contains('on')){ last=performance.now(); lastSync=0; if(musicOn){ try{audio.currentTime=time; audio.play();}catch(e){} } } });
   window.addEventListener('resize',function(){ if(running) initParticles(); });
