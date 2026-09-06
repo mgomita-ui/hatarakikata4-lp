@@ -420,6 +420,22 @@
   .cine-replay.show{display:inline-flex}
   .cine-replay:hover{background:rgba(255,255,255,.2)}
   @media (prefers-reduced-motion:reduce){.cine{display:none!important}}
+  /* line-break control */
+  .cine .ln{text-wrap:balance;word-break:keep-all;overflow-wrap:break-word}
+  .cine .ln .w{display:inline-block}
+  /* opening gate */
+  .cine-gate{position:absolute;inset:0;z-index:7;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px;padding:8%;background:radial-gradient(120% 90% at 50% 110%,#0F5F52 0%,#0B2F3A 45%,#07141F 100%);color:#F3F5EF;font-family:'Noto Sans JP',sans-serif}
+  .cine-gate.on{display:flex}
+  .cine-gate .eb{font-family:var(--latin);font-size:11px;letter-spacing:.2em;color:rgba(243,245,239,.6);margin:0}
+  .cine-gate h2{font-size:clamp(20px,2.6vw,32px);font-weight:900;line-height:1.5;margin:0}
+  .cine-gate h2 b{color:#FFD700}
+  .cine-gate .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:4px}
+  .cine-gate button{font-family:inherit;font-weight:700;font-size:14px;border-radius:999px;padding:13px 26px;cursor:pointer;border:1px solid transparent}
+  .cine-gate button.go{background:#FFD700;color:#1a1a1a}
+  .cine-gate button.go:hover{background:#ffe45c}
+  .cine-gate button.no{background:transparent;color:#F3F5EF;border-color:rgba(255,255,255,.4)}
+  .cine-gate button.no:hover{background:rgba(255,255,255,.12)}
+  .cine-gate .note{font-size:12px;color:rgba(243,245,239,.5);margin:0}
 </style>
 
 <div class="ribbon rb-tl" aria-hidden="true"><svg viewBox="0 0 560 420"><path d="M-40 60 C120 -20 260 40 330 140 C400 240 330 380 120 420 L-40 420Z" fill="#14A07A" opacity=".85"/><path d="M-40 140 C90 60 210 100 250 190 C290 280 220 380 60 420 L-40 420Z" fill="#0F5F52" opacity=".9"/><path d="M-40 230 C60 190 130 220 150 290 C170 360 110 410 20 420 L-40 420Z" fill="#8FE0C4" opacity=".55"/></svg></div>
@@ -440,6 +456,12 @@
 <!-- 序：問い -->
 <header class="hero page" id="top">
   <div class="card">
+    <div class="cine-gate" id="cineGate">
+      <p class="eb">OPENING MOVIE ｜ 55 SEC</p>
+      <h2>なぜ、いま<b>働き方4.0</b>なのか。<br>55秒の映像で、ご覧いただけます。</h2>
+      <div class="btns"><button type="button" class="go" id="cineGo">▶ オープニングを見る</button><button type="button" class="no" id="cineNo">そのままページを見る</button></div>
+      <p class="note">音楽は再生後、右上のボタンでオンにできます。</p>
+    </div>
     <div class="cine" id="cine" aria-hidden="true">
       <div class="cam"><div class="world">
         <div class="mp fold" id="mp"><video id="vA" muted playsinline preload="none"></video><video id="vB" muted playsinline preload="none"></video><img class="still" id="still" alt=""></div>
@@ -808,19 +830,19 @@
   };
   // scenes: t0,t1, clip|null, transition at t0 ('fold'|'sweep'|'zoom'|null), lines [at, html, cls], flags
   var S=[
-    {t0:0,   t1:3,   clip:null, tr:null,  lines:[[0.25,'本屋。番組。売り場。','sm'],[0.85,'かつて、欲しいものは<b>「そこ」</b>にあった。','']]},
+    {t0:0,   t1:3,   clip:null, tr:null,  lines:[[0.25,'本屋。番組。売り場。','sm'],[0.85,'<span class=\"w\">かつて、欲しいものは</span><span class=\"w\"><b>「そこ」</b>にあった。</span>','']]},
     {t0:3,   t1:6,   clip:'old1', tr:'fold', bl:true, lines:[[0.3,'本屋で選んだ。','']]},
     {t0:6,   t1:9.5, clip:'new1', tr:'zoom', lines:[[0.3,'いまは、<b>アマゾン</b>で選ぶ。','mid']]},
     {t0:9.5, t1:12.5,clip:'old2', tr:'fold', bl:true, lines:[[0.3,'番組を待った。','']]},
     {t0:12.5,t1:16,  clip:'new2', tr:'sweep',lines:[[0.3,'いまは、<b>YouTube</b>で観る。','mid']]},
     {t0:16,  t1:19,  clip:'old3', tr:'fold', bl:true, lines:[[0.3,'百貨店を歩いた。','']]},
     {t0:19,  t1:22.5,clip:'new3', tr:'zoom', lines:[[0.3,'いまは、<b>ECサイト</b>で比べる。','mid']]},
-    {t0:22.5,t1:26.5,clip:null, tr:'fold', trip:true, lines:[[0.4,'共通するのは、',''],[1.3,'<b>時間と場所を、自分で選べること。</b>','big']]},
-    {t0:26.5,t1:30,  clip:null, tr:'fold', phone:true, lines:[[0.35,'聞けば、すぐ返ってくる。',''],[1.6,'待たされないのが、<b>当たり前</b>になった。','']]},
-    {t0:30,  t1:37,  clip:'commute', tr:'sweep', wf:true, lines:[[0.3,'その人たちが、朝、会社に来る。',''],[2.3,'時間。場所。決まった型のやり取り。',''],[4.4,'仕事だけが、昔のままで<b>いられるだろうか。</b>','']]},
-    {t0:37,  t1:45,  clip:'rooftop', tr:'fold', roger:true, lines:[[0.3,'AI時代の活躍の仕方か？',''],[2.0,'欲しければ、くれてやる。',''],[4.0,'すべて、未来に託してきた。',''],[6.0,'<b>働き方4.0</b>は、実在する。','big']]},
-    {t0:45,  t1:52,  clip:'climax', tr:'sweep', title:true, lines:[[0.25,'経営者たちは、選ばれる会社を目指し、働き方を設計し直す。',''],[3.5,'世は、まさに――','mid'],[4.95,'働き方4.0<span class="br"><br></span>時代！','huge']]},
-    {t0:52,  t1:55,  clip:'climax', tr:null, endfade:true, lines:[[0.35,'選べる働き方を、<b>会社の側から設計する。</b>',''],[1.8,'それが、働き方4.0。','']]}
+    {t0:22.5,t1:26.5,clip:null, tr:'fold', trip:true, lines:[[0.4,'共通するのは、',''],[1.3,'<b><span class=\"w\">時間と場所を、</span><span class=\"w\">自分で選べること。</span></b>','big']]},
+    {t0:26.5,t1:30,  clip:null, tr:'fold', phone:true, lines:[[0.35,'聞けば、すぐ返ってくる。',''],[1.6,'<span class=\"w\">待たされないのが、</span><span class=\"w\"><b>当たり前</b>になった。</span>','']]},
+    {t0:30,  t1:37,  clip:'commute', tr:'sweep', wf:true, lines:[[0.3,'<span class=\"w\">その人たちが、</span><span class=\"w\">朝、会社に来る。</span>',''],[2.3,'<span class=\"w\">時間。場所。</span><span class=\"w\">決まった型のやり取り。</span>',''],[4.4,'<span class=\"w\">仕事だけが、</span><span class=\"w\">昔のままで<b>いられるだろうか。</b></span>','']]},
+    {t0:37,  t1:45,  clip:'rooftop', tr:'fold', roger:true, lines:[[0.3,'AI時代の活躍の仕方か？',''],[2.0,'欲しければ、くれてやる。',''],[4.0,'すべて、未来に託してきた。',''],[6.0,'<span class=\"w\"><b>働き方4.0</b>は、</span><span class=\"w\">実在する。</span>','big']]},
+    {t0:45,  t1:52,  clip:'climax', tr:'sweep', title:true, lines:[[0.25,'<span class=\"w\">経営者たちは、選ばれる会社を目指し、</span><span class=\"w\">働き方を設計し直す。</span>',''],[3.5,'世は、まさに――','mid'],[4.95,'働き方4.0<span class="br"><br></span>時代！','huge']]},
+    {t0:52,  t1:55,  clip:'climax', tr:null, endfade:true, lines:[[0.35,'<span class=\"w\">選べる働き方を、</span><span class=\"w\"><b>会社の側から設計する。</b></span>',''],[1.8,'それが、働き方4.0。','']]}
   ];
   var TOTAL=55, time=0, running=false, last=0, raf=null, cur=-1, curClip=null, useA=true, seen=false, musicOn=false, partic=[], ctx=null, W=0,H=0, sprite=null, lineEls=[], sceneStart=0, lastSync=0;
   function vid(){return useA?vA:vB} function other(){return useA?vB:vA}
@@ -928,11 +950,16 @@
   window.addEventListener('resize',function(){ if(running) initParticles(); });
   window.cineSeek=function(t){ if(!cine.classList.contains('on')) play(); time=t; cur=-1; curClip=null; vA.classList.remove('on'); vB.classList.remove('on'); vA.dataset.name=''; vB.dataset.name=''; render(time); lastSync=0; if(musicOn){ try{audio.currentTime=t}catch(e){} } };
   window.cineState=function(){ return {time:time,running:running,cur:cur,clip:curClip}; };
+  var gate=document.getElementById('cineGate'), goBtn=document.getElementById('cineGo'), noBtn=document.getElementById('cineNo');
+  function closeGate(){ gate.classList.remove('on'); }
+  goBtn.addEventListener('click',function(){ closeGate(); play(); });
+  noBtn.addEventListener('click',function(){ closeGate(); rep.classList.add('show'); try{sessionStorage.setItem('cineSeen','1')}catch(e){} });
   var q=location.search, reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   try{seen=sessionStorage.getItem('cineSeen')==='1'}catch(e){}
   var saveData=navigator.connection&&navigator.connection.saveData;
-  var force=/[?&]cine=1/.test(q);
-  if(force||(!reduced&&!saveData&&!/[?&]end=1/.test(q)&&!location.hash&&!seen)){ play(); } else { rep.classList.add('show'); }
+  if(/[?&]cine=1/.test(q)){ play(); }
+  else if(reduced||saveData||/[?&]end=1/.test(q)||location.hash||seen){ rep.classList.add('show'); }
+  else { gate.classList.add('on'); }
 })();
 </script>
 
