@@ -363,9 +363,9 @@
   .stg.show{opacity:1;transform:translateX(-50%) translateY(0)}
   .stg.show i{transform:scaleY(1)}
   .stg:nth-child(3) b{font-size:21px;color:var(--yellow)}
-  .arrow{position:absolute;z-index:2;left:9%;right:30%;bottom:2.5%;height:1.5px;background:linear-gradient(90deg,rgba(143,224,196,.15),rgba(143,224,196,.9));opacity:0;transform:scaleX(0);transform-origin:left;transition:opacity .6s,transform 1.2s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+  .arrow{position:absolute;z-index:2;left:9%;right:65%;bottom:2.5%;height:1.5px;background:linear-gradient(90deg,rgba(143,224,196,.15),rgba(143,224,196,.9));opacity:0;transform:scaleX(0);transform-origin:left;transition:opacity .6s,transform 1.2s cubic-bezier(.2,.7,.2,1);pointer-events:none}
   .arrow:after{content:"";position:absolute;right:-2px;top:-4px;border:5px solid transparent;border-left:8px solid #8FE0C4;border-right:0}
-  .arrow span{position:absolute;left:72%;top:-20px;transform:translateX(-50%);font-family:var(--latin);font-weight:700;font-size:11px;letter-spacing:.2em;color:var(--green-lt)}
+  .arrow span{position:absolute;left:50%;top:6px;transform:translateX(-50%);font-family:var(--latin);font-weight:700;font-size:11px;letter-spacing:.2em;color:var(--green-lt)}
   .arrow.show{opacity:1;transform:scaleX(1)}
   .replay{position:absolute;right:16px;top:14px;z-index:4;display:none;align-items:center;gap:6px;background:rgba(7,34,30,.55);border:1px solid rgba(143,224,196,.45);color:#fff;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;backdrop-filter:blur(4px)}
   .replay svg{width:14px;height:14px}
@@ -862,7 +862,7 @@
     /* hero evolution: labels keyed to video time, play once, stop on last frame */
     (function(){
       var v=document.getElementById('heroVideo'),stg=qa('.stg'),rp=document.getElementById('replay'),ar=document.querySelector('.evo .arrow');if(!v)return;
-      function sync(){if(v.paused&&v.currentTime===0)return;var d=v.duration||15,p=v.currentTime/d;stg.forEach(function(s){s.classList.toggle('show',p>=parseFloat(s.getAttribute('data-at')));});if(ar)ar.classList.toggle('show',p>=0.86);}
+      function sync(){if(v.paused&&v.currentTime===0)return;var d=v.duration||15,p=v.currentTime/d;stg.forEach(function(s){s.classList.toggle('show',p>=parseFloat(s.getAttribute('data-at')));});if(ar)ar.classList.toggle('show',p>=0.5);}
       function finish(){stg.forEach(function(s){s.classList.add('show');});if(ar)ar.classList.add('show');if(rp)rp.classList.add('show');}
       v.addEventListener('timeupdate',sync);
       v.addEventListener('ended',finish);
