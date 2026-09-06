@@ -416,9 +416,9 @@
   .cine .prog{position:absolute;left:0;bottom:0;height:3px;width:0;background:#FFD700}
   .cine.out{animation:cineOut .8s ease forwards}
   @keyframes cineOut{to{opacity:0;visibility:hidden}}
-  .cine-replay{position:absolute;top:14px;right:14px;z-index:4;display:none;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:999px;padding:7px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit}
+  .cine-replay{position:absolute;top:14px;right:14px;z-index:4;display:none;align-items:center;gap:6px;background:#FFD700;border:1px solid #FFD700;color:#1a1a1a;border-radius:999px;padding:9px 16px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 6px 20px rgba(0,0,0,.28)}
   .cine-replay.show{display:inline-flex}
-  .cine-replay:hover{background:rgba(255,255,255,.2)}
+  .cine-replay:hover{background:#ffe45c}
   @media (prefers-reduced-motion:reduce){.cine{display:none!important}}
   /* line-break control */
   .cine .ln{text-wrap:balance;word-break:keep-all;overflow-wrap:break-word}
@@ -938,7 +938,7 @@
   function reset(){ time=0; cur=-1; curClip=null; clearLines(); cine.classList.remove('out'); cine.style.opacity=''; vA.classList.remove('on'); vB.classList.remove('on'); trip.classList.remove('on','flat'); phone.classList.remove('on','q'); }
   function play(){ if(raf) cancelAnimationFrame(raf); reset(); cine.classList.add('on'); cine.setAttribute('aria-hidden','false'); rep.classList.remove('show'); initParticles(); running=true; last=performance.now(); raf=requestAnimationFrame(tick); preload('old1'); }
   function finish(){ running=false; if(raf) cancelAnimationFrame(raf); raf=null; try{vA.pause();vB.pause();}catch(e){} if(musicOn){ audio.pause(); } cine.classList.add('out'); try{sessionStorage.setItem('cineSeen','1')}catch(e){}
-    setTimeout(function(){ cine.classList.remove('on','out'); cine.style.opacity=''; cine.setAttribute('aria-hidden','true'); rep.classList.add('show'); },850); }
+    setTimeout(function(){ cine.classList.remove('on','out'); cine.style.opacity=''; cine.setAttribute('aria-hidden','true'); rep.innerHTML='\u25b6 \u30aa\u30fc\u30d7\u30cb\u30f3\u30b0\u3092\u3082\u3046\u4e00\u5ea6'; rep.classList.add('show'); },850); }
   skipBtn.addEventListener('click',finish);
   rep.addEventListener('click',function(){ play(); cine.scrollIntoView({block:'start'}); if(musicOn){ try{audio.currentTime=0; audio.play();}catch(e){} } });
   musicBtn.addEventListener('click',function(){
@@ -950,16 +950,11 @@
   window.addEventListener('resize',function(){ if(running) initParticles(); });
   window.cineSeek=function(t){ if(!cine.classList.contains('on')) play(); time=t; cur=-1; curClip=null; vA.classList.remove('on'); vB.classList.remove('on'); vA.dataset.name=''; vB.dataset.name=''; render(time); lastSync=0; if(musicOn){ try{audio.currentTime=t}catch(e){} } };
   window.cineState=function(){ return {time:time,running:running,cur:cur,clip:curClip}; };
-  var gate=document.getElementById('cineGate'), goBtn=document.getElementById('cineGo'), noBtn=document.getElementById('cineNo');
-  function closeGate(){ gate.classList.remove('on'); }
-  goBtn.addEventListener('click',function(){ closeGate(); play(); });
-  noBtn.addEventListener('click',function(){ closeGate(); rep.classList.add('show'); try{sessionStorage.setItem('cineSeen','1')}catch(e){} });
-  var q=location.search, reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var gate=document.getElementById('cineGate'); if(gate&&gate.parentNode) gate.parentNode.removeChild(gate);
+  var q=location.search;
   try{seen=sessionStorage.getItem('cineSeen')==='1'}catch(e){}
-  var saveData=navigator.connection&&navigator.connection.saveData;
-  if(/[?&]cine=1/.test(q)){ play(); }
-  else if(reduced||saveData||/[?&]end=1/.test(q)||location.hash||seen){ rep.classList.add('show'); }
-  else { gate.classList.add('on'); }
+  if(!seen) rep.innerHTML='\u25b6 55\u79d2\u306e\u6620\u50cf\u3067\u898b\u308b';
+  if(/[?&]cine=1/.test(q)){ play(); } else { rep.classList.add('show'); }
 })();
 </script>
 
