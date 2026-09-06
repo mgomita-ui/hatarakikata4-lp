@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<title>働き方は、なぜ4.0なのか｜解説</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700&display=swap">
+<style>
+:root{--ink:#12201C;--paper:#F1F5F1;--green:#14A07A;--green-deep:#0F5F52;--yellow:#FFD700;--rose:#E4726B;--latin:'Poppins',sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);font-family:'Noto Sans JP',sans-serif}
+.wrap{max-width:1160px;margin:24px auto;padding:0 24px}
+.exp{position:relative;width:100%;aspect-ratio:16/9;min-height:420px;border-radius:20px;overflow:hidden;background:radial-gradient(120% 90% at 50% 112%,#0F5F52 0%,#0B2F3A 46%,#07141F 100%);color:#F3F5EF;isolation:isolate;box-shadow:0 24px 60px rgba(7,34,30,.28)}
+@media (max-width:700px){.exp{aspect-ratio:4/5;min-height:520px}}
+.exp .cam{position:absolute;inset:0;perspective:1200px;perspective-origin:50% 54%}
+.exp .world{position:absolute;inset:0;transform-style:preserve-3d}
+.exp .hz{position:absolute;left:7%;width:86%;top:71%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,215,0,.75) 46%,rgba(232,245,210,.9) 52%,transparent);box-shadow:0 0 18px rgba(255,215,0,.28);transform:scaleX(var(--ls,0));transition:transform 1s ease}
+.exp .stage{position:absolute;left:0;right:0;top:6%;bottom:30%;transform-style:preserve-3d}
+.exp .eralayer{position:absolute;inset:0;display:none}
+.exp .eralayer.on{display:block}
+.exp .sc{position:absolute;inset:0;display:none;transform-style:preserve-3d}
+.exp .sc.on{display:block}
+.exp .el{opacity:0;transform:translateY(16px) translateZ(0);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.exp .el.in{opacity:1;transform:none}
+
+/* 1. 悩み */
+.pain{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;height:100%}
+.pain .p{background:rgba(228,114,107,.26);border:1px solid rgba(228,114,107,.8);color:#FFE6E3;text-shadow:0 2px 10px rgba(0,0,0,.5);border-radius:12px;padding:12px 26px;font-size:clamp(15px,2vw,24px);font-weight:900;letter-spacing:.03em}
+
+/* 2-6. 時代 */
+.eras{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.4vw,18px);padding:0 clamp(14px,4vw,52px) 14px}
+.era{position:relative;display:flex;flex-direction:column;height:100%;opacity:.2;transition:opacity .6s}
+.era.seen{opacity:.55}
+.era.now{opacity:1}
+.era .cap{font-family:var(--latin);font-weight:700;font-size:clamp(18px,2.7vw,36px);line-height:1.05;color:rgba(243,245,239,.85)}
+.era.now .cap{color:var(--yellow)}
+.era .per{font-size:clamp(9.5px,1.05vw,12.5px);color:rgba(243,245,239,.8);letter-spacing:.02em;line-height:1.35;margin:2px 0 8px;min-height:2.7em}
+.era .barwrap{position:relative;flex:1;min-height:0}
+.era .bar{position:absolute;left:0;right:0;bottom:0;top:100%;border-radius:8px 8px 0 0;background:linear-gradient(180deg,rgba(143,224,196,.8),rgba(20,160,122,.22));border-top:2px solid rgba(143,224,196,.95);transition:top .9s cubic-bezier(.2,.8,.2,1)}
+.era.now .bar,.era.seen .bar{top:calc(100% - var(--h))}
+.era.now .bar{background:linear-gradient(180deg,rgba(255,215,0,.9),rgba(255,215,0,.14));border-top-color:var(--yellow);box-shadow:0 0 30px rgba(255,215,0,.3)}
+.axisline{position:absolute;left:clamp(14px,4vw,52px);right:clamp(14px,4vw,52px);bottom:14px;height:2px;background:linear-gradient(90deg,rgba(243,245,239,.5),rgba(243,245,239,.15));transform:scaleX(var(--ax,0));transform-origin:left;transition:transform .9s ease}
+
+/* 7. ズレ */
+.gap2{display:flex;align-items:stretch;justify-content:center;gap:clamp(30px,8vw,110px);height:100%;padding-bottom:14px}
+.gap2 .col{position:relative;display:flex;flex-direction:column;width:clamp(96px,17vw,180px)}
+.gap2 .lb{font-size:clamp(11px,1.3vw,15px);font-weight:700;color:rgba(243,245,239,.9);text-align:center}
+.gap2 .v{font-family:var(--latin);font-weight:700;font-size:clamp(16px,2.4vw,30px);text-align:center;margin:2px 0 8px}
+.gap2 .col.a .v{color:var(--yellow)}
+.gap2 .barwrap{position:relative;flex:1;min-height:0}
+.gap2 .bar{position:absolute;left:0;right:0;bottom:0;top:100%;border-radius:10px 10px 0 0;transition:top 1s cubic-bezier(.2,.8,.2,1)}
+.gap2 .col.a .bar{background:linear-gradient(180deg,rgba(255,215,0,.9),rgba(255,215,0,.16));border-top:2px solid var(--yellow)}
+.gap2 .col.b .bar{background:linear-gradient(180deg,rgba(200,210,206,.9),rgba(120,135,130,.18));border-top:2px solid rgba(200,210,206,.95)}
+.sc.on .gap2 .col.a .bar{top:14%}
+.sc.on .gap2 .col.b .bar{top:54%}
+.gapmark{position:absolute;left:50%;top:30%;text-align:center;font-size:clamp(11px,1.4vw,16px);font-weight:900;color:#FFD9D6;background:rgba(228,114,107,.16);border:1px solid rgba(228,114,107,.55);border-radius:999px;padding:6px 16px}
+.gapmark.el{transform:translateX(-50%) translateY(16px)}
+.gapmark.el.in{transform:translateX(-50%)}
+
+/* 8. 三つの点検 */
+.checks{display:flex;flex-direction:column;justify-content:center;gap:clamp(8px,1.5vw,16px);height:100%;padding:0 clamp(16px,6vw,90px)}
+.checks .r{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;background:rgba(255,255,255,.1);border-left:3px solid var(--yellow);border-radius:0 12px 12px 0;padding:12px 18px}
+.checks .n{font-family:var(--latin);font-weight:700;color:var(--yellow);font-size:clamp(13px,1.6vw,19px)}
+.checks .tx{font-size:clamp(12.5px,1.65vw,20px);font-weight:700;line-height:1.45}
+.checks .tx small{display:block;font-size:.78em;font-weight:500;color:rgba(243,245,239,.7);margin-top:2px}
+
+/* 9. 核心（天秤） */
+.core{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:clamp(10px,2vw,22px)}
+.scale{position:relative;width:min(84%,620px);height:clamp(96px,15vw,150px)}
+.scale .beam{position:absolute;left:0;right:0;top:34%;height:3px;background:rgba(243,245,239,.75);border-radius:2px;transform-origin:center;transform:rotate(0deg);transition:transform 1.3s cubic-bezier(.3,.9,.3,1)}
+.sc.on .scale .beam{transform:rotate(-6.5deg)}
+.scale .pan{position:absolute;top:34%;width:clamp(120px,26%,220px);transform:translateX(-50%);text-align:center;transition:transform 1.3s cubic-bezier(.3,.9,.3,1)}
+.scale .pan .txt{border-radius:12px;padding:10px 12px;font-size:clamp(10.5px,1.28vw,15px);font-weight:800;line-height:1.45}
+.scale .pan.l{left:16%}
+.scale .pan.r{left:84%}
+.scale .pan.l .txt{background:rgba(200,210,206,.2);border:1px solid rgba(200,210,206,.6);color:#EEF3F0;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.scale .pan.r .txt{background:rgba(255,215,0,.22);border:1px solid rgba(255,215,0,.85);color:#FFF6D0;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.sc.on .scale .pan.l{transform:translateX(-50%) translateY(20px)}
+.sc.on .scale .pan.r{transform:translateX(-50%) translateY(-16px)}
+.scale .pan b{display:block;font-family:var(--latin);font-size:clamp(11px,1.35vw,16px);margin-bottom:3px;opacity:.75}
+.core .q{font-size:clamp(15px,2.4vw,32px);font-weight:900;text-align:center;line-height:1.5;color:#F7F9F5;text-shadow:0 2px 18px #031116,0 0 3px rgba(15,95,82,.8)}
+.core .q b{color:var(--yellow)}
+.core .fin{font-size:clamp(12px,1.6vw,19px);font-weight:800;color:#F7F9F5;text-shadow:0 2px 12px rgba(0,0,0,.55)}
+.core .fin b{color:var(--yellow)}
+
+/* 10. 戻り */
+.back{display:flex;align-items:center;justify-content:center;gap:clamp(10px,2.6vw,34px);height:100%;flex-wrap:wrap}
+.back .mini{background:rgba(228,114,107,.24);border:1px solid rgba(228,114,107,.75);color:#FFE6E3;border-radius:10px;padding:9px 15px;font-size:clamp(11px,1.35vw,16px);font-weight:800}
+.back .arw{font-family:var(--latin);font-size:clamp(18px,2.6vw,34px);color:rgba(243,245,239,.55)}
+.back .hub{background:rgba(255,215,0,.22);border:1px solid rgba(255,215,0,.9);color:#FFF6D0;border-radius:14px;padding:14px 22px;font-size:clamp(13px,1.9vw,24px);font-weight:900;text-align:center;line-height:1.4}
+
+/* 11. 答え */
+.ans{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:clamp(10px,2.2vw,24px)}
+.ans .band{width:min(74%,560px);height:clamp(12px,2vw,20px);border-radius:999px;background:linear-gradient(90deg,var(--yellow),rgba(143,224,196,.9));box-shadow:0 0 28px rgba(255,215,0,.28)}
+.ans .three{display:flex;gap:clamp(10px,2.4vw,30px);flex-wrap:wrap;justify-content:center}
+.ans .three div{background:rgba(255,255,255,.14);border:1px solid rgba(255,215,0,.75);color:#FFF6D0;border-radius:12px;padding:11px 24px;font-size:clamp(13px,1.8vw,23px);font-weight:900}
+.ans .wall{font-size:clamp(11.5px,1.5vw,18px);font-weight:800;color:#FFE6E3;background:rgba(228,114,107,.24);border:1px solid rgba(228,114,107,.75);border-radius:999px;padding:7px 18px}
+
+/* 字幕 */
+.exp .subs{position:absolute;left:6%;right:6%;bottom:13%;text-align:center;pointer-events:none;z-index:3}
+.exp .subs p{margin:0 0 .35em;font-size:clamp(13px,1.85vw,25px);font-weight:700;line-height:1.5;text-shadow:0 2px 16px #031116,0 0 2px rgba(15,95,82,.7);opacity:0;transform:translateY(10px);transition:transform .35s cubic-bezier(.16,1,.3,1);word-break:keep-all;text-wrap:balance}
+.exp .subs p.in{opacity:1;transform:none}
+.exp .subs p b{color:var(--yellow);font-weight:900}
+.exp .subs p .w{display:inline-block}
+
+/* UI */
+.exp .ui{position:absolute;left:0;right:0;bottom:0;z-index:6;display:flex;align-items:center;gap:10px;padding:10px 14px;background:linear-gradient(0deg,rgba(3,13,22,.75),transparent)}
+.exp .ui button{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:7px 13px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
+.exp .ui button:hover{background:rgba(255,255,255,.26)}
+.exp .ui button.on{background:var(--yellow);color:#1a1a1a;border-color:var(--yellow)}
+.exp .chaps{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.exp .chaps a{font-size:10.5px;font-weight:700;color:rgba(243,245,239,.75);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:5px 10px;cursor:pointer;text-decoration:none}
+.exp .chaps a.cur{background:rgba(255,215,0,.9);color:#1a1a1a;border-color:transparent}
+@media (max-width:700px){.exp .chaps{display:none}}
+.exp .pbar{position:absolute;left:0;bottom:0;height:3px;background:var(--yellow);width:0;z-index:8}
+.exp .poster{position:absolute;inset:0;z-index:7;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:8%;background:radial-gradient(120% 90% at 50% 112%,#0F5F52 0%,#0B2F3A 46%,#07141F 100%)}
+.exp .poster.off{display:none}
+.exp .poster .eb{font-family:var(--latin);font-size:11px;letter-spacing:.2em;color:rgba(243,245,239,.6);margin:0}
+.exp .poster h3{margin:0;font-size:clamp(18px,2.9vw,34px);font-weight:900;line-height:1.5}
+.exp .poster h3 b{color:var(--yellow)}
+.exp .poster .go{background:var(--yellow);color:#1a1a1a;border:0;border-radius:999px;padding:14px 30px;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit}
+.exp .poster .go:hover{background:#ffe45c}
+.exp .poster .nt{margin:0;font-size:12px;color:rgba(243,245,239,.55)}
+</style>
+
+<div class="wrap">
+<div class="exp" id="exp">
+  <div class="cam"><div class="world">
+    <div class="stage" id="stage"><div class="eralayer" id="eraLayer"><div class="eras"><div class="era" style="--h:20%"><div class="cap">1.0</div><div class="per">戦前</div><div class="barwrap"><div class="bar"></div></div></div><div class="era" style="--h:38%"><div class="cap">2.0</div><div class="per">戦後から<br>ITバブルまで</div><div class="barwrap"><div class="bar"></div></div></div><div class="era" style="--h:56%"><div class="cap">3.0</div><div class="per">ITバブルから<br>AI登場まで</div><div class="barwrap"><div class="bar"></div></div></div><div class="era" style="--h:76%"><div class="cap">4.0</div><div class="per">いま</div><div class="barwrap"><div class="bar"></div></div></div></div><div class="axisline"></div></div><div class="sc" data-k="pain"><div class="pain"><div class="p el">採れない。</div><div class="p el">定着しない。</div><div class="p el">人への投資が、実らない。</div></div></div><div class="sc" data-k="axis"></div><div class="sc" data-k="era1"></div><div class="sc" data-k="era2"></div><div class="sc" data-k="era3"></div><div class="sc" data-k="era4"></div><div class="sc" data-k="gap"><div class="gap2"><div class="col a"><div class="lb">働く側の選択肢</div><div class="v">4.0</div><div class="barwrap"><div class="bar"></div></div></div><div class="col b"><div class="lb">会社の制度</div><div class="v">2.0 – 3.0</div><div class="barwrap"><div class="bar"></div></div></div></div><div class="gapmark el" data-d="1.0">この一段が、ズレ</div></div><div class="sc" data-k="check"><div class="checks"><div class="r el"><span class="n">01</span><span class="tx">報酬<small>貢献が、反映されているか</small></span></div><div class="r el"><span class="n">02</span><span class="tx">評価と管理<small>成果が、見えているか</small></span></div><div class="r el"><span class="n">03</span><span class="tx">柔軟性<small>働き方が、仕事に合っているか</small></span></div></div></div><div class="sc" data-k="core"><div class="core"><div class="scale"><div class="beam"></div><div class="pan l"><div class="txt"><b>2.0</b>人を迎え、<br>長く育てる会社</div></div><div class="pan r"><div class="txt"><b>4.0</b>人を、人にしか<br>できないことに<br>配れている会社</div></div></div><p class="q">会社を支えた手段が、<br>いつしか<b>「正しさ」</b>になる。</p><p class="fin el" data-d="2.0">人を大切にする。その方法は、<b>変えられる</b>。</p></div></div><div class="sc" data-k="back"><div class="back"><div class="mini el">採れない</div><div class="mini el">定着しない</div><div class="mini el">投資が実らない</div><div class="arw el">›</div><div class="hub el">誰が、何を担い、<br>何を生むかの<b>設計</b></div></div></div><div class="sc" data-k="answer"><div class="ans"><div class="band el"></div><div class="three"><div class="el" data-d="0.7">社員</div><div class="el" data-d="0.95">外注</div><div class="el" data-d="1.2">AI</div></div><div class="wall el" data-d="2.0">ただし、制度の壁は残っている</div></div></div></div>
+    <div class="hz" id="hz"></div>
+  </div></div>
+  <div class="subs" id="subs"></div>
+  <div class="ui">
+    <button type="button" id="pp">❚❚</button>
+    <div class="chaps" id="chaps"></div>
+    <button type="button" id="mute" class="on">♪ 音声オン</button>
+  </div>
+  <div class="pbar" id="bar"></div>
+  <div class="poster" id="poster">
+    <p class="eb">EXPLAINER ｜ 約2分</p>
+    <h3>働き方は、なぜ<b>4.0</b>なのか。</h3>
+    <button type="button" class="go" id="go">▶ 2分の解説を見る</button>
+    <p class="nt">音声が流れます。右下のボタンで消せます。</p>
+  </div>
+  <audio id="na" preload="none"></audio>
+</div>
+</div>
+
+<script>
+(function(){
+  var B=[{"id": "n01", "kind": "pain", "t": 0.0, "d": 8.95, "subs": ["採れない。定着しない。", "人への投資が、実らない。", "見直すのは、<b>仕事と人の配り方</b>。"]}, {"id": "n02", "kind": "axis", "t": 9.65, "d": 4.19, "subs": ["働き方を、<b>四つの時代</b>で見る。"]}, {"id": "n03", "kind": "era1", "t": 14.54, "d": 8.77, "subs": ["腕を磨き、家業をつなぐ。"]}, {"id": "n04", "kind": "era2", "t": 24.01, "d": 12.91, "subs": ["正確に、たくさん。", "人を育て、<b>組織の力</b>で応える。"]}, {"id": "n05", "kind": "era3", "t": 37.62, "d": 12.33, "subs": ["「何ができるか」が、価値になる。", "会社の<b>内と外</b>が、つながる。"]}, {"id": "n06", "kind": "era4", "t": 50.65, "d": 11.99, "subs": ["社員、外注、AIを組み合わせる。", "<b>何を任せ、何を自分で決めるか。</b>"]}, {"id": "n07", "kind": "gap", "t": 63.34, "d": 8.85, "subs": ["働く側の選択肢は、4.0へ。", "会社の制度は、<b>追いついているか</b>。"]}, {"id": "n08", "kind": "check", "t": 72.89, "d": 10.89, "subs": ["ズレは、三つ。"]}, {"id": "n09", "kind": "core", "t": 84.48, "d": 21.69, "subs": ["<b>守っているのは、人ですか。</b>", "それとも、<b>人を守ってきた型</b>ですか。"]}, {"id": "n10", "kind": "back", "t": 106.87, "d": 10.89, "subs": ["人数や時間だけでは、測れない。", "誰が、何を担い、何を生むか。", "採用も定着も、報酬も。その<b>設計</b>につながっている。"]}, {"id": "n11", "kind": "answer", "t": 118.46, "d": 15.37, "subs": ["だから、<b>働き方4.0</b>。", "成果を見える形に。仕事を分け、役割を配り直す。", "ただし、<b>制度の壁</b>は残っている。"]}], TOTAL=134.53, CH=[{"i": 0, "label": "悩み", "t": 0.0}, {"i": 2, "label": "四つの時代", "t": 14.54}, {"i": 6, "label": "ズレ", "t": 63.34}, {"i": 8, "label": "良い会社の定義", "t": 84.48}, {"i": 10, "label": "答え", "t": 118.46}], AUD='narration.m4a';
+  var exp=document.getElementById('exp'),stage=document.getElementById('stage'),subs=document.getElementById('subs'),
+      hz=document.getElementById('hz'),bar=document.getElementById('bar'),pp=document.getElementById('pp'),
+      mute=document.getElementById('mute'),chaps=document.getElementById('chaps'),poster=document.getElementById('poster'),
+      go=document.getElementById('go'),na=document.getElementById('na');
+  var scenes=[].slice.call(stage.querySelectorAll('.sc'));
+  var eraLayer=document.getElementById('eraLayer');
+  var eras=[].slice.call(eraLayer.querySelectorAll('.era'));
+  var t=0,run=false,last=0,raf=null,cur=-1,started=false,sound=true;
+
+  CH.forEach(function(c){var a=document.createElement('a');a.textContent=c.label;a.dataset.t=c.t;a.addEventListener('click',function(){seek(parseFloat(c.t));});chaps.appendChild(a);});
+  var chapEls=[].slice.call(chaps.children);
+
+  function enter(i){
+    cur=i; var b=B[i];
+    scenes.forEach(function(s,k){s.classList.toggle('on',k===i)});
+    // 時代の累積表示
+    var eraIdx={era1:0,era2:1,era3:2,era4:3}[b.kind];
+    var isEra=(b.kind==='axis'||eraIdx!==undefined);
+    eraLayer.classList.toggle('on',isEra);
+    eras.forEach(function(e,k){
+      e.classList.toggle('now', eraIdx!==undefined && k===eraIdx);
+      e.classList.toggle('seen', eraIdx!==undefined && k<eraIdx);
+    });
+    if(isEra){ eraLayer.querySelector('.axisline').style.setProperty('--ax',1); }
+    var els=[].slice.call(scenes[i].querySelectorAll('.el'));
+    els.forEach(function(e){e.classList.remove('in')});
+    els.forEach(function(e,k){ var d=parseFloat(e.dataset.d); if(isNaN(d)) d=0.15+k*0.2;
+      setTimeout(function(){ if(cur===i) e.classList.add('in'); }, d*1000); });
+    subs.innerHTML='';
+    b.subs.forEach(function(h,k){var p=document.createElement('p');p.innerHTML=h;p.dataset.at=(0.25+k*1.5);subs.appendChild(p);});
+    chapEls.forEach(function(a){a.classList.toggle('cur', parseFloat(a.dataset.t)<=b.t+0.01 && (CH.filter(function(c){return c.t>b.t+0.01})[0]||{t:1e9}).t>parseFloat(a.dataset.t));});
+  }
+  function render(x){
+    var i=0; for(var k=0;k<B.length;k++){ if(x>=B[k].t) i=k; }
+    if(i!==cur) enter(i);
+    var st=x-B[cur].t;
+    [].forEach.call(subs.children,function(p){ if(st>=parseFloat(p.dataset.at)) p.classList.add('in'); });
+    hz.style.setProperty('--ls', x<1.2?(x/1.2):1);
+    bar.style.width=Math.min(100,x/TOTAL*100)+'%';
+  }
+  function tick(now){ if(!run) return; t=Math.min(TOTAL,t+(now-last)/1000); last=now; render(t);
+    if(sound&&na.src){ var d=Math.abs(na.currentTime-t); if(d>0.35){ try{na.currentTime=t}catch(e){} } }
+    if(t<TOTAL) raf=requestAnimationFrame(tick); else stop(); }
+  function play(){ if(run) return; run=true; last=performance.now(); raf=requestAnimationFrame(tick); pp.textContent='❚❚';
+    if(sound){ if(!na.src) na.src=AUD; try{na.currentTime=t; na.play().catch(function(){});}catch(e){} } }
+  function pause(){ run=false; if(raf)cancelAnimationFrame(raf); raf=null; pp.textContent='▶'; try{na.pause()}catch(e){} }
+  function stop(){ pause(); t=TOTAL; render(TOTAL); }
+  function seek(x){ t=Math.max(0,Math.min(TOTAL,x)); cur=-1; render(t); if(sound&&na.src){try{na.currentTime=t}catch(e){}} }
+  window.expSeek=seek;
+
+  go.addEventListener('click',function(){ poster.classList.add('off'); started=true; if(!na.src) na.src=AUD; play(); });
+  pp.addEventListener('click',function(){ if(!started){go.click();return;} run?pause():play(); });
+  mute.addEventListener('click',function(){ sound=!sound; mute.classList.toggle('on',sound); mute.textContent=sound?'♪ 音声オン':'♪ 音声オフ';
+    if(sound){ if(!na.src) na.src=AUD; if(run){try{na.currentTime=t; na.play().catch(function(){});}catch(e){}} } else { try{na.pause()}catch(e){} } });
+  document.addEventListener('visibilitychange',function(){ if(document.hidden&&run) pause(); });
+  render(0);
+})();
+</script>
+
+</body>
+</html>
