@@ -825,7 +825,8 @@
     var kick=function(){vids.forEach(function(v){if(v.paused)tryPlay(v);});};
     ['scroll','touchstart','pointerdown','keydown'].forEach(function(ev){window.addEventListener(ev,kick,{once:true,passive:true});});
     /* play only while visible */
-    if('IntersectionObserver' in window){var vio=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting)tryPlay(v);else if(!v.paused)v.pause();});},{threshold:0.1});vids.forEach(function(v){vio.observe(v);});}
+    if('IntersectionObserver' in window){var vio=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting)tryPlay(v);else if(!v.paused&&document.visibilityState==='visible')v.pause();});},{threshold:0.1});
+      document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')kick();});vids.forEach(function(v){vio.observe(v);});}
 
     /* hero parallax on mouse */
     var hero=document.querySelector('.hero .card'),txt=document.getElementById('heroTxt'),hv=document.getElementById('heroVideo');
