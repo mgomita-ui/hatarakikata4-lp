@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>なぜ、効率化しても利益が残らないのか｜解説</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700&display=swap">
+<style>
+:root{--paper:#F1F5F1;--yellow:#FFD700;--mint:#8FE0C4;--rose:#E4726B;--latin:'Poppins',sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);font-family:'Noto Sans JP',sans-serif}
+.wrap{max-width:1160px;margin:24px auto;padding:0 20px}
+.mv{position:relative;width:100%;aspect-ratio:16/9;min-height:400px;border-radius:18px;overflow:hidden;color:#F7F9F5;
+    background:radial-gradient(130% 100% at 50% 115%,#0F5F52 0%,#0B2F3A 48%,#06131B 100%);box-shadow:0 24px 60px rgba(7,34,30,.3)}
+.stage{position:absolute;left:0;right:0;top:5%;bottom:27%}
+.sc{position:absolute;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column}
+.sc.on{display:flex}
+.el{opacity:0}
+.el.in{opacity:1}
+.tag{font-family:var(--latin);font-size:clamp(9px,1vw,12px);letter-spacing:.2em;color:rgba(247,249,245,.55);margin-bottom:clamp(6px,1.2vw,14px)}
+
+/* S1 */
+.doc{display:flex;align-items:center;gap:10px;font-size:clamp(13px,1.6vw,20px);font-weight:900;margin-bottom:clamp(10px,2vw,22px)}
+.doc svg{width:clamp(22px,2.6vw,34px);height:auto;color:var(--mint)}
+.tline{position:relative;width:min(78%,760px);height:clamp(26px,3.6vw,46px);border-radius:8px;background:rgba(255,255,255,.07);overflow:hidden}
+.tline .fill{position:absolute;left:0;top:0;bottom:0;width:100%;border-radius:8px;background:linear-gradient(90deg,rgba(255,215,0,.95),rgba(255,215,0,.5))}
+.tnum{margin-top:clamp(8px,1.4vw,16px);font-family:var(--latin);font-weight:700;font-size:clamp(26px,4.6vw,64px);color:var(--yellow);line-height:1}
+.tnum small{font-family:'Noto Sans JP';font-size:.42em;margin-left:.18em;font-weight:900}
+.chip{margin-top:clamp(8px,1.3vw,14px);display:inline-flex;align-items:center;gap:7px;background:rgba(143,224,196,.18);border:1px solid rgba(143,224,196,.65);
+  color:#CFF5E6;border-radius:999px;padding:6px 15px;font-size:clamp(10px,1.15vw,14px);font-weight:800}
+
+/* 1日の棒（S2/S5共有） */
+.dayl{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center}
+.dayl.up{justify-content:flex-start;padding-top:3%}
+.sc[data-k="s5"]{justify-content:flex-end;padding-bottom:3%}
+.dayl.on{display:flex}
+.dayhead{display:flex;justify-content:space-between;width:min(88%,900px);font-family:var(--latin);font-size:clamp(9.5px,1.1vw,13px);color:rgba(247,249,245,.6);margin-bottom:7px}
+.day{display:flex;width:min(88%,900px);height:clamp(38px,5.4vw,66px);border-radius:10px;overflow:hidden;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14)}
+.day .b{position:relative;display:grid;place-items:center;font-size:clamp(8.5px,.95vw,12px);font-weight:800;color:rgba(247,249,245,.92);
+  border-right:1px solid rgba(6,19,27,.55);overflow:hidden;white-space:nowrap;background:rgba(255,255,255,.1)}
+.day .b.q{background:linear-gradient(180deg,rgba(255,215,0,.92),rgba(255,215,0,.5));color:#1a1a1a}
+.day .gap{width:0;display:grid;place-items:center;overflow:hidden;white-space:nowrap;
+  background:repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 8px,transparent 8px 16px);
+  border:1px dashed rgba(255,215,0,.8);color:var(--yellow);font-size:clamp(11px,1.5vw,20px);font-weight:900}
+.day .gap.filled{background:linear-gradient(180deg,rgba(143,224,196,.8),rgba(20,160,122,.4));border-style:solid;border-color:rgba(143,224,196,.95);color:#06131B;font-size:clamp(8.5px,.95vw,12.5px)}
+.daynote{margin-top:clamp(10px,1.6vw,18px);font-size:clamp(11px,1.5vw,20px);font-weight:800}
+.daynote b{color:var(--yellow)}
+
+/* S3 */
+.profit{width:min(72%,680px)}
+.profit svg{width:100%;height:auto;overflow:visible}
+.plabel{margin-top:clamp(8px,1.4vw,16px);font-family:var(--latin);font-weight:700;font-size:clamp(30px,5.4vw,76px);color:var(--rose);line-height:1}
+.plabel small{font-family:'Noto Sans JP';font-size:.32em;color:rgba(247,249,245,.75);margin-left:.2em;font-weight:900}
+
+/* S4 */
+.deal{display:flex;align-items:center;gap:clamp(10px,2.2vw,28px);width:min(94%,960px)}
+.party{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:clamp(10px,1.7vw,20px);text-align:center}
+.party b{display:block;font-size:clamp(12px,1.6vw,21px);font-weight:900;margin-bottom:6px}
+.party span{font-size:clamp(9.5px,1.05vw,13.5px);color:rgba(247,249,245,.82);line-height:1.55}
+.mid{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:7px;min-width:clamp(130px,24vw,320px)}
+.mid .lb{font-size:clamp(9.5px,1.05vw,13px);color:rgba(247,249,245,.6);letter-spacing:.1em}
+.buy{position:relative;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.32);border-radius:10px;padding:9px 14px;font-size:clamp(11px,1.4vw,18px);font-weight:900;text-align:center;width:100%}
+.buy.no{color:rgba(247,249,245,.55)}
+.buy .cutline{position:absolute;left:7%;top:50%;height:2px;width:86%;background:var(--rose);transform:scaleX(0);transform-origin:left}
+.buy.yes{background:rgba(255,215,0,.18);border-color:rgba(255,215,0,.85);color:#FFF3C4}
+.arw{font-family:var(--latin);font-size:clamp(15px,2vw,26px);color:rgba(247,249,245,.5)}
+
+/* S5 */
+.res{display:flex;align-items:center;gap:clamp(8px,1.8vw,22px);flex-wrap:wrap;justify-content:center}
+.res .box{position:relative;border-radius:12px;padding:10px 18px;font-size:clamp(11px,1.4vw,18px);font-weight:900}
+.res .from{background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.65);color:#FFF3C4}
+.res .to1{background:rgba(228,114,107,.16);border:1px solid rgba(228,114,107,.7);color:#FFE0DD}
+.res .to1 .cutline{position:absolute;left:7%;top:50%;height:2px;width:86%;background:var(--rose);transform:scaleX(0);transform-origin:left}
+.res .to2{background:rgba(143,224,196,.18);border:1px solid rgba(143,224,196,.8);color:#CFF5E6}
+.res .ar{font-family:var(--latin);color:rgba(247,249,245,.5);font-size:clamp(14px,1.9vw,24px)}
+
+/* 字幕・UI */
+.cap{position:absolute;left:0;right:0;bottom:46px;text-align:center;padding:0 5%;pointer-events:none}
+.cap span{display:inline-block;background:rgba(4,14,12,.84);font-size:clamp(12.5px,1.75vw,22px);font-weight:700;line-height:1.55;padding:9px 18px;border-radius:11px;word-break:keep-all;text-wrap:balance;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.cap b{color:var(--yellow);font-weight:900}
+.ui{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:9px;padding:9px 12px;background:linear-gradient(0deg,rgba(4,14,12,.85),transparent)}
+.ui button{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.36);color:#fff;border-radius:999px;padding:7px 13px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
+.ui button:hover{background:rgba(255,255,255,.28)}
+.ui button.on{background:var(--yellow);color:#1a1a1a;border-color:var(--yellow)}
+.ui .sp{flex:1}
+.ui .tm{font-size:11px;color:rgba(247,249,245,.8);font-variant-numeric:tabular-nums}
+.bar{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--yellow);z-index:4}
+.poster{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;text-align:center;padding:7%;
+  background:radial-gradient(130% 100% at 50% 115%,#0F5F52 0%,#0B2F3A 48%,#06131B 100%)}
+.poster.off{display:none}
+.poster p{margin:0;font-family:var(--latin);font-size:11px;letter-spacing:.2em;color:rgba(247,249,245,.6)}
+.poster h1{margin:0;font-size:clamp(19px,3vw,38px);font-weight:900;line-height:1.45}
+.poster h1 b{color:var(--yellow)}
+.poster button{background:var(--yellow);color:#1a1a1a;border:0;border-radius:999px;padding:14px 30px;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit}
+.poster small{color:rgba(247,249,245,.55);font-size:11.5px}
+@media (max-width:700px){.mv{aspect-ratio:4/3}.deal{flex-direction:column}.mid{min-width:0;width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="mv" id="mv">
+  <div class="stage" id="stage">
+
+    <div class="sc" data-k="s1">
+      <div class="tag el" data-d="0">A CASE</div>
+      <div class="doc el" data-d="0.2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>見積書を1枚つくる</div>
+      <div class="tline el" data-d="0.45"><div class="fill" id="s1fill"></div></div>
+      <div class="tnum el" data-d="0.65"><span id="s1num">3</span><small id="s1unit">時間</small></div>
+      <div class="chip" id="s1chip" style="opacity:0">▶ AIを入れた</div>
+    </div>
+
+    <div class="sc" data-k="s3">
+      <div class="tag el" data-d="0">PROFIT</div>
+      <div class="profit el" data-d="0.15">
+        <svg viewBox="0 0 600 170" aria-hidden="true">
+          <line x1="30" y1="150" x2="580" y2="150" stroke="rgba(247,249,245,.35)" stroke-width="2"/>
+          <line x1="30" y1="12" x2="30" y2="150" stroke="rgba(247,249,245,.35)" stroke-width="2"/>
+          <path d="M30 112 L560 34" stroke="rgba(143,224,196,.4)" stroke-width="3" stroke-dasharray="7 7" fill="none"/>
+          <text x="596" y="38" fill="rgba(143,224,196,.75)" font-size="15" text-anchor="end" font-family="Noto Sans JP">期待</text>
+          <path id="pact" d="M30 112 L560 112" stroke="#E4726B" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="530" stroke-dashoffset="530"/>
+          <text x="596" y="105" fill="#E4726B" font-size="15" text-anchor="end" font-family="Noto Sans JP">実際</text>
+        </svg>
+      </div>
+      <div class="plabel" id="pzero" style="opacity:0">±0<small>円</small></div>
+    </div>
+
+    <div class="sc" data-k="s4">
+      <div class="tag el" data-d="0">THE CONTRACT</div>
+      <div class="deal">
+        <div class="party el" data-d="0.2"><b>会社</b><span>賃金を払い、<br>簡単には解雇しない</span></div>
+        <div class="mid">
+          <div class="lb el" data-d="0.5">買っているもの</div>
+          <div class="buy no el" data-d="0.7">成果<i class="cutline" id="cut1"></i></div>
+          <div class="arw el" data-d="2.6">▼</div>
+          <div class="buy yes el" data-d="2.8">9:00–18:00<br>その場所にいること</div>
+        </div>
+        <div class="party el" data-d="0.35"><b>山田さん</b><span>時間・場所に拘束され、<br>大枠の仕事を承諾する</span></div>
+      </div>
+    </div>
+
+    <div class="sc" data-k="s5">
+      <div class="res">
+        <div class="box from el" data-d="0.3">効率化で浮いた時間</div>
+        <div class="ar el" data-d="0.5">→</div>
+        <div class="box to1 el" data-d="0.7">利益<i class="cutline" id="cut2"></i></div>
+        <div class="ar el" data-d="2.2">→</div>
+        <div class="box to2 el" data-d="2.4">埋めた仕事</div>
+      </div>
+    </div>
+
+    <div class="dayl" id="dayl">
+      <div class="dayhead"><span>9:00</span><span>18:00</span></div>
+      <div class="day">
+        <div class="b" style="width:8%">朝礼</div>
+        <div class="b q" id="dq" style="width:33%">見積 3時間</div>
+        <div class="gap" id="dgap">?</div>
+        <div class="b" style="width:14%">打合せ</div>
+        <div class="b" style="width:27%">製造管理</div>
+        <div class="b" style="width:18%">事務</div>
+      </div>
+      <div class="daynote el" id="dnote" data-d="0.4">1日の長さは、<b>変わらない</b>。</div>
+    </div>
+
+  </div>
+  <div class="cap" id="cap"></div>
+  <div class="ui">
+    <button type="button" id="pp">❚❚</button>
+    <button type="button" id="rw">↺ 最初から</button>
+    <span class="sp"></span>
+    <span class="tm" id="tm">0:00</span>
+    <button type="button" id="mu" class="on">♪ 音声オン</button>
+  </div>
+  <div class="bar" id="bar"></div>
+  <div class="poster" id="poster">
+    <p>EXPLAINER ｜ PILOT</p>
+    <h1>3時間の仕事が、30秒になった。<br>では、<b>利益はいくら増えたか。</b></h1>
+    <button type="button" id="go">▶ 見る（50秒）</button>
+    <small>音声が流れます。右下のボタンで消せます。</small>
+  </div>
+  <audio id="au" preload="none" src="pilot.m4a"></audio>
+</div>
+</div>
+<script>
+(function(){
+ var B=[{"t": 0.0, "sc": "s1", "cap": "見積書を1枚つくるのに、<b>3時間</b>。AIを入れて、<b>30秒</b>に。", "cues": [{"k": "shrink", "at": 5.0}]}, {"t": 9.2, "sc": "s2", "cap": "浮いた<b>2時間59分30秒</b>は、どこへ行ったのか。", "cues": [{"k": "daygap", "at": 1.6}]}, {"t": 18.84, "sc": "s3", "cap": "答えは、<b>ゼロ円</b>。", "cues": [{"k": "flat", "at": 0.5}]}, {"t": 22.08, "sc": "s4", "cap": "会社が買っているのは、成果ではない。<b>時間と場所</b>である。", "cues": [{"k": "cutno", "at": 1.3}]}, {"t": 35.7, "sc": "s5", "cap": "効率化の果実は、利益ではなく<b>「埋めた仕事」</b>に変わる。", "cues": [{"k": "dayfill", "at": 1.2}, {"k": "cutto1", "at": 1.4}]}], TOTAL=49.8;
+ var $=function(i){return document.getElementById(i)};
+ var mv=$('mv'),stage=$('stage'),cap=$('cap'),bar=$('bar'),pp=$('pp'),rw=$('rw'),mu=$('mu'),tm=$('tm'),
+     poster=$('poster'),go=$('go'),au=$('au'),dayl=$('dayl');
+ var scenes={}; [].forEach.call(stage.querySelectorAll('.sc'),function(s){scenes[s.dataset.k]=s;});
+ var t=0,run=false,last=0,raf=null,cur=-1,sound=true;
+
+ function cl(v){return v<0?0:v>1?1:v}
+ function ez(v){v=cl(v);return v*v*(3-2*v)}
+ function lerp(a,b,e){return a+(b-a)*e}
+
+ function enter(i){
+   cur=i; var b=B[i];
+   for(var k in scenes) scenes[k].classList.toggle('on', k===b.sc);
+   dayl.classList.toggle('on', b.sc==='s2'||b.sc==='s5');
+   dayl.classList.toggle('up', b.sc==='s5');
+   cap.innerHTML='<span>'+b.cap+'</span>';
+ }
+ // 段階表示・アニメーションはすべて経過時間から毎フレーム計算する
+ function frame(x){
+   var i=0; for(var k=0;k<B.length;k++){ if(x>=B[k].t) i=k; }
+   if(i!==cur) enter(i);
+   var b=B[i], st=x-b.t;
+   // 共通：.el の順次表示
+   var host=(b.sc==='s2')?dayl:scenes[b.sc];
+   if(b.sc==='s5'){ [].forEach.call(dayl.querySelectorAll('.el'),function(e){e.classList.add('in')}); }
+   [].forEach.call((host||dayl).querySelectorAll('.el'),function(e,k){
+     var d=parseFloat(e.dataset.d); if(isNaN(d)) d=0.15+k*0.18;
+     e.classList.toggle('in', st>=d);
+   });
+   // S1 バーが縮む
+   var e1=ez((st-4.6)/1.6);
+   if(b.sc==='s1'){
+     $('s1fill').style.width=lerp(100,2.4,e1)+'%';
+     $('s1num').textContent = st>=4.9 ? '30' : '3';
+     $('s1unit').textContent = st>=4.9 ? '秒' : '時間';
+     $('s1chip').style.opacity = st>=5.2 ? 1 : 0;
+   }
+   // S2 空白ができる / S5 空白が埋まる
+   if(b.sc==='s2'||b.sc==='s5'){
+     var e2=(b.sc==='s2')?ez((st-1.4)/1.6):1;
+     $('dq').style.width=lerp(33,1.5,e2)+'%';
+     $('dgap').style.width=lerp(0,31.5,e2)+'%';
+     var filled=(b.sc==='s5'&&st>=1.0);
+     $('dgap').classList.toggle('filled',filled);
+     $('dgap').textContent = filled ? '別の仕事で、埋まる' : '?';
+     $('dnote').innerHTML = (b.sc==='s5') ? '空いた時間は、<b>別の仕事</b>で埋まる。' : '1日の長さは、<b>変わらない</b>。';
+   }
+   // S3 折れ線が水平に伸びる
+   if(b.sc==='s3'){
+     $('pact').setAttribute('stroke-dashoffset', String(lerp(530,0,ez((st-0.4)/1.5))));
+     $('pzero').style.opacity = st>=1.9 ? 1 : 0;
+   }
+   // S4 「成果」に取り消し線
+   if(b.sc==='s4'){ $('cut1').style.transform='scaleX('+ez((st-2.0)/0.6)+')'; }
+   // S5 「利益」に取り消し線
+   if(b.sc==='s5'){ $('cut2').style.transform='scaleX('+ez((st-1.8)/0.6)+')'; }
+   bar.style.width=Math.min(100,x/TOTAL*100)+'%';
+   var s=Math.floor(x); tm.textContent=Math.floor(s/60)+':'+('0'+(s%60)).slice(-2);
+ }
+ function tick(now){ if(!run) return; t=Math.min(TOTAL,t+(now-last)/1000); last=now; frame(t);
+   if(sound&&!au.paused){ var d=Math.abs(au.currentTime-t); if(d>0.4){ try{au.currentTime=t}catch(e){} } }
+   if(t<TOTAL) raf=requestAnimationFrame(tick); else { run=false; pp.textContent='▶'; try{au.pause()}catch(e){} } }
+ function play(){ if(run||t>=TOTAL) return; run=true; last=performance.now(); raf=requestAnimationFrame(tick); pp.textContent='❚❚';
+   if(sound){ try{au.currentTime=t; au.play().catch(function(){});}catch(e){} } }
+ function pause(){ run=false; if(raf)cancelAnimationFrame(raf); raf=null; pp.textContent='▶'; try{au.pause()}catch(e){} }
+ function seek(x){ t=Math.max(0,Math.min(TOTAL,x)); cur=-1; frame(t); if(sound){try{au.currentTime=t}catch(e){}} }
+ window.mvSeek=seek; window.mvFrame=frame;
+ go.addEventListener('click',function(){ poster.classList.add('off'); seek(0); play(); });
+ pp.addEventListener('click',function(){ if(poster.classList.contains('off')){ run?pause():play(); } else go.click(); });
+ rw.addEventListener('click',function(){ seek(0); play(); });
+ mu.addEventListener('click',function(){ sound=!sound; mu.classList.toggle('on',sound); mu.textContent=sound?'♪ 音声オン':'♪ 音声オフ';
+   if(sound){ if(run){try{au.currentTime=t; au.play().catch(function(){});}catch(e){}} } else { try{au.pause()}catch(e){} } });
+ document.addEventListener('visibilitychange',function(){ if(document.hidden&&run) pause(); });
+ frame(0);
+})();
+</script>
+</body>
+</html>
