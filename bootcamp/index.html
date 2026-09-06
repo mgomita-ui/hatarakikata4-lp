@@ -427,6 +427,18 @@
   .sub1{font-size:16px;color:var(--ink-2);max-width:48em;line-height:1.9}
   .gloss{display:inline-block;font-size:12.5px;color:var(--ink-3);background:#F1F5F3;border-radius:6px;padding:2px 8px;margin-top:6px}
 
+  /* keep growing */
+  .grow{margin-top:18px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+  .grow-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;padding:12px 18px;background:#F6F9F7;border-bottom:1px solid var(--line)}
+  .grow-h b{font-size:16px;font-weight:900}
+  .grow-h span{font-size:12.5px;color:var(--ink-3)}
+  .grow-g{display:grid;grid-template-columns:repeat(3,1fr)}
+  .grow-g>div{padding:16px 18px;border-right:1px solid var(--line)}
+  .grow-g>div:last-child{border-right:0}
+  .grow-g i{font-style:normal;font-family:var(--latin);font-weight:700;font-size:12px;color:var(--blue);letter-spacing:.14em}
+  .grow-g b{display:block;font-size:15px;font-weight:900;margin:4px 0 6px}
+  .grow-g p{font-size:13px;color:var(--ink-2);margin:0}
+  @media (max-width:800px){.grow-g{grid-template-columns:1fr}.grow-g>div{border-right:0;border-bottom:1px solid var(--line)}.grow-g>div:last-child{border-bottom:0}}
   /* chat vs code */
   .cmp{margin-top:22px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
   .cmp-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;padding:12px 18px;background:#F6F9F7;border-bottom:1px solid var(--line)}
@@ -443,6 +455,8 @@
   .cmp-c p{font-size:13.5px;color:var(--ink-2);margin:8px 0 10px}
   .cmp-f{display:inline-block;font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:#EEF2F0;color:var(--ink-2)}
   .cmp-c.on .cmp-f{background:var(--green-deep);color:#fff}
+  .cmp-tags{display:flex;flex-direction:column;gap:4px;margin-top:10px}
+  .cmp-tags span{font-size:12px;color:var(--ink-2);background:#fff;border:1px solid var(--line);border-radius:6px;padding:4px 8px}
   @media (max-width:760px){.cmp-g{grid-template-columns:1fr}.cmp-c{border-right:0;border-bottom:1px solid var(--line)}.cmp-c:last-child{border-bottom:0}}
   /* outcome trio */
   .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
@@ -682,7 +696,7 @@
   決定事項だけ箇条書きで
 <span class="ok">✓</span> 議事録_0906.md（決定5・宿題3）
 <span class="p">›</span> <span class="cur"></span></pre></div></div>
-        <div class="bd"><div class="n">01</div><h3>Claude Code と Codex が、自分のPCで動く</h3><p>日本語で指示すると、ファイルを作り、調べ、まとめる「AIの実行役」です。当日の最初の20分で自分のPCに立ち上げ、その後の課題はすべて自分で指示して解きます。</p><span class="gloss">Claude Code＝Anthropic社、Codex＝OpenAI社の、指示で仕事を実行するAI</span></div>
+        <div class="bd"><div class="n">01</div><h3>Claude Code と Codex が、自分のPCで動く</h3><p>日本語で指示すると、ファイルを作り、調べ、まとめる「AIの実行役」です。当日の最初の20分で自分のPCに立ち上げ、その後の課題はすべて自分で指示して解きます。日本語で頼んで動くものを作る「バイブコーディング」と、AIに作らせて人が確かめて直す「AI駆動開発」を、この日のうちに体で覚えます。</p><span class="gloss">Claude Code＝Anthropic社、Codex＝OpenAI社の、指示で仕事を実行するAI</span></div>
       </div>
       <div class="o">
         <div class="vis"><div class="wire"><div class="src"><span>会計</span><span>勤怠・給与</span><span>メール</span><span>カレンダー</span><span>チャット</span></div><div class="arr">→</div><div class="hub">MCP<small>共通の配線口</small></div><div class="arr">→</div><div class="out">AIが読める<small>「先月の粗利は？」「残業が増えた部署は？」に、自社の数字で答える</small></div></div></div>
@@ -697,7 +711,7 @@
       <div class="cmp-h"><b>「チャット」と「コード」は、何が違う？</b><span>ブートキャンプで身につけるのは、右側です。</span></div>
       <div class="cmp-g">
         <div class="cmp-c"><div class="cmp-t">チャットAI</div><div class="cmp-io"><span>聞く</span><i>›</i><span>答えが返る（文章）</span></div><p>「見積の作り方を教えて」→ 手順の説明が返る。作るのは、自分。</p><div class="cmp-f">作業は、自分でやる</div></div>
-        <div class="cmp-c on"><div class="cmp-t">コードAI</div><div class="cmp-io"><span>頼む</span><i>›</i><span>仕事が終わる（ファイル・数字・接続）</span></div><p>「先月の受注から見積を三社分作って」→ 見積ファイルが3つできる。会計につなげば、粗利も返る。</p><div class="cmp-f">人は、決める</div></div>
+        <div class="cmp-c on"><div class="cmp-t">コードAI</div><div class="cmp-io"><span>頼む</span><i>›</i><span>仕事が終わる（ファイル・数字・接続）</span></div><p>「先月の受注から見積を三社分作って」→ 見積ファイルが3つできる。会計につなげば、粗利も返る。</p><div class="cmp-f">人は、決める</div><div class="cmp-tags"><span>バイブコーディング＝日本語で頼んで、動くものを作る</span><span>AI駆動開発＝AIに作らせ、人が確かめて直す</span></div></div>
       </div>
     </div>
     <div class="concl"><div class="ct">この3つがそろうと</div><p>AIは「知っている」から「使いこなせる」に変わります。<span class="y">翌朝の経営会議から、判断の材料と速さが変わります。</span></p></div>
@@ -784,6 +798,14 @@
       <div class="a"><div class="w">T+15D</div><h4>15日後</h4><p>経営会議スコアが数字で見え、改善が定着し始める。</p></div>
       <div class="a on"><div class="w">T+1D 09:00</div><h4>翌朝9時</h4><p>経営会議で、AIに数字を出させて判断する。</p></div>
       <div class="a next"><div class="w">T+90D</div><h4>90日後、上級者へ</h4><p>ご希望の企業には、FDE（御社に入り、AIを組織に組み込む実装担当）を派遣。AIが中心のチーム運営へ進みます。</p><a class="mlink" href="../manga2/#p18" style="margin-top:8px;font-size:12.5px"><i>MANGA</i>FDEが来た90日を読む ›</a></div>
+    </div>
+    <div class="grow">
+      <div class="grow-h"><b>帰ってからも、伸びる。</b><span>5時間は起点です。自主学習で、できることが毎週増えます。</span></div>
+      <div class="grow-g">
+        <div><i>01</i><b>毎日15分のドリル</b><p>持ち帰る教材で「頼む→動かす→確かめる→直す」を反復。集める・要約・比べる・洗い出す・分析する、を日課に。</p></div>
+        <div><i>02</i><b>自分で、小さなツールを作る</b><p>在庫の集計、見積の下書き、会議の要約。日本語で頼んで動くものを作る（バイブコーディング）。作ったものが、翌日の仕事で使えます。</p></div>
+        <div><i>03</i><b>月次1on1で、詰まりを解く</b><p>3か月の伴走。進まない理由を15分で解き、次の一手を決める。伸びが止まらない仕組みです。</p></div>
+      </div>
     </div>
     <div class="chips"><span><i>持ち帰り 01</i>Claude Code 稼働環境一式</span><span><i>02</i>AI経営チーム設計図（4役の定義書）</span><span><i>03</i>経営会議スコアレポート</span><span><i>04</i>90日アクションプラン</span></div>
   </section>
