@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>古い前提を外し、仕事を業務単位で再設計する｜図解の解説</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<style>
+:root{--yellow:#FFD700;--paper:#F1F5F1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);font-family:'Noto Sans JP',sans-serif}
+.wrap{max-width:1160px;margin:24px auto;padding:0 20px}
+.fx{position:relative;width:100%;aspect-ratio:16/9;min-height:360px;border-radius:16px;overflow:hidden;background:#0B1A16;box-shadow:0 22px 56px rgba(7,34,30,.26)}
+.stagewrap{position:absolute;inset:0;overflow:hidden}
+.pan{position:absolute;transform-origin:0 0;transition:transform 1.15s cubic-bezier(.25,.9,.25,1);will-change:transform}
+.pan img{display:block;width:100%;height:auto}
+.spot{position:absolute;border:solid var(--yellow);border-radius:6px;box-shadow:0 0 0 9999px rgba(4,14,12,.62);transition:left .95s cubic-bezier(.25,.9,.25,1),top .95s cubic-bezier(.25,.9,.25,1),width .95s cubic-bezier(.25,.9,.25,1),height .95s cubic-bezier(.25,.9,.25,1);pointer-events:none}
+.cap{position:absolute;left:0;right:0;bottom:44px;text-align:center;padding:0 5%;pointer-events:none}
+.cap span{display:inline-block;background:rgba(6,20,17,.86);color:#F7F9F5;font-size:clamp(13px,1.9vw,23px);font-weight:700;line-height:1.5;padding:10px 20px;border-radius:12px;box-shadow:0 8px 26px rgba(0,0,0,.4);word-break:keep-all}
+.cap b{color:var(--yellow);font-weight:900}
+.ui{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:10px;padding:9px 12px;background:linear-gradient(0deg,rgba(4,14,12,.85),transparent)}
+.ui button{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.38);color:#fff;border-radius:999px;padding:7px 13px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
+.ui button:hover{background:rgba(255,255,255,.28)}
+.ui button.on{background:var(--yellow);color:#1a1a1a;border-color:var(--yellow)}
+.ui .sp{flex:1}
+.ui .tm{font-size:11px;color:rgba(247,249,245,.8);font-variant-numeric:tabular-nums}
+.bar{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--yellow);z-index:4}
+.poster{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:6%;background:linear-gradient(180deg,rgba(4,14,12,.55),rgba(4,14,12,.88))}
+.poster.off{display:none}
+.poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.28;z-index:-1}
+.poster p{margin:0;font-size:12px;letter-spacing:.16em;color:rgba(247,249,245,.7)}
+.poster h1{margin:0;font-size:clamp(17px,2.6vw,30px);font-weight:900;color:#fff;line-height:1.5;text-shadow:0 3px 20px rgba(0,0,0,.6)}
+.poster button{background:var(--yellow);color:#1a1a1a;border:0;border-radius:999px;padding:14px 30px;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit}
+.poster button:hover{background:#ffe45c}
+.poster small{color:rgba(247,249,245,.6);font-size:11.5px}
+@media (max-width:700px){.fx{aspect-ratio:4/3}.cap{bottom:40px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="fx" id="fx">
+    <div class="stagewrap">
+      <div class="pan" id="pan"><img id="fig" src="fig3.jpg" alt="古い前提を外し、仕事を業務単位で再設計する"><div class="spot" id="spot"></div></div>
+    </div>
+    <div class="cap" id="cap"></div>
+    <div class="ui">
+      <button type="button" id="pp">❚❚</button>
+      <button type="button" id="rw">↺ 最初から</button>
+      <span class="sp"></span>
+      <span class="tm" id="tm">0:00</span>
+      <button type="button" id="mu" class="on">♪ 音声オン</button>
+    </div>
+    <div class="bar" id="bar"></div>
+    <div class="poster" id="poster">
+      <img src="fig3.jpg" alt="">
+      <p>図解の解説</p>
+      <h1>古い前提を外し、仕事を業務単位で再設計する</h1>
+      <button type="button" id="go">▶ 解説を見る</button>
+      <small>音声が流れます。右下のボタンで消せます。</small>
+    </div>
+    <audio id="au" preload="none" src="narr3.m4a"></audio>
+  </div>
+</div>
+<script>
+(function(){
+ var B=[{"t": 0.0, "d": 14.29, "sub": "大事なのは、<b>順番</b>。", "boxes": [{"t": 0, "x": 3, "y": 8, "w": 93, "h": 22}]}, {"t": 14.99, "d": 23.15, "sub": "仕事を、<b>AI・人・外部</b>に分ける。", "boxes": [{"t": 0, "x": 4, "y": 28, "w": 30, "h": 40}, {"t": 8.0, "x": 35, "y": 28, "w": 30, "h": 40}, {"t": 15.5, "x": 66, "y": 28, "w": 30, "h": 40}]}, {"t": 38.84, "d": 19.45, "sub": "先に契約ではなく、<b>先に仕事を分ける</b>。", "boxes": [{"t": 0, "x": 3, "y": 69, "w": 93, "h": 12}, {"t": 7.0, "x": 3, "y": 80, "w": 93, "h": 8}, {"t": 12.0, "x": 0, "y": 87, "w": 100, "h": 13}]}], TOTAL=58.99;
+ var fx=document.getElementById('fx'),pan=document.getElementById('pan'),fig=document.getElementById('fig'),
+     spot=document.getElementById('spot'),cap=document.getElementById('cap'),bar=document.getElementById('bar'),
+     pp=document.getElementById('pp'),rw=document.getElementById('rw'),mu=document.getElementById('mu'),
+     tm=document.getElementById('tm'),poster=document.getElementById('poster'),go=document.getElementById('go'),au=document.getElementById('au');
+ var t=0,run=false,last=0,raf=null,cur=-1,curBox=-1,sound=true,iw=0,ih=0,started=false;
+
+ function layout(){
+   var fw=fx.clientWidth, fh=fx.clientHeight, r=(fig.naturalWidth||2526)/(fig.naturalHeight||1786);
+   if(fw/fh > r){ ih=fh; iw=fh*r; } else { iw=fw; ih=fw/r; }
+   pan.style.width=iw+'px'; pan.style.height=ih+'px';
+   pan.style.left=((fw-iw)/2)+'px'; pan.style.top=((fh-ih)/2)+'px';
+ }
+ function applyBox(b,anim){
+   if(!anim){ pan.style.transition='none'; spot.style.transition='none'; }
+   var fw=fx.clientWidth, fh=fx.clientHeight;
+   var ox=(fw-iw)/2, oy=(fh-ih)/2;
+   var bw=b.w/100*iw, bh=b.h/100*ih, px=(b.x+b.w/2)/100*iw, py=(b.y+b.h/2)/100*ih;
+   var S=Math.min(fw*0.88/bw, fh*0.74/bh);
+   S=Math.max(1,Math.min(3.4,S));
+   var tx=fw/2-ox-S*px, ty=fh/2-oy-S*py;
+   // 図の外側が映らないように寄せを制限
+   if(S*iw<=fw){ tx=(fw-S*iw)/2-ox; } else { tx=Math.min(-ox, Math.max(fw-ox-S*iw, tx)); }
+   if(S*ih<=fh){ ty=(fh-S*ih)/2-oy; } else { ty=Math.min(-oy, Math.max(fh-oy-S*ih, ty)); }
+   pan.style.transform='translate('+tx+'px,'+ty+'px) scale('+S+')';
+   spot.style.left=b.x+'%'; spot.style.top=b.y+'%'; spot.style.width=b.w+'%'; spot.style.height=b.h+'%';
+   spot.style.borderWidth=(3/S)+'px'; spot.style.borderRadius=(6/S)+'px';
+   if(!anim){ void pan.offsetWidth; pan.style.transition=''; spot.style.transition=''; }
+ }
+ function render(x){
+   var i=0; for(var k=0;k<B.length;k++){ if(x>=B[k].t) i=k; }
+   var b=B[i], st=x-b.t;
+   if(i!==cur){ cur=i; curBox=-1; cap.innerHTML='<span>'+b.sub+'</span>'; }
+   var bi=0; for(var j=0;j<b.boxes.length;j++){ if(st>=b.boxes[j].t) bi=j; }
+   if(bi!==curBox){ curBox=bi; applyBox(b.boxes[bi],true); }
+   bar.style.width=Math.min(100,x/TOTAL*100)+'%';
+   var s=Math.floor(x); tm.textContent=Math.floor(s/60)+':'+('0'+(s%60)).slice(-2);
+ }
+ function tick(now){ if(!run) return; t=Math.min(TOTAL,t+(now-last)/1000); last=now; render(t);
+   if(sound&&au.src){ var d=Math.abs(au.currentTime-t); if(d>0.4){ try{au.currentTime=t}catch(e){} } }
+   if(t<TOTAL) raf=requestAnimationFrame(tick); else { run=false; pp.textContent='▶'; try{au.pause()}catch(e){} } }
+ function play(){ if(run||t>=TOTAL) return; run=true; last=performance.now(); raf=requestAnimationFrame(tick); pp.textContent='❚❚';
+   if(sound){ if(!au.src) au.src=au.getAttribute('src'); try{au.currentTime=t; au.play().catch(function(){});}catch(e){} } }
+ function pause(){ run=false; if(raf)cancelAnimationFrame(raf); raf=null; pp.textContent='▶'; try{au.pause()}catch(e){} }
+ function seek(x){ t=Math.max(0,Math.min(TOTAL,x)); cur=-1; curBox=-1; render(t); if(sound&&au.src){try{au.currentTime=t}catch(e){}} }
+ window.figSeek=seek;
+ go.addEventListener('click',function(){ poster.classList.add('off'); started=true; layout(); seek(0); play(); });
+ pp.addEventListener('click',function(){ if(!started){go.click();return;} run?pause():play(); });
+ rw.addEventListener('click',function(){ seek(0); if(!run) play(); });
+ mu.addEventListener('click',function(){ sound=!sound; mu.classList.toggle('on',sound); mu.textContent=sound?'♪ 音声オン':'♪ 音声オフ';
+   if(sound){ if(run){ try{au.currentTime=t; au.play().catch(function(){});}catch(e){} } } else { try{au.pause()}catch(e){} } });
+ window.addEventListener('resize',function(){ layout(); if(cur>=0&&curBox>=0) applyBox(B[cur].boxes[curBox],false); });
+ document.addEventListener('visibilitychange',function(){ if(document.hidden&&run) pause(); });
+ function boot(){ layout(); render(0); }
+ if(fig.complete) boot(); else fig.addEventListener('load',boot);
+})();
+</script>
+</body>
+</html>
