@@ -112,6 +112,37 @@
   .ladder .s4 i{position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-style:normal;background:var(--yellow);color:#1A1A1A;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;white-space:nowrap}
   @media (max-width:900px){.hero .card{grid-template-columns:1fr;min-height:0}.hero .txt{padding:40px 24px 36px}.ladder{min-height:260px;padding:0 24px 28px}.hero .bg:after{background:linear-gradient(180deg,rgba(7,34,30,.96) 0%,rgba(7,34,30,.85) 60%,rgba(7,34,30,.6) 100%)}}
 
+  /* 59秒の物語（漫画をアニメ化した説明動画） */
+  /* 配置はヒーロー直後の通常フロー。FVを潰さないよう高さを固定しない。 */
+  #movie{scroll-margin-top:78px}
+  .mv{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:1}
+  .mv .in{max-width:1120px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:minmax(0,1fr) 520px;align-items:center;gap:32px}
+  .mv .eb2{font-family:var(--latin);font-weight:600;font-size:11px;letter-spacing:.18em;color:var(--green-deep);margin-bottom:8px}
+  .mv h2{font-size:28px;font-weight:900;line-height:1.4}
+  .mv h2 b{color:var(--green-deep)}
+  .mv p{margin:12px 0 0;font-size:16px;line-height:1.7;color:var(--ink-2)}
+  .mv .meta{margin-top:10px;font-size:13px;color:var(--ink-3)}
+  .mv .note{margin-top:4px;font-size:12px;color:var(--ink-3)}
+  .mv .frame{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:12px;background:#07141F;box-shadow:var(--shadow)}
+  .mv .frame img,.mv .frame video{display:block;width:100%;height:100%;object-fit:contain}
+  .mv .start{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:pointer;font-family:inherit}
+  .mv .start .lab{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);padding:12px 20px;border-radius:8px;background:#fff;color:var(--ink);white-space:nowrap;font-size:16px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+  .mv .start .lab small{display:block;margin-top:4px;font-size:12px;font-weight:500;color:var(--ink-3)}
+  .mv .start:hover .lab{background:#fffdf5}
+  .mv .end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;background:var(--green-soft);text-align:center}
+  .mv .end b{font-size:18px;font-weight:900}
+  .mv .end .links{display:flex;gap:14px;align-items:center;font-size:13px}
+  .mv .end .links button{font-family:inherit;font-size:13px;background:none;border:0;color:var(--ink-2);text-decoration:underline;cursor:pointer;padding:0}
+  .hero .mvlink{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;font-size:14px;font-weight:700;color:var(--green-lt);text-decoration:underline;text-underline-offset:3px}
+  .hero .mvlink:hover{color:#fff}
+  @media (max-width:899px){
+    .mv .in{grid-template-columns:minmax(0,1fr);gap:16px;padding:24px 16px}
+    .mv .copy{order:2}
+    .mv h2{font-size:22px}
+    .mv p{font-size:15px;margin-top:8px}
+    .mv .start .lab{font-size:14px;padding:10px 16px}
+  }
+
   .chap{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding:0 24px 40px}
   .chap .in{background:var(--paper);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;min-height:230px;position:relative}
   .chap .in:before{content:"";position:absolute;inset:0;background:var(--green);z-index:0;border-radius:18px}
@@ -659,6 +690,7 @@
           <a class="btn btn-primary" href="#apply" style="background:#14A07A">受講を申し込む（経営者優先枠） <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
           <a class="btn btn-ghost on-dark" href="#three">出るときに、できていること</a>
         </div>
+        <a class="mvlink" href="#movie" data-mv>▶ 59秒の物語を見る（音声あり）</a>
       </div>
     </div>
     <div class="evo" aria-label="初心者から中級者、上級者への進化">
@@ -678,6 +710,35 @@
     </div>
   </div>
 </header>
+
+<!-- 59秒の物語（漫画 第二部をアニメ化） -->
+<section class="mv" id="movie" aria-labelledby="mvTitle">
+  <div class="in">
+    <div class="copy">
+      <p class="eb2">59 SECONDS</p>
+      <h2 id="mvTitle">AIを使う経営を、<b>59秒の物語</b>で。</h2>
+      <p>町工場の社長・田村が、5時間の講座へ。AIに任せること、自分で決めることを描きます。</p>
+      <p class="meta">59秒 ｜ 音声・字幕あり ｜ 約6MB</p>
+      <p class="note">※ 講座を題材にしたフィクションです。漫画『ある経営者の選択 II』より。</p>
+    </div>
+    <div class="frame" id="mvFrame">
+      <button type="button" class="start" id="mvGo" aria-label="59秒の物語を再生する">
+        <picture>
+          <source srcset="media/boot-movie-poster.webp" type="image/webp">
+          <img src="media/boot-movie-poster.jpg" width="1280" height="720" loading="lazy" decoding="async" alt="">
+        </picture>
+        <span class="lab">▶ 59秒の物語を見る<small>音が出ます</small></span>
+      </button>
+      <video id="mvVideo" controls playsinline preload="none" hidden
+             aria-label="経営者のためのAIブートキャンプ、59秒の物語"></video>
+      <div class="end" id="mvEnd" hidden>
+        <b>次は、あなたの会社で。</b>
+        <a class="btn btn-primary" href="#apply" style="background:#14A07A">受講を申し込む</a>
+        <div class="links"><a href="#apply">受講要項を見る</a><button type="button" id="mvAgain">もう一度見る</button></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- 01 できること（最初に見せる） -->
 <div class="chap" id="three">
@@ -1014,6 +1075,37 @@
     if(!reduce&&window.matchMedia('(pointer:fine)').matches){
       qa('.trio .o, .abc .c, .after .a, .spec .box').forEach(function(el){el.classList.add('tilt');el.addEventListener('mousemove',function(e){var r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform='perspective(900px) rotateX('+(y*-7)+'deg) rotateY('+(x*9)+'deg) translateY(-4px)';el.classList.add('on');});el.addEventListener('mouseleave',function(){el.style.transform='';el.classList.remove('on');});});
     }
+  })();
+
+
+  /* 59秒の物語：押されるまで mp4 を取りに行かない。
+     再生はクリックハンドラの中で src付与 → play() → スクロールの順。
+     setTimeout を挟むとユーザー操作と切り離され、音付き再生を拒否される。 */
+  (function(){
+    var frame=document.getElementById('mvFrame'), v=document.getElementById('mvVideo'),
+        go=document.getElementById('mvGo'), end=document.getElementById('mvEnd'),
+        again=document.getElementById('mvAgain'), hero=document.getElementById('heroVideo');
+    if(!frame||!v||!go) return;
+
+    function play(scroll){
+      if(!v.getAttribute('src')) v.setAttribute('src','media/boot-movie.mp4');
+      go.hidden=true; end.hidden=true; v.hidden=false;
+      if(hero&&!hero.paused){ hero.pause(); hero.dataset.mvPaused='1'; }
+      var p=v.play();
+      if(p&&p.catch) p.catch(function(){ go.hidden=false; v.hidden=true; });
+      if(scroll) frame.scrollIntoView({behavior:'smooth',block:'center'});
+    }
+    function stopBack(){
+      if(hero&&hero.dataset.mvPaused){ delete hero.dataset.mvPaused; hero.play().catch(function(){}); }
+    }
+
+    go.addEventListener('click',function(){ play(false); });
+    if(again) again.addEventListener('click',function(){ v.currentTime=0; play(false); });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-mv]'),function(a){
+      a.addEventListener('click',function(e){ e.preventDefault(); play(true); });
+    });
+    v.addEventListener('ended',function(){ v.hidden=true; end.hidden=false; stopBack(); });
+    v.addEventListener('pause',function(){ if(!v.ended) stopBack(); });
   })();
 </script>
 

@@ -1,0 +1,39 @@
+{
+  "a_desk": {
+    "duration": 5,
+    "prompt": "A middle-aged Japanese factory owner sits at his desk. He breathes slowly and turns his gaze toward the window. Warm sunset light shifts gently across the room, faint dust motes drift in the light. Very slow push in."
+  },
+  "a_trio": {
+    "duration": 5,
+    "prompt": "Two young office workers stand talking quietly; small head movements and gentle breathing. In the background an older man in a navy work jacket walks slowly past a doorway. Static camera."
+  },
+  "c03": {
+    "duration": 10,
+    "prompt": "A middle-aged man in a navy work jacket sits at his desk with his hand resting on a closed laptop. He breathes, lowers his eyes once, and his shoulders drop slightly. The room is still. Very slow push in."
+  },
+  "c04": {
+    "duration": 5,
+    "prompt": "A middle-aged man in a navy work jacket stands in an open doorway holding the handle, then steps forward one small pace into the meeting room. The seated people turn their heads slightly toward him. Static camera."
+  },
+  "c05": {
+    "duration": 5,
+    "prompt": "A woman in a navy suit stands beside a whiteboard holding a marker, breathing and making one small nod. Her mouth stays closed. The writing on the whiteboard stays perfectly still and unchanged. Static camera."
+  },
+  "c06": {
+    "duration": 5,
+    "prompt": "A woman in a navy suit holds up exactly three fingers, keeping her hand and fingers completely motionless in the same position. Only gentle breathing and one very slight nod. Her mouth stays closed. Do not change the number of fingers. The bento boxes and bottles stay perfectly still. Static camera."
+  },
+  "c08": {
+    "duration": 10,
+    "prompt": "A middle-aged man watches a laptop screen; he blinks once and leans in very slightly. The text and numbers on the laptop screens stay perfectly still and unchanged. Very slow push in.",
+    "resolution": "1080p"
+  },
+  "a_face": {
+    "duration": 5,
+    "prompt": "Close-up of a middle-aged man's face. A single tear rolls slowly down his cheek, he blinks once, and his faint smile deepens. Almost no other movement. Very slow push in."
+  },
+  "c10": {
+    "duration": 5,
+    "prompt": "Three people look at a laptop together at night. Only the older man in the navy work jacket makes one slight nod. The other two remain almost still. All mouths stay closed. The text on the screen stays unchanged. Static camera."
+  }
+}

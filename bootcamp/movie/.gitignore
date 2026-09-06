@@ -1,0 +1,12 @@
+# 生成物はコミットしない。配信するのは bootcamp/media/ 側だけ。
+# crops.py → tts.py → prep.py → animate.py → build.py で全部作り直せる。
+anim/*.png
+anim/*.mp4
+src/
+voice/
+voice_t/
+work/
+bgm_raw.wav
+boot-movie*.mp4
+boot-movie-poster.*
+_*
