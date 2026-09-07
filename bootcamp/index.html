@@ -131,10 +131,15 @@
   .mv .start .lab{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);padding:12px 20px;border-radius:8px;background:#fff;color:var(--ink);white-space:nowrap;font-size:16px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.35)}
   .mv .start .lab small{display:block;margin-top:4px;font-size:12px;font-weight:500;color:var(--ink-3)}
   .mv .start:hover .lab{background:#fffdf5}
-  .mv .end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;background:var(--green-soft);text-align:center}
-  .mv .end b{font-size:18px;font-weight:900}
-  .mv .end .links{display:flex;gap:14px;align-items:center;font-size:13px}
-  .mv .end .links button{font-family:inherit;font-size:13px;background:none;border:0;color:var(--ink-2);text-decoration:underline;cursor:pointer;padding:0}
+  /* 見終わったあとの導線。全面を覆うと空白だらけの箱になるので、
+     最終カット（いつAIやるの、今でしょ。）を残したまま下端に帯で重ねる。 */
+  .mv .end{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 14px;padding:14px 16px;background:linear-gradient(180deg,rgba(7,20,31,0),rgba(7,20,31,.82) 38%,rgba(7,20,31,.94));color:#fff;text-align:center}
+  .mv .end b{font-size:15px;font-weight:900;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+  .mv .end .btn{padding:9px 18px;font-size:13.5px}
+  .mv .end .links{display:flex;gap:14px;align-items:center;font-size:12.5px}
+  .mv .end .links a{color:rgba(255,255,255,.9)}
+  .mv .end .links button{font-family:inherit;font-size:12.5px;background:none;border:0;color:rgba(255,255,255,.9);text-decoration:underline;cursor:pointer;padding:0}
+  @media (max-width:520px){.mv .end{gap:6px 10px;padding:10px 12px}.mv .end b{width:100%;font-size:14px}}
   .hero .mvlink{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;font-size:14px;font-weight:700;color:var(--green-lt);text-decoration:underline;text-underline-offset:3px}
   .hero .mvlink:hover{color:#fff}
   @media (max-width:899px){
@@ -1092,7 +1097,7 @@
 
     function play(scroll){
       if(!v.getAttribute('src')) v.setAttribute('src','media/boot-movie.mp4');
-      go.hidden=true; end.hidden=true; v.hidden=false;
+      go.hidden=true; end.hidden=true; v.hidden=false; v.controls=true;
       if(hero&&!hero.paused){ hero.pause(); hero.dataset.mvPaused='1'; }
       var p=v.play();
       /* src を付けた直後の play() は読み込みに割り込まれて AbortError になることがある。
@@ -1111,7 +1116,7 @@
     Array.prototype.forEach.call(document.querySelectorAll('[data-mv]'),function(a){
       a.addEventListener('click',function(e){ e.preventDefault(); play(true); });
     });
-    v.addEventListener('ended',function(){ v.hidden=true; end.hidden=false; stopBack(); });
+    v.addEventListener('ended',function(){ v.controls=false; end.hidden=false; stopBack(); });
     v.addEventListener('error',function(){ v.hidden=true; end.hidden=true; go.hidden=false; stopBack(); });
     v.addEventListener('pause',function(){ if(!v.ended) stopBack(); });
   })();
