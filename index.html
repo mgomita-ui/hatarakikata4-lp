@@ -1121,7 +1121,9 @@ html.op-on{overflow:hidden}
   function loop(){ render(v.currentTime); raf=v.paused?null:requestAnimationFrame(loop); }
   v.addEventListener('play',function(){ if(!raf) raf=requestAnimationFrame(loop); syncPause(); });
   v.addEventListener('pause',syncPause);
-  v.addEventListener('timeupdate',function(){ if(!raf) render(v.currentTime); });
+  // timeupdate では必ず描く。rAF はタブが隠れると止まるが、raf 変数は残るので
+  // 「rAF が無いときだけ」にすると字幕が固まる（68秒で冒頭の字幕のまま、を実測）。
+  v.addEventListener('timeupdate',function(){ render(v.currentTime); });
   v.addEventListener('seeked',function(){ cur=-1; render(v.currentTime); });
   v.addEventListener('ended',close);
   v.addEventListener('error',function(){ close(); });
