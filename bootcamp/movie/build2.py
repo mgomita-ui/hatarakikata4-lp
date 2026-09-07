@@ -18,15 +18,15 @@ from PIL import Image, ImageDraw, ImageFont
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 HERE = os.path.dirname(os.path.abspath(__file__))
-ANIM, SRC, VOICE = (os.path.join(HERE, d) for d in ('anim', 'src', 'voice_t'))
-ANIM2 = os.path.join(HERE, 'anim2')   # Seedance で中割りし直したクリップ
+ANIM, SRC, VOICE = (os.path.join(HERE, d) for d in ('anim3', 'src', 'voice2_t'))
+ANIM2 = os.path.join(HERE, 'anim3')   # 作り直した manga2 v7 のコマ
 
 
 def clip_path(name):
     """anim2 があればそちらを使う。無ければ従来の anim/ に落ちる。"""
     a2 = os.path.join(ANIM2, name + '.mp4')
     return a2 if os.path.exists(a2) else os.path.join(ANIM, name + '.mp4')
-WORK = os.path.join(HERE, 'work')
+WORK = os.path.join(HERE, 'work2')
 
 W, H, FPS = 1920, 1080, 30
 LEAD, TAIL, XF = 0.45, 0.75, 0.45
@@ -38,32 +38,25 @@ GOLD, PAPER, GREEN = (255, 215, 0), (243, 245, 239), (15, 95, 82)
 
 # カット定義。src はクリップ名（anim/<name>.mp4）、still は静止画（src/<name>.png）。
 # tel は [テキスト, 開始, 終了] の相対秒。終了 None はカット末尾まで。
-CUTS = [
-    dict(line='L01', src='a_desk',
-         tel=[['借りた力が去ったあと、\n人は、何をもって立つのだろう。', .2, None]]),
-    dict(line='L02', src='a_trio',
-         tel=[['社長が使ってくれたら、\nうちも変われるのに。', .2, None]]),
-    dict(line='L03', src='c03',
-         tel=[['使えるもんなら、使うとる。', .2, 2.9],
-              ['あいつがおらん画面に、\n何を頼めばええんや。', 3.1, None]]),
-    dict(line='L04', src='c04', chip='経営者だけの、5時間',
-         tel=[['半年後。', .2, None]]),
-    dict(line='L05', src='c05',
-         tel=[['ルールは一つ。\n五時間、他の仕事は捨ててください。', .2, None]]),
-    # Kling は指を 2 本に描き替えてしまい「三つできています」と食い違った。
-    # Seedance では始点と終点に同じ絵を渡して指を固定している（anime.py の ENDS）。
-    dict(line='L06', src='c06',
-         tel=[['部屋を出るときには、\n三つできています。', .2, None]]),
-    dict(line='L07', still='card3'),
-    dict(line='L08', src='c08', chip='見積3案　半日 → 2分',
-         tel=[['この見積、三通り出せ。', .2, 2.7],
-              ['……二分か。去年は、半日や。', 2.9, None]]),
-    dict(line='L09', src='a_face',
-         tel=[['あいつの言うとったこと、\n全部、意味があったんや。', .2, None]]),
-    dict(line='L10', src='c10',
-         tel=[['決めるんは、ワシらや。', .2, None]]),
-    dict(line='L11', still='s12'),
-]
+def _cuts():
+    """lines2.json からカット定義を作る。tel は字幕（say をそのまま画面に出す）。"""
+    d = json.load(open(os.path.join(HERE, 'lines2.json'), encoding='utf-8'))
+    out = []
+    for l in d['lines']:
+        c = dict(line=l['id'], src=l['cut'])
+        if l.get('text'):
+            c['chip'] = l['text']
+        # セリフは映画字幕として焼く。長い行は句点で2行に割る。
+        say = l['say']
+        if len(say) > 22 and '。' in say[:-1]:
+            i = say.index('。', 8) + 1
+            say = say[:i] + chr(10) + say[i:]
+        c['tel'] = [[say, .2, None]]
+        out.append(c)
+    return out
+
+
+CUTS = _cuts()
 
 
 def run(cmd):
@@ -180,7 +173,7 @@ def still_png(name, full=False):
 
 
 def slot_durations():
-    d = json.load(open(os.path.join(HERE, 'lines.json'), encoding='utf-8'))
+    d = json.load(open(os.path.join(HERE, 'lines2.json'), encoding='utf-8'))
     dur = {l['id']: l['dur'] for l in d['lines']}
     out = []
     for i, c in enumerate(CUTS):
@@ -308,7 +301,7 @@ def main():
     afl.append("[bg][nsc]sidechaincompress=threshold=0.028:ratio=9:attack=25:release=600[bgd]")
     afl.append("[na][bgd]amix=inputs=2:normalize=0:duration=first,alimiter=limit=0.95[aout]")
 
-    out = os.path.join(HERE, 'boot-movie.mp4')
+    out = os.path.join(HERE, 'boot-movie2.mp4')
     run(['ffmpeg', '-y', '-v', 'error', *ins,
          '-filter_complex', ';'.join(filt + afl),
          '-map', '[vout]', '-map', '[aout]', '-t', f'{total:.3f}',

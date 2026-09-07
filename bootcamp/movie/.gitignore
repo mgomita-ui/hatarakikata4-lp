@@ -1,7 +1,14 @@
 # 生成物はコミットしない。配信するのは bootcamp/media/ 側だけ。
-# crops.py → tts.py → prep.py → animate.py → build.py で全部作り直せる。
+# v1: crops.py → tts.py → prep.py → animate.py → build.py
+# v2: manga2 v7 のページから crops → tts2.py → prep2.py → anime2.py → build2.py
 anim/*.png
 anim/*.mp4
+anim2/
+anim3/
+voice2/
+voice2_t/
+work2/
+.omc/
 src/
 voice/
 voice_t/
