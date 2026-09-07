@@ -882,6 +882,7 @@
     {t0:71.25, t1:76.85, clip:'finale', tr:'fold', endfade:true, lines:[[0.00,'選べる働き方を、<b>会社の側から。</b>',''],[2.63,'それが、働き方4.0。','']]}
   ];
   var CINE_ROGER=41.95, CINE_TITLE=67.95;
+  var CINE_SECS=Math.round(TOTAL);
   var TOTAL=76.8, time=0, running=false, last=0, raf=null, cur=-1, curClip=null, useA=true, seen=false, musicOn=false, partic=[], ctx=null, W=0,H=0, sprite=null, lineEls=[], sceneStart=0, lastSync=0;
   function vid(){return useA?vA:vB} function other(){return useA?vB:vA}
   function setClip(name){
@@ -1064,7 +1065,7 @@
   var gate=document.getElementById('cineGate'); if(gate&&gate.parentNode) gate.parentNode.removeChild(gate);
   var q=location.search;
   try{seen=sessionStorage.getItem('cineSeen')==='1'}catch(e){}
-  if(!seen) rep.innerHTML='\u25b6 55\u79d2\u306e\u6620\u50cf\u3067\u898b\u308b';
+  if(!seen) rep.innerHTML='\u25b6 '+CINE_SECS+'\u79d2\u306e\u6620\u50cf\u3067\u898b\u308b';
   if(/[?&]cine=1/.test(q)){ play(); } else { rep.classList.add('show'); }
 })();
 </script>
