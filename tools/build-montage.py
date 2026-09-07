@@ -181,9 +181,10 @@ def build_grid(names, out, scene_clip, tail=1.30):
         filt.append(f"{cur}[p{i}]overlay=x={x}:y={y}{'' if i < len(src) - 1 else ':shortest=1'}{nxt}")
         cur = nxt
     filt[-1] = filt[-1].replace(cur, '[v]')
+    # 中間素材。build-flat で再エンコードされるので CRF は控えめでよい
     run(['ffmpeg', '-y', '-v', 'error'] + ins +
         ['-filter_complex', ';'.join(filt), '-map', '[v]',
-         '-c:v', 'libx264', '-crf', '20', '-preset', 'medium',
+         '-c:v', 'libx264', '-crf', '24', '-preset', 'medium',
          '-profile:v', 'high', '-level', '4.1', '-x264-params', 'ref=4:bframes=2',
          '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out])
     print(f'grid: {out}  {len(src)}コマ / {total}s')

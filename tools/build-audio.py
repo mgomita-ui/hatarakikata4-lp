@@ -25,6 +25,7 @@ MUS  = os.path.join(ROOT, 'media', 'cine', 'music')
 OUT  = os.path.join(ROOT, 'media', 'cine', 'opening.m4a')
 MAX_TEMPO = 1.30      # これ以上は早口に聞こえるので詰めない（尺を食い込ませる）
 DUCK_DB   = 7         # ナレーション中に音楽を下げる量
+NO_VO     = '--no-vo' in sys.argv   # 仮ナレを鳴らさない（音楽＋効果音のみ）
 
 def dur(p):
     return float(subprocess.check_output(
@@ -69,7 +70,10 @@ def main(track='C'):
         end = max(end, l['cue'] + sp/tempo)
 
     total = round(max(TOTAL, end) + 0.6, 2)
-    filters.append(f"{''.join(labels)}amix=inputs={len(labels)}:normalize=0:dropout_transition=0[vo]")
+    # --no-vo: 仮ナレ(TTS)を鳴らさず、音楽と効果音だけで書き出す(声優の音声が来るまでの公開用)。
+    # 行の配置と尺はそのまま使うので、字幕の同期は変わらない。
+    novo = ',volume=0' if NO_VO else ''
+    filters.append(f"{''.join(labels)}amix=inputs={len(labels)}:normalize=0:dropout_transition=0{novo}[vo]")
 
     slabels = []
     for j, (path, at, gain) in enumerate(sfx):

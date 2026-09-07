@@ -35,7 +35,7 @@ VMAF_FLOOR=${VMAF_FLOOR:-89.5}   # これを割る案は採用しない
 CRFS=${CRFS:-"30 28 26"}         # 攻めた順に試し、下限を満たした時点で採用
 
 # name:KEEP秒 (再生に必要な範囲 = inp + シーン尺、に +0.4s の余裕)。tools/narration.json と対応。
-CLIPS="old1:3.9 new1:3.9 old2:3.9 new2:3.9 old3:3.9 new3:3.9 commute:7.94 rooftop:8.97 intro:7.09 tripbg:4.7 phonebg:7.27 legacy:9.87 montage:5.6 strideA:3.95 cutin:3.7 finale:8.7"
+CLIPS=${CLIPS:-"intro:4.73 old1:3.9 new1:5.9 old2:3.9 new2:5.9 old3:3.9 new3:5.9 old4:3.9 new4:5.9 grid1:4.76 grid2:7.9 commute:8.57 legacy:11.95 founder:11.41 rooftop:9.72 montage:5.6 strideA:3.95 cutin:4.5 finale:8.68"}
 
 mb(){ awk -v b="$1" 'BEGIN{printf "%.2f", b/1048576}'; }
 vmaf(){ # distorted ref keep
@@ -74,8 +74,9 @@ for e in $CLIPS; do
 
   for crf in $CRFS; do
     cand="$OUT/.crf${crf}_$name.mp4"
-    ffmpeg -y -v error -i "$in" -t "$keep" -c:v libx264 -crf "$crf" -preset veryslow \
-      -pix_fmt yuv420p -profile:v high -level 4.1 -x264-params ref=4 \n      -movflags +faststart -an "$cand"
+    ffmpeg -y -v error -i "$in" -t "$keep" -c:v libx264 -crf "$crf" -preset slow \
+      -pix_fmt yuv420p -profile:v high -level 4.1 -x264-params ref=4:bframes=2 \
+      -movflags +faststart -an "$cand"
     csz=$(stat -c%s "$cand")
     [ "$csz" -lt "$bsz" ] || { rm -f "$cand"; continue; }
     v=$(vmaf "$cand" "$in" "$keep"); v=${v:-0}
