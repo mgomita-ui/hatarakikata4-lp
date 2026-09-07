@@ -124,10 +124,9 @@
   .hero .oplink{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:700;color:var(--yellow);text-decoration:underline;text-underline-offset:3px}
   .hero .oplink:hover{color:#fff}
   .hero .links2{display:flex;flex-wrap:wrap;gap:2px 22px;align-items:center;margin-top:8px}
-  /* 57秒の物語（漫画をアニメ化した説明動画） */
   /* 配置はヒーロー直後の通常フロー。FVを潰さないよう高さを固定しない。 */
   /* 固定ナビ62px + 逃げ16px。全アンカー共通にしないと見出しがナビの下に潜る */
-  #top,#three,#why,#design,#battle,#after,#spec,#faq,#apply,#movie,#privacy{scroll-margin-top:78px}
+  #top,#three,#why,#design,#battle,#after,#spec,#faq,#apply,#privacy{scroll-margin-top:78px}
   .mv{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:1}
   .mv .in{max-width:1120px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:minmax(0,1fr) 520px;align-items:center;gap:32px}
   .mv .eb2{font-family:var(--latin);font-weight:600;font-size:11px;letter-spacing:.18em;color:var(--green-deep);margin-bottom:8px}
@@ -713,7 +712,6 @@
           <a class="btn btn-primary" href="#apply" style="background:#14A07A">受講を申し込む（経営者優先枠） <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
           <a class="btn btn-ghost on-dark" href="#three">出るときに、できていること</a>
         </div>
-        <div class="links2"><a class="mvlink" href="#movie" data-mv>▶ 57秒の物語を見る</a></div>
       </div>
     </div>
     <div class="evo" aria-label="初心者から中級者、上級者への進化">
@@ -739,35 +737,7 @@
   <video id="opVideo" controls playsinline preload="none" poster="media/boot-opening-poster.jpg"></video>
   <button type="button" class="skip" id="opSkip">スキップ</button>
 </div>
-<!-- 57秒の物語（漫画 第二部をアニメ化） -->
-<section class="mv" id="movie" aria-labelledby="mvTitle">
-  <div class="in">
-    <div class="copy">
-      <p class="eb2">59 SECONDS</p>
-      <h2 id="mvTitle">AIを使う経営を、<b>57秒の物語</b>で。</h2>
-      <p>町工場の社長・田村が、5時間の講座へ。AIに任せること、自分で決めることを描きます。</p>
-      <p class="meta">57秒 ｜ 音声・字幕あり ｜ 約9MB</p>
-      <p class="note">※ 講座を題材にしたフィクションです。漫画『ある経営者の選択 II』より。</p>
-      <button type="button" class="btn btn-primary play" id="mvPlay" style="background:#0F5F52">▶ 57秒の物語を見る <small>音が出ます</small></button>
-    </div>
-    <div class="frame" id="mvFrame">
-      <button type="button" class="start" id="mvGo" aria-label="57秒の物語を再生する">
-        <picture>
-          <source srcset="media/boot-movie-poster.webp" type="image/webp">
-          <img src="media/boot-movie-poster.jpg" width="1280" height="720" loading="eager" fetchpriority="low" decoding="async" alt="">
-        </picture>
-        <span class="lab">▶ 57秒の物語を見る<small>音が出ます</small></span>
-      </button>
-      <video id="mvVideo" controls playsinline preload="none" hidden
-             aria-label="経営者のためのAIブートキャンプ、57秒の物語"></video>
-      <div class="end" id="mvEnd" hidden>
-        <b>次は、あなたの会社で。</b>
-        <a class="btn btn-primary" href="#apply" style="background:#14A07A">受講を申し込む</a>
-        <div class="links"><a href="#spec">受講要項を見る</a><button type="button" id="mvAgain">もう一度見る</button></div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- 01 できること（最初に見せる） -->
 <div class="chap" id="three">
@@ -1121,40 +1091,7 @@
   })();
 
 
-  /* 57秒の物語：押されるまで mp4 を取りに行かない。
-     再生はクリックハンドラの中で src付与 → play() → スクロールの順。
-     setTimeout を挟むとユーザー操作と切り離され、音付き再生を拒否される。 */
-  (function(){
-    var frame=document.getElementById('mvFrame'), v=document.getElementById('mvVideo'),
-        go=document.getElementById('mvGo'), end=document.getElementById('mvEnd'),
-        again=document.getElementById('mvAgain'), hero=document.getElementById('heroVideo');
-    if(!frame||!v||!go) return;
 
-    function play(scroll){
-      if(!v.getAttribute('src')) v.setAttribute('src','media/boot-movie.mp4');
-      go.hidden=true; end.hidden=true; v.hidden=false; v.controls=true;
-      if(hero&&!hero.paused){ hero.pause(); hero.dataset.mvPaused='1'; }
-      var p=v.play();
-      /* src を付けた直後の play() は読み込みに割り込まれて AbortError になることがある。
-         ここでポスターに戻すと押し直しになるので、controls 付きの動画を出したままにする。 */
-      if(p&&p.catch) p.catch(function(){});
-      if(scroll) frame.scrollIntoView({behavior:'smooth',block:'center'});
-    }
-    function stopBack(){
-      if(hero&&hero.dataset.mvPaused){ delete hero.dataset.mvPaused; hero.play().catch(function(){}); }
-    }
-
-    go.addEventListener('click',function(){ play(false); });
-    var pb=document.getElementById('mvPlay');
-    if(pb) pb.addEventListener('click',function(){ play(false); });
-    if(again) again.addEventListener('click',function(){ v.currentTime=0; play(false); });
-    Array.prototype.forEach.call(document.querySelectorAll('[data-mv]'),function(a){
-      a.addEventListener('click',function(e){ e.preventDefault(); play(true); });
-    });
-    v.addEventListener('ended',function(){ v.controls=false; end.hidden=false; stopBack(); });
-    v.addEventListener('error',function(){ v.hidden=true; end.hidden=true; go.hidden=false; stopBack(); });
-    v.addEventListener('pause',function(){ if(!v.ended) stopBack(); });
-  })();
 
   /* オープニング：押されるまで mp4 を取りに行かない。単一動画を標準再生に任せる。
      切替や同期は持たない（2本の video を切り替える方式は端末で映像だけ止まるため）。 */
