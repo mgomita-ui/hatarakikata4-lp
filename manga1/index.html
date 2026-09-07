@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ある経営者の選択 〜働くの再定義、AI時代の新しい価値〜 ｜ 漫画</title>
-<meta name="description" content="町工場の社長のPCにだけ映ったAI「あいつ」。雇用一択の固定観念から抜け出し、社員の生活とキャリアを守るまで。全24ページ。">
+<meta name="description" content="町工場の社長のPCにだけ映ったAI「あいつ」。雇用一択の固定観念から抜け出し、社員の生活とキャリアを守るまで。全25ページ。">
 <meta property="og:title" content="ある経営者の選択 〜働くの再定義、AI時代の新しい価値〜">
-<meta property="og:description" content="人はなぜ、同じ場所に、同じ時間に集まって働くのだろう。AIと出会った経営者の物語、全24ページ。">
+<meta property="og:description" content="人はなぜ、同じ場所に、同じ時間に集まって働くのだろう。AIと出会った経営者の物語、全25ページ。">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://mgomita-ui.github.io/hatarakikata4-lp/manga1/pages/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -57,7 +57,7 @@
 <body>
 <div class="strip"><i id="bar"></i></div>
 <div class="top">
-  <div class="t">ある経営者の選択<small>〜働くの再定義、AI時代の新しい価値〜 ｜ <span id="cnt">0/24</span></small></div>
+  <div class="t">ある経営者の選択<small>〜働くの再定義、AI時代の新しい価値〜 ｜ <span id="cnt">0/25</span></small></div>
   <nav id="nav"></nav>
 </div>
 <button class="arrow l" id="prev" aria-label="前のページ">‹</button>
@@ -84,19 +84,15 @@
 
 <script>
 (function(){
-  var TOTAL=24;
-  var chapters=[[0,'プロローグ'],[1,'序章'],[5,'出会い'],[11,'再設計'],[20,'別れ']];
+  var TOTAL=25;
+  var chapters=[[1,'序章'],[5,'出会い'],[11,'再設計'],[20,'入札'],[21,'別れ']];
   var viewer=document.getElementById('viewer'),endEl=document.getElementById('end');
-  // プロローグはタイトルの前に置き、ページ番号は振らない
-  ['pr1','pr2'].forEach(function(id){var s=document.createElement('section');s.className='slide';s.id=id;
-    s.innerHTML='<img src="pages/'+id+'.jpg" alt="プロローグ" width="1024" height="1536"><span class="n">Prologue</span>';
-    viewer.insertBefore(s,endEl);});
   for(var i=1;i<=TOTAL;i++){var n=('0'+i).slice(-2);var s=document.createElement('section');s.className='slide';s.id='p'+n;
-    s.innerHTML='<img src="pages/p'+n+'.jpg" alt="ページ'+i+'" loading="lazy" width="1024" height="1536"><span class="n">'+n+' / '+TOTAL+'</span>';
+    s.innerHTML='<img src="pages/p'+n+'.jpg" alt="ページ'+i+'" '+(i>2?'loading="lazy"':'')+' width="1024" height="1536"><span class="n">'+n+' / '+TOTAL+'</span>';
     viewer.insertBefore(s,endEl);}
   var slides=Array.prototype.slice.call(viewer.querySelectorAll('.slide'));
   var nav=document.getElementById('nav');
-  nav.innerHTML=chapters.map(function(c){return '<a href="#'+(c[0]===0?'pr1':'p'+('0'+c[0]).slice(-2))+'" data-p="'+c[0]+'">'+c[1]+'</a>';}).join('')+'<a href="#end" data-p="'+(TOTAL+1)+'">その先へ</a>';
+  nav.innerHTML=chapters.map(function(c){return '<a href="#p'+('0'+c[0]).slice(-2)+'" data-p="'+c[0]+'">'+c[1]+'</a>';}).join('')+'<a href="#end" data-p="'+(TOTAL+1)+'">その先へ</a>';
   function idx(){return Math.round(viewer.scrollLeft/viewer.clientWidth);}
   function go(i){i=Math.max(0,Math.min(slides.length-1,i));viewer.scrollTo({left:i*viewer.clientWidth,behavior:'smooth'});}
   function goHash(h){var el=h&&document.querySelector(h);if(el){var i=slides.indexOf(el);if(i>=0){viewer.scrollLeft=i*viewer.clientWidth;}}}
