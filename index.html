@@ -430,7 +430,10 @@
   .cine .ui{top:max(14px,env(safe-area-inset-top));right:max(14px,env(safe-area-inset-right));gap:10px}
   .cine .ui button{padding:11px 18px;font-size:13.5px;background:rgba(8,20,28,.62);border-color:rgba(255,255,255,.5);backdrop-filter:blur(6px);box-shadow:0 4px 16px rgba(0,0,0,.45)}
   @media (max-width:600px){.cine .ui button{padding:10px 14px;font-size:12.5px}}
-  .cine .prog{position:absolute;left:0;bottom:0;height:3px;width:0;background:#FFD700}
+  .cine .prog{position:absolute;left:0;bottom:0;height:3px;width:0;background:#FFD700;pointer-events:none;z-index:6}
+  /* バー自体は細いので、掴む範囲だけ広い透明な帯を重ねる */
+  .cine .seek{position:absolute;left:0;right:0;bottom:0;height:26px;z-index:7;cursor:pointer}
+  @media (max-width:600px){.cine .ui{gap:6px}.cine .ui button{padding:9px 11px;font-size:12px}}
   .cine.out{animation:cineOut .8s ease forwards}
   @keyframes cineOut{to{opacity:0;visibility:hidden}}
   .cine-replay{position:absolute;top:14px;right:14px;z-index:4;display:none;align-items:center;gap:6px;background:#FFD700;border:1px solid #FFD700;color:#1a1a1a;border-radius:999px;padding:9px 16px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 6px 20px rgba(0,0,0,.28)}
@@ -492,8 +495,8 @@
       <canvas class="pt" id="pt"></canvas>
       <div class="sweep" id="sweep"></div>
       <div class="glow" id="glow"></div>
-      <div class="ui"><button type="button" class="music" id="cineMusic" aria-pressed="false">♪ 音声オン</button><button type="button" id="cineSkip">スキップ ›</button></div>
-      <div class="prog" id="cineProg"></div>
+      <div class="ui"><button type="button" id="cinePause" aria-label="一時停止">⏸ 停止</button><button type="button" id="cineFF" aria-pressed="false" aria-label="早送り">⏩ 2倍</button><button type="button" class="music" id="cineMusic" aria-pressed="false">♪ 音声オン</button><button type="button" id="cineSkip">スキップ ›</button></div>
+      <div class="prog" id="cineProg"></div><div class="seek" id="cineSeekBar" role="slider" aria-label="再生位置"></div>
       <audio id="cineAudio" preload="none" src="media/cine/opening.m4a"></audio>
     </div>
     <button class="cine-replay" type="button" id="cineReplay" aria-label="オープニングをもう一度見る">▶ オープニングをもう一度</button>
@@ -836,7 +839,8 @@
   var cine=document.getElementById('cine'); if(!cine) return;
   var $=function(id){return document.getElementById(id)};
   var mp=$('mp'),vA=$('vA'),vB=$('vB'),still=$('still'),hz=$('hz'),openLine=$('openLine'),wf=$('wf'),trip=$('trip'),phone=$('phone'),copy=$('copy'),
-      pt=$('pt'),sweep=$('sweep'),glow=$('glow'),musicBtn=$('cineMusic'),skipBtn=$('cineSkip'),prog=$('cineProg'),audio=$('cineAudio'),rep=$('cineReplay');
+      pt=$('pt'),sweep=$('sweep'),glow=$('glow'),musicBtn=$('cineMusic'),skipBtn=$('cineSkip'),prog=$('cineProg'),audio=$('cineAudio'),rep=$('cineReplay'),
+      pauseBtn=$('cinePause'),ffBtn=$('cineFF'),seekBar=$('cineSeekBar');
   var MEDIA='media/cine/';
   // clip: src, in-point(s), focus (object-position), saturation
   var CLIP={
@@ -888,13 +892,17 @@
     if(v.dataset.name!==name){ v.src=MEDIA+c.src; v.dataset.name=name; v.load(); }
     v.style.setProperty('--focus',c.focus||'50% 50%'); v.style.setProperty('--sat',c.sat||1);
     try{ v.currentTime=c.inp; }catch(e){}
+    try{v.playbackRate=rate}catch(e){}
     var p=v.play(); if(p&&p.catch) p.catch(function(){});
     v.classList.add('on'); prev.classList.remove('on'); setTimeout(function(){try{prev.pause()}catch(e){}},300);
     useA=!useA; curClip=name; lastSync=performance.now();
   }
   // 先読み先は必ず「隠れている方」。表示中の要素に src を代入すると、その場で絵が消える。
+  // 先読み先は必ず「隠れている方」。表示中に src を代入すると、その場で絵が消える。
   function preload(name){ if(!name) return; var v=other(); if(v.classList.contains('on')) return;
-    var c=CLIP[name]; if(v.dataset.name!==name){ v.src=MEDIA+c.src; v.dataset.name=name; v.load(); try{v.currentTime=c.inp}catch(e){} } }
+    var c=CLIP[name]; if(v.dataset.name===name) return;
+    try{ v.pause(); v.removeAttribute('src'); v.load(); }catch(e){}   // 前のリソースを解放
+    v.src=MEDIA+c.src; v.dataset.name=name; v.load(); try{v.currentTime=c.inp}catch(e){} }
   function clearLines(){ copy.innerHTML=''; lineEls=[]; }
   function enterScene(i){
     var sc=S[i]; cur=i; sceneStart=sc.t0;
@@ -948,6 +956,16 @@
   function syncVideo(now){
     var v=vid(); if(!curClip||now-lastSync<250) return; lastSync=now; var sc=S[cur]; if(!sc||!sc.clip) return;
     var c=CLIP[curClip]; var expect=c.inp+(time-sceneStart); if(isFinite(v.duration)&&expect>v.duration-0.05) return;
+    // 絵が出せていない/終わってしまった場合は読み直して復帰させる。
+    // 端末側の事情で再生が落ちても、音だけが進み続ける状態にしない。
+    if(v.readyState<2||v.ended){
+      if(now-(v.dataset.heal||0)>1200){
+        v.dataset.heal=now;
+        try{ if(v.ended||v.readyState<1) v.load(); v.currentTime=expect; }catch(e){}
+        var ph=v.play(); if(ph&&ph.catch) ph.catch(function(){});
+      }
+      return;
+    }
     if(Math.abs(v.currentTime-expect)>0.18){ try{v.currentTime=expect}catch(e){} }
     if(v.paused&&!v.ended){ var p=v.play(); if(p&&p.catch)p.catch(function(){}); }
   }
@@ -986,13 +1004,45 @@
     if(live||time<TOTAL) raf=requestAnimationFrame(tick); else finish();
   }
   function reset(){ time=0; cur=-1; curClip=null; clearLines(); cine.classList.remove('out'); cine.style.opacity=''; vA.classList.remove('on'); vB.classList.remove('on'); trip.classList.remove('on','flat'); phone.classList.remove('on','q'); }
-  function play(){ if(raf) cancelAnimationFrame(raf); reset(); document.documentElement.classList.add('cine-playing'); cine.classList.add('on'); cine.setAttribute('aria-hidden','false'); rep.classList.remove('show'); initParticles(); running=true; last=performance.now(); raf=requestAnimationFrame(tick); preload((S[0]&&S[0].clip)||(S[1]&&S[1].clip)); }
+  function play(){ if(raf) cancelAnimationFrame(raf); reset(); document.documentElement.classList.add('cine-playing'); cine.classList.add('on'); cine.setAttribute('aria-hidden','false'); rep.classList.remove('show'); initParticles(); running=true; last=performance.now(); rate=1; applyRate(); setHeld(false); raf=requestAnimationFrame(tick); preload((S[0]&&S[0].clip)||(S[1]&&S[1].clip)); }
   function finish(){ if(!running&&!cine.classList.contains('on')) return; running=false; if(raf) cancelAnimationFrame(raf); raf=null; try{vA.pause();vB.pause();}catch(e){} if(musicOn){ audio.pause(); } cine.classList.add('out'); try{sessionStorage.setItem('cineSeen','1')}catch(e){}
     document.documentElement.classList.remove('cine-playing');
     setTimeout(function(){ cine.classList.remove('on','out'); cine.style.opacity=''; cine.setAttribute('aria-hidden','true'); rep.innerHTML='\u25b6 \u30aa\u30fc\u30d7\u30cb\u30f3\u30b0\u3092\u3082\u3046\u4e00\u5ea6'; rep.classList.add('show'); },850); }
   // 音声を基準時計にしているので、終了も音声で確定させる。
   // rAF だけに頼ると、裏タブや省電力で進行が止まったときに終了判定が走らない。
   audio.addEventListener('ended',function(){ if(running) finish(); });
+  // --- 一時停止 / 早送り / 頭出し ---
+  var rate=1, held=false;
+  function applyRate(){ try{audio.playbackRate=rate}catch(e){}
+    try{vA.playbackRate=rate; vB.playbackRate=rate}catch(e){} }
+  function setHeld(on){
+    held=on;
+    pauseBtn.innerHTML=on?'▶ 再生':'⏸ 停止';
+    pauseBtn.setAttribute('aria-label',on?'再生':'一時停止');
+    if(on){
+      running=false; if(raf) cancelAnimationFrame(raf); raf=null;
+      try{audio.pause()}catch(e){} try{vA.pause();vB.pause()}catch(e){}
+    }else{
+      running=true; last=performance.now(); lastSync=0;
+      if(musicOn){ try{audio.play()}catch(e){} }
+      raf=requestAnimationFrame(tick);
+    }
+  }
+  pauseBtn.addEventListener('click',function(){ setHeld(!held); });
+  ffBtn.addEventListener('click',function(){
+    rate = rate===1?2:1; applyRate();
+    ffBtn.classList.toggle('on',rate!==1);
+    ffBtn.innerHTML = rate===1?'⏩ 2倍':'⏩ 等倍';
+    ffBtn.setAttribute('aria-pressed',String(rate!==1));
+  });
+  // 進捗バーを掴んで頭出し
+  seekBar.addEventListener('click',function(e){
+    var r=seekBar.getBoundingClientRect();
+    var t=Math.max(0,Math.min(TOTAL-0.1,(e.clientX-r.left)/r.width*TOTAL));
+    try{audio.currentTime=t}catch(e2){}
+    window.cineSeek(t);
+    if(held) setHeld(false);
+  });
   skipBtn.addEventListener('click',finish);
   rep.addEventListener('click',function(){ play(); cine.scrollIntoView({block:'start'}); startAudio(0); });
   // 音声はナレーションと音楽を1本に焼き込んである。▶ の操作を起点に鳴らし、♪ はミュート切替。
