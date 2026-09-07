@@ -286,3 +286,16 @@ python tools/build-player.py --write  # プレーヤー(markup/CSS/字幕/操作
 **最大の教訓:** 実機で再現できないまま修正を重ねると、修正自体が次の不具合を生む（保持ロジックが先読みに
 消される、dt 上限で絵が取り残される、定数を宣言前に評価して NaN）。再現できない時は、原因を追うより
 **失敗の余地そのものを取り除く作りに変える**方が速い。
+
+## 単一動画の仕上げで足したもの
+
+- **カット間のディゾルブ**は動画側に焼き込む（`build-flat.py` の `XFADE = {'cutin': 0.8}`）。
+  前カットをフェード秒だけ長く切り出して重ねるので全体尺は変わらず、字幕の cue もずれない。
+  そのため合成カットイン（`build-montage.py`）は +1.3秒 長く作る。
+- `xfade` は両入力の timebase / fps が一致していないと EINVAL (`4294967274`) で落ちる。
+  `settb=AVTB,fps=24` を両入力に入れてから繋ぐ。
+- `subprocess.check_call` は ffmpeg の stderr を例外に含めない。`-v error` と組み合わせると
+  原因が全く分からない。`subprocess.run(capture_output=True)` で stderr を必ず出す。
+- 終わりは動画→LP へ溶ける（overlay の不透明度を残り 2.4 秒で落とす。`build-player.py` の `FADE`）。
+- `?cine=1` の自動起動は撤去。音声つき再生は入口ボタンのクリックからだけ。
+  URL を配った先で勝手に鳴り続ける事故を防ぐため。
