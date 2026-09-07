@@ -299,3 +299,4 @@ python tools/build-player.py --write  # プレーヤー(markup/CSS/字幕/操作
 - 終わりは動画→LP へ溶ける（overlay の不透明度を残り 2.4 秒で落とす。`build-player.py` の `FADE`）。
 - `?cine=1` の自動起動は撤去。音声つき再生は入口ボタンのクリックからだけ。
   URL を配った先で勝手に鳴り続ける事故を防ぐため。
+- 単一動画の CRF は `CRF=28 python tools/build-flat.py`（既定 23）。実測: CRF23 22.3MB / CRF26 16.4MB・VMAF94.3 / **CRF28 13.5MB・VMAF92.7 を採用**。

@@ -490,22 +490,16 @@
 <!-- 序：問い -->
 <header class="hero page" id="top">
   <div class="card">
-    <div class="cine-gate" id="cineGate">
-      <p class="eb">OPENING MOVIE ｜ 77 SEC</p>
-      <h2>なぜ、いま<b>働き方4.0</b>なのか。<br>77秒の映像で、ご覧いただけます。</h2>
-      <div class="btns"><button type="button" class="go" id="cineGo">▶ オープニングを見る</button><button type="button" class="no" id="cineNo">そのままページを見る</button></div>
-      <p class="note">音楽は再生後、右上のボタンでオンにできます。</p>
-    </div>
     
-    <button class="cine-replay" type="button" id="cineReplay" aria-label="オープニングをもう一度見る">▶ オープニングをもう一度</button>
     <div class="bg" aria-hidden="true"></div>
     <div class="txt">
       <p class="eb">働き方4.0 ｜ 働き方と福利厚生の再設計</p>
       <p class="q">なぜ人は、同じ場所に、同じ時間に集まるのだろう。</p>
       <h1>採用と定着を、<br>働く条件から。</h1>
-      <p class="sub">「採れない」「定着しない」「人件費が重い」。別々の悩みに見えて、根は一つです。働く人が提供するものは「判断・創造・成果」に変わったのに、会社の報酬・評価・柔軟性は、100年前の前提である「時間・場所・指揮命令」に紐づいたまま。働き方を4.0に合わせて組み替えると、採用も定着も、手取りも福利厚生も、その結果として整います。</p>
+      <p class="sub">「採れない」「定着しない」「人件費が重い」。根は一つ——会社の条件が100年前の「時間・場所・指揮命令」のままだからです。働き方を4.0に組み替えれば、採用も定着も、手取りも福利厚生も、その結果として整います。</p>
       <div class="cta">
         <a class="btn btn-primary" href="#consultation" style="background:#14A07A">働き方4.0診断を受ける <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <button type="button" class="btn btn-ghost on-dark" id="cineReplay" aria-label="オープニング映像を見る">▶ 77秒の映像で見る</button>
         </div>
       <div class="sealwrap"><svg class="seal" viewBox="0 0 120 120" role="img" aria-label="特許申請中 PATENT PENDING">
       <defs><path id="sp" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
@@ -591,11 +585,7 @@
       <div class="row r3"><div class="lab"><b>その結果</b>別々に見えて、同じ根から</div><div class="cells"><div class="c">採れない</div><div class="c">採っても、定着しない</div><div class="c">人件費が重い</div></div></div>
     </div>
     <div class="concl"><div class="ct">誰が悪いのでもありません</div><p>雇用契約が悪いのではありません。その前提を、業務の違いにかかわらず当てはめ続けてきた、100年分の制度疲労です。<br><span class="y">「すべての業務を、同じ前提の雇用で抱える」という固定観念が、いちばんの障害でした。</span></p></div>
-    <div style="margin-top:22px;display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center"><div><h4 style="color:var(--gold);font-size:16px;font-weight:700;margin-bottom:4px">この章の背景は、漫画で5分</h4><p style="font-size:14.5px;color:var(--ink-2)">ある製造業の経営者が「社員の雇用とキャリアを守る」ために、雇用一択の固定観念から抜け出すまでの物語。構想から作画まで、AIとともに制作しました。</p></div><a class="mcta light" href="manga1/" aria-label="漫画『ある経営者の選択』を読む（全24ページ）">
-          <span class="cv"><img loading="lazy" decoding="async" src="media/img/manga1-cover.jpg" alt="漫画『ある経営者の選択』表紙"></span>
-          <span class="tx"><span class="tag">AIで制作した漫画</span><span class="tt">ある経営者の選択<small>働くの再定義、AI時代の新しい価値</small></span><span class="meta">全24ページ ・ 約5分で読めます</span></span>
-          <span class="go" aria-hidden="true">›</span>
-        </a></div>
+    <div style="margin-top:22px;display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center"><div><h4 style="color:var(--gold);font-size:16px;font-weight:700;margin-bottom:4px">この章の背景は、漫画で5分</h4><p style="font-size:14.5px;color:var(--ink-2)">ある製造業の経営者が「社員の雇用とキャリアを守る」ために、雇用一択の固定観念から抜け出すまでの物語。構想から作画まで、AIとともに制作しました。</p></div></div>
   </section>
 </div>
 
@@ -757,7 +747,7 @@
         <li>募集で伝えられる条件と、従業員説明会の進め方</li>
       </ul>
       <p class="micro">診断だけで止めて構いません。任意の制度は、見送りも含めて検討できます。</p>
-      <div class="alt"><p>診断の前に、まずAIを自分の手で動かせるようになりたい方へ</p><a class="mcta" href="bootcamp/" aria-label="AI経営×クエスト型ブートキャンプのページへ"><span class="cv" style="width:78px;height:78px;border-radius:10px;transform:none"><img loading="lazy" decoding="async" src="media/img/bcta-bg.jpg" alt="" style="object-position:60% 40%"></span><span class="tx"><span class="tag">5時間・経営者向け</span><span class="tt">AIブートキャンプ<small>5時間で、AI中級者以上になる。</small></span><span class="meta">Claude Code／MCP／人・AI・専門家の線引き ・ 50,000円（税別）</span></span><span class="go">→</span></a></div>
+      <div class="alt"><p>診断の前に、まずAIを自分の手で動かせるようになりたい方へ</p></div>
       <p class="firm">レリック社会保険労務士法人<small>RELIC SOCIAL INSURANCE &amp; LABOR CONSULTANTS ｜ 2026年</small></p>
     </div>
     <form class="cf" id="cform" novalidate>
@@ -781,6 +771,7 @@
     <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
     <p class="eb">Privacy Policy</p>
     <h2 class="t">個人情報の取り扱いについて</h2>
+      <details><summary style="cursor:pointer;font-weight:700;padding:8px 0">全文を読む（9項目）</summary>
     <p class="lead">レリック社会保険労務士法人（以下「当法人」）は、本ページを通じてお預かりする個人情報を、以下の方針にもとづいて取り扱います。社会保険労務士法に定める守秘義務を負う専門職として、お預かりした情報の保護に努めます。</p>
     <div class="pp">
       <h3>1. 取得する情報</h3><p>本ページのお問い合わせフォームでは、会社名、お名前、メールアドレス、従業員数、ご相談内容を取得します。ご相談の過程で、賃金台帳・雇用契約書・従業員の年齢構成など、診断に必要な情報を追加でお預かりすることがあります。</p>
@@ -794,7 +785,8 @@
       <h3>9. 本方針の改定</h3><p>法令の改正や業務内容の変更に応じて、本方針を改定することがあります。改定後の方針は、本ページに掲載した時点から適用します。</p>
       <p class="sm" style="margin-top:18px">制定日：2026年9月6日<br>レリック社会保険労務士法人</p>
     </div>
-  </section>
+  </details>
+    </section>
 </div>
 
 <footer>

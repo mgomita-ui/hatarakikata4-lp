@@ -80,7 +80,7 @@ def main():
     ins += ['-i', audio]
     cmd = (['ffmpeg', '-y', '-v', 'error'] + ins +
            ['-filter_complex', ';'.join(filt), '-map', '[v]', '-map', f'{len(scenes)}:a',
-            '-c:v', 'libx264', '-crf', '23', '-preset', 'medium',
+            '-c:v', 'libx264', '-crf', os.environ.get('CRF', '23'), '-preset', 'medium',
             '-profile:v', 'high', '-level', '4.1', '-x264-params', 'ref=4:bframes=2',
             '-pix_fmt', 'yuv420p', '-c:a', 'copy', '-movflags', '+faststart', '-shortest', OUT])
     print(f'{len(scenes)} シーン / 映像 {vtotal:.2f}s + 末尾保持 {pad:.2f}s / 音声 {atotal:.2f}s')
