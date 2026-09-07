@@ -28,17 +28,11 @@ def main(write=False):
     # 1) リプレイボタンの初期ラベル（エスケープ表記で残っていた箇所）
     old = "if(!seen) rep.innerHTML='\\u25b6 55\\u79d2\\u306e\\u6620\\u50cf\\u3067\\u898b\\u308b';"
     if old in out:
-        new = ("if(!seen) rep.innerHTML='\\u25b6 '+CINE_SECS+"
+        new = ("if(!seen) rep.innerHTML='\\u25b6 '+Math.round(TOTAL)+"
                "'\\u79d2\\u306e\\u6620\\u50cf\\u3067\\u898b\\u308b';")
         out = out.replace(old, new, 1)
         done.append('リプレイボタンのラベルを TOTAL 連動に')
 
-    # 2) 秒数を持つ定数を用意する（無ければ TOTAL の隣に足す）
-    if 'CINE_SECS' not in out or 'var CINE_SECS' not in out:
-        out = re.sub(r'(var CINE_ROGER=[\d.]+, CINE_TITLE=[\d.]+;)',
-                     lambda m: m.group(1) + '\n  var CINE_SECS=Math.round(TOTAL);',
-                     out, count=1)
-        done.append('CINE_SECS を追加')
 
     # 3) 静的な文言も TOTAL に合わせる
     for pat, rep in (
