@@ -889,18 +889,12 @@
     v.style.setProperty('--focus',c.focus||'50% 50%'); v.style.setProperty('--sat',c.sat||1);
     try{ v.currentTime=c.inp; }catch(e){}
     var p=v.play(); if(p&&p.catch) p.catch(function(){});
+    v.classList.add('on'); prev.classList.remove('on'); setTimeout(function(){try{prev.pause()}catch(e){}},300);
     useA=!useA; curClip=name; lastSync=performance.now();
-    // 新しい映像が1フレーム出せるようになるまで、前の絵を出したままにする。
-    // 即入れ替えすると、読み込みの遅い端末で「映像が消えて音声だけ」になる。
-    var swap=function(){
-      if(curClip!==name) return;              // その間にシーンが進んでいたら何もしない
-      v.classList.add('on'); prev.classList.remove('on');
-      setTimeout(function(){ try{prev.pause()}catch(e){} },300);
-    };
-    if(v.readyState>=2) swap();
-    else { v.addEventListener('loadeddata',swap,{once:true}); setTimeout(swap,1500); }
   }
-  function preload(name){ if(!name) return; var c=CLIP[name], v=other(); if(v.dataset.name!==name){ v.src=MEDIA+c.src; v.dataset.name=name; v.load(); try{v.currentTime=c.inp}catch(e){} } }
+  // 先読み先は必ず「隠れている方」。表示中の要素に src を代入すると、その場で絵が消える。
+  function preload(name){ if(!name) return; var v=other(); if(v.classList.contains('on')) return;
+    var c=CLIP[name]; if(v.dataset.name!==name){ v.src=MEDIA+c.src; v.dataset.name=name; v.load(); try{v.currentTime=c.inp}catch(e){} } }
   function clearLines(){ copy.innerHTML=''; lineEls=[]; }
   function enterScene(i){
     var sc=S[i]; cur=i; sceneStart=sc.t0;
