@@ -32,11 +32,13 @@ FX = [
     {"tr": "fold",  "endfade": True},                   # 15 finale（結び）
 ]
 INP = {"old1": .5, "new1": .5, "old2": .5, "new2": .5, "old3": .5, "new3": .5,
+       "old4": .5, "new4": .5,
        "commute": 1.0, "rooftop": .5, "climax": 1.0,
        "intro": .15, "tripbg": .15, "phonebg": .15, "legacy": .15, "finale": .05,
        "montage": 0.0, "strideA": .15, "cutin": 0.0}
-FOCUS = {"old1": ("60% 50%", .7), "new1": ("50% 55%", None), "old2": ("50% 45%", .7),
-         "new2": ("40% 50%", None), "old3": ("45% 50%", .7), "new3": ("60% 50%", None),
+FOCUS = {"old1": ("60% 50%", .7), "new1": ("45% 45%", None), "old2": ("45% 50%", .7),
+         "new2": ("50% 50%", None), "old3": ("50% 55%", .7), "new3": ("50% 45%", None),
+         "old4": ("50% 55%", .7), "new4": ("55% 50%", None),
          "commute": ("50% 55%", None), "rooftop": ("55% 45%", None), "climax": ("50% 55%", None),
          "legacy": ("50% 50%", None), "finale": ("50% 55%", None),
          # トリプティク/スマホの背面。図版が主役なので彩度を落として沈める
