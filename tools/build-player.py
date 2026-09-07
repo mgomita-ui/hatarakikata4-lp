@@ -63,15 +63,18 @@ html.op-on{overflow:hidden}
 .op-ln.big{font-size:clamp(26px,4vw,52px);font-weight:900;line-height:1.25}
 .op-ln.huge{font-size:clamp(34px,6vw,86px);font-weight:900;line-height:1.15;color:#FFD700;text-shadow:0 0 34px rgba(255,215,0,.35),0 6px 22px rgba(0,0,0,.5)}
 .op-ln.huge .br{display:none}
-.op-ui{position:absolute;top:max(14px,env(safe-area-inset-top));right:max(14px,env(safe-area-inset-right));display:flex;gap:10px;z-index:2}
-.op-ui button{background:rgba(8,20,28,.62);border:1px solid rgba(255,255,255,.5);color:#fff;border-radius:999px;padding:11px 18px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit;backdrop-filter:blur(6px);box-shadow:0 4px 16px rgba(0,0,0,.45)}
-.op-ui button.on{background:#FFD700;color:#1a1a1a;border-color:#FFD700}
-.op-seek{position:absolute;left:0;right:0;bottom:0;width:100%;height:28px;margin:0;z-index:2;cursor:pointer;-webkit-appearance:none;appearance:none;background:transparent}
-.op-seek::-webkit-slider-runnable-track{height:4px;background:rgba(255,255,255,.25)}
-.op-seek::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#FFD700;margin-top:-7px}
-.op-seek::-moz-range-track{height:4px;background:rgba(255,255,255,.25)}
-.op-seek::-moz-range-thumb{width:18px;height:18px;border:0;border-radius:50%;background:#FFD700}
-.op-prog{position:absolute;left:0;bottom:12px;height:4px;width:0;background:#FFD700;pointer-events:none;z-index:1}
+/* 画面下の操作バー。動画プレーヤーの標準形: 再生/停止・時間・シーク・音声・速度・スキップ */
+.op-bar{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;align-items:center;gap:10px;padding:14px 16px max(14px,env(safe-area-inset-bottom));background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,.35) 70%,transparent)}
+.op-bar button{flex:none;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:999px;padding:9px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
+.op-bar button.on{background:#FFD700;color:#1a1a1a;border-color:#FFD700}
+.op-time{flex:none;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.04em;color:#fff;min-width:7.5em;text-align:center}
+.op-seek{flex:1;min-width:80px;height:24px;margin:0;cursor:pointer;-webkit-appearance:none;appearance:none;background:transparent;--p:0%}
+.op-seek::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:linear-gradient(to right,#FFD700 var(--p),rgba(255,255,255,.3) var(--p))}
+.op-seek::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#FFD700;border:2px solid #fff;margin-top:-6px;box-shadow:0 2px 8px rgba(0,0,0,.5)}
+.op-seek::-moz-range-track{height:6px;border-radius:3px;background:rgba(255,255,255,.3)}
+.op-seek::-moz-range-progress{height:6px;border-radius:3px;background:#FFD700}
+.op-seek::-moz-range-thumb{width:18px;height:18px;border:2px solid #fff;border-radius:50%;background:#FFD700}
+.op-copy{bottom:64px}
 @media (max-width:600px){
   .op-copy{padding:0 4%}
   .op-ln{font-size:clamp(17px,4.6vw,24px)}
@@ -79,7 +82,11 @@ html.op-on{overflow:hidden}
   .op-ln.big{font-size:clamp(22px,5.8vw,34px)}
   .op-ln.huge{font-size:clamp(28px,8.6vw,52px)}
   .op-ln.huge .br{display:inline}
-  .op-ui{gap:6px}.op-ui button{padding:9px 11px;font-size:12px}
+  .op-bar{gap:6px;padding:10px 10px max(10px,env(safe-area-inset-bottom));flex-wrap:wrap}
+  .op-bar button{padding:8px 10px;font-size:12px}
+  .op-time{font-size:12px;min-width:6.5em}
+  .op-seek{flex-basis:100%;order:-1}
+  .op-copy{bottom:92px}
 }
 </style>
 """
@@ -87,24 +94,24 @@ html.op-on{overflow:hidden}
 <div class="op" id="op" hidden>
   <video id="opV" playsinline preload="metadata" src="media/cine/opening-flat.mp4"></video>
   <div class="op-copy" id="opCopy"></div>
-  <div class="op-ui">
+  <div class="op-bar">
     <button type="button" id="opPause" aria-label="一時停止">⏸ 停止</button>
-    <button type="button" id="opFF" aria-pressed="false" aria-label="早送り">⏩ 2倍</button>
-    <button type="button" id="opMute" aria-pressed="false" aria-label="消音">🔊 音声</button>
+    <span class="op-time" id="opTime">0:00 / 0:00</span>
+    <input class="op-seek" id="opSeek" type="range" min="0" max="1000" value="0" aria-label="再生位置">
+    <button type="button" id="opMute" aria-pressed="false" aria-label="消音">🔊</button>
+    <button type="button" id="opFF" aria-pressed="false" aria-label="早送り">2倍</button>
     <button type="button" id="opSkip">スキップ ›</button>
   </div>
-  <div class="op-prog" id="opProg"></div>
-  <input class="op-seek" id="opSeek" type="range" min="0" max="1000" value="0" aria-label="再生位置">
 </div>
 """
     js = r"""
 <script>
 (function(){
   var $=function(id){return document.getElementById(id)};
-  var op=$('op'),v=$('opV'),copy=$('opCopy'),seek=$('opSeek'),prog=$('opProg'),
+  var op=$('op'),v=$('opV'),copy=$('opCopy'),seek=$('opSeek'),tm=$('opTime'),
       bPause=$('opPause'),bFF=$('opFF'),bMute=$('opMute'),bSkip=$('opSkip'),entry=$('cineReplay');
   if(!op||!v) return;
-  var S=__SCENES__, SECS=__SECS__, cur=-1, els=[], raf=null;
+  var S=__SCENES__, SECS=__SECS__, FADE=2.4, cur=-1, els=[], raf=null;
   var gate=$('cineGate'); if(gate&&gate.parentNode) gate.parentNode.removeChild(gate);
 
   // 字幕: 今のシーンの行を、cue を過ぎた順に出すだけ。時計は動画。
@@ -113,8 +120,12 @@ html.op-on{overflow:hidden}
     if(i!==cur){ cur=i; copy.innerHTML=''; els=[];
       if(i>=0) S[i].lines.forEach(function(l){ var p=document.createElement('p'); p.className='op-ln '+(l[2]||''); p.innerHTML=l[1]; copy.appendChild(p); els.push(p); }); }
     if(i>=0) S[i].lines.forEach(function(l,j){ if(t>=S[i].t0+l[0]) els[j].classList.add('in'); });
-    if(v.duration){ var r=t/v.duration; prog.style.width=(r*100)+'%'; if(document.activeElement!==seek) seek.value=Math.round(r*1000); }
+    // 最後の街のカットから LP へ溶け込む: 残り FADE 秒で overlay の不透明度を落とす
+    if(v.duration){ var left=v.duration-t; op.style.opacity=left<FADE?Math.max(0,left/FADE).toFixed(3):''; }
+    if(v.duration){ var r=t/v.duration; seek.style.setProperty('--p',(r*100)+'%'); if(document.activeElement!==seek) seek.value=Math.round(r*1000);
+      tm.textContent=fmt(t)+' / '+fmt(v.duration); }
   }
+  function fmt(s){ s=Math.max(0,Math.floor(s)); return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2); }
   function loop(){ render(v.currentTime); raf=v.paused?null:requestAnimationFrame(loop); }
   v.addEventListener('play',function(){ if(!raf) raf=requestAnimationFrame(loop); syncPause(); });
   v.addEventListener('pause',syncPause);
@@ -126,28 +137,30 @@ html.op-on{overflow:hidden}
   v.addEventListener('error',function(){ close(); });
 
   function open(){
-    document.documentElement.classList.add('op-on'); op.hidden=false;
-    v.playbackRate=1; bFF.classList.remove('on'); bFF.textContent='⏩ 2倍';
+    document.documentElement.classList.add('op-on'); op.hidden=false; op.style.opacity='';
+    v.playbackRate=1; bFF.classList.remove('on'); bFF.textContent='2倍';
     v.muted=false; syncMute();
     try{ v.currentTime=0; }catch(e){}
     var p=v.play(); if(p&&p.catch) p.catch(function(){});
   }
   function close(){
-    v.pause(); op.hidden=true; document.documentElement.classList.remove('op-on');
+    v.pause(); op.hidden=true; op.style.opacity=''; document.documentElement.classList.remove('op-on');
     cur=-1; copy.innerHTML='';
     entry.innerHTML='▶ オープニングをもう一度'; entry.classList.add('show');
     try{ sessionStorage.setItem('cineSeen','1'); }catch(e){}
   }
   function syncPause(){ bPause.innerHTML=v.paused?'▶ 再生':'⏸ 停止'; }
-  function syncMute(){ bMute.classList.toggle('on',v.muted); bMute.innerHTML=v.muted?'🔇 消音中':'🔊 音声'; bMute.setAttribute('aria-pressed',String(v.muted)); }
+  function syncMute(){ bMute.classList.toggle('on',v.muted); bMute.innerHTML=v.muted?'🔇':'🔊'; bMute.setAttribute('aria-pressed',String(v.muted)); }
 
   entry.addEventListener('click',function(){ open(); });
   bPause.addEventListener('click',function(){ if(v.paused){ var p=v.play(); if(p&&p.catch)p.catch(function(){}); } else v.pause(); });
-  bFF.addEventListener('click',function(){ var on=v.playbackRate===1; v.playbackRate=on?2:1; bFF.classList.toggle('on',on); bFF.innerHTML=on?'⏩ 等倍':'⏩ 2倍'; bFF.setAttribute('aria-pressed',String(on)); });
+  bFF.addEventListener('click',function(){ var on=v.playbackRate===1; v.playbackRate=on?2:1; bFF.classList.toggle('on',on); bFF.innerHTML=on?'等倍':'2倍'; bFF.setAttribute('aria-pressed',String(on)); });
   bMute.addEventListener('click',function(){ v.muted=!v.muted; syncMute(); });
   bSkip.addEventListener('click',close);
   seek.addEventListener('input',function(){ if(v.duration){ v.currentTime=seek.value/1000*v.duration; } });
-  document.addEventListener('keydown',function(e){ if(op.hidden) return; if(e.key==='Escape') close(); if(e.key===' '){ e.preventDefault(); bPause.click(); } });
+  document.addEventListener('keydown',function(e){ if(op.hidden) return; if(e.key==='Escape') close(); if(e.key===' '){ e.preventDefault(); bPause.click(); }
+    if(e.key==='ArrowRight'&&v.duration){ v.currentTime=Math.min(v.duration,v.currentTime+5); }
+    if(e.key==='ArrowLeft'){ v.currentTime=Math.max(0,v.currentTime-5); } });
 
   var seen=false; try{ seen=sessionStorage.getItem('cineSeen')==='1'; }catch(e){}
   entry.innerHTML=seen?'▶ オープニングをもう一度':'▶ '+SECS+'秒の映像で見る';
