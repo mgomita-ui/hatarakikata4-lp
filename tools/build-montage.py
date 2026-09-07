@@ -86,7 +86,7 @@ def mean_luma(path, at=1.2):
 
 
 def build_cutin(out, total=None):
-    total = total or scene_len('cutin') + 0.30
+    total = total or scene_len('cutin') + 1.30   # 次カットへのクロスフェード(0.8s)ぶんも含める
     """黒地の上にコマを順に重ねる。各コマは出現時に一瞬だけ拡大して落ち着く"""
     src = [os.path.join(CINE, 'faces', f'{n}.mp4') for n in FACES]
     missing = [p for p in src if not os.path.exists(p)]

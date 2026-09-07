@@ -1168,7 +1168,7 @@ html.op-on{overflow:hidden}
   var seen=false; try{ seen=sessionStorage.getItem('cineSeen')==='1'; }catch(e){}
   entry.innerHTML=seen?'▶ オープニングをもう一度':'▶ '+SECS+'秒の映像で見る';
   entry.classList.add('show');
-  if(/[?&]cine=1/.test(location.search)) open();
+  // 自動起動はしない。音声つきの再生は入口ボタンのクリックからだけ始める。
 })();
 </script>
 <!-- op:end -->
