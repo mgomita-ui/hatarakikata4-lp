@@ -49,17 +49,28 @@ def main():
         fade = XFADE.get(c, 0.0) if i + 1 < len(scenes) else 0.0
         take = seg + fade
         p = os.path.join(CINE, f'{c}.mp4')
-        if dur(p) < inp + take - 0.02:
-            sys.exit(f'{c}: 素材が足りません ({dur(p):.2f}s < {inp + take:.2f}s)')
-        segs.append((take, fade))
+        avail = max(0.0, dur(p) - inp)
+        # 素材がシーン尺に足りないときは、最大 1.5 倍までスローにして伸ばし、残りは最終フレームを保持する。
+        # 台詞を長くしたときに素材を作り直さずに済む（空撮や引きの画はスローが自然）。
+        stretch = 1.0
+        if avail < take - 0.02:
+            stretch = min(1.5, take / avail) if avail > 0 else 1.0
+            print(f'  {c}: 素材 {avail:.2f}s < 必要 {take:.2f}s → {stretch:.2f}x スロー'
+                  + ('' if avail * stretch >= take - 0.02 else f' + 末尾 {take - avail*stretch:.2f}s 保持'))
+        segs.append((take, fade, stretch, avail))
         focus, sat = at.FOCUS[c]
         fx, fy = [float(v.strip('%')) / 100 for v in focus.split()]
-        ins += ['-ss', f'{inp}', '-t', f'{take}', '-i', p]
+        src_t = take if stretch == 1.0 else min(avail, take / stretch)
+        ins += ['-ss', f'{inp}', '-t', f'{src_t:.3f}', '-i', p]
         chain = (f"[{i}:v]scale={W}:{H}:force_original_aspect_ratio=increase,"
                  f"crop={W}:{H}:(iw-{W})*{fx:.3f}:(ih-{H})*{fy:.3f},")
         if sat:
             chain += f"eq=saturation={sat},"
-        chain += f"fps={FPS},setsar=1,format=yuv420p[v{i}]"
+        if stretch != 1.0:
+            chain += f"setpts={stretch:.4f}*PTS,"
+        chain += f"fps={FPS},setsar=1,format=yuv420p,"
+        # 伸ばしても届かない端数は最終フレームを保持して尺を揃える
+        chain += f"tpad=stop_mode=clone:stop_duration={max(0.0, take - src_t*stretch):.3f},trim=duration={take:.3f}[v{i}]"
         filt.append(chain); labels.append(f'[v{i}]')
         vtotal += seg
     atotal = dur(audio)
@@ -67,7 +78,7 @@ def main():
     # 左から畳み込む: フェード指定の境界は xfade、それ以外は concat
     cur, curdur, k = labels[0], segs[0][0], 0
     for i in range(1, len(labels)):
-        take, _ = segs[i]; fade = segs[i - 1][1]
+        take = segs[i][0]; fade = segs[i - 1][1]
         if fade > 0:
             filt.append(f"{cur}settb=AVTB,fps={FPS}[a{k}];{labels[i]}settb=AVTB,fps={FPS}[b{k}];"
                         f"[a{k}][b{k}]xfade=transition=fade:duration={fade:.3f}:offset={curdur - fade:.3f},format=yuv420p[x{k}]")

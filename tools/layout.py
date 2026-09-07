@@ -17,7 +17,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 RATE = 5.6        # 拍/秒（Satoshi の実測値から校正）
 PAUSE = 0.25      # 句点ごとの間
-MAX_TEMPO = 1.15  # 自然に聞こえる時間圧縮の上限
+MAX_TEMPO = float(__import__("os").environ.get("MAX_TEMPO", "1.15"))  # 自然に聞こえる時間圧縮の上限
 TAIL = 0.35       # シーン末尾の余韻
 MIN_CLIP = 3.0    # クリップのあるシーンの最短尺（詰まりすぎて絵が飛ぶのを防ぐ）
 
