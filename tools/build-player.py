@@ -67,6 +67,7 @@ html.op-on{overflow:hidden}
 .op-ln.big{font-size:clamp(26px,4vw,52px);font-weight:900;line-height:1.25}
 .op-ln.huge{font-size:clamp(34px,6vw,86px);font-weight:900;line-height:1.15;color:#FFD700;text-shadow:0 0 34px rgba(255,215,0,.35),0 6px 22px rgba(0,0,0,.5)}
 .op-ln.huge .br{display:none}
+.op-ln.scrim .op-ph{background:rgba(3,17,22,.62);padding:.08em .32em;border-radius:.18em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 /* 画面下の操作バー。動画プレーヤーの標準形: 再生/停止・時間・シーク・音声・速度・スキップ */
 .op-bar{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;align-items:center;gap:10px;padding:14px 16px max(14px,env(safe-area-inset-bottom));background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,.35) 70%,transparent)}
 .op-bar button{flex:none;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:999px;padding:9px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}

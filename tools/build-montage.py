@@ -127,9 +127,75 @@ def build_cutin(out, total=None):
     print(f'cutin: {out}  {len(PANELS)}コマ / {total}s')
 
 
+# AI/ロボットの進化を並べる背景グリッド。全コマ同時に動かし、正面のまま並べる
+GRID_COLS, GRID_ROWS = 4, 4
+GRID1 = ['g01', 'g02', 'g03', 'g04', 'g05', 'g06', 'g07', 'g08',
+         'g09', 'g10', 'g11', 'g12', 'g13', 'g14', 'g15', 'g16']
+GRID2 = ['g17', 'g02', 'g19', 'g04', 'g21', 'g06', 'g23', 'g08',
+         'g18', 'g10', 'g20', 'g12', 'g22', 'g14', 'g24', 'g16']
+
+
+# コマの色系統。cool=素材のまま(シアン系) / warm=アンバー / magenta,green=色相を回す(顔なしのコマのみ)
+GRADE = {
+    'g01': 'warm', 'g02': 'cool', 'g03': 'warm', 'g04': 'cool',
+    'g05': 'warm', 'g06': 'magenta', 'g07': 'warm', 'g08': 'cool',
+    'g09': 'magenta', 'g10': 'green', 'g11': 'warm', 'g12': 'cool',
+    'g13': 'warm', 'g14': 'green', 'g15': 'magenta', 'g16': 'green',
+    'g17': 'cool', 'g18': 'warm', 'g19': 'cool', 'g20': 'cool',
+    'g21': 'green', 'g22': 'warm', 'g23': 'magenta', 'g24': 'cool',
+}
+GRADE_FILTER = {
+    'cool': '',
+    'warm': 'colortemperature=temperature=3300:mix=0.85,eq=saturation=1.15,',
+    'magenta': 'hue=h=-45:s=1.0,',
+    'green': 'hue=h=45:s=1.05,',
+}
+
+
+def build_grid(names, out, scene_clip, tail=1.30):
+    total = scene_len(scene_clip) + tail
+    src = [os.path.join(CINE, 'grid', f'{n}.mp4') for n in names]
+    missing = [p for p in src if not os.path.exists(p)]
+    if missing:
+        sys.exit('素材が足りません: ' + ', '.join(os.path.basename(m) for m in missing))
+    lum = [mean_luma(p) for p in src]
+    target = sorted(lum)[len(lum) // 2]
+    cw, ch = W // GRID_COLS, H // GRID_ROWS
+    w, h = cw - GAP, ch - GAP
+    w -= w % 2; h -= h % 2
+    ins = ['-f', 'lavfi', '-t', f'{total}', '-i', f'color=c=black:s={W}x{H}:r={FPS}']
+    filt, cur = [], '[0:v]'
+    for i, p in enumerate(src):
+        # 素材は5秒しかないのでループさせ、シーン尺ぶん等速で動かし続ける（スロー化を避ける）
+        ins += ['-stream_loop', '-1', '-ss', '0.4', '-t', f'{total}', '-i', p]
+        # 生成素材がシアン一色に寄るので、コマごとに色系統を振ってテレビ壁らしく散らす。
+        # 顔が写るコマは色相を回すと肌が崩れるので warm/cool のみ
+        tone = GRADE_FILTER[GRADE.get(names[i], 'cool')]
+        filt.append(
+            f"[{i+1}:v]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},"
+            f"fps={FPS},setsar=1,{tone}eq=brightness={(target-lum[i])/255*0.9:.3f}:eval=init,"
+            f"format=yuv420p[p{i}]")
+        x = (i % GRID_COLS) * cw + GAP // 2
+        y = (i // GRID_COLS) * ch + GAP // 2
+        nxt = f'[s{i}]'
+        filt.append(f"{cur}[p{i}]overlay=x={x}:y={y}{'' if i < len(src) - 1 else ':shortest=1'}{nxt}")
+        cur = nxt
+    filt[-1] = filt[-1].replace(cur, '[v]')
+    run(['ffmpeg', '-y', '-v', 'error'] + ins +
+        ['-filter_complex', ';'.join(filt), '-map', '[v]',
+         '-c:v', 'libx264', '-crf', '20', '-preset', 'medium',
+         '-profile:v', 'high', '-level', '4.1', '-x264-params', 'ref=4:bframes=2',
+         '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out])
+    print(f'grid: {out}  {len(src)}コマ / {total}s')
+
+
 if __name__ == '__main__':
     what = sys.argv[1] if len(sys.argv) > 1 else 'all'
     if what in ('mont', 'all'):
         build_montage(os.path.join(CINE, 'montage.mp4'))
     if what in ('cutin', 'all'):
         build_cutin(os.path.join(CINE, 'cutin.mp4'))
+    if what in ('grid1', 'all'):
+        build_grid(GRID1, os.path.join(CINE, 'grid1.mp4'), 'grid1')
+    if what in ('grid2', 'all'):
+        build_grid(GRID2, os.path.join(CINE, 'grid2.mp4'), 'grid2')
