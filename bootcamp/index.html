@@ -112,6 +112,18 @@
   .ladder .s4 i{position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-style:normal;background:var(--yellow);color:#1A1A1A;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;white-space:nowrap}
   @media (max-width:900px){.hero .card{grid-template-columns:1fr;min-height:0}.hero .txt{padding:40px 24px 36px}.ladder{min-height:260px;padding:0 24px 28px}.hero .bg:after{background:linear-gradient(180deg,rgba(7,34,30,.96) 0%,rgba(7,34,30,.85) 60%,rgba(7,34,30,.6) 100%)}}
 
+  /* 83秒のオープニング。押されたときだけ全画面で流す単一動画。
+     自動再生はしない（URLを配った先で勝手に鳴る事故を防ぐ）。 */
+  .op{position:fixed;inset:0;z-index:100;background:#04090d;display:none;align-items:center;justify-content:center}
+  .op.on{display:flex}
+  .op video{width:100%;height:100%;object-fit:contain;background:#04090d}
+  .op .skip{position:absolute;top:18px;right:18px;z-index:2;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:999px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+  .op .skip:hover{background:rgba(255,255,255,.26)}
+  .op.out{animation:opOut .9s ease forwards}
+  @keyframes opOut{to{opacity:0;visibility:hidden}}
+  .hero .oplink{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:700;color:var(--yellow);text-decoration:underline;text-underline-offset:3px}
+  .hero .oplink:hover{color:#fff}
+  .hero .links2{display:flex;flex-wrap:wrap;gap:2px 22px;align-items:center;margin-top:8px}
   /* 59秒の物語（漫画をアニメ化した説明動画） */
   /* 配置はヒーロー直後の通常フロー。FVを潰さないよう高さを固定しない。 */
   /* 固定ナビ62px + 逃げ16px。全アンカー共通にしないと見出しがナビの下に潜る */
@@ -698,7 +710,7 @@
           <a class="btn btn-primary" href="#apply" style="background:#14A07A">受講を申し込む（経営者優先枠） <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
           <a class="btn btn-ghost on-dark" href="#three">出るときに、できていること</a>
         </div>
-        <a class="mvlink" href="#movie" data-mv>▶ 59秒の物語を見る（音声あり）</a>
+        <div class="links2"><a class="oplink" href="#" id="opGo">▶ 83秒の映像で見る（音声あり）</a><a class="mvlink" href="#movie" data-mv>▶ 59秒の物語を見る</a></div>
       </div>
     </div>
     <div class="evo" aria-label="初心者から中級者、上級者への進化">
@@ -719,6 +731,11 @@
   </div>
 </header>
 
+<!-- 83秒のオープニング（危機感テキストを原案に、数字は2026-09に再検証） -->
+<div class="op" id="opWrap" role="dialog" aria-label="83秒の映像">
+  <video id="opVideo" controls playsinline preload="none" poster="media/boot-opening-poster.jpg"></video>
+  <button type="button" class="skip" id="opSkip">スキップ</button>
+</div>
 <!-- 59秒の物語（漫画 第二部をアニメ化） -->
 <section class="mv" id="movie" aria-labelledby="mvTitle">
   <div class="in">
@@ -1120,6 +1137,31 @@
     v.addEventListener('ended',function(){ v.controls=false; end.hidden=false; stopBack(); });
     v.addEventListener('error',function(){ v.hidden=true; end.hidden=true; go.hidden=false; stopBack(); });
     v.addEventListener('pause',function(){ if(!v.ended) stopBack(); });
+  })();
+
+  /* オープニング：押されるまで mp4 を取りに行かない。単一動画を標準再生に任せる。
+     切替や同期は持たない（2本の video を切り替える方式は端末で映像だけ止まるため）。 */
+  (function(){
+    var wrap=document.getElementById('opWrap'), v=document.getElementById('opVideo'),
+        go=document.getElementById('opGo'), skip=document.getElementById('opSkip'),
+        hero=document.getElementById('heroVideo');
+    if(!wrap||!v||!go) return;
+    function close(){
+      wrap.classList.add('out');
+      setTimeout(function(){ wrap.classList.remove('on','out'); v.pause(); document.body.style.overflow=''; }, 850);
+      if(hero&&hero.dataset.opPaused){ delete hero.dataset.opPaused; hero.play().catch(function(){}); }
+    }
+    go.addEventListener('click',function(e){
+      e.preventDefault();
+      if(!v.getAttribute('src')) v.setAttribute('src','media/boot-opening.mp4');
+      wrap.classList.add('on'); document.body.style.overflow='hidden';
+      if(hero&&!hero.paused){ hero.pause(); hero.dataset.opPaused='1'; }
+      var p=v.play();
+      if(p&&p.catch) p.catch(function(){});
+    });
+    skip.addEventListener('click',close);
+    v.addEventListener('ended',close);
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&wrap.classList.contains('on')) close(); });
   })();
 </script>
 

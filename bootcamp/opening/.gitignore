@@ -1,0 +1,12 @@
+# 生成物はコミットしない。配信するのは ../media/boot-opening* だけ。
+# stills.py → clips.py → vo.py → build.py で作り直せる。
+anim/*.png
+anim/*.mp4
+vo/
+work/
+bgm.wav
+bgm_raw
+opening.mp4
+opening-web.mp4
+opening-poster.jpg
+_*
