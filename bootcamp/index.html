@@ -114,7 +114,8 @@
 
   /* 59秒の物語（漫画をアニメ化した説明動画） */
   /* 配置はヒーロー直後の通常フロー。FVを潰さないよう高さを固定しない。 */
-  #movie{scroll-margin-top:78px}
+  /* 固定ナビ62px + 逃げ16px。全アンカー共通にしないと見出しがナビの下に潜る */
+  #top,#three,#why,#design,#battle,#after,#spec,#faq,#apply,#movie,#privacy{scroll-margin-top:78px}
   .mv{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:1}
   .mv .in{max-width:1120px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:minmax(0,1fr) 520px;align-items:center;gap:32px}
   .mv .eb2{font-family:var(--latin);font-weight:600;font-size:11px;letter-spacing:.18em;color:var(--green-deep);margin-bottom:8px}
@@ -678,7 +679,7 @@
       <span>レリック<small>社会保険労務士法人</small></span>
     </a>
     <div class="nav-links">
-      <a href="#three">できること</a><a href="#why">3つの選択</a><a href="#design">5時間の中身</a><a href="#battle">午後の勝負</a><a href="#after">翌朝</a><a href="#faq">Q&amp;A</a><a href="../manga2/">漫画</a>
+      <a href="#three">できること</a><a href="#why">3つの選択</a><a href="#design">5時間の中身</a><a href="#battle">午後の勝負</a><a href="#after">翌朝</a><a href="#spec">受講要項</a><a href="#faq">Q&amp;A</a><a href="../manga2/">漫画</a>
       <a class="btn btn-primary" style="padding:9px 16px;font-size:13px" href="#apply">受講を申し込む</a>
     </div>
   </div>
@@ -742,7 +743,7 @@
       <div class="end" id="mvEnd" hidden>
         <b>次は、あなたの会社で。</b>
         <a class="btn btn-primary" href="#apply" style="background:#14A07A">受講を申し込む</a>
-        <div class="links"><a href="#apply">受講要項を見る</a><button type="button" id="mvAgain">もう一度見る</button></div>
+        <div class="links"><a href="#spec">受講要項を見る</a><button type="button" id="mvAgain">もう一度見る</button></div>
       </div>
     </div>
   </div>
