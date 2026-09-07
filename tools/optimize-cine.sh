@@ -21,6 +21,11 @@
 #     SVT-AV1  crf38 1.44MB/VMAF93.6   crf44 0.99MB/VMAF90.1  ← 利得14〜27%止まり
 #     VP9      crf33 2.28MB/VMAF77.1                          ← 論外
 #     → 全ブラウザ対応の H.264 単一配信が最適。AV1 二重配信は割に合わない。
+#
+#   互換性(2026-09-07): veryslow は参照フレーム16枚を使い、1080p では level 5.1 になる。
+#     携帯のハードウェアデコーダは 1080p を level 4.1〜4.2(参照4枚)までしか保証せず、
+#     遠い参照を要求する最初のフレームで映像だけが止まった(音声は続く)。
+#     -level 4.1 -x264-params ref=4 で必ず縛る。画質への影響は VMAF で 1 未満。
 # ------------------------------------------------------------------
 set -u
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -70,7 +75,7 @@ for e in $CLIPS; do
   for crf in $CRFS; do
     cand="$OUT/.crf${crf}_$name.mp4"
     ffmpeg -y -v error -i "$in" -t "$keep" -c:v libx264 -crf "$crf" -preset veryslow \
-      -pix_fmt yuv420p -profile:v high -movflags +faststart -an "$cand"
+      -pix_fmt yuv420p -profile:v high -level 4.1 -x264-params ref=4 \n      -movflags +faststart -an "$cand"
     csz=$(stat -c%s "$cand")
     [ "$csz" -lt "$bsz" ] || { rm -f "$cand"; continue; }
     v=$(vmaf "$cand" "$in" "$keep"); v=${v:-0}

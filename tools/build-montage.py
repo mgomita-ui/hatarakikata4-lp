@@ -69,6 +69,8 @@ def build_montage(out, total=None):
     run(['ffmpeg', '-y', '-v', 'error'] + ins +
         ['-filter_complex', ';'.join(filt), '-map', '[v]',
          '-c:v', 'libx264', '-crf', '20', '-preset', 'medium',
+         # 携帯のハードウェアデコーダ向け: 1080p は level 4.1 / 参照4枚を超えない
+         '-profile:v', 'high', '-level', '4.1', '-x264-params', 'ref=4:bframes=2',
          '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out])
     print('montage: %s  %s' % (out, ' / '.join(f'{d:.2f}s' for d in durs)))
 
@@ -115,6 +117,8 @@ def build_cutin(out, total=None):
     run(['ffmpeg', '-y', '-v', 'error'] + ins +
         ['-filter_complex', ';'.join(filt), '-map', '[v]',
          '-c:v', 'libx264', '-crf', '20', '-preset', 'medium',
+         # 携帯のハードウェアデコーダ向け: 1080p は level 4.1 / 参照4枚を超えない
+         '-profile:v', 'high', '-level', '4.1', '-x264-params', 'ref=4:bframes=2',
          '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out])
     print(f'cutin: {out}  {len(PANELS)}コマ / {total}s')
 

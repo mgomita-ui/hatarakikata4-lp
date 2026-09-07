@@ -225,3 +225,31 @@ AAC の先頭パディングや末尾処理を含む実再生の状態は保証�
 
 `inworld_text_to_speech` は**声を選ぶだけで演技指示のパラメータが無い**。抑揚が要るなら最初から
 別モデルを選ぶこと。なお Inworld は前後に 0.25〜0.86秒の無音を付けるが、ElevenLabs は付けない。
+
+---
+
+# 携帯で映像だけが止まる問題（H.264 level）
+
+**症状:** 特定の位置で映像が消え、音声だけ流れる。倍速にしても同じ位置で止まる。
+**原因:** `veryslow` が参照フレームを16枚使い、1080p クリップが **level 5.1** になっていた。
+携帯のハードウェアデコーダは 1080p を level 4.1〜4.2（参照4枚）までしか保証せず、
+遠い参照フレームを要求する最初のフレームでデコードが止まる。だから時間ではなく
+**フレーム位置**で決まり、倍速でも同じ場所で止まる。
+
+**なぜ気付きにくかったか:** 先行する 1080p クリップ（intro / tripbg / phonebg）も同じ条件で
+止まっていたはずだが、暗い抽象映像なので「消えた」と分からない。最初の絵が明確な
+1080p クリップ（legacy）で初めて症状として見える。
+
+**確認方法:**
+```bash
+ffprobe -v error -select_streams v:0 -show_entries stream=level -of csv=p=0 x.mp4   # 41 以下か
+ffmpeg -v trace -i x.mp4 -t 0.1 -c copy -bsf:v trace_headers -f null - 2>&1 | grep -m1 max_num_ref_frames
+# 値は Exp-Golomb。000010001 = 16 枚
+```
+
+**対処:** すべてのエンコードに `-profile:v high -level 4.1 -x264-params ref=4:bframes=2` を必須にした
+（optimize-cine.sh / build-montage.py / recompat.sh）。x264 は level を指定すると参照枚数を
+自動で収めるが、明示しておく。画質への影響は VMAF で 1 未満。
+
+**教訓:** ffmpeg で「デコードできる」ことと、端末のハードウェアで「再生できる」ことは別。
+配信前に level と参照枚数を必ず検査する。
