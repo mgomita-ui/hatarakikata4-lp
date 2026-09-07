@@ -1,10 +1,14 @@
 # 問い合わせフォームの受け口（GAS）
 
-LP の「働き方4.0診断を受ける」フォームを、メールソフト頼み（mailto）から、
-Google Apps Script のウェブアプリへの POST に切り替えるための一式。
+LP（働き方4.0診断）と AI ブートキャンプ（bootcamp/）の申込フォームを、メールソフト頼み（mailto）から、
+Google Apps Script のウェブアプリへの POST に切り替えるための一式。**受け口は 1 つを両方で共用**する。
 
-- `Code.gs` … スプレッドシートに 1 行追記し、m.gomita@canvas-sr.jp に通知メールを送る
-- LP 側（index.html）は `GAS_URL` が空なら従来どおり mailto、URL を入れると POST に切り替わる。
+- `Code.gs` … スプレッドシートに追記し、m.gomita@canvas-sr.jp に通知メールを送る
+  - 「問い合わせ」シート … 全件。先頭の「流入元」列が LP / ブートキャンプ
+  - 「LP」「ブートキャンプ」シート … 流入元ごとの一覧（同じ行を自動で振り分け）
+  - 件名も流入元で変わる：【働き方4.0診断】 / 【ブートキャンプ申込】
+  - どのページから来たかは、ページ側が送る `source`（lp / bootcamp）で判定。無ければ URL に bootcamp を含むかで推定
+- ページ側（`index.html` と `bootcamp/index.html`）は `GAS_URL` が空なら従来どおり mailto、URL を入れると POST に切り替わる。
   POST に失敗した場合だけ mailto に落ちるので、届かない経路にはならない。
 
 ## デプロイ手順（5分）
@@ -22,10 +26,15 @@ Google Apps Script のウェブアプリへの POST に切り替えるための�
 
 動作確認: その URL をブラウザで開いて `{"ok":true,...}` が出れば受け口は生きている。
 
-## LP 側の設定
+## ページ側の設定
 
-`index.html` の `var GAS_URL='';` に上の URL を入れて push するだけ。
-送信されると、シートに行が追記され、通知メールが届き、画面には「送信しました」が出る。
+両ページの `var GAS_URL='';` に同じ URL を入れて push する。まとめて入れるには：
+
+```
+python tools/gas/set-url.py https://script.google.com/macros/s/…/exec
+```
+
+送信されると、「問い合わせ」と流入元のシートに行が追記され、通知メールが届き、画面には「送信しました」が出る。
 
 ## コードを直したとき
 

@@ -959,16 +959,17 @@
       <p class="firm">レリック社会保険労務士法人<small>AI MANAGEMENT × QUEST-STYLE BOOTCAMP ｜ 2026</small></p>
     </div>
     <form class="cf" id="cform" novalidate>
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0" aria-hidden="true">
       <div class="row"><label>会社名<input type="text" name="company" placeholder="株式会社〇〇" required></label><label>お名前・役職<input type="text" name="name" placeholder="山田 太郎（代表取締役）" required></label></div>
       <div class="row"><label>メールアドレス<input type="email" name="email" placeholder="you@example.co.jp" required></label><label>従業員数<select name="size"><option>〜10名</option><option>11〜30名</option><option>31〜50名</option><option>51〜100名</option><option>101名〜</option></select></label></div>
       <label>希望時期・参加人数・いま困っていること<textarea name="msg" rows="4" placeholder="例：来月中に受講希望、参加2名。見積と議事録をAIに任せたい／社員が採れない など"></textarea></label>
       <label class="agree" style="display:flex;align-items:flex-start;gap:8px;font-weight:500"><input type="checkbox" name="agree" required style="width:auto;margin-top:5px"><span><a href="#privacy">個人情報の取り扱い</a>に同意します</span></label>
       <button class="btn btn-primary" type="submit" style="width:100%">受講を申し込む（経営者優先枠）</button>
       <p class="pv">送信ボタンを押すと、入力内容を本文にしたメール作成画面が開きます。</p>
-      <div class="ok" id="cok" role="status">
+      <div class="ok" id="cok" role="status"><p class="sent" style="display:none;font-weight:700">送信しました。2営業日以内にご連絡します。</p><div class="fallback">
         <p style="font-weight:700;margin-bottom:6px">メール作成画面を開きました。送信して完了です。</p>
         <p style="font-size:13px">画面が開かない場合は、下のボタンで本文をコピーし、<b>m.gomita@canvas-sr.jp</b> 宛にお送りください。</p>
-        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><button type="button" class="btn btn-ghost" id="ccopy" style="padding:8px 14px;font-size:13px">本文をコピー</button><a class="btn btn-ghost" id="cmail" href="#" style="padding:8px 14px;font-size:13px">メール作成画面をもう一度開く</a></div>
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><button type="button" class="btn btn-ghost" id="ccopy" style="padding:8px 14px;font-size:13px">本文をコピー</button><a class="btn btn-ghost" id="cmail" href="#" style="padding:8px 14px;font-size:13px">メール作成画面をもう一度開く</a></div></div>
       </div>
     </form>
   </div>
@@ -1010,6 +1011,8 @@
 <script>
   (function(){
     var TO='m.gomita@canvas-sr.jp';
+    // GAS のウェブアプリ URL（…/exec）。LP（../index.html）と同じ値にする。空の間は従来どおり mailto で開く。
+    var GAS_URL='';
     var f=document.getElementById('cform'),ok=document.getElementById('cok'),cp=document.getElementById('ccopy'),ml=document.getElementById('cmail');
     if(!f)return;
     var lastBody='',lastSubject='';
@@ -1020,11 +1023,22 @@
       lastBody=['レリック社会保険労務士法人 御中','','AI経営×クエスト型ブートキャンプの受講を申し込みます。','','■ 会社名：'+company,'■ お名前・役職：'+name,'■ メールアドレス：'+email,'■ 従業員数：'+size,'■ 希望時期・参加人数・困っていること：',msg||'（未記入）','','※個人情報の取り扱いに同意のうえ送信しています。'].join('\n');
       return 'mailto:'+TO+'?subject='+encodeURIComponent(lastSubject)+'&body='+encodeURIComponent(lastBody);
     }
+    var btn=f.querySelector('button[type="submit"]'), btnLabel=btn?btn.textContent:'';
+    function showOk(sent){ ok.style.display='block'; var h=ok.querySelector('.sent'), fb=ok.querySelector('.fallback'); if(h) h.style.display=sent?'block':'none'; if(fb) fb.style.display=sent?'none':''; }
     f.addEventListener('submit',function(e){
       e.preventDefault();
       if(!f.checkValidity()){f.reportValidity();return;}
-      var href=build(); ml.setAttribute('href',href); ok.style.display='block';
-      try{window.location.href=href;}catch(err){}
+      if(v('_honey')) return;                                   // bot が埋める隠し欄
+      var href=build(); ml.setAttribute('href',href);
+      if(!GAS_URL){ showOk(false); try{window.location.href=href;}catch(err){} return; }
+      // Content-Type を付けずに送る＝CORS の事前確認が起きず、GAS の応答をそのまま読める
+      var payload=JSON.stringify({company:v('company'),name:v('name'),email:v('email'),size:v('size'),msg:v('msg'),_honey:v('_honey'),source:'bootcamp',page:location.href,ref:document.referrer,ua:navigator.userAgent});
+      if(btn){btn.disabled=true;btn.textContent='送信中…';}
+      var restore=function(){ if(btn){btn.disabled=false;btn.textContent=btnLabel;} };
+      fetch(GAS_URL,{method:'POST',body:payload})
+        .then(function(r){ return r.json(); })
+        .then(function(j){ restore(); if(!j||!j.ok) throw new Error(j&&j.error||'ng'); showOk(true); try{f.reset();}catch(e2){} })
+        .catch(function(){ restore(); showOk(false); try{window.location.href=href;}catch(err){} });
     });
     cp.addEventListener('click',function(){
       var text='宛先: '+TO+'\n件名: '+lastSubject+'\n\n'+lastBody;

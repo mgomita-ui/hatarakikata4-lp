@@ -832,7 +832,7 @@
       var href=build(); ml.setAttribute('href',href);
       if(!GAS_URL){ showOk(false); try{window.location.href=href;}catch(err){} return; }
       // Content-Type を付けずに送る＝CORS の事前確認が起きず、GAS の応答をそのまま読める
-      var payload=JSON.stringify({company:v('company'),name:v('name'),email:v('email'),size:v('size'),msg:v('msg'),_honey:v('_honey'),page:location.href,ua:navigator.userAgent});
+      var payload=JSON.stringify({company:v('company'),name:v('name'),email:v('email'),size:v('size'),msg:v('msg'),_honey:v('_honey'),source:'lp',page:location.href,ref:document.referrer,ua:navigator.userAgent});
       if(btn){btn.disabled=true;btn.textContent='送信中…';}
       var restore=function(){ if(btn){btn.disabled=false;btn.textContent='働き方4.0診断を受ける';} };
       fetch(GAS_URL,{method:'POST',body:payload})
