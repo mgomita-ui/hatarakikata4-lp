@@ -16,7 +16,7 @@
   #cine ブロック（markup）だけを取り除く。旧スクリプトは先頭で
   `if(!cine) return;` するので、要素が無ければ何もしない。
 """
-import json, re, sys, os, html
+import json, re, re, sys, os, html
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 P = os.path.join(ROOT, 'index.html')
@@ -42,7 +42,7 @@ def remove_element(src, open_tag_re):
 def build_block(d):
     S = []
     for s in d['scenes']:
-        lines = [[round(l['cue'] - s['t0'], 2), l['text'], l.get('cls', '')]
+        lines = [[round(l['cue'] - s['t0'], 2), phrases(l['text']), l.get('cls', '')]
                  for l in d['lines'] if s['t0'] <= l['cue'] < s['t1']]
         S.append({'t0': s['t0'], 'lines': lines})
     secs = int(round(d['total']))
@@ -61,6 +61,7 @@ html.op-on{overflow:hidden}
 .op-ln{margin:0 0 .5em;max-width:100%;overflow-wrap:anywhere;font-size:clamp(20px,2.6vw,34px);font-weight:700;line-height:1.5;letter-spacing:.02em;text-shadow:0 2px 18px #031116,0 0 2px rgba(15,95,82,.6);opacity:0;transform:translateY(10px);transition:opacity .28s,transform .3s}
 .op-ln.in{opacity:1;transform:none}
 .op-ln b{color:#FFD700;font-weight:900}
+.op-ph{display:inline-block}
 .op-ln.sm{font-size:clamp(12px,1.3vw,16px);font-weight:500;color:rgba(243,245,239,.72);letter-spacing:.2em}
 .op-ln.mid{font-size:clamp(24px,3.4vw,46px);font-weight:900;line-height:1.3}
 .op-ln.big{font-size:clamp(26px,4vw,52px);font-weight:900;line-height:1.25}
@@ -174,6 +175,53 @@ html.op-on{overflow:hidden}
 """
     js = js.replace('__SCENES__', scenes_js).replace('__SECS__', str(secs))
     return START + css + markup + js + END
+
+
+def strip_tags(h):
+    return re.sub(r'<[^>]+>', '', h)
+
+
+def phrases(html):
+    """字幕を読点・句点の直後だけで折り返せるよう、文節ごとに inline-block の span で包む。
+
+    携帯の狭い画面では overflow-wrap:anywhere が語の途中で折り返してしまい読みにくかった。
+    <b> は文節をまたぐと崩れるので、句ごとに閉じて開き直す。閉じ括弧だけの文節は前に寄せる。
+    手で改行位置を決めている行（class="br"）はそのまま。
+    """
+    if 'class="br"' in html:
+        return html
+    out, bold, buf = [], False, ''
+
+    def flush():
+        nonlocal buf
+        if buf:
+            out.append(buf); buf = ''
+    for tok in re.split(r'(<[^>]+>)', html):
+        if not tok:
+            continue
+        if tok.startswith('<'):
+            if tok == '<b>': bold = True
+            elif tok == '</b>': bold = False
+            buf += tok
+            continue
+        parts = re.split(r'(?<=[、。！？])|(?<=——)', tok)
+        for k, part in enumerate(parts):
+            if not part:
+                continue
+            buf += part
+            if k < len(parts) - 1:
+                if bold: buf += '</b>'
+                flush()
+                if bold: buf = '<b>'
+    flush()
+    merged = []
+    for ph in out:
+        ph = ph.replace('<b></b>', '')
+        if merged and strip_tags(ph) in ('」', '」。', '。', '」！'):
+            merged[-1] += ph
+        else:
+            merged.append(ph)
+    return ''.join(f'<span class="op-ph">{ph}</span>' for ph in merged if strip_tags(ph))
 
 
 def main(write=False):
