@@ -140,6 +140,9 @@
   .mv .play small{font-size:11.5px;font-weight:500;opacity:.75}
   .mv .frame{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:12px;background:#07141F;box-shadow:var(--shadow)}
   .mv .frame img,.mv .frame video{display:block;width:100%;height:100%;object-fit:contain}
+  /* hidden 属性はブラウザ標準の display:none だが、上の .mv .frame video 等
+     （詳細度 0,2,1）に負けて効かない。これが無いと終了パネルが最初から出る。 */
+  [hidden]{display:none!important}
   .mv .start{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:pointer;font-family:inherit}
   .mv .start .lab{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);padding:12px 20px;border-radius:8px;background:#fff;color:var(--ink);white-space:nowrap;font-size:16px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.35)}
   .mv .start .lab small{display:block;margin-top:4px;font-size:12px;font-weight:500;color:var(--ink-3)}
