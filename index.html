@@ -1162,7 +1162,7 @@ html.op-on{overflow:hidden}
   function open(){
     document.documentElement.classList.add('op-on'); op.hidden=false; op.style.opacity='';
     v.playbackRate=1; bFF.classList.remove('on'); bFF.textContent='2倍';
-    v.muted=false; syncMute();
+    v.muted=true; syncMute();   // 既定は音声オフ。🔊 ボタンで解除する
     try{ v.currentTime=0; }catch(e){}
     var p=v.play(); if(p&&p.catch) p.catch(function(){});
   }
