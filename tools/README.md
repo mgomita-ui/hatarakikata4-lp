@@ -307,3 +307,9 @@ python tools/build-player.py --write  # プレーヤー(markup/CSS/字幕/操作
 - 落ちたままにせず、build-flat に **最大 1.5 倍のスロー＋末尾フレーム保持** を入れて吸収するようにした。引きの画（街・空撮）なら気にならないが、人物の動きがある画は作り直したほうがよい。
 - 台詞を増やすと layout は速度（MAX_TEMPO 1.15）で詰め込む。28 行中 12 行が上限に張り付いた状態は聞き心地が落ちる。`MAX_TEMPO=1.0 python tools/layout.py` で「圧縮なし」の所要尺を先に見てから、素材を延ばすか台詞を削るか決める。
 - 生成物以外にも秒数の文字が残る（ヒーローのボタン「▶ 77秒の映像で見る」）。JS が起動後に書き換えるが、初期描画は静的な値なので、scan-labels.py と一緒に `grep '秒の映像'` で確認する。
+
+## 台詞を「挿入」したときの落とし穴（ロジャーの差し替えで実測）
+
+- **VO のキャッシュは行番号（00.wav…）で紐づく。** 途中に行を足すと、後ろの行が 1 つずつずれて「別の台詞の音声」が当たる。gen-vo.sh は既存ファイルをスキップするので気づかない。行を足す前に `media/cine/vo/` の該当番号以降をリネームしてずらし、新しい番号だけ空けておく（vo/n/ は prep-vo で作り直されるので消してよい）。
+- gen-vo → layout → prep-vo の順で回すと、layout の時点で `vo-durations.tsv` が古く「実測 N 本 / 台本 M 行 — 数が合いません」で layout が**黙って何もしない**。順番は gen-vo → prep-vo → layout。
+- 字幕の折り返しは `overflow-wrap:anywhere` だと語の途中で折れる。build-player の `phrases()` が読点・句点の直後だけを折り返し点にする（文節を inline-block の span で包む）。375px 幅で全行を DOM に流し込み、`getClientRects().length>1` の span が無いことで検証した（ローカル http.server は Range 非対応でシークできないので、動画を進めずに字幕だけ描画して測る）。
