@@ -97,7 +97,7 @@ html.op-on{overflow:hidden}
 """
     markup = """
 <div class="op" id="op" hidden>
-  <video id="opV" playsinline preload="metadata" src="media/cine/opening-flat.mp4"></video>
+  <video id="opV" playsinline preload="metadata" src="media/cine/opening-flat.mp4?v=__VSTAMP__"></video>
   <div class="op-copy" id="opCopy"></div>
   <div class="op-bar">
     <button type="button" id="opPause" aria-label="一時停止">⏸ 停止</button>
@@ -175,6 +175,10 @@ html.op-on{overflow:hidden}
 </script>
 """
     js = js.replace('__SCENES__', scenes_js).replace('__SECS__', str(secs))
+    import hashlib
+    _mp4 = os.path.join(ROOT, 'media', 'cine', 'opening-flat.mp4')
+    _stamp = hashlib.sha1(open(_mp4, 'rb').read()).hexdigest()[:10] if os.path.exists(_mp4) else '0'
+    markup = markup.replace('__VSTAMP__', _stamp)
     return START + css + markup + js + END
 
 

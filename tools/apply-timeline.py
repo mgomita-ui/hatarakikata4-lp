@@ -31,13 +31,14 @@ FX = [
     {"tr": None,    "title": True},                     # 14 cutin（ハードカット＋タイトル）
     {"tr": "fold",  "endfade": True},                   # 15 finale（結び）
 ]
-INP = {"o1": .2, "o2": .2, "o3": .2, "o4": .2,
+INP = {"staff": .3, "o1": .2, "o2": .2, "o3": .2, "o4": .2,
        "old1": .5, "new1": .5, "old2": .5, "new2": .5, "old3": .5, "new3": .5,
        "old4": .5, "new4": .5,
        "commute": 1.0, "rooftop": .5, "climax": 1.0,
        "intro": .15, "grid1": 0.0, "grid2": 0.0, "legacy": .15, "finale": .05,
        "montage": 0.0, "strideA": .15, "cutin": 0.0, "founder": .3}
-FOCUS = {"o1": ("50% 60%", None), "o2": ("50% 50%", None),
+FOCUS = {"staff": ("50% 50%", None),
+         "o1": ("50% 60%", None), "o2": ("50% 50%", None),
          "o3": ("50% 50%", None), "o4": ("50% 50%", None),
          "old1": ("60% 50%", .7), "new1": ("45% 45%", None), "old2": ("45% 50%", .7),
          "new2": ("50% 50%", None), "old3": ("50% 55%", .7), "new3": ("50% 45%", None),
