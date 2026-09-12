@@ -74,8 +74,11 @@ def cut_clip(s, need, srcdir, out):
         else:
             print('  %s 素材 %.2fs → %.2fx スロー' % (s['clip'], have, rate))
         vf = 'setpts=%.4f*PTS,' % rate + vf
+    # 秒数で切ると fps 変換の丸めで1フレーム足りなくなる。フレーム数で切り、足りない分は最終フレームを複製
+    frames = int(round(need * FPS))
+    vf += ',tpad=stop_mode=clone:stop_duration=0.5'
     subprocess.check_call(['ffmpeg', '-y', '-v', 'error', '-ss', str(s['in']), '-i', src,
-                           '-t', str(need), '-vf', vf, '-an',
+                           '-vf', vf, '-frames:v', str(frames), '-an',
                            '-c:v', 'libx264', '-crf', '16', '-preset', 'fast', out])
 
 
