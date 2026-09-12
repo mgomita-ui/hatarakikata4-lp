@@ -1,0 +1,30 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: base,Yu Gothic,58,&H00FFFFFF,&HC0000000,&H00000000,1,0,0,0,100,100,1,0,1,3,2,2,120,120,88,1
+Style: big,Yu Gothic,86,&H00FFFFFF,&HC0000000,&H00000000,1,0,0,0,100,100,2,0,1,4,3,2,120,120,110,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.80,0:00:03.18,base,,0,0,0,,「補助金の対象になります」
+Dialogue: 0,0:00:03.30,0:00:06.28,base,,0,0,0,,「自己負担は、四分の一で済みます」
+Dialogue: 0,0:00:06.40,0:00:08.28,base,,0,0,0,,検討が、始まる。
+Dialogue: 0,0:00:08.40,0:00:12.08,base,,0,0,0,,そして、月が変わる。
+Dialogue: 0,0:00:12.20,0:00:14.18,big,,0,0,0,,「もうやめましょうよ！」
+Dialogue: 0,0:00:14.30,0:00:16.28,big,,0,0,0,,「消えなくてもいい時間が、消えています」
+Dialogue: 0,0:00:16.40,0:00:22.40,big,,0,0,0,,「時間が……もったいない」
+Dialogue: 0,0:00:26.00,0:00:28.88,base,,0,0,0,,「……いい社員さんですね」
+Dialogue: 0,0:00:29.00,0:00:32.08,base,,0,0,0,,「十時間以上でないと、対象になりません」
+Dialogue: 0,0:00:32.20,0:00:34.28,base,,0,0,0,,「計画届は、一か月半前」
+Dialogue: 0,0:00:34.40,0:00:36.48,base,,0,0,0,,「職種ごとに、組み直します」
+Dialogue: 0,0:00:36.60,0:00:39.08,base,,0,0,0,,「そして——実務は、訓練に使えません」
+Dialogue: 0,0:00:39.20,0:00:42.48,base,,0,0,0,,「自社の数字ではなく、演習で学ぶことになる」
+Dialogue: 0,0:00:42.60,0:00:47.68,base,,0,0,0,,「やりたかった研修では、なくなります」
+Dialogue: 0,0:00:47.80,0:00:50.08,base,,0,0,0,,「三時間で、終わります」
+Dialogue: 0,0:00:50.20,0:00:51.88,big,,0,0,0,,あえて、助成金を使いません。
+Dialogue: 0,0:00:52.00,0:00:53.20,big,,0,0,0,,安い　早い　うまい

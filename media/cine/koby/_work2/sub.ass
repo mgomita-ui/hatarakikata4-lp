@@ -1,0 +1,36 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: base,Yu Gothic,58,&H00FFFFFF,&HC0000000,&H00000000,1,0,0,0,100,100,1,0,1,3,2,2,120,120,88,1
+Style: big,Yu Gothic,86,&H00FFFFFF,&HC0000000,&H00000000,1,0,0,0,100,100,2,0,1,4,3,2,120,120,110,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.80,0:00:05.08,base,,0,0,0,,その作業、まだ人がやっていますか。
+Dialogue: 0,0:00:05.20,0:00:11.20,base,,0,0,0,,会議も、議事録も、入力のやり直しも。
+Dialogue: 0,0:00:11.80,0:00:15.28,base,,0,0,0,,どの会社でも、手作業が残っています。
+Dialogue: 0,0:00:15.40,0:00:17.88,base,,0,0,0,,「AI研修のご提案です」
+Dialogue: 0,0:00:18.00,0:00:20.48,base,,0,0,0,,「助成金の対象になります」
+Dialogue: 0,0:00:20.60,0:00:23.48,base,,0,0,0,,「自己負担は、四分の一で済みます」
+Dialogue: 0,0:00:23.60,0:00:26.48,base,,0,0,0,,ただし、十時間以上でないと対象外。
+Dialogue: 0,0:00:26.60,0:00:29.88,base,,0,0,0,,九月十五日に決めても、実施は十一月一日。
+Dialogue: 0,0:00:30.00,0:00:33.28,big,,0,0,0,,全部わかったうえで、それでも──
+Dialogue: 0,0:00:33.40,0:00:37.68,big,,0,0,0,,「もう、やめましょうよ！」
+Dialogue: 0,0:00:37.80,0:00:42.68,big,,0,0,0,,「消えなくてもいい時間が、消えています」
+Dialogue: 0,0:00:42.80,0:00:48.80,big,,0,0,0,,「時間が……もったいない」
+Dialogue: 0,0:00:49.20,0:00:55.20,base,,0,0,0,,「……何を言っているんだ」
+Dialogue: 0,0:00:58.80,0:01:02.88,base,,0,0,0,,「……いい社員さんですね」
+Dialogue: 0,0:01:03.00,0:01:07.08,big,,0,0,0,,「この研修を、終わらせに来た」
+Dialogue: 0,0:01:07.20,0:01:09.68,base,,0,0,0,,「三時間で、終わります」
+Dialogue: 0,0:01:09.80,0:01:12.88,base,,0,0,0,,「御社の具体的な業務を、取り扱います」
+Dialogue: 0,0:01:13.00,0:01:15.28,base,,0,0,0,,「……一旦、保留で」
+Dialogue: 0,0:01:15.40,0:01:21.40,base,,0,0,0,,「私も、一旦保留で」
+Dialogue: 0,0:01:21.60,0:01:26.08,big,,0,0,0,,あえて、助成金を使いません。
+Dialogue: 0,0:01:26.20,0:01:28.88,big,,0,0,0,,今からでも、研修できます。
+Dialogue: 0,0:01:29.00,0:01:31.68,big,,0,0,0,,講師陣も、豊富です。
+Dialogue: 0,0:01:31.80,0:01:34.40,big,,0,0,0,,AIブートキャンプ
