@@ -1157,18 +1157,19 @@
     if(!wrap||!v||!go) return;
     function close(){
       wrap.classList.add('out');
-      setTimeout(function(){ wrap.classList.remove('on','out'); v.pause(); document.body.style.overflow=''; }, 850);
+      setTimeout(function(){ wrap.classList.remove('on','out'); wrap.hidden=true; v.pause(); document.body.style.overflow=''; }, 850);
       if(hero&&hero.dataset.opPaused){ delete hero.dataset.opPaused; hero.play().catch(function(){}); }
     }
     go.addEventListener('click',function(e){
       e.preventDefault();
       if(!v.getAttribute('src')) v.setAttribute('src','../media/private-koby.mp4');
-      wrap.classList.add('on'); document.body.style.overflow='hidden';
+      wrap.hidden=false; wrap.classList.add('on'); document.body.style.overflow='hidden';
       if(hero&&!hero.paused){ hero.pause(); hero.dataset.opPaused='1'; }
       var p=v.play();
       if(p&&p.catch) p.catch(function(){});
     });
     skip.addEventListener('click',close);
+    wrap.addEventListener('click',function(e){ if(e.target===wrap) close(); });
     v.addEventListener('ended',close);
     document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&wrap.classList.contains('on')) close(); });
   })();
