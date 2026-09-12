@@ -455,7 +455,16 @@
               font-weight:900;padding:3px 10px;border-radius:999px;margin-right:8px;
               vertical-align:2px;letter-spacing:.02em}
   /* ヒーローの入口。映像を1枚大きく、漫画3本を横並び */
-  .hfoot .cards.vwide{display:block;margin-bottom:10px}
+  .hfoot .cards.vwide{display:block!important;margin-bottom:10px}
+  .hfoot .cards.mrow{display:grid!important;grid-template-columns:repeat(3,1fr);gap:10px;
+                     align-items:stretch}
+  .hfoot .cards.mrow .mcta{max-width:none!important;flex:none!important;width:100%;
+                           grid-template-columns:52px 1fr auto;align-items:center}
+  .hfoot .cards.mrow .mcta .cv{width:52px;height:74px;flex:none}
+  .hfoot .cards.mrow .mcta .tt{font-size:12.5px;line-height:1.4}
+  .hfoot .cards.mrow .mcta .tt small{font-size:10.5px}
+  .hfoot .cards.mrow .mcta .tag{font-size:9.5px}
+  .hfoot .cards.mrow .mcta .go{width:28px;height:28px;font-size:14px}
   .vcta{display:grid;grid-template-columns:190px 1fr;gap:16px;align-items:center;text-decoration:none;
         color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:10px;
         background:rgba(255,255,255,.06);transition:.18s}
@@ -469,8 +478,6 @@
              letter-spacing:.1em;color:var(--green-lt)}
   .vcta .tt{font-weight:900;font-size:17px;line-height:1.35}
   .vcta .tt small{display:block;font-weight:500;font-size:11.5px;opacity:.78;margin-top:2px}
-  .hfoot .cards.mrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-  .hfoot .cards.mrow .mcta{max-width:none;flex:none}
   @media (max-width:900px){
     .vcta{grid-template-columns:1fr}
     .hfoot .cards.mrow{grid-template-columns:1fr}
@@ -1054,19 +1061,19 @@
 
 <!-- 06 受講要項 -->
 <div class="chap" id="spec">
-  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">08</div><h2>受講要項</h2><p>経営者優先枠／先着順。<br><b>次の経営は、ここから始まる。</b></p></div><div class="r"></div></div>
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">08</div><h2>受講要項</h2><p>集合版は経営者優先枠／先着順。訪問は日程を御社に合わせます。<br><b>次の経営は、ここから始まる。</b></p></div><div class="r"></div></div>
 </div>
 <div class="page">
   <section class="card">
     <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
-    <h2 class="one">5時間、<span class="y">他の仕事は捨てる</span>。</h2>
+    <h2 class="one">その時間だけは、<span class="y">他の仕事は捨てる</span>。</h2>
     <div class="spec">
       <div class="box"><div class="hd">受講料と開催仕様</div><div class="price"><b>50,000</b><span>円（税別）／1名・集合版</span></div><p class="p2"><b>70,000</b><span>円（税別）／社長1名・訪問</span></p><p class="p2"><b>100,000</b><span>円（税別）／5名まで・訪問</span><em>1名あたり20,000円</em></p>
         <dl><dt>時間</dt><dd>集合版は5時間（10:00–15:00）。訪問は3時間、開始時刻は御社に合わせます</dd><dt>場所</dt><dd>集合版は会場。訪問は御社の会議室（東京・大阪は当法人、他地域は提携講師）</dd><dt>対象</dt><dd>年商5〜30億円／社員10〜100名／経営者・幹部</dd><dt>形式</dt><dd>集合版は少人数（2〜6名・経営者優先）。訪問は社長1名から5名まで</dd><dt>持参</dt><dd>ノートPC ＋ Claude／ChatGPT／Geminiの有料アカウント（ログイン済み）</dd></dl></div>
-      <div class="box"><div class="hd">受講に含まれるもの</div><ul><li>5時間ワークショップ本編</li><li>Claude Code 稼働環境一式（構成資料・実行コマンド）</li><li>毎週のドリル配信（3か月・AIの新機能や仕様変更に合わせて改定）</li><li>AI経営チーム設計図（CMO・CFO・CTO・CIO 4役の定義書）</li><li>経営会議スコアレポート（当日採点・改善ベクトル）</li><li>90日アクションプラン</li><li>月次1on1（オンライン15分・3か月伴走）</li></ul></div>
+      <div class="box"><div class="hd">受講に含まれるもの</div><ul><li>本編（集合版は5時間／訪問は3時間）</li><li>訪問の場合：事前の題材ヒアリング（オンライン15〜20分）</li><li>Claude Code 稼働環境一式（構成資料・実行コマンド）</li><li>毎週のドリル配信（3か月・AIの新機能や仕様変更に合わせて改定）</li><li>AI経営チーム設計図（CMO・CFO・CTO・CIO 4役の定義書）</li><li>経営会議スコアレポート（当日採点・改善ベクトル）</li><li>90日アクションプラン</li><li>月次1on1（オンライン15分・3か月伴走）</li></ul></div>
     </div>
     <div class="keys">
-      <div class="k"><b>KEY 01　5時間、他の仕事は捨てる</b><span>会議室のドアを閉め、携帯はマナーモード。電話・Slack・LINEは遮断。</span></div>
+      <div class="k"><b>KEY 01　その時間だけは、他の仕事は捨てる</b><span>会議室のドアを閉め、携帯はマナーモード。電話・Slack・LINEは遮断。</span></div>
       <div class="k"><b>KEY 02　わからないことは、まずAIに問う</b><span>自分でプロンプトを生み、AIと組んで考える。決めるのは、あなた。</span></div>
       <div class="k"><b>KEY 03　アカウントは事前に設定して持参</b><span>ログイン済みで会場へ。当日のセットアップ時間はゼロ。</span></div>
     </div>
