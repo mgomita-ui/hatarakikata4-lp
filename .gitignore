@@ -3,3 +3,15 @@ media/cine/_compat/
 media/cine/vo/
 media/cine/unused/
 tools/.qc-transcript.txt
+
+# 作業中間物（2026-09-12 追加）
+.omc/
+.claude/
+tools/__pycache__/
+media/cine/koby/_work/
+media/cine/koby/_work2/
+media/cine/koby/v2clip/
+media/cine/koby/seed/
+media/cine/koby2-check.mp4
+media/cine/koby2-web.mp4
+*.bak.*
