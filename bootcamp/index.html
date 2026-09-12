@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<div class="facts nu"><div><b>5時間 または 3時間</b><span>会場に来ていただくか、こちらがうかがうか</span></div><div><b>2〜6名 または 1〜5名</b><span>少人数・経営者優先／社長1名から</span></div><div><b>50,000円〜</b><span>税別。受け方で変わります</span></div></div><!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -498,10 +498,9 @@
   /* 受け方3本の帯。折り返して「社長1／名」と割れていたので組み直す */
   .hfoot .facts.ways3{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
                       background:rgba(255,255,255,.14);border-radius:12px;overflow:hidden}
-  .hfoot .facts.ways3>div{background:rgba(6,26,22,.72);padding:14px 14px 13px;min-width:0;
-                          display:flex;flex-direction:column;gap:2px;position:relative}
-  .hfoot .facts.ways3 b{font-size:11px;font-weight:900;letter-spacing:.12em;color:var(--green-lt);
-                        display:block}
+  .hfoot .facts.ways3>div{background:rgba(6,26,22,.72);padding:14px;min-width:0;
+                          display:flex;flex-direction:column;gap:2px}
+  .hfoot .facts.ways3 b{font-size:11px;font-weight:900;letter-spacing:.12em;color:var(--green-lt)}
   .hfoot .facts.ways3 .p{display:block;white-space:nowrap;font-weight:900;line-height:1.05}
   .hfoot .facts.ways3 .p i{font-family:var(--latin);font-style:normal;font-size:27px;
                            letter-spacing:-.02em}
@@ -513,6 +512,31 @@
                         margin-top:3px;white-space:nowrap}
   .hfoot .facts.ways3 .best{background:rgba(20,160,122,.22)}
   @media (max-width:900px){.hfoot .facts.ways3{grid-template-columns:1fr}}
+  /* 文字が小さいという指摘（2026-09-12）。本文まわりを一段上げる */
+  body{font-size:16.5px}
+  .card .sub1{font-size:16.5px!important;line-height:1.95}
+  .card .note{font-size:14.5px!important;line-height:1.9}
+  .tl .half div{font-size:15px!important}
+  .tl .half b{font-size:16.5px!important}
+  .keys .k span{font-size:14.5px!important;line-height:1.9}
+  .keys .k b{font-size:15.5px!important}
+  .spec dl{font-size:15px!important;line-height:1.95}
+  .spec .box ul li{font-size:15px!important;line-height:1.95}
+  .spec .box .hd{font-size:14px!important}
+  .w1 dl{font-size:15px!important;line-height:1.95}
+  .w1 .hd{font-size:14.5px!important}
+  .w1 .per{font-size:14px!important}
+  .faq .a{font-size:15px!important;line-height:1.95}
+  .faq summary{font-size:15.5px!important}
+  .chap .in p{font-size:14.5px!important;line-height:1.85}
+  .vs2 div{font-size:15px!important}
+  .hfoot .facts.nu b{font-size:17px;font-weight:900;display:block;letter-spacing:-.01em}
+  .hfoot .facts.nu span{display:block;font-size:12.5px;font-weight:500;
+                        color:rgba(255,255,255,.72);margin-top:3px;line-height:1.6}
+  .hfoot .facts.nu{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+                   background:rgba(255,255,255,.14);border-radius:12px;overflow:hidden}
+  .hfoot .facts.nu>div{background:rgba(6,26,22,.72);padding:14px;min-width:0}
+  @media (max-width:900px){.hfoot .facts.nu{grid-template-columns:1fr}}
 </style>
 <style>
   /* ===== bootcamp: visual-first additions (same design system) ===== */
@@ -825,6 +849,100 @@
     </div>
     <div class="hfoot">
       <div class="facts ways3"><div><b>会場</b><span class="p"><i>50,000</i>円</span><em>5時間・1名</em></div><div><b>訪問</b><span class="p"><i>70,000</i>円</span><em>3時間・社長1名</em></div><div class="best"><b>訪問</b><span class="p"><i>100,000</i>円</span><em>3時間・5名まで</em><u>1名あたり 20,000円</u></div></div>
+      <div class="cards stack"><div class="vwide">
+        <a class="vcta" id="opGo" href="#" aria-label="映像「時間がもったいない」を見る">
+          <span class="th"><img src="media/koby-wide.jpg" alt=""><span class="pl">&#9654;</span></span>
+          <span class="tx"><span class="tag">映像・1分34秒</span>
+          <span class="tt">時間がもったいない<small>AI研修が、いつのまにか遠くなる</small></span></span>
+        </a>
+        </div>
+        <div class="mrow">
+        <a class="mcta" href="../manga2/" aria-label="漫画『ある経営者の選択 II』を読む"><span class="cv"><img src="../manga2/pages/cover.jpg" alt=""></span><span class="tx"><span class="tag">漫画・全24ページ</span><span class="tt">町工場の社長が、会場で5時間<small>ある経営者の選択 II</small></span></span><span class="go">&rsaquo;</span></a>
+        <a class="mcta" href="../bangai1/" aria-label="番外編を読む"><span class="cv"><img src="../bangai1/pages/cover.jpg" alt=""></span><span class="tx"><span class="tag">番外編・全24ページ</span><span class="tt">営業会社の社長が、御社で3時間<small>番外編「その一か月半」</small></span></span><span class="go">&rsaquo;</span></a>
+        </div>
+      <p class="firm">レリック社会保険労務士法人<small>AI MANAGEMENT × QUEST-STYLE BOOTCAMP ｜ 2026</small></p>
+    </div>
+      </div>
+  </div>
+</header>
+
+<!-- 83秒のオープニング（危機感テキストを原案に、数字は2026-09に再検証） -->
+<div class="op" id="opWrap" role="dialog" aria-label="1分31秒の映像" hidden>
+  <video id="opVideo" controls playsinline preload="none" poster="media/koby-poster.jpg"></video>
+  <button type="button" class="skip" id="opSkip">スキップ</button>
+</div>
+
+
+<!-- 01 できること（最初に見せる） -->
+<div class="chap" id="three">
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">01</div><h2>部屋を出るとき、この3つができている</h2><p>知識ではなく、動く状態を持ち帰ります。<br><b>帰りの電車で、もう動いている。</b></p></div><div class="r"></div></div>
+</div>
+<div class="page">
+  <section class="card">
+    <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
+    <h2 class="one">5時間後、あなたのPCは<span class="y">こうなっています</span>。</h2>
+    <p class="sub1">3つとも「いつかやろう」と思っていたことのはずです。この日は、その日のうちに終わらせる設計です。</p>
+    <div class="trio">
+      <div class="o">
+        <div class="vis"><div class="term"><div class="bar"><i></i><i></i><i></i></div><pre><span class="p">›</span> 先月の受注データから
+  見積のたたき台を3社分作って
+<span class="dim">  受注CSVを読み込み → 単価表を照合</span>
+<span class="ok">✓</span> 見積_A社.xlsx
+<span class="ok">✓</span> 見積_B社.xlsx
+<span class="ok">✓</span> 見積_C社.xlsx
+<span class="p">›</span> 今朝の会議音声を議事録に。
+  決定事項だけ箇条書きで
+<span class="ok">✓</span> 議事録_0906.md（決定5・宿題3）
+<span class="p">›</span> <span class="cur"></span></pre></div></div>
+        <div class="bd"><div class="n">01</div><h3>Claude Code と Codex が、自分のPCで動く</h3><p>日本語で指示すると、ファイルを作り、調べ、まとめる「AIの実行役」です。当日の最初の20分で自分のPCに立ち上げ、その後の課題はすべて自分で指示して解きます。</p><span class="gloss">Claude Code＝Anthropic社、Codex＝OpenAI社の、指示で仕事を実行するAI</span><div class="waza"><b>身につく技</b>日本語で頼んで、動くものを作る（バイブコーディング）／AIに作らせて、人が確かめて直す（AI駆動開発）</div><div class="waza delta"><b>どれだけ変わる</b>見積3社分：3時間 → 30秒</div></div>
+      </div>
+      <div class="o">
+        <div class="vis"><div class="wire"><div class="src"><span>会計</span><span>勤怠・給与</span><span>メール</span><span>カレンダー</span><span>チャット</span></div><div class="arr">→</div><div class="hub">MCP<small>共通の配線口</small></div><div class="arr">→</div><div class="out">AIが読める<small>「先月の粗利は？」「残業が増えた部署は？」に、自社の数字で答える</small></div></div></div>
+        <div class="bd"><div class="n">02</div><h3>MCPで、AIが自社のデータにつながる</h3><p>AIは、渡した情報しか知りません。MCPは、会計・勤怠・メールなどの自社データをAIにつなぐ「配線口」。当日、実際に1本つないで、自社の数字で答えが返ってくるところまで行きます。</p><span class="gloss">MCP（Model Context Protocol）＝AIと社内ツールをつなぐ共通規格</span><div class="waza"><b>身につく技</b>会計・勤怠・メールから数字を引く／必要な仕組みを、その場で作る</div><div class="waza delta"><b>どれだけ変わる</b>粗利の確認：3日 → 一言。納期リスク：毎朝、勝手に出る</div></div>
+      </div>
+      <div class="o">
+        <div class="vis"><div class="sort"><div class="col ai"><h4>AIがする</h4><span>見積の下書き</span><span>議事録</span><span>集計・分析</span><span>定型の報告</span><span>一次調査</span></div><div class="col hu"><h4>人がする</h4><span>価格を決める</span><span>採用を決める</span><span>顧客と話す</span><span>最終判断</span><span>関係づくり</span></div><div class="col ex"><h4>専門家がする</h4><span>労務・法務</span><span>税務・会計</span><span>専門設計</span><span>単発の業務</span><span>監査・保証</span></div></div></div>
+        <div class="bd"><div class="n">03</div><h3>人がすること・AIがすること・専門家がすることの線が引ける</h3><p>自社の全業務を3列に分けます。「明日から何をAIに渡すか」が決まった状態で帰る。人を減らすためではなく、人を人にしかできない仕事に戻すためです。</p><span class="gloss">結果として、経営判断にAIを自分で使えるようになる</span><div class="waza"><b>身につく技</b>前提を先に言わせる／AIを分けて組み合わせ、三通り出させる／決めるのは、人</div><div class="waza delta"><b>どれだけ変わる</b>三通りの比較：半日 → 2分。議事録：2時間 → 会議中に</div></div>
+      </div>
+    </div>
+    <div class="cmp">
+      <div class="cmp-h"><b>「チャット」と「コード」は、何が違う？</b><span>ブートキャンプで身につけるのは、右側です。</span></div>
+      <div class="cmp-g">
+        <div class="cmp-c"><div class="cmp-t">チャットAI</div><div class="cmp-io"><span>聞く</span><i>›</i><span>答えが返る（文章）</span></div><p>「見積の作り方を教えて」→ 手順の説明が返る。作るのは、自分。</p><div class="cmp-f">作業は、自分でやる</div></div>
+        <div class="cmp-c on"><div class="cmp-t">コードAI</div><div class="cmp-io"><span>頼む</span><i>›</i><span>仕事が終わる（ファイル・数字・接続）</span></div><p>「先月の受注から見積を三社分作って」→ 見積ファイルが3つできる。会計につなげば、粗利も返る。</p><div class="cmp-f">人は、決める</div><div class="cmp-tags"><span>バイブコーディング＝日本語で頼んで、動くものを作る</span><span>AI駆動開発＝AIに作らせ、人が確かめて直す</span></div></div>
+      </div>
+    </div>
+    <div class="concl"><div class="ct">この3つがそろうと</div><p>AIは「知っている」から「使いこなせる」に変わります。<span class="y">翌朝の経営会議から、判断の材料と速さが変わります。</span></p></div>
+    <a class="mlink" href="../manga2/#p09"><i>MANGA</i>田村社長がこの3つを手に入れるまでを、漫画で読む ›</a>
+  </section>
+</div>
+
+<!-- 02 3つの選択 -->
+<!-- 02 受け方 -->
+<div class="chap" id="how">
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">02</div><h2>受け方は、3つあります</h2><p>到達点は同じです。違うのは、来ていただくか、うかがうか。<br><b>1名なら会場が安い。5名なら訪問が安い。</b></p></div><div class="r" style="background:linear-gradient(135deg,#14A07A,#0F5F52 60%,#2E6A8A)"></div></div>
+</div>
+<div class="page">
+  <section class="card">
+    <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
+    <h2 class="one">同じところに<span class="y">着きます</span>。道が3本あるだけです。</h2>
+    <p class="sub1">CHAP.01の3つは、どの受け方でも同じです。会場に集まる時間とチーム対抗戦がないぶん、訪問版は3時間に収まります。</p>
+    <div class="ways">
+      <div class="w1">
+        <div class="hd">集合版</div>
+        <div class="amt"><b>50,000</b><span>円（税別）／1名</span></div>
+        <dl><dt>場所</dt><dd>会場にお越しいただきます</dd><dt>時間</dt><dd>5時間（10:00–15:00）</dd><dt>人数</dt><dd>2〜6名の少人数・経営者優先</dd><dt>特徴</dt><dd>午後に<b>駅ナカ出店バトル</b>。他社の社長と競います</dd></dl>
+        <p class="per">1名あたり <b>50,000</b>円</p>
+      </div>
+      <div class="w1">
+        <div class="hd">個別訪問・社長おひとり</div>
+        <div class="amt"><b>70,000</b><span>円（税別）／1名</span></div>
+        <dl><dt>場所</dt><dd>こちらが御社にうかがいます</dd><dt>時間</dt><dd>3時間。開始時刻は御社に合わせます</dd><dt>人数</dt><dd>社長1名</dd><dt>特徴</dt><dd>チーム対抗戦の代わりに、<b>御社の実務を1件</b>その場で終わらせます</dd></dl>
+        <p class="per">1名あたり <b>70,000</b>円</p>
+      </div>
+      <div class="w1 best">
+        <div class="hd">個別訪問・幹部まで</div>
+        <div class="amt"><b>100,000</b><span>円（税別）／5名まで</span></div>
         <dl><dt>場所</dt><dd>こちらが御社にうかがいます</dd><dt>時間</dt><dd>3時間。開始時刻は御社に合わせます</dd><dt>人数</dt><dd>社長を含め5名まで</dd><dt>特徴</dt><dd>全員のPCをセットアップ。<b>翌朝から幹部も同じ道具を持っています</b></dd></dl>
         <p class="per">1名あたり <b>20,000</b>円</p>
       </div>
