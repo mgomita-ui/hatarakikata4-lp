@@ -768,6 +768,41 @@
   .chips span i{font-style:normal;font-family:var(--latin);font-weight:700;color:var(--green);margin-right:6px;font-size:12px}
 
   /* spec */
+  /* 受講要項：会場と訪問を左右に並べて読ませる */
+  .spec.one{grid-template-columns:1fr}
+  .spec .sx{margin:0}
+  .spec .sx .sh,.spec .sx .sr{display:grid;grid-template-columns:minmax(0,110px) minmax(0,1fr) minmax(0,1fr)}
+  .spec .sx .sh{background:var(--mint);font-size:13.5px;border-bottom:1px solid var(--line)}
+  .spec .sx .sh span,.spec .sx .sh b{padding:11px 16px}
+  .spec .sx .sh b{font-weight:900;color:var(--ink-3)}
+  .spec .sx .sh b.ok{color:var(--green-deep);background:rgba(20,160,122,.10)}
+  .spec .sx .sr{border-bottom:1px solid var(--line)}
+  .spec .sx .sr:last-child{border-bottom:0}
+  .spec .sx .sr>span{padding:14px 16px;font-weight:900;font-size:13px;color:var(--ink-3);background:#FAFCFB}
+  .spec .sx .sr>i{font-style:normal;padding:14px 16px;border-left:1px solid var(--line);min-width:0}
+  .spec .sx .sr>i.ok{background:rgba(20,160,122,.06)}
+  .spec .sx .sr>i b{display:block;font-weight:900;font-size:15.5px;color:var(--ink);line-height:1.5}
+  .spec .sx .sr>i.ok b{color:var(--green-deep)}
+  .spec .sx .sr>i u{text-decoration:none;font-family:var(--latin);font-weight:700;font-size:30px;
+                    letter-spacing:-.02em;color:var(--green-deep);line-height:1}
+  .spec .sx .sr>i small{font-size:11.5px;font-weight:700;color:var(--ink-3);margin-left:4px}
+  .spec .sx .sr>i em{display:block;font-style:normal;font-size:12px;font-weight:700;
+                     color:var(--ink-3);margin-top:4px;line-height:1.6}
+  .spec .sx .sr>i k{display:block;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+  .spec .sx .sr>i k u{font-size:22px}
+  .spec .sn{margin:0;padding:12px 16px;font-size:13px;font-weight:700;color:var(--ink-3);
+            background:#FAFCFB;border-top:1px solid var(--line)}
+  .spec .box ul.two{columns:2;column-gap:28px}
+  .spec .box ul.two li{break-inside:avoid}
+  @media (max-width:760px){
+    .spec .sx .sh{display:none}
+    .spec .sx .sr{grid-template-columns:1fr}
+    .spec .sx .sr>i{border-left:0;border-top:1px dashed var(--line)}
+    .spec .sx .sr>i:before{content:"会場に集まる";display:block;font-size:11px;font-weight:900;
+                           color:var(--ink-3);margin-bottom:4px}
+    .spec .sx .sr>i.ok:before{content:"御社にうかがう";color:var(--green-deep)}
+    .spec .box ul.two{columns:1}
+  }
   .spec{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
   .spec .box{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
   .spec .box .hd{background:#F6F9F7;padding:10px 16px;font-weight:700;font-size:13px;color:var(--ink-2);border-bottom:1px solid var(--line)}
@@ -1057,10 +1092,30 @@
   <section class="card">
     <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
     <h2 class="one">その時間だけは、<span class="y">他の仕事は捨てる</span>。</h2>
-    <div class="spec">
-      <div class="box"><div class="hd">受講料と開催仕様</div><div class="price"><b>50,000</b><span>円（税別）／1名・集合版</span></div><p class="p2"><b>70,000</b><span>円（税別）／社長1名・訪問</span></p><p class="p2"><b>100,000</b><span>円（税別）／5名まで・訪問</span><em>1名あたり20,000円</em></p>
-        <dl><dt>時間</dt><dd>集合版は5時間（10:00–15:00）。訪問は3時間、開始時刻は御社に合わせます</dd><dt>場所</dt><dd>集合版は会場。訪問は御社の会議室（東京・大阪は当法人、他地域は提携講師）</dd><dt>対象</dt><dd>年商5〜30億円／社員10〜100名／経営者・幹部</dd><dt>形式</dt><dd>集合版は少人数（2〜6名・経営者優先）。訪問は社長1名から5名まで</dd><dt>持参</dt><dd>ノートPC ＋ Claude／ChatGPT／Geminiの有料アカウント（ログイン済み）</dd></dl></div>
-      <div class="box"><div class="hd">受講に含まれるもの</div><ul><li>本編（集合版は5時間／訪問は3時間）</li><li>訪問の場合：事前の題材ヒアリング（オンライン15〜20分）</li><li>Claude Code 稼働環境一式（構成資料・実行コマンド）</li><li>毎週のドリル配信（3か月・AIの新機能や仕様変更に合わせて改定）</li><li>AI経営チーム設計図（CMO・CFO・CTO・CIO 4役の定義書）</li><li>経営会議スコアレポート（当日採点・改善ベクトル）</li><li>90日アクションプラン</li><li>月次1on1（オンライン15分・3か月伴走）</li></ul></div>
+    <div class="spec one">
+      <div class="box"><div class="hd">受講料と開催仕様</div>
+        <div class="sx">
+          <div class="sh"><span></span><b>会場に集まる</b><b class="ok">御社にうかがう</b></div>
+          <div class="sr"><span>受講料</span>
+            <i><u>50,000</u><small>円（税別）</small><em>1名</em></i>
+            <i class="ok"><u>70,000</u><small>円（税別）</small><em>社長1名</em>
+              <k><u>100,000</u><small>円（税別）</small><em>5名まで・1名あたり20,000円</em></k></i></div>
+          <div class="sr"><span>時間</span>
+            <i><b>5時間</b><em>10:00–15:00</em></i>
+            <i class="ok"><b>3時間</b><em>開始時刻は御社に合わせます</em></i></div>
+          <div class="sr"><span>人数</span>
+            <i><b>2〜6名の少人数</b><em>経営者優先枠・先着順</em></i>
+            <i class="ok"><b>社長1名から5名まで</b><em>役員・幹部もご一緒に</em></i></div>
+          <div class="sr"><span>場所</span>
+            <i><b>当法人の会場</b><em>東京・大阪</em></i>
+            <i class="ok"><b>御社の会議室</b><em>東京・大阪は当法人、他地域は提携講師</em></i></div>
+          <div class="sr"><span>後半の中身</span>
+            <i><b>他社の社長とチーム戦</b><em>他社の進め方が、そのまま持ち帰りになります</em></i>
+            <i class="ok"><b>いま止まっている仕事を1件、その場で片づける</b><em>題材は事前ヒアリングで決めます</em></i></div>
+        </div>
+        <p class="sn">技を掴む前半は、どちらも同じ内容です。違うのは後半だけ。</p>
+        <dl><dt>対象</dt><dd>年商5〜30億円／社員10〜100名／経営者・幹部</dd><dt>持参</dt><dd>ノートPC ＋ Claude／ChatGPT／Geminiの有料アカウント（ログイン済み）</dd></dl></div>
+      <div class="box"><div class="hd">受講に含まれるもの（どちらも同じ）</div><ul class="two"><li>本編（会場は5時間／訪問は3時間）</li><li>訪問の場合：事前の題材ヒアリング（オンライン15〜20分）</li><li>Claude Code 稼働環境一式（構成資料・実行コマンド）</li><li>毎週のドリル配信（3か月・AIの新機能や仕様変更に合わせて改定）</li><li>AI経営チーム設計図（CMO・CFO・CTO・CIO 4役の定義書）</li><li>経営会議スコアレポート（当日採点・改善ベクトル）</li><li>90日アクションプラン</li><li>月次1on1（オンライン15分・3か月伴走）</li></ul></div>
     </div>
     <div class="keys">
       <div class="k"><b>KEY 01　その時間だけは、他の仕事は捨てる</b><span>会議室のドアを閉め、携帯はマナーモード。電話・Slack・LINEは遮断。</span></div>
