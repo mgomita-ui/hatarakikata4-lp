@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3時間、御社で。配線を1本、本番で動かす。</title>
+<meta name="description" content="経営者のための、AIブートキャンプ 個別訪問版。3時間・御社にうかがい、自社のデータにAIをつなぐところまでを本番で完成させます。1名7万円／幹部5名まで10万円（税別）。">
+<meta property="og:title" content="AIブートキャンプ 個別訪問版｜3時間、御社で。">
+<meta property="og:description" content="集合版が技を3つ持ち帰る場なら、こちらは自社の配線を1本、本番で動かして終わる場です。3時間・訪問・日程は御社に合わせます。">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@500;600;700&display=swap">
+<style>
+  :root{
+    --ink:#1A1A1A;--ink-2:#3A3F3D;--ink-3:#6E7673;
+    --mint:#EAF3EE;--paper:#FFFFFF;--line:#DCE5E0;--rule:#1A1A1A;
+    --green-deep:#0F5F52;--green-ink:#0B4A40;--green:#14A07A;--green-lt:#8FE0C4;--green-soft:#E3F3EC;
+    --gold:#A8762E;--gold-soft:#F7EEDC;--slate:#2E6A8A;--slate-soft:#E4EEF4;--yellow:#F2E27A;
+    --body:'Noto Sans JP',system-ui,-apple-system,sans-serif;--latin:'Poppins','Noto Sans JP',sans-serif;
+    --shadow:0 12px 32px rgba(15,95,82,.10),0 2px 6px rgba(15,95,82,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+       line-height:1.85;font-feature-settings:"palt";-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  a{color:inherit}
+
+  /* ── nav ── */
+  .nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);
+       backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;gap:18px;height:56px}
+  .brand{font-weight:900;font-size:14px;line-height:1.25}
+  .brand small{display:block;font-family:var(--latin);font-size:10px;font-weight:600;
+               letter-spacing:.14em;color:var(--green);text-transform:uppercase}
+  .nav-links{margin-left:auto;display:flex;gap:16px;font-size:13px;font-weight:700}
+  .nav-links a{text-decoration:none;color:var(--ink-2);white-space:nowrap}
+  .nav-links a:hover{color:var(--green-deep)}
+  @media(max-width:720px){.nav-links{display:none}}
+
+  /* ── hero ── */
+  .hero{background:linear-gradient(180deg,var(--green-deep),var(--green-ink));color:#fff;
+        padding:64px 0 56px}
+  .eb{font-family:var(--latin);font-size:11px;font-weight:600;letter-spacing:.22em;
+      text-transform:uppercase;color:var(--green-lt);margin:0 0 14px}
+  .hero h1{font-size:clamp(28px,5.4vw,46px);font-weight:900;line-height:1.32;margin:0 0 18px;
+           text-wrap:balance;letter-spacing:.01em}
+  .hero h1 em{font-style:normal;color:var(--yellow)}
+  .hero p{font-size:16px;color:rgba(255,255,255,.9);max-width:38em;margin:0 0 26px}
+  .facts{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px;padding:0;list-style:none}
+  .facts li{border:1px solid rgba(255,255,255,.32);border-radius:999px;padding:5px 14px;
+            font-size:13px;font-weight:700}
+  .btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:900;
+       border-radius:11px;padding:14px 24px;font-size:16px;border:0;cursor:pointer}
+  .btn-primary{background:var(--yellow);color:var(--green-ink)}
+  .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45);font-weight:700}
+  .hbtns{display:flex;flex-wrap:wrap;gap:12px}
+
+  /* ── section ── */
+  section{padding:58px 0}
+  section.alt{background:var(--mint)}
+  .kicker{font-family:var(--latin);font-size:11px;font-weight:600;letter-spacing:.2em;
+          color:var(--green);text-transform:uppercase;margin:0 0 8px}
+  h2{font-size:clamp(21px,3.4vw,29px);font-weight:900;line-height:1.4;margin:0 0 12px;text-wrap:balance}
+  .lead{font-size:15.5px;color:var(--ink-2);max-width:44em;margin:0 0 26px}
+  h3{font-size:17px;font-weight:900;margin:0 0 6px}
+
+  /* ── 対比表 ── */
+  .cmp{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);
+       border-radius:12px;overflow:hidden;font-size:14.5px}
+  .cmp th,.cmp td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  .cmp thead th{background:var(--green-soft);font-size:12px;letter-spacing:.06em;color:var(--green-ink)}
+  .cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:0}
+  .cmp tbody th{font-weight:700;color:var(--ink-3);font-size:13px;width:8.5em;background:#fbfdfc}
+  .cmp .now{font-weight:700;color:var(--green-deep)}
+  .cmp-wrap{overflow-x:auto}
+  @media(max-width:620px){.cmp{min-width:520px}}
+
+  /* ── データ選択 ── */
+  .picks{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:14px;margin-top:6px}
+  .pick{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;
+        display:flex;flex-direction:column;gap:9px}
+  .pick.ready{border-color:var(--green);box-shadow:var(--shadow)}
+  .pick .tag{font-family:var(--latin);font-size:10px;font-weight:700;letter-spacing:.1em;
+             color:var(--green);text-transform:uppercase}
+  .pick.ready .tag{color:var(--gold)}
+  .pick h3{margin:0}
+  .pick .can{font-size:14px;color:var(--ink-2);margin:0}
+  .pick .can b{color:var(--green-deep)}
+  .pick .need{font-size:12.5px;color:var(--ink-3);margin:0;padding-top:9px;border-top:1px dashed var(--line)}
+  .pick .need span{font-weight:700;color:var(--ink-2)}
+
+  /* ── タイムテーブル ── */
+  .tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--green-lt)}
+  .tl li{position:relative;padding:0 0 24px 26px}
+  .tl li:last-child{padding-bottom:0}
+  .tl li::before{content:"";position:absolute;left:-7px;top:9px;width:12px;height:12px;
+                 border-radius:50%;background:var(--green);border:2px solid #fff}
+  .tl .t{font-family:var(--latin);font-size:12px;font-weight:700;color:var(--green);letter-spacing:.04em}
+  .tl h3{margin:2px 0 4px}
+  .tl p{margin:0;font-size:14.5px;color:var(--ink-2);max-width:40em}
+  .tl .core{background:var(--gold-soft);border-left:3px solid var(--gold);
+            border-radius:0 8px 8px 0;padding:12px 14px;margin-left:-4px}
+  .tl .core h3{color:var(--gold)}
+
+  /* ── 価格 ── */
+  .price{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .pp{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;
+      display:flex;flex-direction:column;gap:10px}
+  .pp.best{border:2px solid var(--green);box-shadow:var(--shadow);position:relative}
+  .pp.best::after{content:"社内に残す設計";position:absolute;top:-11px;right:18px;
+                  background:var(--green);color:#fff;font-size:11px;font-weight:700;
+                  padding:3px 11px;border-radius:999px}
+  .pp .who{font-size:13px;font-weight:700;color:var(--ink-3)}
+  .pp .amt{font-family:var(--latin);font-size:34px;font-weight:700;color:var(--green-deep);
+           line-height:1.1;letter-spacing:-.01em}
+  .pp .amt small{font-family:var(--body);font-size:13px;font-weight:700;color:var(--ink-3);margin-left:4px}
+  .pp ul{margin:0;padding-left:1.15em;font-size:14px;color:var(--ink-2);display:flex;
+         flex-direction:column;gap:5px}
+  .pp li::marker{color:var(--green)}
+  .note{background:var(--gold-soft);border:1px solid #E8D9B8;border-radius:12px;
+        padding:16px 20px;font-size:14.5px;color:var(--ink-2);margin-top:16px}
+  .note b{color:var(--gold)}
+
+  /* ── エリア ── */
+  .area{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .ar{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+  .ar h3{color:var(--green-deep)}
+  .ar p{margin:0;font-size:14px;color:var(--ink-2)}
+
+  /* ── 商品階段 ── */
+  .ladder{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;
+          border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+  .stg{padding:20px;border-right:1px solid var(--line)}
+  .stg:last-child{border-right:0}
+  .stg.here{background:var(--green-soft)}
+  .stg .n{font-family:var(--latin);font-size:11px;font-weight:700;letter-spacing:.12em;
+          color:var(--green);text-transform:uppercase}
+  .stg h3{margin:4px 0 4px;font-size:16px}
+  .stg p{margin:0;font-size:13.5px;color:var(--ink-2)}
+  @media(max-width:700px){.stg{border-right:0;border-bottom:1px solid var(--line)}
+                          .stg:last-child{border-bottom:0}}
+
+  /* ── final ── */
+  .final{background:var(--green-deep);color:#fff;text-align:center;padding:62px 0}
+  .final h2{color:#fff}
+  .final p{color:rgba(255,255,255,.88);max-width:36em;margin:0 auto 26px;font-size:15.5px}
+  footer{padding:30px 0;font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--line)}
+  footer a{color:var(--green-deep)}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <div class="brand">AIブートキャンプ 個別訪問版<small>Relic — On-site, 3 hours</small></div>
+  <div class="nav-links">
+    <a href="#diff">集合版との違い</a>
+    <a href="#data">つなぐデータ</a>
+    <a href="#flow">3時間の中身</a>
+    <a href="#price">料金</a>
+    <a href="#apply">申し込む</a>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <p class="eb">On-site Private Session ｜ 3 hours</p>
+  <h1>3時間、御社で。<br><em>配線を1本、本番で動かして帰る。</em></h1>
+  <p>集合版が「技を3つ持ち帰る」場なら、こちらは「自社のデータにAIをつなぎ、実際に動いている状態を置いていく」場です。うかがう日は、御社の都合に合わせます。</p>
+  <ul class="facts">
+    <li>3時間</li><li>御社に訪問</li><li>日程は御社に合わせる</li>
+    <li>社長1名 7万円</li><li>幹部5名まで 10万円</li>
+  </ul>
+  <div class="hbtns">
+    <a class="btn btn-primary" href="#apply">日程を相談する ›</a>
+    <a class="btn btn-ghost" href="../">集合版（5時間）を見る</a>
+  </div>
+</div></header>
+
+<section id="diff"><div class="wrap">
+  <p class="kicker">Difference</p>
+  <h2>集合版とは、別の商品です</h2>
+  <p class="lead">どちらが上ということではなく、持ち帰るものが違います。集合版で技を掴んでから個別を入れる方も、逆の方もいます。</p>
+  <div class="cmp-wrap"><table class="cmp">
+    <thead><tr><th></th><th>集合版（5時間）</th><th>個別訪問版（3時間）</th></tr></thead>
+    <tbody>
+      <tr><th>持ち帰るもの</th><td>3つの技</td><td class="now">自社の配線が1本、本番で動いている状態</td></tr>
+      <tr><th>使うデータ</th><td>用意された演習データ</td><td class="now">御社の実データ（選べます）</td></tr>
+      <tr><th>午後</th><td>他社の経営者とチーム戦</td><td class="now">自社の課題を、そのまま解く</td></tr>
+      <tr><th>日程</th><td>開催日が決まっている</td><td class="now">御社の都合に合わせる</td></tr>
+      <tr><th>場所</th><td>会場へお越しいただく</td><td class="now">こちらがうかがう</td></tr>
+      <tr><th>向いている方</th><td>他社の進み具合も見たい／まず全体像から</td><td class="now">日程が合わない／自社のデータで始めたい／社内に広げたい</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section class="alt" id="data"><div class="wrap">
+  <p class="kicker">Choose your data</p>
+  <h2>当日つなぐデータを、選んでいただきます</h2>
+  <p class="lead">AIは、渡した情報しか知りません。MCPという「配線口」で自社データにつなぐと、自社の数字で答えが返るようになります。どれを開くかは御社の判断です。機密の線引きも含めて、事前に決めてからうかがいます。</p>
+  <div class="picks">
+    <div class="pick ready">
+      <span class="tag">準備ゼロで選べます</span>
+      <h3>持参ファイル（CSV・Excel）</h3>
+      <p class="can">受注データや単価表を読み込ませ、<b>見積のたたき台や集計をその場で作ります</b>。外部接続を一切行いません。</p>
+      <p class="need"><span>事前に要るもの</span>：当日ファイルをご用意いただくだけ</p>
+    </div>
+    <div class="pick">
+      <span class="tag">Accounting</span>
+      <h3>会計</h3>
+      <p class="can">「<b>先月の粗利は？</b>」に、自社の数字で答えが返るところまで。</p>
+      <p class="need"><span>事前に要るもの</span>：会計ソフトの管理者アカウント、外部連携の可否確認</p>
+    </div>
+    <div class="pick">
+      <span class="tag">Attendance / Payroll</span>
+      <h3>勤怠・給与</h3>
+      <p class="can">「<b>残業が増えた部署は？</b>」を、毎朝ひとりでに出させるところまで。</p>
+      <p class="need"><span>事前に要るもの</span>：勤怠システムの管理者アカウント</p>
+    </div>
+    <div class="pick">
+      <span class="tag">Mail</span>
+      <h3>メール</h3>
+      <p class="can">案件ごとのやり取りを<b>時系列で整理させ、未対応を洗い出す</b>ところまで。</p>
+      <p class="need"><span>事前に要るもの</span>：対象メールアカウントの管理権限</p>
+    </div>
+    <div class="pick">
+      <span class="tag">Calendar</span>
+      <h3>カレンダー</h3>
+      <p class="can">来月の稼働見込みと、<b>空いている時間の偏りを可視化</b>するところまで。</p>
+      <p class="need"><span>事前に要るもの</span>：カレンダーの共有設定</p>
+    </div>
+    <div class="pick">
+      <span class="tag">Chat</span>
+      <h3>チャット</h3>
+      <p class="can">未返信や依頼の取りこぼしを、<b>要対応だけ抜き出させる</b>ところまで。</p>
+      <p class="need"><span>事前に要るもの</span>：チャットツールの管理者権限</p>
+    </div>
+  </div>
+  <div class="note">
+    <b>当日ゼロから権限を取得することはできません。</b>3時間のうち1時間を本番接続に充てる設計のため、権限の取得や社内の承認に時間がかかると、そこで終わってしまいます。お申し込み後の事前確認で、つなぐ先を1つ決め、必要な準備をお伝えします。決まらない場合や不安がある場合は、<b>持参ファイル</b>を選んでいただければ準備ゼロで成立します。
+  </div>
+</div></section>
+
+<section id="flow"><div class="wrap">
+  <p class="kicker">3 hours</p>
+  <h2>3時間の中身</h2>
+  <p class="lead">説明は最初の20分だけです。集合版にある「危機感を入れる30分」と「チーム戦」は、個別版では行いません。その分、手を動かす時間に充てています。</p>
+  <ul class="tl">
+    <li><span class="t">0:00 – 0:20</span>
+      <h3>セットアップ</h3>
+      <p>Claude Code と Codex を、御社のPCで動く状態にします。ここから先の課題は、すべてご自身の指示で解いていただきます。</p></li>
+    <li><span class="t">0:20 – 0:30</span>
+      <h3>今日、何を終わらせるか決める</h3>
+      <p>事前に選んでいただいたデータをもとに、この3時間で片づける業務を1つ確定します。</p></li>
+    <li><span class="t">0:30 – 1:30</span>
+      <h3>実データで、作る</h3>
+      <p>見積のたたき台、議事録、集計。日本語で頼んで動くものを作り、AIに作らせて人が確かめて直す——この往復をご自身の手で回します。</p></li>
+    <li class="core"><span class="t">1:30 – 2:30</span>
+      <h3>MCPを1本、本番につなぐ</h3>
+      <p>この1時間が、個別訪問版の中心です。演習ではなく御社の本番環境に配線を通し、自社の数字で答えが返るところまで作り切ります。帰ったあとも動き続けます。</p></li>
+    <li><span class="t">2:30 – 3:00</span>
+      <h3>人・AI・専門家の線を引く</h3>
+      <p>自社の業務を3列に分け、明日から何をAIに渡すかを決めます。人を減らすためではなく、人を人にしかできない仕事に戻すためです。</p></li>
+  </ul>
+</div></section>
+
+<section class="alt" id="price"><div class="wrap">
+  <p class="kicker">Price</p>
+  <h2>料金</h2>
+  <p class="lead">いずれも3時間・訪問・税別です。交通費は東京・大阪の市内であれば不要です。</p>
+  <div class="price">
+    <div class="pp">
+      <span class="who">経営者おひとりで</span>
+      <div class="amt">70,000<small>円（税別）</small></div>
+      <ul>
+        <li>社長1名</li>
+        <li>3時間・御社に訪問</li>
+        <li>つなぐデータを1つ選択</li>
+        <li>本番の配線を1本、完成させて終了</li>
+      </ul>
+    </div>
+    <div class="pp best">
+      <span class="who">幹部の方とご一緒に</span>
+      <div class="amt">100,000<small>円（税別）</small></div>
+      <ul>
+        <li>5名まで（社長を含む）</li>
+        <li>3時間・御社に訪問</li>
+        <li>つなぐデータを1つ選択</li>
+        <li>全員のPCがセットアップされた状態で終了</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <b>3万円の差で、4人増えます。</b>社長おひとりが使えるようになっても、会社は変わりません。変わるのは、翌朝から幹部が同じ道具を持っているときです。同席された方のPCも、全員セットアップした状態でお返しします。
+  </div>
+</div></section>
+
+<section id="area"><div class="wrap">
+  <p class="kicker">Area</p>
+  <h2>うかがえる地域</h2>
+  <div class="area">
+    <div class="ar"><h3>東京</h3><p>当法人の講師が直接うかがいます。市内であれば交通費は不要です。</p></div>
+    <div class="ar"><h3>大阪</h3><p>当法人の講師が直接うかがいます。市内であれば交通費は不要です。</p></div>
+    <div class="ar"><h3>その他の地域</h3><p>提携講師がうかがいます。内容と進め方は同じ設計です。地域により日程の選択肢が限られる場合があります。</p></div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <p class="kicker">Where this sits</p>
+  <h2>3つの入り口があります</h2>
+  <p class="lead">どこから入っても構いません。個別訪問版は、その中で「自社の本番に手を入れる」位置にあります。</p>
+  <div class="ladder">
+    <div class="stg"><span class="n">Group</span><h3>集合版・5時間</h3>
+      <p>他社の経営者とチームで競いながら、3つの技を掴む。5万円／名（税別）</p></div>
+    <div class="stg here"><span class="n">On-site — you are here</span><h3>個別訪問版・3時間</h3>
+      <p>御社のデータで、配線を1本、本番で動かす。7万円／幹部5名まで10万円（税別）</p></div>
+    <div class="stg"><span class="n">Implementation</span><h3>FDE派遣・90日</h3>
+      <p>実装担当が御社に入り、AIを組織に組み込む。</p></div>
+  </div>
+</div></section>
+
+<section class="final" id="apply"><div class="wrap">
+  <h2>日程から、ご相談ください</h2>
+  <p>うかがう日と、当日つなぐデータを決めるところから始めます。決めかねる場合は、持参ファイルでの実施もできますので、まずはご連絡ください。</p>
+  <a class="btn btn-primary" href="mailto:m.gomita@canvas-sr.jp?subject=AI%E3%83%96%E3%83%BC%E3%83%88%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%20%E5%80%8B%E5%88%A5%E8%A8%AA%E5%95%8F%E7%89%88%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87">メールで相談する ›</a>
+</div></section>
+
+<footer><div class="wrap">
+  レリック社会保険労務士法人　／　<a href="../">AIブートキャンプ 集合版</a>　・　<a href="../../">働き方4.0</a><br>
+  © 2026 レリック社会保険労務士法人
+</div></footer>
+
+</body>
+</html>
