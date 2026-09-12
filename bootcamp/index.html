@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="経営者のための、AIブートキャンプ。5時間で、AI中級者以上になる。AI経営×クエスト型ブートキャンプ">
+<meta name="description" content="経営者のためのAIブートキャンプ。会場で5時間（1名5万円）か、御社に訪問して3時間（社長1名7万円／幹部5名まで10万円）。到達点は同じです。税別。">
 </head>
 <body>
-<title>5時間で、AI中級者以上になる。</title>
+<title>その日から、AIが当たり前に動く会社に。｜経営者のためのAIブートキャンプ</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@500;600;700&display=swap">
 <style>
   :root{
@@ -411,6 +411,70 @@
   footer{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding:0 24px 40px;font-size:12.5px;color:var(--ink-3);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center}
   footer p{max-width:60em;line-height:1.7}
   footer a{color:var(--green-deep)}
+  /* 受け方3本。価格の比較がこのページの心臓 */
+  .ways{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+  .w1{border:1px solid var(--line);border-radius:16px;padding:24px 22px;background:#fff;
+      display:flex;flex-direction:column}
+  .w1.best{border:2px solid var(--green);box-shadow:var(--shadow);position:relative}
+  .w1.best:after{content:"1名あたり 20,000円";position:absolute;top:-12px;right:16px;
+                 background:var(--green);color:#fff;font-size:11px;font-weight:700;
+                 padding:4px 12px;border-radius:999px}
+  .w1 .hd{font-size:13px;font-weight:900;color:var(--ink-3);letter-spacing:.02em}
+  .w1 .amt{margin:8px 0 14px;line-height:1}
+  .w1 .amt b{font-family:var(--latin);font-size:38px;font-weight:700;letter-spacing:-.025em}
+  .w1 .amt span{font-size:12.5px;font-weight:700;color:var(--ink-3);margin-left:5px}
+  .w1 dl{margin:0;font-size:13.5px;line-height:1.85;display:grid;grid-template-columns:52px 1fr;
+         gap:2px 10px}
+  .w1 dt{color:var(--ink-3);font-weight:700}
+  .w1 dd{margin:0;color:var(--ink-2)}
+  .w1 .per{margin:14px 0 0;padding-top:12px;border-top:1px dashed var(--line);
+           font-size:13px;font-weight:700;color:var(--ink-3)}
+  .w1 .per b{font-family:var(--latin);font-size:20px;color:var(--green-deep);margin:0 3px}
+  @media (max-width:900px){.ways{grid-template-columns:1fr}}
+  /* 助成金の章（個別訪問版から移植） */
+  .vs2{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:16px}
+  .vs2 div{border-top:3px solid;padding-top:10px;padding-right:16px;font-size:13.5px;line-height:1.95;
+           color:var(--ink-2)}
+  .vs2 div:first-child{border-color:var(--gold)}
+  .vs2 div:last-child{border-color:var(--green-deep)}
+  .vs2 b{display:block;font-size:15px;color:var(--ink);margin-bottom:4px}
+  .tlfig{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px 18px;
+         margin:22px 0;overflow-x:auto}
+  .tlfig svg{width:100%;min-width:560px;height:auto;display:block}
+  @media (max-width:760px){.vs2{grid-template-columns:1fr;gap:16px}}
+  /* 訪問版3時間の割。集合版の8区切りとは幅比が違うので上書きする */
+  .onsplit{margin-top:26px;padding-top:22px;border-top:1px dashed var(--line)}
+  .onsplit .oh{font-size:15px;font-weight:900;color:var(--green-deep);margin:0 0 12px}
+  .onsplit .tl .bar,.onsplit .tl .ticks{grid-template-columns:20fr 15fr 50fr 40fr 35fr 20fr}
+  .onsplit .tl .bar div{min-width:0;word-break:keep-all;overflow-wrap:anywhere}
+  .box .p2{margin:6px 0 0;font-size:15px;font-weight:900;color:var(--ink)}
+  .box .p2 b{font-family:var(--latin);font-size:26px;letter-spacing:-.02em}
+  .box .p2 span{font-size:12px;font-weight:700;color:var(--ink-3);margin-left:5px}
+  .box .p2 em{display:block;font-style:normal;font-size:11.5px;font-weight:700;color:var(--green);margin-top:2px}
+  .chap .only{display:inline-block;background:var(--yellow);color:#1A1A1A;font-size:11px;
+              font-weight:900;padding:3px 10px;border-radius:999px;margin-right:8px;
+              vertical-align:2px;letter-spacing:.02em}
+  /* ヒーローの入口。映像を1枚大きく、漫画3本を横並び */
+  .hfoot .cards.vwide{display:block;margin-bottom:10px}
+  .vcta{display:grid;grid-template-columns:190px 1fr;gap:16px;align-items:center;text-decoration:none;
+        color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:10px;
+        background:rgba(255,255,255,.06);transition:.18s}
+  .vcta:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+  .vcta .th{position:relative;border-radius:9px;overflow:hidden;display:block;aspect-ratio:16/9}
+  .vcta .th img{width:100%;height:100%;object-fit:cover;display:block}
+  .vcta .th .pl{position:absolute;inset:0;display:grid;place-items:center;font-size:22px;
+                color:#fff;background:rgba(4,9,13,.35)}
+  .vcta .tx{display:grid;gap:4px;min-width:0}
+  .vcta .tag{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;
+             letter-spacing:.1em;color:var(--green-lt)}
+  .vcta .tt{font-weight:900;font-size:17px;line-height:1.35}
+  .vcta .tt small{display:block;font-weight:500;font-size:11.5px;opacity:.78;margin-top:2px}
+  .hfoot .cards.mrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .hfoot .cards.mrow .mcta{max-width:none;flex:none}
+  @media (max-width:900px){
+    .vcta{grid-template-columns:1fr}
+    .hfoot .cards.mrow{grid-template-columns:1fr}
+  }
 </style>
 <style>
   /* ===== bootcamp: visual-first additions (same design system) ===== */
@@ -693,7 +757,7 @@
       <span>レリック<small>社会保険労務士法人</small></span>
     </a>
     <div class="nav-links">
-      <a href="#three">できること</a><a href="#why">3つの選択</a><a href="#design">5時間の中身</a><a href="#battle">午後の勝負</a><a href="#after">翌朝</a><a href="#spec">受講要項</a><a href="#faq">Q&amp;A</a><a href="../manga2/">漫画</a>
+      <a href="#three">できること</a><a href="#how">受け方</a><a href="#why">3つの選択</a><a href="#design">5時間の中身</a><a href="#battle">午後の勝負</a><a href="#onsite">助成金を使わない理由</a><a href="#after">翌朝</a><a href="#spec">受講要項</a><a href="#faq">Q&amp;A</a><a href="../manga2/">漫画</a>
       <a class="btn btn-primary" style="padding:9px 16px;font-size:13px" href="#apply">受講を申し込む</a>
     </div>
   </div>
@@ -705,27 +769,35 @@
     <div class="txt" id="heroTxt">
       <p class="eb">AI経営 × クエスト型ブートキャンプ</p>
       <p class="q">経営者のための、AIブートキャンプ。</p>
-      <h1>5時間で、AI中級者以上になる。</h1>
+      <h1>その日から、AIが当たり前に動く会社に。</h1>
       <div class="hrow">
-        <p class="sub">聞いて理解する研修ではありません。自分のPCでAIを動かし、自社のデータにつなぎ、チームで勝負する。入ったら5時間は出ない。休憩15分は、ご飯を食べながら。</p>
+        <p class="sub">聞いて理解する研修ではありません。自分のPCでAIを動かし、自社のデータにつなぎ、どこまで任せるかの線を引く。<b>受け方は3つ。会場に来ていただくか、こちらが御社にうかがうか。</b>到達点は同じです。</p>
         <div class="cta">
           <a class="btn btn-primary" href="#apply" style="background:#14A07A">受講を申し込む（経営者優先枠） <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-          <a class="btn btn-ghost on-dark" href="#three">出るときに、できていること</a>
+          <a class="btn btn-ghost on-dark" href="#how">受け方を見る（3つ）</a>
         </div>
       </div>
     </div>
     <div class="evo" aria-label="初心者から中級者、上級者への進化">
       <video id="heroVideo" muted playsinline preload="auto" autoplay poster="media/boot-evo-poster.jpg"><source src="media/boot-evo.mp4" type="video/mp4"></video>
       <div class="stages" id="stages"><div class="stg" style="--x:var(--x1)" data-at="0.1"><b>初心者</b><span>AIで自分の仕事をこなす</span><i></i></div><div class="stg" style="--x:var(--x2)" data-at="0.45"><b>中級者</b><span>AIを組織に組み込み、仕事をさせる</span><i></i></div><div class="stg" style="--x:var(--x3)" data-at="0.8"><b>上級者</b><span>AIが中心のチームを運営する</span><i></i></div></div>
-      <div class="arrow a1" aria-hidden="true"><span>5時間</span><em>ブートキャンプに参加</em></div>
+      <div class="arrow a1" aria-hidden="true"><span>5 or 3時間</span><em>ブートキャンプを受ける</em></div>
       <div class="arrow a2" aria-hidden="true"><span>90日</span><em>FDEを派遣　<small>御社に入り、AIを組織に組み込む実装担当</small></em></div>
       <button type="button" class="replay" id="replay" aria-label="もう一度再生"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2.5 8a5.5 5.5 0 1 0 1.6-3.9"/><path d="M2 2.5v3h3"/></svg>もう一度</button>
     </div>
     <div class="hfoot">
-      <div class="facts"><div><b><span data-count="5">0</span><small>時間</small></b>10:00–15:00</div><div><b>2〜<span data-count="6">0</span><small>名</small></b>少人数・経営者優先</div><div><b><span data-count="50000" data-sep="1">0</span><small>円</small></b>税別・1名</div></div>
-      <div class="cards">
-        <a class="mcta" href="../manga2/" aria-label="漫画『ある経営者の選択 II』を読む"><span class="cv"><img src="../manga2/pages/cover.jpg" alt=""></span><span class="tx"><span class="tag">漫画・全24ページ</span><span class="tt">ある経営者の選択 II<small>AIが去った半年後。5時間で、自分の手を取り戻す</small></span><span class="meta">田村社長が入った部屋は、この部屋です。</span></span><span class="go">›</span></a>
-        <a class="mcta" href="../" aria-label="働き方4.0のページを読む"><span class="cv" style="width:78px;height:78px;border-radius:10px;transform:none"><img src="data:image/jpeg;base64,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" alt=""></span><span class="tx"><span class="tag">制度の話</span><span class="tt">働き方4.0<small>道具ではなく、制度のほう。社会保険・契約・報酬を組み替える</small></span><span class="meta">採用と定着を、働く条件から。</span></span><span class="go">›</span></a>
+      <div class="facts"><div><b><span data-count="50000" data-sep="1">0</span><small>円</small></b>会場で5時間／1名</div><div><b><span data-count="70000" data-sep="1">0</span><small>円</small></b>御社で3時間／社長1名</div><div><b><span data-count="100000" data-sep="1">0</span><small>円</small></b>御社で3時間／5名まで</div></div>
+      <div class="cards vwide">
+        <a class="vcta" id="opGo" href="#" aria-label="映像「時間がもったいない」を見る">
+          <span class="th"><img src="media/koby-wide.jpg" alt=""><span class="pl">&#9654;</span></span>
+          <span class="tx"><span class="tag">映像・1分31秒</span>
+          <span class="tt">時間がもったいない<small>助成金に合わせているあいだに、着手が一か月半あとになる</small></span></span>
+        </a>
+      </div>
+      <div class="cards mrow">
+        <a class="mcta" href="../manga2/" aria-label="漫画『ある経営者の選択 II』を読む"><span class="cv"><img src="../manga2/pages/cover.jpg" alt=""></span><span class="tx"><span class="tag">漫画・全24ページ</span><span class="tt">町工場の社長が、会場で5時間<small>ある経営者の選択 II</small></span></span><span class="go">&rsaquo;</span></a>
+        <a class="mcta" href="../bangai1/" aria-label="番外編 初級編を読む"><span class="cv"><img src="../bangai1/pages/cover.jpg" alt=""></span><span class="tx"><span class="tag">番外編・全16ページ</span><span class="tt">営業会社の社長が、御社で3時間<small>初級編「頼む」</small></span></span><span class="go">&rsaquo;</span></a>
+        <a class="mcta" href="../bangai2/" aria-label="番外編 中級編を読む"><span class="cv"><img src="../bangai2/pages/cover.jpg" alt=""></span><span class="tx"><span class="tag">番外編・全16ページ</span><span class="tt">IT会社の社長が、御社で3時間<small>中級編「渡す」</small></span></span><span class="go">&rsaquo;</span></a>
       </div>
       <p class="firm">レリック社会保険労務士法人<small>AI MANAGEMENT × QUEST-STYLE BOOTCAMP ｜ 2026</small></p>
     </div>
@@ -733,8 +805,8 @@
 </header>
 
 <!-- 83秒のオープニング（危機感テキストを原案に、数字は2026-09に再検証） -->
-<div class="op" id="opWrap" role="dialog" aria-label="83秒の映像" hidden>
-  <video id="opVideo" controls playsinline preload="none" poster="media/boot-opening-poster.jpg"></video>
+<div class="op" id="opWrap" role="dialog" aria-label="1分31秒の映像" hidden>
+  <video id="opVideo" controls playsinline preload="none" poster="media/koby-poster.jpg"></video>
   <button type="button" class="skip" id="opSkip">スキップ</button>
 </div>
 
@@ -784,8 +856,45 @@
 </div>
 
 <!-- 02 3つの選択 -->
+<!-- 02 受け方 -->
+<div class="chap" id="how">
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">02</div><h2>受け方は、3つあります</h2><p>到達点は同じです。違うのは、来ていただくか、うかがうか。<br><b>1名なら会場が安い。5名なら訪問が安い。</b></p></div><div class="r" style="background:linear-gradient(135deg,#14A07A,#0F5F52 60%,#2E6A8A)"></div></div>
+</div>
+<div class="page">
+  <section class="card">
+    <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
+    <h2 class="one">同じところに<span class="y">着きます</span>。道が3本あるだけです。</h2>
+    <p class="sub1">CHAP.01の3つは、どの受け方でも同じです。会場に集まる時間とチーム対抗戦がないぶん、訪問版は3時間に収まります。</p>
+    <div class="ways">
+      <div class="w1">
+        <div class="hd">集合版</div>
+        <div class="amt"><b>50,000</b><span>円（税別）／1名</span></div>
+        <dl><dt>場所</dt><dd>会場にお越しいただきます</dd><dt>時間</dt><dd>5時間（10:00–15:00）</dd><dt>人数</dt><dd>2〜6名の少人数・経営者優先</dd><dt>特徴</dt><dd>午後に<b>駅ナカ出店バトル</b>。他社の社長と競います</dd></dl>
+        <p class="per">1名あたり <b>50,000</b>円</p>
+      </div>
+      <div class="w1">
+        <div class="hd">個別訪問・社長おひとり</div>
+        <div class="amt"><b>70,000</b><span>円（税別）／1名</span></div>
+        <dl><dt>場所</dt><dd>こちらが御社にうかがいます</dd><dt>時間</dt><dd>3時間。開始時刻は御社に合わせます</dd><dt>人数</dt><dd>社長1名</dd><dt>特徴</dt><dd>チーム対抗戦の代わりに、<b>御社の実務を1件</b>その場で終わらせます</dd></dl>
+        <p class="per">1名あたり <b>70,000</b>円</p>
+      </div>
+      <div class="w1 best">
+        <div class="hd">個別訪問・幹部まで</div>
+        <div class="amt"><b>100,000</b><span>円（税別）／5名まで</span></div>
+        <dl><dt>場所</dt><dd>こちらが御社にうかがいます</dd><dt>時間</dt><dd>3時間。開始時刻は御社に合わせます</dd><dt>人数</dt><dd>社長を含め5名まで</dd><dt>特徴</dt><dd>全員のPCをセットアップ。<b>翌朝から幹部も同じ道具を持っています</b></dd></dl>
+        <p class="per">1名あたり <b>20,000</b>円</p>
+      </div>
+    </div>
+    <div class="keys" style="margin-top:20px">
+      <div class="k"><b>社長おひとりなら、会場のほうが安く済みます</b><span>他社の社長と競う時間もあります。まず一人で確かめたい方は集合版へ。</span></div>
+      <div class="k"><b>幹部と受けるなら、訪問のほうが安く済みます</b><span>3万円の差で4人増えます。社長ひとりが使えても、会社はすぐには変わりません。</span></div>
+      <div class="k"><b>訪問エリア</b><span>東京・大阪は当法人の講師がうかがいます。その他の地域は提携講師が対応します。</span></div>
+    </div>
+  </section>
+</div>
+
 <div class="chap" id="why">
-  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">02</div><h2>いつからやるか</h2><p>AIは来る。来ない、という選択肢は無い。<br><b>経営者の選択肢は、3つだけです。</b></p></div><div class="r"></div></div>
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">03</div><h2>いつからやるか</h2><p>AIは来る。来ない、という選択肢は無い。<br><b>経営者の選択肢は、3つだけです。</b></p></div><div class="r"></div></div>
 </div>
 <div class="page">
   <section class="card">
@@ -803,7 +912,7 @@
 
 <!-- 03 5時間の中身 -->
 <div class="chap" id="design">
-  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">03</div><h2>5時間の中身</h2><p>前半で技を掴む。後半は勝負する。<br><b>10:00〜15:00、席を離れずに。</b></p></div><div class="r" style="background:linear-gradient(135deg,#1E6FC2,#2E6A8A 60%,#0F5F52)"></div></div>
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">04</div><h2>5時間の中身</h2><p>前半で技を掴む。後半は勝負する。<br><b>10:00〜15:00、席を離れずに。</b></p></div><div class="r" style="background:linear-gradient(135deg,#1E6FC2,#2E6A8A 60%,#0F5F52)"></div></div>
 </div>
 <div class="page">
   <section class="card">
@@ -825,12 +934,27 @@
       <div class="half"><div><b>前半（3時間半）：技を掴む</b>短い課題を次々クリア。選んだ分だけAI筋トレが効く。Claude Code・Codexの立ち上げと、MCP接続を1本通す。</div><div><b>後半（1時間）：勝負</b>身につけた技でチーム対抗。区画・価格・採用を決め、スコアで差を体感する。</div></div>
     </div>
     <p class="note">休憩は15分、ご飯を食べながら。「5時間、他の仕事は捨てる」が唯一のルールです。</p>
+    <div class="onsplit">
+      <p class="oh">御社にうかがう場合は、3時間です</p>
+      <div class="tl">
+        <div class="bar">
+          <div class="a"><i>0:00</i>セット<br>アップ</div>
+          <div class="a"><i>0:20</i>課題<br>設定<small>当日どの仕事を題材にするか決める</small></div>
+          <div class="a"><i>0:35</i>反復AIドリル<small>集める・要約・比べる・洗い出す・分析する</small></div>
+          <div class="a"><i>1:25</i>MCP接続<small>会計・勤怠・メールのどれか1本を実際につなぐ</small></div>
+          <div class="b"><i>2:05</i>御社の実務を1件<small>いま止まっている仕事を、その場で終わらせる</small></div>
+          <div class="b"><i>2:40</i>線を引く<small>人・AI・専門家</small></div>
+        </div>
+        <div class="ticks"><div>0:00</div><div>0:20</div><div>0:35</div><div>1:25</div><div>2:05</div><div>2:40–3:00</div></div>
+      </div>
+      <p class="note">会場に集まる時間と、チーム対抗戦の1時間がありません。その分を、御社がいま困っている仕事1件に使います。前半の技を掴む部分は集合版と同じ内容です。</p>
+    </div>
   </section>
 </div>
 
 <!-- 04 午後の勝負 -->
 <div class="chap" id="battle">
-  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">04</div><h2>午後の勝負：駅ナカ出店バトル</h2><p>駅の空き区画に、AIを参謀に出店する。<br><b>AIをどう使ったかが、そのまま点数になる。</b></p></div><div class="r" style="background:linear-gradient(135deg,#A8762E,#2E6A8A 55%,#0F5F52)"></div></div>
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">05</div><h2>午後の勝負：駅ナカ出店バトル</h2><p><span class="only">集合版だけ</span>駅の空き区画に、AIを参謀に出店する。<br><b>AIをどう使ったかが、そのまま点数になる。</b></p></div><div class="r" style="background:linear-gradient(135deg,#A8762E,#2E6A8A 55%,#0F5F52)"></div></div>
 </div>
 <div class="page">
   <section class="card">
@@ -848,9 +972,62 @@
   </section>
 </div>
 
-<!-- 05 翌朝 -->
+<!-- 06 助成金を使わない理由（受け方によらず共通） -->
+<div class="chap" id="onsite">
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">06</div><h2>あえて、助成金を使いません</h2><p>制度が悪いのではありません。<br><b>タイミングと中身が、合わないだけです。</b></p></div><div class="r" style="background:linear-gradient(135deg,#A8762E,#2E6A8A 55%,#0F5F52)"></div></div>
+</div>
+<div class="page">
+  <section class="card">
+    <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
+    <h2 class="one">九月十五日に決めても、<span class="y">着手は十一月一日</span>。</h2>
+    <p class="sub1">助成金は当法人の本業です。要件も申請の手順も分かったうえで申し上げます。合う研修はあります。ただ、この研修には合いません。</p>
+
+    <div class="tlfig">
+      <svg viewBox="0 0 880 210" role="img" aria-label="9月15日に決めた場合、助成金を使うと着手は11月1日、使わなければ9月22日">
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#6E7673"/></marker></defs>
+        <line x1="60" y1="46" x2="840" y2="46" stroke="#DCE5E0" stroke-width="1"/>
+        <text x="96"  y="30" font-size="12" font-weight="700" fill="#6E7673">9月</text>
+        <text x="360" y="30" font-size="12" font-weight="700" fill="#6E7673">10月</text>
+        <text x="700" y="30" font-size="12" font-weight="700" fill="#6E7673">11月</text>
+        <line x1="60" y1="40" x2="60" y2="180" stroke="#1A1A1A" stroke-width="2" stroke-dasharray="4 4"/>
+        <circle cx="60" cy="46" r="6" fill="#1A1A1A"/>
+        <text x="60" y="200" font-size="13" font-weight="900" fill="#1A1A1A" text-anchor="middle">9/15</text>
+        <text x="60" y="16" font-size="12" font-weight="700" fill="#1A1A1A" text-anchor="middle">決めた日</text>
+        <text x="60" y="76" font-size="13" font-weight="900" fill="#A8762E">助成金を使う</text>
+        <rect x="60" y="86" width="150" height="26" rx="6" fill="#F7EEDC" stroke="#E6D5AC"/>
+        <text x="135" y="104" font-size="12" font-weight="700" fill="#A8762E" text-anchor="middle">計画届の準備</text>
+        <rect x="212" y="86" width="488" height="26" rx="6" fill="#F2F2EE" stroke="#DCE5E0"/>
+        <text x="456" y="104" font-size="12.5" font-weight="900" fill="#6E7673" text-anchor="middle">待つ。何も動かない</text>
+        <line x1="212" y1="124" x2="700" y2="124" stroke="#6E7673" stroke-width="1" marker-end="url(#ar)"/>
+        <text x="456" y="140" font-size="11.5" font-weight="700" fill="#6E7673" text-anchor="middle">一か月半</text>
+        <circle cx="702" cy="99" r="6" fill="#A8762E"/>
+        <text x="702" y="76" font-size="13" font-weight="900" fill="#A8762E" text-anchor="middle">11/1</text>
+        <rect x="716" y="86" width="70" height="26" rx="6" fill="#A8762E"/>
+        <text x="751" y="104" font-size="12.5" font-weight="900" fill="#fff" text-anchor="middle">実施</text>
+        <text x="60" y="168" font-size="13" font-weight="900" fill="#0F5F52">使わない</text>
+        <rect x="150" y="150" width="80" height="26" rx="6" fill="#0F5F52"/>
+        <text x="190" y="168" font-size="12.5" font-weight="900" fill="#fff" text-anchor="middle">実施</text>
+        <circle cx="150" cy="163" r="6" fill="#0F5F52"/>
+        <text x="150" y="200" font-size="13" font-weight="900" fill="#0F5F52" text-anchor="middle">9/22</text>
+        <text x="244" y="168" font-size="12.5" font-weight="700" fill="#3A3F3D">日程が合えば、来週</text>
+      </svg>
+    </div>
+
+    <div class="vs2">
+      <div><b>助成金を使う研修：制度の形に合わせます</b>
+        十時間以上でないと対象になりません。計画届の提出から、始められるのは一か月半あと。職種ごとにカリキュラムを組み直します。実務は訓練時間に含められないので、自社の数字ではなく演習で学ぶことになります。雇用保険の被保険者が対象のため、経営者ご自身は対象外です。</div>
+      <div><b>この研修：御社の形に合わせます</b>
+        3時間。必要なことだけをやります。日程が合えば来週うかがえます。御社の課題に合わせて、その場で組み替えます。御社の実際の数字と書類を使います。演習ではありません。そして、経営者ご自身が主役です。</div>
+    </div>
+
+    
+    <p class="note" style="margin-top:18px">助成金が向く研修のご相談も承っています。当法人の本業です。この研修に限って、使わないという判断です。</p>
+  </section>
+</div>
+
+<!-- 07 翌朝 -->
 <div class="chap" id="after">
-  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">05</div><h2>翌朝9時</h2><p>5時間で立ち上げ、その日から動く。<br><b>「いつかやろう」を、その日のうちに終わらせる。</b></p></div><div class="r" style="background:linear-gradient(135deg,#0B4A40,#0F5F52 50%,#2E6A8A)"></div></div>
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">07</div><h2>翌朝9時</h2><p>5時間で立ち上げ、その日から動く。<br><b>「いつかやろう」を、その日のうちに終わらせる。</b></p></div><div class="r" style="background:linear-gradient(135deg,#0B4A40,#0F5F52 50%,#2E6A8A)"></div></div>
 </div>
 <div class="page">
   <section class="card">
@@ -877,15 +1054,15 @@
 
 <!-- 06 受講要項 -->
 <div class="chap" id="spec">
-  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">06</div><h2>受講要項</h2><p>経営者優先枠／先着順。<br><b>次の経営は、ここから始まる。</b></p></div><div class="r"></div></div>
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">08</div><h2>受講要項</h2><p>経営者優先枠／先着順。<br><b>次の経営は、ここから始まる。</b></p></div><div class="r"></div></div>
 </div>
 <div class="page">
   <section class="card">
     <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
     <h2 class="one">5時間、<span class="y">他の仕事は捨てる</span>。</h2>
     <div class="spec">
-      <div class="box"><div class="hd">受講料と開催仕様</div><div class="price"><b>50,000</b><span>円（税別）／1名</span></div>
-        <dl><dt>時間</dt><dd>5時間（10:00–15:00）。休憩15分はご飯を食べながら</dd><dt>対象</dt><dd>年商5〜30億円／社員10〜100名／経営者・幹部</dd><dt>形式</dt><dd>少人数ワークショップ（2〜6名・経営者優先）</dd><dt>持参</dt><dd>ノートPC ＋ Claude／ChatGPT／Geminiの有料アカウント（ログイン済み）</dd></dl></div>
+      <div class="box"><div class="hd">受講料と開催仕様</div><div class="price"><b>50,000</b><span>円（税別）／1名・集合版</span></div><p class="p2"><b>70,000</b><span>円（税別）／社長1名・訪問</span></p><p class="p2"><b>100,000</b><span>円（税別）／5名まで・訪問</span><em>1名あたり20,000円</em></p>
+        <dl><dt>時間</dt><dd>集合版は5時間（10:00–15:00）。訪問は3時間、開始時刻は御社に合わせます</dd><dt>場所</dt><dd>集合版は会場。訪問は御社の会議室（東京・大阪は当法人、他地域は提携講師）</dd><dt>対象</dt><dd>年商5〜30億円／社員10〜100名／経営者・幹部</dd><dt>形式</dt><dd>集合版は少人数（2〜6名・経営者優先）。訪問は社長1名から5名まで</dd><dt>持参</dt><dd>ノートPC ＋ Claude／ChatGPT／Geminiの有料アカウント（ログイン済み）</dd></dl></div>
       <div class="box"><div class="hd">受講に含まれるもの</div><ul><li>5時間ワークショップ本編</li><li>Claude Code 稼働環境一式（構成資料・実行コマンド）</li><li>毎週のドリル配信（3か月・AIの新機能や仕様変更に合わせて改定）</li><li>AI経営チーム設計図（CMO・CFO・CTO・CIO 4役の定義書）</li><li>経営会議スコアレポート（当日採点・改善ベクトル）</li><li>90日アクションプラン</li><li>月次1on1（オンライン15分・3か月伴走）</li></ul></div>
     </div>
     <div class="keys">
@@ -907,9 +1084,10 @@
     <h2 class="t">よくいただくご質問</h2>
     <div class="faq">
       <details open><summary><span class="q">Q1</span>AIをほとんど触ったことがありません。大丈夫ですか？<span class="pl">+</span></summary><div class="a">大丈夫です。最初の20分で、自分のPCに Claude Code と OpenAI API を立ち上げるところから一緒に行います。以降は短いドリルの反復なので、触った回数がそのまま技になります。</div></details>
-      <details><summary><span class="q">Q2</span>本当に5時間で終わりますか？<span class="pl">+</span></summary><div class="a">終わらせます。3つの約束（Claude Code・Codexが動く／MCPで自社データにつながる／人・AI・専門家の線が引ける）は、当日中に到達できる分量に設計しています。休憩15分は席を離れず、ご飯を食べながら。</div></details>
-      <details><summary><span class="q">Q3</span>社員に受けさせたいのですが。<span class="pl">+</span></summary><div class="a">経営者・幹部が優先です。判断する人が受けないと、翌朝の経営会議が変わりません。社員展開は、90日アクションプランの中で設計します。</div></details>
-      <details><summary><span class="q">Q4</span>ブートキャンプの後は？<span class="pl">+</span></summary><div class="a">月次1on1（オンライン15分・3か月）で定着を伴走します。AIに渡した業務が実際に回っているか、経営会議の材料が変わったかを一緒に確かめます。さらに上級者（AIが中心のチーム運営）を目指す企業には、FDE（御社に入り、AIを組織に組み込む実装担当）の派遣を90日単位でご案内します。</div></details>
+      <details><summary><span class="q">Q2</span>集合版と訪問版、どちらを選べばいいですか？<span class="pl">+</span></summary><div class="a">到達点は同じです。社長おひとりで受けるなら、会場のほうが安く済みます（5万円）。他社の社長と競う駅ナカ出店バトルもあります。幹部を含めて受けるなら、訪問のほうが安く済みます（5名まで10万円、1名あたり2万円）。日程が動かせない、社外に出られない、自社の実務をその場で終わらせたい、のいずれかであれば訪問です。</div></details>
+      <details><summary><span class="q">Q3</span>本当に5時間で終わりますか？<span class="pl">+</span></summary><div class="a">終わらせます。3つの約束（Claude Code・Codexが動く／MCPで自社データにつながる／人・AI・専門家の線が引ける）は、当日中に到達できる分量に設計しています。休憩15分は席を離れず、ご飯を食べながら。</div></details>
+      <details><summary><span class="q">Q4</span>社員に受けさせたいのですが。<span class="pl">+</span></summary><div class="a">経営者・幹部が優先です。判断する人が受けないと、翌朝の経営会議が変わりません。社員展開は、90日アクションプランの中で設計します。</div></details>
+      <details><summary><span class="q">Q5</span>ブートキャンプの後は？<span class="pl">+</span></summary><div class="a">月次1on1（オンライン15分・3か月）で定着を伴走します。AIに渡した業務が実際に回っているか、経営会議の材料が変わったかを一緒に確かめます。さらに上級者（AIが中心のチーム運営）を目指す企業には、FDE（御社に入り、AIを組織に組み込む実装担当）の派遣を90日単位でご案内します。</div></details>
     </div>
   </section>
 </div>
@@ -1102,18 +1280,19 @@
     if(!wrap||!v||!go) return;
     function close(){
       wrap.classList.add('out');
-      setTimeout(function(){ wrap.classList.remove('on','out'); v.pause(); document.body.style.overflow=''; }, 850);
+      setTimeout(function(){ wrap.classList.remove('on','out'); wrap.hidden=true; v.pause(); document.body.style.overflow=''; }, 850);
       if(hero&&hero.dataset.opPaused){ delete hero.dataset.opPaused; hero.play().catch(function(){}); }
     }
     go.addEventListener('click',function(e){
       e.preventDefault();
-      if(!v.getAttribute('src')) v.setAttribute('src','media/boot-opening.mp4');
-      wrap.classList.add('on'); document.body.style.overflow='hidden';
+      if(!v.getAttribute('src')) wrap.hidden=false; v.setAttribute('src','media/koby.mp4');
+      wrap.hidden=false; wrap.classList.add('on'); document.body.style.overflow='hidden';
       if(hero&&!hero.paused){ hero.pause(); hero.dataset.opPaused='1'; }
       var p=v.play();
       if(p&&p.catch) p.catch(function(){});
     });
     skip.addEventListener('click',close);
+    wrap.addEventListener('click',function(e){ if(e.target===wrap) close(); });
     v.addEventListener('ended',close);
     document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&wrap.classList.contains('on')) close(); });
   })();
