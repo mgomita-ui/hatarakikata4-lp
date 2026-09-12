@@ -567,6 +567,37 @@
   .gx .gr.key{background:rgba(168,118,46,.06)}
   .gx .gr.key i b{font-size:16.5px}
   .gx .gr.key i.ok b{font-size:20px}
+  /* 助成金が出たあとの負担額 */
+  .cal{margin-top:26px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+  .cal .ct{padding:16px 20px;background:#0F5F52;color:#fff}
+  .cal .ct b{display:block;font-size:18px;font-weight:900;letter-spacing:-.01em}
+  .cal .ct span{display:block;font-size:12px;opacity:.82;margin-top:4px;font-weight:600}
+  .cal .cg{padding:6px 20px 2px}
+  .cal .cr{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+           padding:11px 0;border-bottom:1px dashed var(--line)}
+  .cal .cr span{font-size:14.5px;color:var(--ink-2);font-weight:700}
+  .cal .cr i{font-style:normal;font-family:var(--latin);font-weight:700;font-size:22px;
+             color:var(--ink);letter-spacing:-.02em;white-space:nowrap}
+  .cal .cr i u{text-decoration:none;font-family:var(--sans,inherit);font-size:12px;
+               font-weight:700;margin-left:2px;color:var(--ink-3)}
+  .cal .cr.m span,.cal .cr.m i{color:var(--green-deep)}
+  .cal .cr.tt{border-bottom:0;border-top:2px solid var(--ink);margin-top:2px;padding-top:14px}
+  .cal .cr.tt span{font-size:15.5px;font-weight:900;color:var(--ink)}
+  .cal .cr.tt i{font-size:32px;color:#A8762E}
+  .cal .cz{margin:0;padding:14px 20px;background:rgba(168,118,46,.09);font-size:15px;font-weight:700;
+           color:var(--ink-2);border-top:1px solid var(--line)}
+  .cal .cz b{font-size:21px;font-weight:900;color:#A8762E;font-family:var(--latin);letter-spacing:-.01em}
+  .cal .cz em{font-style:normal;color:var(--green-deep);font-weight:900}
+  .cal .cc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line)}
+  .cal .cw{background:#FAFBFA;padding:16px 18px}
+  .cal .cw b{display:block;font-size:15px;font-weight:900;color:var(--ink);margin-bottom:6px}
+  .cal .cw span{display:block;font-size:13.5px;line-height:1.85;color:var(--ink-2)}
+  .cal .cw span b{display:inline;font-size:inherit;margin:0;color:var(--ink)}
+  .cal .cw.ok{background:rgba(20,160,122,.10)}
+  .cal .cw.ok b,.cal .cw.ok span b{color:var(--green-deep)}
+  .cal .cn{margin:0;padding:13px 20px;font-size:11.5px;line-height:1.8;color:var(--ink-3);
+           border-top:1px solid var(--line);background:#fff}
+  @media (max-width:760px){.cal .cc{grid-template-columns:1fr}.cal .cr.tt i{font-size:26px}}
   @media (max-width:760px){
     .gx .gh{display:none}
     .gx .gr{grid-template-columns:1fr}
@@ -931,7 +962,7 @@
           <span class="tx"><span class="tag">映像・1分34秒</span><span class="tt">時間がもったいない<small>AI研修が、いつのまにか遠くなる</small></span></span>
         </a>
         <a class="mcta" href="../manga2/" aria-label="漫画『ある経営者の選択 II』を読む"><span class="cv"><img src="../manga2/pages/cover.jpg" alt=""></span><span class="tx"><span class="tag">漫画・全24ページ</span><span class="tt">町工場の社長が、会場で5時間<small>ある経営者の選択 II</small></span></span></a>
-        <a class="mcta" href="../bangai1/" aria-label="番外編『その一か月半』を読む"><span class="cv"><img src="../bangai1/pages/cover.jpg?v=0912b" alt=""></span><span class="tx"><span class="tag">番外編・全24ページ</span><span class="tt">営業会社の社長が、御社で3時間<small>番外編「その一か月半」</small></span></span></a>
+        <a class="mcta" href="../bangai1/" aria-label="番外編『探していた、一週間』を読む"><span class="cv"><img src="../bangai1/pages/cover.jpg?v=0912b" alt=""></span><span class="tx"><span class="tag">番外編・全24ページ</span><span class="tt">営業会社の社長が、御社で3時間<small>番外編「探していた、一週間」</small></span></span></a>
       </div>
       <p class="firm">レリック社会保険労務士法人<small>AI MANAGEMENT × QUEST-STYLE BOOTCAMP ｜ 2026</small></p>
     </div>
@@ -1042,7 +1073,24 @@
       <div class="gr"><span>かかる時間</span><i><b>十時間以上</b>でないと対象外</i><i class="ok">必要な分だけ。<b>3時間 or 5時間</b></i></div>
       <div class="gr"><span>何を題材にするか</span><i>実務は訓練時間に含められない。<b>演習データ</b></i><i class="ok"><b>御社の実際の数字と書類</b></i></div>
       <div class="gr"><span>中身の決め方</span><i><b>職種ごと</b>にカリキュラムを組み直す</i><i class="ok">御社の課題に合わせて<b>その場で組み替える</b></i></div>
-      <div class="gr key"><span>社長・役員は</span><i>雇用保険の被保険者が対象。<b>対象外</b></i><i class="ok"><b>主役です</b></i></div>
+      <div class="gr key"><span>社長・役員は</span><i>対象は雇用保険の被保険者。<b>社長・役員は、一緒に受けられません</b></i><i class="ok"><b>社長が主役です</b>。役員・幹部もご一緒に</i></div>
+    </div>
+
+    <div class="cal">
+      <div class="ct"><b>では、助成金が出たあとの負担はいくらか。</b><span>人材開発支援助成金・人材育成支援コース／中小企業・社員10名・10時間の試算</span></div>
+      <div class="cg">
+        <div class="cr"><span>研修費用</span><i>1,200,000<u>円</u></i></div>
+        <div class="cr m"><span>経費助成（45%）</span><i>−540,000<u>円</u></i></div>
+        <div class="cr m"><span>賃金助成（10名 × 10時間 × 760円）</span><i>−76,000<u>円</u></i></div>
+        <div class="cr tt"><span>助成金が出たあとの負担</span><i>584,000<u>円</u></i></div>
+      </div>
+      <p class="cz">1名あたり <b>58,400円</b>。<em>この研修は1名50,000円です。</em></p>
+      <div class="cc">
+        <div class="cw"><b>それでも高い</b><span>助成金が満額出ても、1名あたりの負担はこの研修を上回ります。しかも<b>社長と役員は、その10名に入れません</b>。</span></div>
+        <div class="cw"><b>そして遅い</b><span>計画届から着手まで一か月半。研修が終わってから支給申請、入金は<b>さらに数か月あと</b>。その間は<b>全額を立て替えます</b>。</span></div>
+        <div class="cw ok"><b>この研修</b><span>1名 <b>50,000円</b>。日程さえ合えば<b>今日から</b>。申請も立替もありません。<b>社長が主役</b>で、役員・幹部もご一緒に受けられます。</span></div>
+      </div>
+      <p class="cn">助成率・助成額はコースと要件によって変わります。上は一般的な率での試算です。御社の場合の正確な額は、ご相談いただければお出しします。</p>
     </div>
 
     <p class="note" style="margin-top:20px">助成金が向く研修のご相談も承っています。当法人の本業です。この研修に限って、使わないという判断です。</p>
