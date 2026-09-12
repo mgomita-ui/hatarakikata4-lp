@@ -419,6 +419,12 @@
   .vs2 div:last-child{border-color:var(--green-deep)}
   .vs2 b{display:block;font-size:15px;color:var(--ink);margin-bottom:4px}
   @media (max-width:760px){.vs2{grid-template-columns:1fr;gap:16px}}
+  /* 助成金の章に置く映像。自動再生はしない（URLを配った先で鳴る事故を防ぐ） */
+  .vid{margin:26px 0 0}
+  .vid .vh{font-size:16px;font-weight:900;color:var(--ink);margin:0 0 10px}
+  .vid video{width:100%;display:block;border-radius:14px;background:#04090d;
+             box-shadow:0 12px 32px rgba(15,95,82,.10),0 2px 6px rgba(15,95,82,.06)}
+  .vid .vc{font-size:12.5px;color:var(--ink-3);margin:9px 0 0}
   .tlfig{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px 18px;
          margin:22px 0;overflow-x:auto}
   .tlfig svg{width:100%;min-width:560px;height:auto;display:block}
@@ -891,6 +897,13 @@
     </div>
 
     
+    <div class="vid">
+      <p class="vh">この一か月半に、何が起きているか。</p>
+      <video controls playsinline preload="none" poster="../media/private-koby-poster.jpg">
+        <source src="../media/private-koby.mp4" type="video/mp4">
+      </video>
+      <p class="vc">「時間がもったいない」／1分31秒。音が出ます。</p>
+    </div>
     <p class="note" style="margin-top:18px">助成金が向く研修のご相談も承っています。当法人の本業です。この3時間に限って、使わないという判断です。</p>
   </section>
 </div>
