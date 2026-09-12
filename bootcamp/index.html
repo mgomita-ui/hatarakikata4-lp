@@ -537,6 +537,29 @@
                    background:rgba(255,255,255,.14);border-radius:12px;overflow:hidden}
   .hfoot .facts.nu>div{background:rgba(6,26,22,.72);padding:14px;min-width:0}
   @media (max-width:900px){.hfoot .facts.nu{grid-template-columns:1fr}}
+  /* 助成金の対比。5行だけの表にして、読む量を減らす */
+  .gx{margin-top:22px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+  .gx .gh,.gx .gr{display:grid;grid-template-columns:minmax(0,124px) minmax(0,1fr) minmax(0,1fr)}
+  .gx .gh{background:var(--mint);font-size:14px}
+  .gx .gh span,.gx .gh b{padding:12px 16px}
+  .gx .gh b{font-weight:900;color:var(--ink-3)}
+  .gx .gh b.ok{color:var(--green-deep);background:rgba(20,160,122,.10)}
+  .gx .gr{border-top:1px solid var(--line);font-size:15px;line-height:1.85}
+  .gx .gr span{padding:16px;font-weight:900;font-size:13.5px;color:var(--ink-3);
+               background:#FAFBFA;display:flex;align-items:center}
+  .gx .gr i{font-style:normal;padding:16px;color:var(--ink-2);border-left:1px solid var(--line)}
+  .gx .gr i b{color:var(--ink);font-weight:900}
+  .gx .gr i.ok{background:rgba(20,160,122,.07)}
+  .gx .gr i.ok b{color:var(--green-deep)}
+  .gx .gr.key{background:rgba(168,118,46,.06)}
+  .gx .gr.key i b{font-size:16.5px}
+  @media (max-width:760px){
+    .gx .gh{display:none}
+    .gx .gr{grid-template-columns:1fr}
+    .gx .gr i{border-left:0;border-top:1px dashed var(--line)}
+    .gx .gr i:before{content:"助成金を使うと　";font-size:11.5px;font-weight:900;color:var(--ink-3)}
+    .gx .gr i.ok:before{content:"この研修は　";color:var(--green-deep)}
+  }
 </style>
 <style>
   /* ===== bootcamp: visual-first additions (same design system) ===== */
@@ -819,7 +842,7 @@
       <span>レリック<small>社会保険労務士法人</small></span>
     </a>
     <div class="nav-links">
-      <a href="#three">できること</a><a href="#how">受け方</a><a href="#why">3つの選択</a><a href="#design">5時間の中身</a><a href="#battle">午後の勝負</a><a href="#onsite">助成金を使わない理由</a><a href="#after">翌朝</a><a href="#spec">受講要項</a><a href="#before">申込前の確認</a><a href="#faq">Q&amp;A</a><a href="../manga2/">漫画</a>
+      <a href="#three">できること</a><a href="#how">受け方</a><a href="#design">研修プログラム</a><a href="#onsite">助成金を使わない理由</a><a href="#spec">受講要項</a><a href="#before">申込前の確認</a><a href="#faq">Q&amp;A</a><a href="../manga2/">漫画</a>
       <a class="btn btn-primary" style="padding:9px 16px;font-size:13px" href="#apply">受講を申し込む</a>
     </div>
   </div>
@@ -917,7 +940,6 @@
   </section>
 </div>
 
-<!-- 02 3つの選択 -->
 <!-- 02 受け方 -->
 <div class="chap" id="how">
   <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">02</div><h2>受け方は、3つあります</h2><p>到達点は同じです。違うのは、来ていただくか、うかがうか。<br><b>1名なら会場が安い。5名なら訪問が安い。</b></p></div><div class="r" style="background:linear-gradient(135deg,#14A07A,#0F5F52 60%,#2E6A8A)"></div></div>
@@ -955,32 +977,38 @@
   </section>
 </div>
 
-<div class="chap" id="why">
-  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">03</div><h2>いつからやるか</h2><p>AIは来る。来ない、という選択肢は無い。<br><b>経営者の選択肢は、3つだけです。</b></p></div><div class="r"></div></div>
+<!-- 03 助成金を使わない理由（受け方によらず共通） -->
+<div class="chap" id="onsite">
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">03</div><h2>あえて、助成金を使いません</h2><p>制度が悪いのではありません。<br><b>この研修には、合わないだけです。</b></p></div><div class="r" style="background:linear-gradient(135deg,#A8762E,#2E6A8A 55%,#0F5F52)"></div></div>
 </div>
 <div class="page">
   <section class="card">
     <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
-    <h2 class="one">あなたの会社は、<span class="y">5年後、何で稼いでいますか</span>。</h2>
-    <p class="sub1">今と同じ事業、同じ業務、同じ社員。それで戦えるか。</p>
-    <div class="abc">
-      <div class="c"><svg viewBox="0 0 48 48" fill="none" stroke="#9AA5A1" stroke-width="2.2" stroke-linecap="round"><circle cx="24" cy="14" r="6"/><path d="M12 42v-8a8 8 0 0 1 8-8h8a8 8 0 0 1 8 8v8"/><path d="M6 30h6M36 30h6" opacity=".5"/></svg><div class="k">A</div><h4>何もしない</h4><p>様子を見る。落ち着いてから考える。</p><div class="r">結果：競合と差が開く。5年後、追いつけない。</div></div>
-      <div class="c"><svg viewBox="0 0 48 48" fill="none" stroke="#9AA5A1" stroke-width="2.2" stroke-linecap="round"><rect x="8" y="16" width="32" height="24" rx="3"/><path d="M18 16v-4a6 6 0 0 1 12 0v4M8 26h32"/></svg><div class="k">B</div><h4>ツールを導入する</h4><p>ChatGPTを契約し、使い方研修。「導入した」で安心する。</p><div class="r">結果：道具は揃うが、経営判断は変わらない。</div></div>
-      <div class="c on"><svg viewBox="0 0 48 48" fill="none" stroke="#F2E27A" stroke-width="2.2" stroke-linecap="round"><path d="M10 40V22a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4v18"/><path d="M6 40h36M14 18V10a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v8"/><circle cx="24" cy="29" r="3" fill="#F2E27A" stroke="none"/></svg><div class="k">C</div><h4>経営に、AIを組み込む</h4><p>自分でAIを動かし、自社のデータにつなぎ、人とAIと専門家の役割を引き直す。</p><div class="r"><b>この5時間で、Cを始めます。</b>判断のスピードと精度が、会社単位で変わる。</div></div>
+    <h2 class="one">使わないから、<span class="y">来週できます</span>。</h2>
+    <p class="sub1">助成金は当法人の本業です。要件も申請の手順も分かったうえで申し上げます。合う研修はあります。ただ、この研修には合いません。</p>
+
+    <div class="gx">
+      <div class="gh"><span></span><b>助成金を使う研修</b><b class="ok">この研修</b></div>
+      <div class="gr"><span>いつ始められるか</span><i>計画届から<b>一か月半あと</b></i><i class="ok">日程が合えば<b>来週</b></i></div>
+      <div class="gr"><span>かかる時間</span><i><b>十時間以上</b>でないと対象外</i><i class="ok">必要な分だけ。<b>3時間 or 5時間</b></i></div>
+      <div class="gr"><span>何を題材にするか</span><i>実務は訓練時間に含められない。<b>演習データ</b></i><i class="ok"><b>御社の実際の数字と書類</b></i></div>
+      <div class="gr"><span>中身の決め方</span><i><b>職種ごと</b>にカリキュラムを組み直す</i><i class="ok">御社の課題に合わせて<b>その場で組み替える</b></i></div>
+      <div class="gr key"><span>社長・役員は</span><i>雇用保険の被保険者が対象。<b>対象外</b></i><i class="ok"><b>主役です</b></i></div>
     </div>
-    <div class="concl"><div class="ct">いつからやるか</div><p>競合の大半は、まだ動いていません。<span class="y">「動く意思」だけで差がつく、希少な瞬間です。だから、今日。</span></p></div>
+
+    <p class="note" style="margin-top:20px">助成金が向く研修のご相談も承っています。当法人の本業です。この研修に限って、使わないという判断です。</p>
   </section>
 </div>
 
 <!-- 03 5時間の中身 -->
 <div class="chap" id="design">
-  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">04</div><h2>5時間の中身</h2><p>前半で技を掴む。後半は勝負する。<br><b>10:00〜15:00、席を離れずに。</b></p></div><div class="r" style="background:linear-gradient(135deg,#1E6FC2,#2E6A8A 60%,#0F5F52)"></div></div>
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">04</div><h2>研修プログラム</h2><p>説明は最初の20〜30分だけ。あとは手を動かす時間です。<br><b>会場なら5時間、御社でなら3時間。</b></p></div><div class="r" style="background:linear-gradient(135deg,#1E6FC2,#2E6A8A 60%,#0F5F52)"></div></div>
 </div>
 <div class="page">
   <section class="card">
     <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
-    <h2 class="one">前半は<span class="y">反復</span>、後半は<span class="y">勝負</span>。</h2>
-    <p class="sub1">説明は最初の30分だけ。あとは手を動かす時間です。</p>
+    <h2 class="one">会場は<span class="y">5時間</span>、御社でなら<span class="y">3時間</span>。</h2>
+    <p class="sub1">技を掴む前半は、どちらも同じ内容です。違うのは後半だけ。会場では他社の社長とチーム戦、御社ではいま止まっている仕事を1件その場で片づけます。</p>
     <div class="tl">
       <div class="bar">
         <div class="a"><i>10:00</i>危機感<br>インストール</div>
@@ -995,9 +1023,9 @@
       <div class="ticks"><div>10:00</div><div>10:30</div><div>10:50</div><div>11:05</div><div>12:15</div><div>12:30</div><div>13:30</div><div>14:30–15:00</div></div>
       <div class="half"><div><b>前半（3時間半）：技を掴む</b>短い課題を次々クリア。選んだ分だけAI筋トレが効く。Claude Code・Codexの立ち上げと、MCP接続を1本通す。</div><div><b>後半（1時間）：勝負</b>身につけた技でチーム対抗。区画・価格・採用を決め、スコアで差を体感する。</div></div>
     </div>
-    <p class="note">休憩は15分、ご飯を食べながら。「5時間、他の仕事は捨てる」が唯一のルールです。</p>
+    <p class="note">会場は休憩15分、ご飯を食べながら。「その時間だけは、他の仕事は捨てる」が唯一のルールです。</p>
     <div class="onsplit">
-      <p class="oh">御社にうかがう場合は、3時間です</p>
+      <p class="oh">御社にうかがう場合｜3時間</p>
       <div class="tl">
         <div class="bar">
           <div class="a"><i>0:00</i>セット<br>アップ</div>
@@ -1014,109 +1042,9 @@
   </section>
 </div>
 
-<!-- 04 午後の勝負 -->
-<div class="chap" id="battle">
-  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">05</div><h2>午後の勝負：駅ナカ出店バトル</h2><p><span class="only">集合版だけ</span>駅の空き区画に、AIを参謀に出店する。<br><b>AIをどう使ったかが、そのまま点数になる。</b></p></div><div class="r" style="background:linear-gradient(135deg,#A8762E,#2E6A8A 55%,#0F5F52)"></div></div>
-</div>
-<div class="page">
-  <section class="card">
-    <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
-    <h2 class="one">同じ計画でも、<span class="y">AIを使いこなしたチームが勝つ</span>。</h2>
-    <p class="sub1">乗降客8万人の架空の駅。空き区画6つと無人ロッカー2つ。1か月でいちばん儲かる店を、チームで設計します。</p>
-    <div class="cine"><video muted loop playsinline preload="metadata" autoplay poster="media/boot-station-poster.jpg" class="ready"><source src="media/boot-station.mp4" type="video/mp4"></video><div class="stat"><div>乗降客<b>80,000<small>/日</small></b></div><div>空き区画<b>6＋2</b></div><div>制限時間<b>45<small>分</small></b></div></div><div class="ov"><p class="eb">みなと中央駅 ｜ 架空のターミナル駅</p><b>この駅の、どこに、何を出すか。</b><span>区画を選び、AIと計画を組み、3分で発表。採点直前に「当日イベント」が抽選され、通行量が変わる。</span></div></div>
-    <div class="formula">最終スコア <span class="op">＝</span> 計画 <b data-count="100">0</b>点 <span class="op">×</span> AI係数 <b><span data-count="0.90" data-dec="2">0.00</span>〜<span data-count="1.15" data-dec="2">0.00</span></b> <span class="op">＋</span> 加点<small>AIに「前提を出させた」「比較させた」「リスクを出させた」「聞き返した」「改善に使った」の記録が、係数を上げます。使わなかったチームは0.90倍。</small></div>
-    <div class="map">
-      <div><b>1</b><span>中央改札前・正面</span><small>80万円／最多</small></div><div><b>2</b><span>中央改札前・脇</span><small>55万円／多</small></div><div><b>3</b><span>コンコース島型</span><small>65万円／多</small></div><div><b>4</b><span>ホーム階段下</span><small>38万円／朝夕集中</small></div>
-      <div><b>5</b><span>南口広場・改札外</span><small>42万円／天候影響</small></div><div><b>6</b><span>地下1F 飲食フロア</span><small>48万円／夜需要</small></div><div class="lk"><b>L1</b><span>ロッカー・改札内</span><small>12万円／無人</small></div><div class="lk"><b>L2</b><span>ロッカー・改札外</span><small>9万円／無人</small></div>
-    </div>
-    <div class="phases"><div><i>1</i>ルール</div><div><i>2</i>AIに相談</div><div><i>3</i>区画決定<br><small>重なれば競り</small></div><div><i>4</i>計画づくり</div><div><i>5</i>3分プレゼン</div><div><i>6</i>AI採点<br><small>当日イベント抽選</small></div><div><i>7</i>結果発表</div><div><i>8</i>サドンデス</div></div>
-    <p class="note" style="margin-top:14px">採点の直前に「雨天」「朝夕ラッシュ」「インバウンド」などの当日イベントが1つ抽選され、通行量が変わります。区画は、いつもの強さだけでなく、下振れも込みで選ぶことになります。</p>
-  </section>
-</div>
-
-<!-- 06 助成金を使わない理由（受け方によらず共通） -->
-<div class="chap" id="onsite">
-  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">06</div><h2>あえて、助成金を使いません</h2><p>制度が悪いのではありません。<br><b>タイミングと中身が、合わないだけです。</b></p></div><div class="r" style="background:linear-gradient(135deg,#A8762E,#2E6A8A 55%,#0F5F52)"></div></div>
-</div>
-<div class="page">
-  <section class="card">
-    <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
-    <h2 class="one">九月十五日に決めても、<span class="y">着手は十一月一日</span>。</h2>
-    <p class="sub1">助成金は当法人の本業です。要件も申請の手順も分かったうえで申し上げます。合う研修はあります。ただ、この研修には合いません。</p>
-
-    <div class="tlfig">
-      <svg viewBox="0 0 880 210" role="img" aria-label="9月15日に決めた場合、助成金を使うと着手は11月1日、使わなければ9月22日">
-        <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#6E7673"/></marker></defs>
-        <line x1="60" y1="46" x2="840" y2="46" stroke="#DCE5E0" stroke-width="1"/>
-        <text x="96"  y="30" font-size="12" font-weight="700" fill="#6E7673">9月</text>
-        <text x="360" y="30" font-size="12" font-weight="700" fill="#6E7673">10月</text>
-        <text x="700" y="30" font-size="12" font-weight="700" fill="#6E7673">11月</text>
-        <line x1="60" y1="40" x2="60" y2="180" stroke="#1A1A1A" stroke-width="2" stroke-dasharray="4 4"/>
-        <circle cx="60" cy="46" r="6" fill="#1A1A1A"/>
-        <text x="60" y="200" font-size="13" font-weight="900" fill="#1A1A1A" text-anchor="middle">9/15</text>
-        <text x="60" y="16" font-size="12" font-weight="700" fill="#1A1A1A" text-anchor="middle">決めた日</text>
-        <text x="60" y="76" font-size="13" font-weight="900" fill="#A8762E">助成金を使う</text>
-        <rect x="60" y="86" width="150" height="26" rx="6" fill="#F7EEDC" stroke="#E6D5AC"/>
-        <text x="135" y="104" font-size="12" font-weight="700" fill="#A8762E" text-anchor="middle">計画届の準備</text>
-        <rect x="212" y="86" width="488" height="26" rx="6" fill="#F2F2EE" stroke="#DCE5E0"/>
-        <text x="456" y="104" font-size="12.5" font-weight="900" fill="#6E7673" text-anchor="middle">待つ。何も動かない</text>
-        <line x1="212" y1="124" x2="700" y2="124" stroke="#6E7673" stroke-width="1" marker-end="url(#ar)"/>
-        <text x="456" y="140" font-size="11.5" font-weight="700" fill="#6E7673" text-anchor="middle">一か月半</text>
-        <circle cx="702" cy="99" r="6" fill="#A8762E"/>
-        <text x="702" y="76" font-size="13" font-weight="900" fill="#A8762E" text-anchor="middle">11/1</text>
-        <rect x="716" y="86" width="70" height="26" rx="6" fill="#A8762E"/>
-        <text x="751" y="104" font-size="12.5" font-weight="900" fill="#fff" text-anchor="middle">実施</text>
-        <text x="60" y="168" font-size="13" font-weight="900" fill="#0F5F52">使わない</text>
-        <rect x="150" y="150" width="80" height="26" rx="6" fill="#0F5F52"/>
-        <text x="190" y="168" font-size="12.5" font-weight="900" fill="#fff" text-anchor="middle">実施</text>
-        <circle cx="150" cy="163" r="6" fill="#0F5F52"/>
-        <text x="150" y="200" font-size="13" font-weight="900" fill="#0F5F52" text-anchor="middle">9/22</text>
-        <text x="244" y="168" font-size="12.5" font-weight="700" fill="#3A3F3D">日程が合えば、来週</text>
-      </svg>
-    </div>
-
-    <div class="vs2">
-      <div><b>助成金を使う研修：制度の形に合わせます</b>
-        十時間以上でないと対象になりません。計画届の提出から、始められるのは一か月半あと。職種ごとにカリキュラムを組み直します。実務は訓練時間に含められないので、自社の数字ではなく演習で学ぶことになります。雇用保険の被保険者が対象のため、経営者ご自身は対象外です。</div>
-      <div><b>この研修：御社の形に合わせます</b>
-        3時間。必要なことだけをやります。日程が合えば来週うかがえます。御社の課題に合わせて、その場で組み替えます。御社の実際の数字と書類を使います。演習ではありません。そして、経営者ご自身が主役です。</div>
-    </div>
-
-    
-    <p class="note" style="margin-top:18px">助成金が向く研修のご相談も承っています。当法人の本業です。この研修に限って、使わないという判断です。</p>
-  </section>
-</div>
-
-<!-- 07 翌朝 -->
-<div class="chap" id="after">
-  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">07</div><h2>翌朝9時</h2><p>5時間で立ち上げ、その日から動く。<br><b>「いつかやろう」を、その日のうちに終わらせる。</b></p></div><div class="r" style="background:linear-gradient(135deg,#0B4A40,#0F5F52 50%,#2E6A8A)"></div></div>
-</div>
-<div class="page">
-  <section class="card">
-    <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
-    <h2 class="one">帰る頃には、<span class="y">動き始めています</span>。</h2>
-    <div class="after">
-      <div class="a"><div class="w">T+5H</div><h4>5時間後</h4><p>AIに壁打ちでき、数字の前提と打ち手が見える。</p></div>
-      <div class="a"><div class="w">+30MIN</div><h4>その日の午後</h4><p>CMO・CFO・CTO・CIOの4役のAIが、データ収集と分析を自動で回し始める。</p></div>
-      <div class="a"><div class="w">T+15D</div><h4>15日後</h4><p>経営会議スコアが数字で見え、改善が定着し始める。</p></div>
-      <div class="a on"><div class="w">T+1D 09:00</div><h4>翌朝9時</h4><p>経営会議で、AIに数字を出させて判断する。</p></div>
-      <div class="a next"><div class="w">T+90D</div><h4>90日後、上級者へ</h4><p>ご希望の企業には、FDE（御社に入り、AIを組織に組み込む実装担当）を派遣。AIが中心のチーム運営へ進みます。</p><a class="mlink" href="../manga2/#p18" style="margin-top:8px;font-size:12.5px"><i>MANGA</i>FDEが来た90日を読む ›</a></div>
-    </div>
-    <div class="grow">
-      <div class="grow-h"><b>帰ってからも、伸びる。</b><span>5時間は起点です。毎週のドリルで、AIの改定を追いながら、できることが増えます。</span></div>
-      <div class="grow-g">
-        <div><i>01</i><b>毎週届く、15分のドリル</b><p>ドリルは持ち帰りではなく、毎週届きます。AIの新機能や仕様変更に合わせて改定するので、手元がいつも最新。「頼む→動かす→確かめる→直す」を日課に。</p></div>
-        <div><i>02</i><b>自分で、小さなツールを作る</b><p>在庫の集計、見積の下書き、会議の要約。日本語で頼んで動くものを作る（バイブコーディング）。作ったものが、翌日の仕事で使えます。</p></div>
-        <div><i>03</i><b>月次1on1で、詰まりを解く</b><p>3か月の伴走。進まない理由を15分で解き、次の一手を決める。伸びが止まらない仕組みです。</p></div>
-      </div>
-    </div>
-    <div class="chips"><span><i>持ち帰り 01</i>Claude Code 稼働環境一式</span><span><i>02</i>AI経営チーム設計図（4役の定義書）</span><span><i>03</i>経営会議スコアレポート</span><span><i>04</i>90日アクションプラン</span></div>
-  </section>
-</div>
-
 <!-- 06 受講要項 -->
 <div class="chap" id="spec">
-  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">08</div><h2>受講要項</h2><p>集合版は経営者優先枠／先着順。訪問は日程を御社に合わせます。<br><b>次の経営は、ここから始まる。</b></p></div><div class="r"></div></div>
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">05</div><h2>受講要項</h2><p>集合版は経営者優先枠／先着順。訪問は日程を御社に合わせます。<br><b>次の経営は、ここから始まる。</b></p></div><div class="r"></div></div>
 </div>
 <div class="page">
   <section class="card">
