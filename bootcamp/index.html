@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="経営者のためのAIブートキャンプ。会場で5時間（1名5万円）か、御社に訪問して3時間（社長1名7万円／幹部5名まで10万円）。到達点は同じです。税別。">
+<meta name="description" content="経営者のためのAIブートキャンプ。会場で5時間か、御社に訪問して3時間。どちらも1名5万円、幹部5名まで同席なら10万円。到達点は同じです。税別。">
 </head>
 <body>
 <title>その日から、AIが当たり前に動く会社に。｜経営者のためのAIブートキャンプ</title>
@@ -546,20 +546,27 @@
   @media (max-width:900px){.hfoot .facts.nu{grid-template-columns:1fr}}
   /* 助成金の対比。5行だけの表にして、読む量を減らす */
   .gx{margin-top:22px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
-  .gx .gh,.gx .gr{display:grid;grid-template-columns:minmax(0,124px) minmax(0,1fr) minmax(0,1fr)}
-  .gx .gh{background:var(--mint);font-size:14px}
-  .gx .gh span,.gx .gh b{padding:12px 16px}
-  .gx .gh b{font-weight:900;color:var(--ink-3)}
-  .gx .gh b.ok{color:var(--green-deep);background:rgba(20,160,122,.10)}
-  .gx .gr{border-top:1px solid var(--line);font-size:15px;line-height:1.85}
+  .gx .gh,.gx .gr{display:grid;grid-template-columns:minmax(0,124px) minmax(0,1fr) minmax(0,1.12fr)}
+  .gx .gh{font-size:14px;background:#F3F5F4}
+  .gx .gh span,.gx .gh b{padding:13px 16px;display:flex;align-items:center;gap:8px}
+  .gx .gh b{font-weight:900;color:#8A908D}
+  .gx .gh b:before{content:"✕";display:grid;place-items:center;width:20px;height:20px;
+                   border-radius:50%;background:#C9CFCC;color:#fff;font-size:11px;flex:none}
+  .gx .gh b.ok{color:#fff;background:var(--green-deep)}
+  .gx .gh b.ok:before{content:"○";background:#fff;color:var(--green-deep)}
+  .gx .gr{border-top:1px solid var(--line);font-size:15px;line-height:1.8}
   .gx .gr span{padding:16px;font-weight:900;font-size:13.5px;color:var(--ink-3);
                background:#FAFBFA;display:flex;align-items:center}
-  .gx .gr i{font-style:normal;padding:16px;color:var(--ink-2);border-left:1px solid var(--line)}
-  .gx .gr i b{color:var(--ink);font-weight:900}
-  .gx .gr i.ok{background:rgba(20,160,122,.07)}
-  .gx .gr i.ok b{color:var(--green-deep)}
+  /* 助成金側は落とす。この研修側だけを読ませる */
+  .gx .gr i{font-style:normal;padding:16px;color:#9AA09D;background:#F8F9F9;
+            border-left:1px solid var(--line)}
+  .gx .gr i b{color:#77807C;font-weight:900}
+  .gx .gr i.ok{background:rgba(20,160,122,.10);color:var(--ink-2);
+               box-shadow:inset 3px 0 0 var(--green)}
+  .gx .gr i.ok b{color:var(--green-deep);font-size:17.5px;letter-spacing:-.01em}
   .gx .gr.key{background:rgba(168,118,46,.06)}
   .gx .gr.key i b{font-size:16.5px}
+  .gx .gr.key i.ok b{font-size:20px}
   @media (max-width:760px){
     .gx .gh{display:none}
     .gx .gr{grid-template-columns:1fr}
@@ -898,7 +905,7 @@
       <p class="q">社長が、自分のパソコンで、自社の仕事をAIにやらせる練習をします。</p>
       <h1>その日から、AIが当たり前に動く会社に。</h1>
       <div class="hrow">
-        <p class="sub">見積の下書き、議事録、粗利の確認。いま人がやっている仕事を題材にします。会計や勤怠につなぐところまで一緒にやり、明日からAIに渡す仕事を決めて終わります。<br><b>会場で5時間（1名5万円）／御社で3時間（社長1名7万円・5名まで10万円）。いずれも税別。受講後3か月の伴走つき。</b></p>
+        <p class="sub">見積の下書き、議事録、粗利の確認。いま人がやっている仕事を題材にします。会計や勤怠につなぐところまで一緒にやり、明日からAIに渡す仕事を決めて終わります。<br><b>会場で5時間、御社で3時間。どちらも1名5万円。幹部5名まで同席なら10万円。いずれも税別。受講後3か月の伴走つき。</b></p>
         <div class="cta">
           <a class="btn btn-primary" href="#apply" style="background:#14A07A">受講を申し込む（経営者優先枠） <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
           <a class="btn btn-ghost on-dark" href="#how">受け方を見る（3つ）</a>
@@ -915,7 +922,7 @@
     <div class="hfoot">
       <div class="facts ways3">
         <div><b>会場</b><span class="p"><i>50,000</i>円</span><em>5時間・1名</em><u class="d">会場に集まって、他社の社長とチーム戦</u></div>
-        <div><b>訪問</b><span class="p"><i>70,000</i>円</span><em>3時間・社長1名</em><u class="d">御社にうかがって、社長おひとりに集中</u></div>
+        <div><b>訪問</b><span class="p"><i>50,000</i>円</span><em>3時間・社長1名</em><u class="d">御社にうかがって、社長おひとりに集中</u></div>
         <div class="best"><b>訪問</b><span class="p"><i>100,000</i>円</span><em>3時間・5名まで</em><u class="d">役員・幹部もまとめて。<b class="hi">1名あたり 20,000円</b></u></div>
       </div>
       <div class="cards row3">
@@ -945,7 +952,7 @@
 <div class="page">
   <section class="card">
     <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
-    <h2 class="one">5時間後、あなたのPCは<span class="y">こうなっています</span>。</h2>
+    <h2 class="one">終了後、あなたのPCは<span class="y">こうなっています</span>。</h2>
     <p class="sub1">3つとも「いつかやろう」と思っていたことのはずです。この日は、その日のうちに終わらせる設計です。</p>
     <div class="trio">
       <div class="o">
@@ -1000,9 +1007,9 @@
       </div>
       <div class="w1">
         <div class="hd">個別訪問・社長おひとり</div>
-        <div class="amt"><b>70,000</b><span>円（税別）／1名</span></div>
+        <div class="amt"><b>50,000</b><span>円（税別）／1名</span></div>
         <dl><dt>場所</dt><dd>こちらが御社にうかがいます</dd><dt>時間</dt><dd>3時間。開始時刻は御社に合わせます</dd><dt>人数</dt><dd>社長1名</dd><dt>特徴</dt><dd>チーム対抗戦の代わりに、<b>御社の実務を1件</b>その場で終わらせます</dd></dl>
-        <p class="per">1名あたり <b>70,000</b>円</p>
+        <p class="per">1名あたり <b>50,000</b>円</p>
       </div>
       <div class="w1 best">
         <div class="hd">個別訪問・幹部まで</div>
@@ -1026,12 +1033,12 @@
 <div class="page">
   <section class="card">
     <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
-    <h2 class="one">使わないから、<span class="y">来週できます</span>。</h2>
+    <h2 class="one">助成金は使いません。<br>だから極端な話、<span class="y">今からできます</span>。</h2>
     <p class="sub1">助成金は当法人の本業です。要件も申請の手順も分かったうえで申し上げます。合う研修はあります。ただ、この研修には合いません。</p>
 
     <div class="gx">
       <div class="gh"><span></span><b>助成金を使う研修</b><b class="ok">この研修</b></div>
-      <div class="gr"><span>いつ始められるか</span><i>計画届から<b>一か月半あと</b></i><i class="ok">日程が合えば<b>来週</b></i></div>
+      <div class="gr"><span>いつ始められるか</span><i>計画届から<b>一か月半あと</b></i><i class="ok">日程さえ合えば<b>今日から</b></i></div>
       <div class="gr"><span>かかる時間</span><i><b>十時間以上</b>でないと対象外</i><i class="ok">必要な分だけ。<b>3時間 or 5時間</b></i></div>
       <div class="gr"><span>何を題材にするか</span><i>実務は訓練時間に含められない。<b>演習データ</b></i><i class="ok"><b>御社の実際の数字と書類</b></i></div>
       <div class="gr"><span>中身の決め方</span><i><b>職種ごと</b>にカリキュラムを組み直す</i><i class="ok">御社の課題に合わせて<b>その場で組み替える</b></i></div>
@@ -1098,7 +1105,7 @@
           <div class="sh"><span></span><b>会場に集まる</b><b class="ok">御社にうかがう</b></div>
           <div class="sr"><span>受講料</span>
             <i><u>50,000</u><small>円（税別）</small><em>1名</em></i>
-            <i class="ok"><u>70,000</u><small>円（税別）</small><em>社長1名</em>
+            <i class="ok"><u>50,000</u><small>円（税別）</small><em>社長1名</em>
               <k><u>100,000</u><small>円（税別）</small><em>5名まで・1名あたり20,000円</em></k></i></div>
           <div class="sr"><span>時間</span>
             <i><b>5時間</b><em>10:00–15:00</em></i>
@@ -1126,7 +1133,7 @@
       <div class="f"><h3>申込フォーム送信</h3><p>所要3分。下のフォームから。</p></div>
       <div class="f"><h3>事前ヒアリング</h3><p>15〜20分・オンライン。業務と課題を確認。</p></div>
       <div class="f"><h3>開催日程確定</h3><p>前日〜2営業日前にご案内。</p></div>
-      <div class="f"><h3>当日受講</h3><p>10:00–15:00。翌朝9時、経営会議の席へ。</p></div>
+      <div class="f"><h3>当日受講</h3><p>会場は10:00–15:00、訪問は3時間。終わったその足で動かせます。</p></div>
     </div>
   </section>
 
@@ -1165,8 +1172,8 @@
     <h2 class="t">よくいただくご質問</h2>
     <div class="faq">
       <details open><summary><span class="q">Q1</span>AIをほとんど触ったことがありません。大丈夫ですか？<span class="pl">+</span></summary><div class="a">大丈夫です。最初の20分で、自分のPCに Claude Code と OpenAI API を立ち上げるところから一緒に行います。以降は短いドリルの反復なので、触った回数がそのまま技になります。</div></details>
-      <details><summary><span class="q">Q2</span>集合版と訪問版、どちらを選べばいいですか？<span class="pl">+</span></summary><div class="a">到達点は同じです。社長おひとりで受けるなら、会場のほうが安く済みます（5万円）。他社の社長と競う駅ナカ出店バトルもあります。幹部を含めて受けるなら、訪問のほうが安く済みます（5名まで10万円、1名あたり2万円）。日程が動かせない、社外に出られない、自社の実務をその場で終わらせたい、のいずれかであれば訪問です。</div></details>
-      <details><summary><span class="q">Q3</span>本当に5時間で終わりますか？<span class="pl">+</span></summary><div class="a">終わらせます。3つの約束（Claude Code・Codexが動く／MCPで自社データにつながる／人・AI・専門家の線が引ける）は、当日中に到達できる分量に設計しています。休憩15分は席を離れず、ご飯を食べながら。</div></details>
+      <details><summary><span class="q">Q2</span>集合版と訪問版、どちらを選べばいいですか？<span class="pl">+</span></summary><div class="a">到達点も料金も同じです。社長おひとりなら、会場でも訪問でも5万円。違うのは後半だけで、会場は5時間・他社の社長と競う駅ナカ出店バトル、訪問は3時間・いま止まっている御社の実務を1件その場で終わらせます。幹部もご一緒なら訪問が5名まで10万円（1名あたり2万円）です。日程を動かせない、社外に出られない場合も訪問をお選びください。</div></details>
+      <details><summary><span class="q">Q3</span>本当に3時間・5時間で終わりますか？<span class="pl">+</span></summary><div class="a">終わらせます。3つの約束（Claude Code・Codexが動く／MCPで自社データにつながる／人・AI・専門家の線が引ける）は、会場の5時間でも、訪問の3時間でも到達できる分量に設計しています。前半は同じで、違うのは後半だけです。会場は休憩15分を席で、ご飯を食べながら。訪問は休憩なしで3時間続けます。</div></details>
       <details><summary><span class="q">Q4</span>社員に受けさせたいのですが。<span class="pl">+</span></summary><div class="a">経営者・幹部が優先です。判断する人が受けないと、翌朝の経営会議が変わりません。社員展開は、90日アクションプランの中で設計します。</div></details>
       <details><summary><span class="q">Q5</span>ブートキャンプの後は？<span class="pl">+</span></summary><div class="a">月次1on1（オンライン15分・3か月）で定着を伴走します。AIに渡した業務が実際に回っているか、経営会議の材料が変わったかを一緒に確かめます。さらに上級者（AIが中心のチーム運営）を目指す企業には、FDE（御社に入り、AIを組織に組み込む実装担当）の派遣を90日単位でご案内します。</div></details>
     </div>
@@ -1185,9 +1192,9 @@
         <li>Claude Code と Codex が、自分のPCで動く</li>
         <li>MCPで、AIが自社のデータにつながる</li>
         <li>人がすること・AIがすること・専門家がすることの線が引ける</li>
-        <li>翌朝9時、AI経営チームと経営会議の席へ</li>
+        <li>帰りの電車から、AI経営チームと動き出せる</li>
       </ul>
-      <p class="micro">受講料 50,000円（税別）／1名。5時間・少人数2〜6名。持参：ノートPC＋AI3社の有料アカウント。</p>
+      <p class="micro">受講料 1名 50,000円（税別）。会場は5時間・少人数2〜6名、訪問は3時間・社長1名から（幹部5名まで同席なら100,000円）。持参：ノートPC＋AI3社の有料アカウント。</p>
       <p class="firm">レリック社会保険労務士法人<small>AI MANAGEMENT × QUEST-STYLE BOOTCAMP ｜ 2026</small></p>
     </div>
     <form class="cf" id="cform" novalidate>
