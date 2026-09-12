@@ -482,6 +482,10 @@
     .vcta{grid-template-columns:1fr}
     .hfoot .cards.mrow{grid-template-columns:1fr}
   }
+  .hfoot .cards.stack{display:flex!important;flex-direction:column;gap:10px;align-items:stretch}
+  .hfoot .cards.stack .vwide{display:block}
+  .hfoot .cards.stack .mrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  @media (max-width:900px){.hfoot .cards.stack .mrow{grid-template-columns:1fr}}
 </style>
 <style>
   /* ===== bootcamp: visual-first additions (same design system) ===== */
@@ -794,20 +798,21 @@
     </div>
     <div class="hfoot">
       <div class="facts"><div><b><span data-count="50000" data-sep="1">0</span><small>円</small></b>会場で5時間／1名</div><div><b><span data-count="70000" data-sep="1">0</span><small>円</small></b>御社で3時間／社長1名</div><div><b><span data-count="100000" data-sep="1">0</span><small>円</small></b>御社で3時間／5名まで</div></div>
-      <div class="cards vwide">
+      <div class="cards stack"><div class="vwide">
         <a class="vcta" id="opGo" href="#" aria-label="映像「時間がもったいない」を見る">
           <span class="th"><img src="media/koby-wide.jpg" alt=""><span class="pl">&#9654;</span></span>
           <span class="tx"><span class="tag">映像・1分31秒</span>
           <span class="tt">時間がもったいない<small>助成金に合わせているあいだに、着手が一か月半あとになる</small></span></span>
         </a>
-      </div>
-      <div class="cards mrow">
+        </div>
+        <div class="mrow">
         <a class="mcta" href="../manga2/" aria-label="漫画『ある経営者の選択 II』を読む"><span class="cv"><img src="../manga2/pages/cover.jpg" alt=""></span><span class="tx"><span class="tag">漫画・全24ページ</span><span class="tt">町工場の社長が、会場で5時間<small>ある経営者の選択 II</small></span></span><span class="go">&rsaquo;</span></a>
         <a class="mcta" href="../bangai1/" aria-label="番外編 初級編を読む"><span class="cv"><img src="../bangai1/pages/cover.jpg" alt=""></span><span class="tx"><span class="tag">番外編・全16ページ</span><span class="tt">営業会社の社長が、御社で3時間<small>初級編「頼む」</small></span></span><span class="go">&rsaquo;</span></a>
         <a class="mcta" href="../bangai2/" aria-label="番外編 中級編を読む"><span class="cv"><img src="../bangai2/pages/cover.jpg" alt=""></span><span class="tx"><span class="tag">番外編・全16ページ</span><span class="tt">IT会社の社長が、御社で3時間<small>中級編「渡す」</small></span></span><span class="go">&rsaquo;</span></a>
       </div>
       <p class="firm">レリック社会保険労務士法人<small>AI MANAGEMENT × QUEST-STYLE BOOTCAMP ｜ 2026</small></p>
     </div>
+      </div>
   </div>
 </header>
 
