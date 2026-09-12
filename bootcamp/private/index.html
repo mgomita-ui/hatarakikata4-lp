@@ -3,329 +3,391 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>3時間、御社で。配線を1本、本番で動かす。</title>
-<meta name="description" content="経営者のための、AIブートキャンプ 個別訪問版。3時間・御社にうかがい、自社のデータにAIをつなぐところまでを本番で完成させます。1名7万円／幹部5名まで10万円（税別）。">
-<meta property="og:title" content="AIブートキャンプ 個別訪問版｜3時間、御社で。">
-<meta property="og:description" content="集合版が技を3つ持ち帰る場なら、こちらは自社の配線を1本、本番で動かして終わる場です。3時間・訪問・日程は御社に合わせます。">
+<title>あえて、助成金を使いません。｜AIブートキャンプ 個別訪問版</title>
+<meta name="description" content="社労士法人が、あえて助成金を使わないAI研修。十時間の縛りも、一か月半の待ちも、職種ごとの組み直しもありません。3時間、御社にうかがい、自社のデータで実際に動くものを作ります。社長1名7万円／幹部5名まで10万円（税別）。">
+<meta property="og:title" content="あえて、助成金を使いません。">
+<meta property="og:description" content="社長が、自分の仕事でAIを動かす3時間。講師が御社にうかがい、操作から一緒に進めます。">
 <meta property="og:type" content="website">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700&display=swap">
 <style>
   :root{
-    --ink:#1A1A1A;--ink-2:#3A3F3D;--ink-3:#6E7673;
-    --mint:#EAF3EE;--paper:#FFFFFF;--line:#DCE5E0;--rule:#1A1A1A;
-    --green-deep:#0F5F52;--green-ink:#0B4A40;--green:#14A07A;--green-lt:#8FE0C4;--green-soft:#E3F3EC;
-    --gold:#A8762E;--gold-soft:#F7EEDC;--slate:#2E6A8A;--slate-soft:#E4EEF4;--yellow:#F2E27A;
+    --ink:#141210;--ink-2:#3C3A36;--ink-3:#77746C;
+    --paper:#FBFAF7;--card:#FFFFFF;--line:#E4E1D9;--rule:#141210;
+    --deep:#0B2B26;--deep-2:#061A16;--green:#0F5F52;--green-2:#14A07A;--green-lt:#8FE0C4;--mint:#EDF4F0;
+    --gold:#B8862B;--gold-soft:#FAF2E0;--gold-line:#E6D5AC;
+    --red:#B03A2E;--red-soft:#FBEEEC;
     --body:'Noto Sans JP',system-ui,-apple-system,sans-serif;--latin:'Poppins','Noto Sans JP',sans-serif;
-    --shadow:0 12px 32px rgba(15,95,82,.10),0 2px 6px rgba(15,95,82,.06);
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
-       line-height:1.85;font-feature-settings:"palt";-webkit-font-smoothing:antialiased}
-  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+       line-height:1.9;font-feature-settings:"palt";-webkit-font-smoothing:antialiased}
+  .wrap{max-width:940px;margin:0 auto;padding:0 22px}
   a{color:inherit}
+  section{padding:78px 0}
+  section.alt{background:var(--mint)}
+  section.dark{background:var(--deep);color:#fff}
+  h2{font-size:clamp(23px,3.9vw,35px);font-weight:900;line-height:1.42;margin:0 0 14px;
+     letter-spacing:-.015em;text-wrap:balance}
+  .kicker{font-family:var(--latin);font-size:11px;font-weight:700;letter-spacing:.26em;
+          color:var(--green-2);text-transform:uppercase;margin:0 0 10px}
+  .lead{font-size:16px;color:var(--ink-2);max-width:44em;margin:0 0 34px}
+  section.dark .lead{color:rgba(255,255,255,.78)}
+  p{margin:0 0 16px}
 
   /* ── nav ── */
-  .nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);
-       backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .nav .wrap{display:flex;align-items:center;gap:18px;height:56px}
-  .brand{font-weight:900;font-size:14px;line-height:1.25}
-  .brand small{display:block;font-family:var(--latin);font-size:10px;font-weight:600;
-               letter-spacing:.14em;color:var(--green);text-transform:uppercase}
-  .nav-links{margin-left:auto;display:flex;gap:16px;font-size:13px;font-weight:700}
+  .nav{position:sticky;top:0;z-index:30;background:rgba(251,250,247,.93);
+       backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;gap:18px;height:58px}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:900;font-size:14px;line-height:1.2}
+  .brand svg{width:26px;height:26px;flex:none;color:var(--green)}
+  .brand small{display:block;font-family:var(--latin);font-size:9.5px;font-weight:600;
+               letter-spacing:.16em;color:var(--green-2);text-transform:uppercase}
+  .nav-links{margin-left:auto;display:flex;gap:18px;font-size:13px;font-weight:700}
   .nav-links a{text-decoration:none;color:var(--ink-2);white-space:nowrap}
-  .nav-links a:hover{color:var(--green-deep)}
-  @media(max-width:720px){.nav-links{display:none}}
+  .nav-links a:hover{color:var(--green)}
+  .nav .cta{background:var(--deep);color:#fff;border-radius:8px;padding:7px 15px;
+            font-size:12.5px;font-weight:900;text-decoration:none}
+  @media(max-width:820px){.nav-links a:not(.cta){display:none}}
 
   /* ── hero ── */
-  .hero{background:linear-gradient(180deg,var(--green-deep),var(--green-ink));color:#fff;
-        padding:64px 0 56px}
-  .eb{font-family:var(--latin);font-size:11px;font-weight:600;letter-spacing:.22em;
-      text-transform:uppercase;color:var(--green-lt);margin:0 0 14px}
-  .hero h1{font-size:clamp(28px,5.4vw,46px);font-weight:900;line-height:1.32;margin:0 0 18px;
-           text-wrap:balance;letter-spacing:.01em}
-  .hero h1 em{font-style:normal;color:var(--yellow)}
-  .hero p{font-size:16px;color:rgba(255,255,255,.9);max-width:38em;margin:0 0 26px}
-  .facts{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px;padding:0;list-style:none}
-  .facts li{border:1px solid rgba(255,255,255,.32);border-radius:999px;padding:5px 14px;
-            font-size:13px;font-weight:700}
-  .btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:900;
-       border-radius:11px;padding:14px 24px;font-size:16px;border:0;cursor:pointer}
-  .btn-primary{background:var(--yellow);color:var(--green-ink)}
-  .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45);font-weight:700}
-  .hbtns{display:flex;flex-wrap:wrap;gap:12px}
+  .hero{background:var(--deep);color:#fff;padding:92px 0 78px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(120% 85% at 10% -5%,rgba(143,224,196,.17),transparent 58%)}
+  .hero .wrap{position:relative}
+  .eb{font-family:var(--latin);font-size:11px;font-weight:700;letter-spacing:.3em;
+      text-transform:uppercase;color:var(--green-lt);margin:0 0 26px}
+  .hero h1{font-size:clamp(35px,7.8vw,70px);font-weight:900;line-height:1.18;margin:0 0 8px;
+           letter-spacing:-.03em}
+  .hero h1 em{font-style:normal;color:#F5DE5B}
+  .tri2{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;
+        margin:34px 0 0;padding:0;list-style:none;border-top:1px solid rgba(255,255,255,.22)}
+  .tri2 li{padding:20px 22px 0 0}
+  .tri2 li b{display:block;font-size:clamp(22px,3.4vw,30px);font-weight:900;letter-spacing:-.01em}
+  .tri2 li span{display:block;font-size:12.5px;color:var(--green-lt);margin-top:5px;font-weight:500}
+  .tri{display:flex;gap:clamp(16px,4.5vw,44px);margin:30px 0 30px;padding:0;list-style:none;flex-wrap:wrap}
+  .tri li{font-size:clamp(27px,5.6vw,46px);font-weight:900;letter-spacing:.05em;line-height:1}
+  .tri li span{display:block;font-family:var(--latin);font-size:11px;font-weight:600;
+               letter-spacing:.2em;color:var(--green-lt);margin-top:11px}
+  .hero .sub{font-size:16.5px;color:rgba(255,255,255,.82);max-width:32em;margin:0}
+  .facts{display:flex;flex-wrap:wrap;gap:8px;margin:32px 0 0;padding:0;list-style:none}
+  .facts li{border:1px solid rgba(255,255,255,.26);border-radius:999px;padding:6px 16px;
+            font-size:12.5px;font-weight:700;color:rgba(255,255,255,.92)}
 
-  /* ── section ── */
-  section{padding:58px 0}
-  section.alt{background:var(--mint)}
-  .kicker{font-family:var(--latin);font-size:11px;font-weight:600;letter-spacing:.2em;
-          color:var(--green);text-transform:uppercase;margin:0 0 8px}
-  h2{font-size:clamp(21px,3.4vw,29px);font-weight:900;line-height:1.4;margin:0 0 12px;text-wrap:balance}
-  .lead{font-size:15.5px;color:var(--ink-2);max-width:44em;margin:0 0 26px}
-  h3{font-size:17px;font-weight:900;margin:0 0 6px}
+  /* ── 比較図 ── */
+  .vs{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;
+      border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card)}
+  .vs .col{padding:30px 28px}
+  .vs .col.a{background:#FCFAF6}
+  .vs .mid{width:1px;background:var(--line)}
+  .vs h3{font-size:15px;font-weight:900;margin:0 0 4px;display:flex;align-items:center;gap:8px}
+  .vs .col.a h3{color:var(--ink-3)} .vs .col.b h3{color:var(--green)}
+  .vs h3 svg{width:17px;height:17px;flex:none}
+  .vs .note{font-size:12px;color:var(--ink-3);margin:0 0 20px;letter-spacing:.02em}
+  .vs ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+  .vs li{display:grid;grid-template-columns:20px 1fr;gap:11px;font-size:14.5px;line-height:1.75}
+  .vs li svg{width:18px;height:18px;margin-top:5px}
+  .vs .col.a li{color:var(--ink-2)} .vs .col.a li svg{color:var(--red)}
+  .vs .col.b li svg{color:var(--green-2)}
+  .vs li b{font-weight:700}
+  @media(max-width:720px){.vs{grid-template-columns:1fr}.vs .mid{width:auto;height:1px}}
 
-  /* ── 対比表 ── */
-  .cmp{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);
-       border-radius:12px;overflow:hidden;font-size:14.5px}
-  .cmp th,.cmp td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-  .cmp thead th{background:var(--green-soft);font-size:12px;letter-spacing:.06em;color:var(--green-ink)}
-  .cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:0}
-  .cmp tbody th{font-weight:700;color:var(--ink-3);font-size:13px;width:8.5em;background:#fbfdfc}
-  .cmp .now{font-weight:700;color:var(--green-deep)}
-  .cmp-wrap{overflow-x:auto}
-  @media(max-width:620px){.cmp{min-width:520px}}
+  /* ── 連鎖図 ── */
+  .chain{display:flex;flex-direction:column;gap:0;margin-top:8px}
+  .ch{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;
+      padding:18px 0 18px 2px}
+  .ch + .ch{border-top:1px dashed var(--gold-line)}
+  .ch .ic{width:42px;height:42px;border-radius:11px;background:var(--gold-soft);
+          border:1px solid var(--gold-line);display:grid;place-items:center;color:var(--gold);flex:none}
+  .ch .ic svg{width:21px;height:21px}
+  .ch h4{font-size:16px;font-weight:900;margin:0 0 3px}
+  .ch p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:42em}
+  .chain .last{background:var(--deep);border-radius:14px;padding:24px 26px;margin-top:22px;
+               color:#fff;border:0}
+  .chain .last h4{color:#F5DE5B;font-size:18px;margin:0}
+  .chain .last p{color:rgba(255,255,255,.8);margin-top:5px}
 
-  /* ── データ選択 ── */
-  .picks{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:14px;margin-top:6px}
-  .pick{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;
-        display:flex;flex-direction:column;gap:9px}
-  .pick.ready{border-color:var(--green);box-shadow:var(--shadow)}
-  .pick .tag{font-family:var(--latin);font-size:10px;font-weight:700;letter-spacing:.1em;
-             color:var(--green);text-transform:uppercase}
-  .pick.ready .tag{color:var(--gold)}
-  .pick h3{margin:0}
-  .pick .can{font-size:14px;color:var(--ink-2);margin:0}
-  .pick .can b{color:var(--green-deep)}
-  .pick .need{font-size:12.5px;color:var(--ink-3);margin:0;padding-top:9px;border-top:1px dashed var(--line)}
-  .pick .need span{font-weight:700;color:var(--ink-2)}
+  /* ── 3ステップ ── */
+  .steps{display:flex;flex-direction:column;gap:2px;background:var(--line);
+         border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .st{background:var(--card);padding:28px 30px;display:grid;grid-template-columns:52px 1fr;gap:24px;
+      align-items:start}
+  .st .n{font-family:var(--latin);font-size:26px;font-weight:700;color:var(--green-lt);
+         line-height:1;letter-spacing:-.02em}
+  .st h3{font-size:19px;font-weight:900;margin:0 0 6px}
+  .st p{font-size:14.5px;color:var(--ink-2);margin:0;max-width:44em}
 
-  /* ── タイムテーブル ── */
-  .tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--green-lt)}
-  .tl li{position:relative;padding:0 0 24px 26px}
-  .tl li:last-child{padding-bottom:0}
-  .tl li::before{content:"";position:absolute;left:-7px;top:9px;width:12px;height:12px;
-                 border-radius:50%;background:var(--green);border:2px solid #fff}
-  .tl .t{font-family:var(--latin);font-size:12px;font-weight:700;color:var(--green);letter-spacing:.04em}
-  .tl h3{margin:2px 0 4px}
-  .tl p{margin:0;font-size:14.5px;color:var(--ink-2);max-width:40em}
-  .tl .core{background:var(--gold-soft);border-left:3px solid var(--gold);
-            border-radius:0 8px 8px 0;padding:12px 14px;margin-left:-4px}
-  .tl .core h3{color:var(--gold)}
 
-  /* ── 価格 ── */
-  .price{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-  .pp{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;
-      display:flex;flex-direction:column;gap:10px}
-  .pp.best{border:2px solid var(--green);box-shadow:var(--shadow);position:relative}
-  .pp.best::after{content:"社内に残す設計";position:absolute;top:-11px;right:18px;
-                  background:var(--green);color:#fff;font-size:11px;font-weight:700;
-                  padding:3px 11px;border-radius:999px}
+  /* ── 到達点の梯子 ── */
+  .ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);
+          border-radius:18px;overflow:hidden;background:var(--card)}
+  .lv{padding:26px 24px;border-right:1px solid var(--line);position:relative}
+  .lv:last-child{border-right:0}
+  .lv.on{background:var(--deep);color:#fff}
+  .lv .t{font-family:var(--latin);font-size:11px;font-weight:700;letter-spacing:.16em;
+         text-transform:uppercase;color:var(--ink-3)}
+  .lv.on .t{color:var(--green-lt)}
+  .lv h4{font-size:20px;font-weight:900;margin:6px 0 8px}
+  .lv p{font-size:14px;color:var(--ink-2);margin:0}
+  .lv.on p{color:rgba(255,255,255,.82)}
+  .lv .here{position:absolute;top:-1px;left:-1px;background:#F5DE5B;color:var(--deep);
+            font-size:10.5px;font-weight:900;padding:3px 11px;border-radius:0 0 9px 0}
+  @media(max-width:700px){.ladder{grid-template-columns:1fr}
+    .lv{border-right:0;border-bottom:1px solid var(--line)}.lv:last-child{border-bottom:0}}
+
+  /* ── before/after ── */
+  .ba{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2px;
+      background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .ba div{background:var(--card);padding:22px 24px}
+  .ba .w{font-size:13.5px;color:var(--ink-3);margin:0 0 8px;font-weight:700}
+  .ba .n{display:flex;align-items:baseline;gap:10px;font-weight:900}
+  .ba .n .b{font-size:17px;color:var(--ink-3);text-decoration:line-through;text-decoration-thickness:2px}
+  .ba .n .ar{color:var(--green-2)}
+  .ba .n .a{font-family:var(--latin);font-size:27px;color:var(--green);letter-spacing:-.02em}
+
+  /* ── 料金 ── */
+  .price{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:18px}
+  .pp{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px;
+      display:flex;flex-direction:column;gap:9px}
+  .pp.best{border:2px solid var(--green-2);position:relative;box-shadow:0 18px 44px rgba(11,43,38,.11)}
+  .pp.best::after{content:"1名あたり 20,000円";position:absolute;top:-12px;right:20px;
+                  background:var(--green-2);color:#fff;font-size:11px;font-weight:700;
+                  padding:4px 13px;border-radius:999px}
   .pp .who{font-size:13px;font-weight:700;color:var(--ink-3)}
-  .pp .amt{font-family:var(--latin);font-size:34px;font-weight:700;color:var(--green-deep);
-           line-height:1.1;letter-spacing:-.01em}
-  .pp .amt small{font-family:var(--body);font-size:13px;font-weight:700;color:var(--ink-3);margin-left:4px}
-  .pp ul{margin:0;padding-left:1.15em;font-size:14px;color:var(--ink-2);display:flex;
-         flex-direction:column;gap:5px}
-  .pp li::marker{color:var(--green)}
-  .note{background:var(--gold-soft);border:1px solid #E8D9B8;border-radius:12px;
-        padding:16px 20px;font-size:14.5px;color:var(--ink-2);margin-top:16px}
-  .note b{color:var(--gold)}
+  .pp .amt{font-family:var(--latin);font-size:44px;font-weight:700;line-height:1;letter-spacing:-.025em}
+  .pp .amt small{font-family:var(--body);font-size:13px;font-weight:700;color:var(--ink-3);margin-left:5px}
+  .pp .d{font-size:14px;color:var(--ink-2);margin:0}
+  .callout{background:var(--gold-soft);border:1px solid var(--gold-line);border-radius:14px;
+           padding:22px 26px;font-size:15px;color:var(--ink-2);margin-top:22px;
+           display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+  .callout svg{width:26px;height:26px;color:var(--gold);margin-top:3px}
+  .callout b{color:var(--gold)}
+  .area{font-size:13.5px;color:var(--ink-3);margin-top:20px}
 
-  /* ── エリア ── */
-  .area{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-  .ar{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px}
-  .ar h3{color:var(--green-deep)}
-  .ar p{margin:0;font-size:14px;color:var(--ink-2)}
+  /* ── 漫画 ── */
+  .manga{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;
+         background:var(--deep-2);color:#fff;border-radius:20px;padding:clamp(28px,4vw,42px);
+         text-decoration:none}
+  .manga .eb2{font-family:var(--latin);font-size:11px;font-weight:700;letter-spacing:.24em;
+              color:var(--green-lt);text-transform:uppercase;margin:0 0 10px}
+  .manga h3{font-size:clamp(20px,3.2vw,28px);font-weight:900;margin:0 0 10px;line-height:1.38;
+            letter-spacing:-.015em}
+  .manga p{font-size:14.5px;color:rgba(255,255,255,.78);margin:0;max-width:32em}
+  .manga .go{width:60px;height:60px;border-radius:50%;background:#F5DE5B;color:var(--deep);
+             display:grid;place-items:center;flex:none}
+  .manga .go svg{width:24px;height:24px}
+  @media(max-width:620px){.manga{grid-template-columns:1fr;gap:22px}.manga .go{justify-self:start}}
 
-  /* ── 商品階段 ── */
-  .ladder{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;
-          border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
-  .stg{padding:20px;border-right:1px solid var(--line)}
-  .stg:last-child{border-right:0}
-  .stg.here{background:var(--green-soft)}
-  .stg .n{font-family:var(--latin);font-size:11px;font-weight:700;letter-spacing:.12em;
-          color:var(--green);text-transform:uppercase}
-  .stg h3{margin:4px 0 4px;font-size:16px}
-  .stg p{margin:0;font-size:13.5px;color:var(--ink-2)}
-  @media(max-width:700px){.stg{border-right:0;border-bottom:1px solid var(--line)}
-                          .stg:last-child{border-bottom:0}}
-
-  /* ── final ── */
-  .final{background:var(--green-deep);color:#fff;text-align:center;padding:62px 0}
-  .final h2{color:#fff}
-  .final p{color:rgba(255,255,255,.88);max-width:36em;margin:0 auto 26px;font-size:15.5px}
-  footer{padding:30px 0;font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--line)}
-  footer a{color:var(--green-deep)}
+  /* ── CTA ── */
+  .final{text-align:center}
+  .final p{color:var(--ink-2);max-width:32em;margin:0 auto 28px;font-size:16px}
+  .btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;
+       border-radius:12px;padding:17px 34px;font-size:16.5px;background:var(--deep);color:#fff}
+  .btn svg{width:17px;height:17px}
+  footer{padding:32px 0;font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--line)}
+  footer a{color:var(--green)}
 </style>
 </head>
 <body>
 
 <nav class="nav"><div class="wrap">
-  <div class="brand">AIブートキャンプ 個別訪問版<small>Relic — On-site, 3 hours</small></div>
-  <div class="nav-links">
-    <a href="#diff">集合版との違い</a>
-    <a href="#data">つなぐデータ</a>
-    <a href="#flow">3時間の中身</a>
+  <span class="brand">
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
+      <path d="M8 32V10a2 2 0 0 1 2-2h12a8 8 0 0 1 0 16H12"/><path d="M20 24l12 8"/>
+    </svg>
+    <span>AIブートキャンプ 個別訪問版<small>Relic — On-site, 3 hours</small></span>
+  </span>
+  <span class="nav-links">
+    <a href="#reach">持ち帰るもの</a>
+    <a href="#why">なぜ使わないか</a>
+    <a href="#chain">助成金だとどうなるか</a>
+    <a href="#do">3時間の中身</a>
     <a href="#price">料金</a>
-    <a href="#apply">申し込む</a>
-  </div>
+    <a class="cta" href="#apply">相談する</a>
+  </span>
 </div></nav>
 
 <header class="hero"><div class="wrap">
-  <p class="eb">On-site Private Session ｜ 3 hours</p>
-  <h1>3時間、御社で。<br><em>配線を1本、本番で動かして帰る。</em></h1>
-  <p>集合版が「技を3つ持ち帰る」場なら、こちらは「自社のデータにAIをつなぎ、実際に動いている状態を置いていく」場です。うかがう日は、御社の都合に合わせます。</p>
-  <ul class="facts">
-    <li>3時間</li><li>御社に訪問</li><li>日程は御社に合わせる</li>
-    <li>社長1名 7万円</li><li>幹部5名まで 10万円</li>
+  <p class="eb">On-site &#65372; 3 hours</p>
+  <h1>あえて、<br><em>助成金を使いません。</em></h1>
+  <p class="sub">社長が、自分の仕事でAIを動かす3時間。<br>
+  講師が御社にうかがい、操作から一緒に進めます。</p>
+  <ul class="tri2">
+    <li><b>3時間</b><span>説明は最初の20分だけ</span></li>
+    <li><b>御社で</b><span>会場に来る必要はありません</span></li>
+    <li><b>7万円〜</b><span>幹部5名まで10万円（税別）</span></li>
   </ul>
-  <div class="hbtns">
-    <a class="btn btn-primary" href="#apply">日程を相談する ›</a>
-    <a class="btn btn-ghost" href="../">集合版（5時間）を見る</a>
-  </div>
+  <ul class="facts">
+    <li>3時間</li><li>御社に訪問</li><li>日程は御社に合わせる</li><li>社長1名から</li>
+  </ul>
 </div></header>
 
-<section id="diff"><div class="wrap">
-  <p class="kicker">Difference</p>
-  <h2>集合版とは、別の商品です</h2>
-  <p class="lead">どちらが上ということではなく、持ち帰るものが違います。集合版で技を掴んでから個別を入れる方も、逆の方もいます。</p>
-  <div class="cmp-wrap"><table class="cmp">
-    <thead><tr><th></th><th>集合版（5時間）</th><th>個別訪問版（3時間）</th></tr></thead>
-    <tbody>
-      <tr><th>持ち帰るもの</th><td>3つの技</td><td class="now">自社の配線が1本、本番で動いている状態</td></tr>
-      <tr><th>使うデータ</th><td>用意された演習データ</td><td class="now">御社の実データ（選べます）</td></tr>
-      <tr><th>午後</th><td>他社の経営者とチーム戦</td><td class="now">自社の課題を、そのまま解く</td></tr>
-      <tr><th>日程</th><td>開催日が決まっている</td><td class="now">御社の都合に合わせる</td></tr>
-      <tr><th>場所</th><td>会場へお越しいただく</td><td class="now">こちらがうかがう</td></tr>
-      <tr><th>向いている方</th><td>他社の進み具合も見たい／まず全体像から</td><td class="now">日程が合わない／自社のデータで始めたい／社内に広げたい</td></tr>
-    </tbody>
-  </table></div>
-</div></section>
+<section id="reach"><div class="wrap">
+  <p class="kicker">What you take home</p>
+  <h2>3時間後、社長ご自身が「中級者」になっています。</h2>
+  <p class="lead">集合版と到達点は同じです。違うのは、会場に来ていただくか、こちらがうかがうか。そして使うのが演習データか、御社の実際の数字か。</p>
 
-<section class="alt" id="data"><div class="wrap">
-  <p class="kicker">Choose your data</p>
-  <h2>当日つなぐデータを、選んでいただきます</h2>
-  <p class="lead">AIは、渡した情報しか知りません。MCPという「配線口」で自社データにつなぐと、自社の数字で答えが返るようになります。どれを開くかは御社の判断です。機密の線引きも含めて、事前に決めてからうかがいます。</p>
-  <div class="picks">
-    <div class="pick ready">
-      <span class="tag">準備ゼロで選べます</span>
-      <h3>持参ファイル（CSV・Excel）</h3>
-      <p class="can">受注データや単価表を読み込ませ、<b>見積のたたき台や集計をその場で作ります</b>。外部接続を一切行いません。</p>
-      <p class="need"><span>事前に要るもの</span>：当日ファイルをご用意いただくだけ</p>
-    </div>
-    <div class="pick">
-      <span class="tag">Accounting</span>
-      <h3>会計</h3>
-      <p class="can">「<b>先月の粗利は？</b>」に、自社の数字で答えが返るところまで。</p>
-      <p class="need"><span>事前に要るもの</span>：会計ソフトの管理者アカウント、外部連携の可否確認</p>
-    </div>
-    <div class="pick">
-      <span class="tag">Attendance / Payroll</span>
-      <h3>勤怠・給与</h3>
-      <p class="can">「<b>残業が増えた部署は？</b>」を、毎朝ひとりでに出させるところまで。</p>
-      <p class="need"><span>事前に要るもの</span>：勤怠システムの管理者アカウント</p>
-    </div>
-    <div class="pick">
-      <span class="tag">Mail</span>
-      <h3>メール</h3>
-      <p class="can">案件ごとのやり取りを<b>時系列で整理させ、未対応を洗い出す</b>ところまで。</p>
-      <p class="need"><span>事前に要るもの</span>：対象メールアカウントの管理権限</p>
-    </div>
-    <div class="pick">
-      <span class="tag">Calendar</span>
-      <h3>カレンダー</h3>
-      <p class="can">来月の稼働見込みと、<b>空いている時間の偏りを可視化</b>するところまで。</p>
-      <p class="need"><span>事前に要るもの</span>：カレンダーの共有設定</p>
-    </div>
-    <div class="pick">
-      <span class="tag">Chat</span>
-      <h3>チャット</h3>
-      <p class="can">未返信や依頼の取りこぼしを、<b>要対応だけ抜き出させる</b>ところまで。</p>
-      <p class="need"><span>事前に要るもの</span>：チャットツールの管理者権限</p>
-    </div>
+  <div class="ladder">
+    <div class="lv"><span class="t">Beginner</span>
+      <h4>初心者</h4><p>AIで自分の仕事をこなす</p></div>
+    <div class="lv on"><span class="here">この3時間で</span><span class="t">Intermediate</span>
+      <h4>中級者</h4><p>AIを組織に組み込み、仕事をさせる</p></div>
+    <div class="lv"><span class="t">Advanced</span>
+      <h4>上級者</h4><p>AIが中心のチームを運営する</p></div>
   </div>
-  <div class="note">
-    <b>当日ゼロから権限を取得することはできません。</b>3時間のうち1時間を本番接続に充てる設計のため、権限の取得や社内の承認に時間がかかると、そこで終わってしまいます。お申し込み後の事前確認で、つなぐ先を1つ決め、必要な準備をお伝えします。決まらない場合や不安がある場合は、<b>持参ファイル</b>を選んでいただければ準備ゼロで成立します。
+
+  <p class="lead" style="margin:34px 0 18px">身につく技は、集合版と同じ4つです。</p>
+  <div class="ba">
+    <div><p class="w">見積 3社分</p><p class="n"><span class="b">3時間</span><span class="ar">→</span><span class="a">30秒</span></p></div>
+    <div><p class="w">粗利の確認</p><p class="n"><span class="b">3日</span><span class="ar">→</span><span class="a">一言</span></p></div>
+    <div><p class="w">議事録</p><p class="n"><span class="b">2時間</span><span class="ar">→</span><span class="a">会議中に</span></p></div>
+    <div><p class="w">三通りの比較</p><p class="n"><span class="b">半日</span><span class="ar">→</span><span class="a">2分</span></p></div>
   </div>
 </div></section>
 
-<section id="flow"><div class="wrap">
-  <p class="kicker">3 hours</p>
-  <h2>3時間の中身</h2>
-  <p class="lead">説明は最初の20分だけです。集合版にある「危機感を入れる30分」と「チーム戦」は、個別版では行いません。その分、手を動かす時間に充てています。</p>
-  <ul class="tl">
-    <li><span class="t">0:00 – 0:20</span>
-      <h3>セットアップ</h3>
-      <p>Claude Code と Codex を、御社のPCで動く状態にします。ここから先の課題は、すべてご自身の指示で解いていただきます。</p></li>
-    <li><span class="t">0:20 – 0:30</span>
-      <h3>今日、何を終わらせるか決める</h3>
-      <p>事前に選んでいただいたデータをもとに、この3時間で片づける業務を1つ確定します。</p></li>
-    <li><span class="t">0:30 – 1:30</span>
-      <h3>実データで、作る</h3>
-      <p>見積のたたき台、議事録、集計。日本語で頼んで動くものを作り、AIに作らせて人が確かめて直す——この往復をご自身の手で回します。</p></li>
-    <li class="core"><span class="t">1:30 – 2:30</span>
-      <h3>MCPを1本、本番につなぐ</h3>
-      <p>この1時間が、個別訪問版の中心です。演習ではなく御社の本番環境に配線を通し、自社の数字で答えが返るところまで作り切ります。帰ったあとも動き続けます。</p></li>
-    <li><span class="t">2:30 – 3:00</span>
-      <h3>人・AI・専門家の線を引く</h3>
-      <p>自社の業務を3列に分け、明日から何をAIに渡すかを決めます。人を減らすためではなく、人を人にしかできない仕事に戻すためです。</p></li>
-  </ul>
+<section class="alt" id="why"><div class="wrap">
+  <p class="kicker">Why not</p>
+  <h2>私たちは、社労士法人です。</h2>
+  <p class="lead">助成金は本業です。要件も、申請の手順も、通し方も分かっています。そのうえで申し上げます。<b>この3時間に、助成金は向いていません。</b></p>
+
+  <div class="vs">
+    <div class="col a">
+      <h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.01"/></svg>
+        助成金を使うと
+      </h3>
+      <p class="note">制度に合わせる必要があります</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span><b>十時間以上</b>でないと、対象になりません</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          <span>計画届の提出から、<b>始められるのは一か月半あと</b></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 8h9l-2 3 2 3H4"/></svg>
+          <span><b>職種ごと</b>にカリキュラムを組み直します</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5l14 14M5 19L19 5"/></svg>
+          <span><b>実務は、訓練に使えません。</b>自社の数字ではなく、演習で学ぶことになります</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12h6"/></svg>
+          <span>雇用保険の被保険者が対象のため、<b>経営者ご自身は入れません</b></span></li>
+      </ul>
+    </div>
+    <div class="mid"></div>
+    <div class="col b">
+      <h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>
+        使わないと
+      </h3>
+      <p class="note">必要な形で、必要な分だけ</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span><b>3時間</b>。必要なことだけをやります</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          <span>日程が合えば、<b>来週うかがえます</b></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 9l7-6 7 6"/></svg>
+          <span>御社の課題に合わせて、<b>その場で組み替えます</b></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 20h10"/></svg>
+          <span><b>御社の実際の数字と書類</b>を使います。演習ではありません</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M17 11h4M19 9v4"/></svg>
+          <span><b>経営者ご自身が、主役です</b></span></li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section id="chain"><div class="wrap">
+  <p class="kicker">What happens</p>
+  <h2>誰も、悪いことはしていません。</h2>
+  <p class="lead">提案は正しく、手続きも正しい。ただ、制度に合わせると、こうなります。</p>
+
+  <div class="chain">
+    <div class="ch">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+      <div><h4>時間が長くなる</h4>
+        <p>十時間以上でないと対象になりません。3時間で済む話が、十時間になります。</p></div>
+    </div>
+    <div class="ch">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h9l5 5v13H6z"/><path d="M15 3v5h5M9 13h6M9 17h4"/></svg></span>
+      <div><h4>手間が増える</h4>
+        <p>計画届、カリキュラム、実施報告。研修そのものとは別の仕事が発生します。</p></div>
+    </div>
+    <div class="ch">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M17 7H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+      <div><h4>高くなる</h4>
+        <p>長くなった分、費用も上がります。補助を受けても、元の価格が上がっています。</p></div>
+    </div>
+    <div class="ch">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
+      <div><h4>待つ</h4>
+        <p>始められるのは一か月半あと。いま困っていることの解決が、来月末より先になります。</p></div>
+    </div>
+    <div class="last">
+      <h4>そして、本当にやりたかった研修では、なくなっています。</h4>
+      <p>要件に合わせて時間と中身を組み直した結果です。一つひとつの手続きは、すべて正しいのに。</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="do"><div class="wrap">
+  <p class="kicker">What we do</p>
+  <h2>この3時間ですること</h2>
+  <div class="steps">
+    <div class="st"><span class="n">01</span><div>
+      <h3>自分のPCで動かす</h3>
+      <p>Claude Code と Codex を、御社のPCで動く状態にします。以降は社長ご自身の指示で進めていただきます。見ているだけの時間はありません。</p></div></div>
+    <div class="st"><span class="n">02</span><div>
+      <h3>自社のデータで作る</h3>
+      <p>演習用のデータは使いません。御社の実際の数字や書類を使います。何を使うかは事前にご相談して決めます。難しい場合は、お手元のExcelやCSVでも成立します。</p></div></div>
+    <div class="st"><span class="n">03</span><div>
+      <h3>止める場所を決める</h3>
+      <p>どこまでAIに任せ、どこから人が決めるか。ここを決めておくと、社長がご覧になっていない時間も、社員の方に任せられるようになります。</p></div></div>
+  </div>
 </div></section>
 
 <section class="alt" id="price"><div class="wrap">
   <p class="kicker">Price</p>
   <h2>料金</h2>
-  <p class="lead">いずれも3時間・訪問・税別です。交通費は東京・大阪の市内であれば不要です。</p>
+  <p class="lead">いずれも3時間・訪問・税別です。</p>
   <div class="price">
     <div class="pp">
-      <span class="who">経営者おひとりで</span>
+      <span class="who">まずは、社長ご自身で。</span>
       <div class="amt">70,000<small>円（税別）</small></div>
-      <ul>
-        <li>社長1名</li>
-        <li>3時間・御社に訪問</li>
-        <li>つなぐデータを1つ選択</li>
-        <li>本番の配線を1本、完成させて終了</li>
-      </ul>
+      <p class="d">3時間・訪問。社長1名。<br><b>社長が中級者になります。</b></p>
     </div>
     <div class="pp best">
-      <span class="who">幹部の方とご一緒に</span>
+      <span class="who">幹部と、使いどころを考える。</span>
       <div class="amt">100,000<small>円（税別）</small></div>
-      <ul>
-        <li>5名まで（社長を含む）</li>
-        <li>3時間・御社に訪問</li>
-        <li>つなぐデータを1つ選択</li>
-        <li>全員のPCがセットアップされた状態で終了</li>
-      </ul>
+      <p class="d">3時間・訪問。社長を含め5名まで。全員のPCをセットアップします。<br><b>幹部も含めて、全員が中級者になります。</b></p>
     </div>
   </div>
-  <div class="note">
-    <b>3万円の差で、4人増えます。</b>社長おひとりが使えるようになっても、会社は変わりません。変わるのは、翌朝から幹部が同じ道具を持っているときです。同席された方のPCも、全員セットアップした状態でお返しします。
+  <div class="callout">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <span><b>3万円の差で、4人増えます。</b>社長おひとりが使えるようになっても、会社はすぐには変わりません。変わるのは、翌朝から幹部の方が同じ道具を持っているときです。</span>
   </div>
+  <p class="area">訪問エリア：東京・大阪は当法人の講師がうかがいます。その他の地域は提携講師が対応します。</p>
 </div></section>
 
-<section id="area"><div class="wrap">
-  <p class="kicker">Area</p>
-  <h2>うかがえる地域</h2>
-  <div class="area">
-    <div class="ar"><h3>東京</h3><p>当法人の講師が直接うかがいます。市内であれば交通費は不要です。</p></div>
-    <div class="ar"><h3>大阪</h3><p>当法人の講師が直接うかがいます。市内であれば交通費は不要です。</p></div>
-    <div class="ar"><h3>その他の地域</h3><p>提携講師がうかがいます。内容と進め方は同じ設計です。地域により日程の選択肢が限られる場合があります。</p></div>
-  </div>
-</div></section>
-
-<section class="alt"><div class="wrap">
-  <p class="kicker">Where this sits</p>
-  <h2>3つの入り口があります</h2>
-  <p class="lead">どこから入っても構いません。個別訪問版は、その中で「自社の本番に手を入れる」位置にあります。</p>
-  <div class="ladder">
-    <div class="stg"><span class="n">Group</span><h3>集合版・5時間</h3>
-      <p>他社の経営者とチームで競いながら、3つの技を掴む。5万円／名（税別）</p></div>
-    <div class="stg here"><span class="n">On-site — you are here</span><h3>個別訪問版・3時間</h3>
-      <p>御社のデータで、配線を1本、本番で動かす。7万円／幹部5名まで10万円（税別）</p></div>
-    <div class="stg"><span class="n">Implementation</span><h3>FDE派遣・90日</h3>
-      <p>実装担当が御社に入り、AIを組織に組み込む。</p></div>
-  </div>
+<section><div class="wrap">
+  <a class="manga" href="../../manga2/">
+    <div>
+      <p class="eb2">Manga &#65372; 全24ページ</p>
+      <h3>ある経営者の選択 II<br>〜過去から未来へ繋ぐ役割〜</h3>
+      <p>AIが去った半年後。町工場の社長が、自分の手を取り戻すまで。読むのに5分ほどです。</p>
+    </div>
+    <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+  </a>
 </div></section>
 
 <section class="final" id="apply"><div class="wrap">
-  <h2>日程から、ご相談ください</h2>
-  <p>うかがう日と、当日つなぐデータを決めるところから始めます。決めかねる場合は、持参ファイルでの実施もできますので、まずはご連絡ください。</p>
-  <a class="btn btn-primary" href="mailto:m.gomita@canvas-sr.jp?subject=AI%E3%83%96%E3%83%BC%E3%83%88%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%20%E5%80%8B%E5%88%A5%E8%A8%AA%E5%95%8F%E7%89%88%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87">メールで相談する ›</a>
+  <h2>まずは、日程から。</h2>
+  <p>うかがう日と、当日使うデータを決めるところから始めます。</p>
+  <a class="btn" href="mailto:m.gomita@canvas-sr.jp?subject=AI%E3%83%96%E3%83%BC%E3%83%88%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%20%E5%80%8B%E5%88%A5%E8%A8%AA%E5%95%8F%E7%89%88%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87">
+    メールで相談する
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+  </a>
 </div></section>
 
 <footer><div class="wrap">
-  レリック社会保険労務士法人　／　<a href="../">AIブートキャンプ 集合版</a>　・　<a href="../../">働き方4.0</a><br>
-  © 2026 レリック社会保険労務士法人
+  レリック社会保険労務士法人　／　<a href="../../">働き方4.0</a>　・　<a href="../">AIブートキャンプ（集合版）</a><br>
+  &copy; 2026 レリック社会保険労務士法人
 </div></footer>
 
 </body>
