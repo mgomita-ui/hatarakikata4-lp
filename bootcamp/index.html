@@ -482,19 +482,22 @@
     .vcta{grid-template-columns:1fr}
     .hfoot .cards.mrow{grid-template-columns:1fr}
   }
-  .hfoot .cards.stack{display:flex!important;flex-direction:column;gap:10px;align-items:stretch}
-  .hfoot .cards.stack .vwide{display:block}
-  .hfoot .cards.stack .mrow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-  .hfoot .cards.stack .mrow .mcta{min-width:0;overflow:hidden;padding:8px;
-                                  grid-template-columns:44px minmax(0,1fr);gap:9px}
-  .hfoot .cards.stack .mrow .mcta .cv{width:44px;height:62px}
-  .hfoot .cards.stack .mrow .mcta .go{display:none}
-  .hfoot .cards.stack .mrow .mcta .tx{min-width:0}
-  .hfoot .cards.stack .mrow .mcta .tt{font-size:11.5px;line-height:1.45;
-                                      overflow-wrap:anywhere;word-break:keep-all}
-  .hfoot .cards.stack .mrow .mcta .tt small{font-size:10px;margin-top:2px}
-  .hfoot .cards.stack .mrow .mcta .tag{font-size:9px;letter-spacing:.04em}
-  @media (max-width:900px){.hfoot .cards.stack .mrow{grid-template-columns:1fr}}
+  /* ヒーロー下段：価格は横一列、その下に映像＋漫画2本を横3列 */
+  .hfoot .cards.row3{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));
+                     gap:10px;align-items:stretch;justify-self:stretch}
+  .hfoot .cards.row3>a{margin:0;min-width:0;max-width:none!important;flex:none!important}
+  .hfoot .cards.row3 .vcta{grid-template-columns:116px minmax(0,1fr);gap:11px;padding:9px}
+  .hfoot .cards.row3 .vcta .tt{font-size:14px}
+  .hfoot .cards.row3 .vcta .tt small{font-size:11px}
+  .hfoot .cards.row3 .vcta .tag{font-size:9.5px;letter-spacing:.06em}
+  .hfoot .cards.row3 .mcta{grid-template-columns:48px minmax(0,1fr);gap:11px;padding:9px;
+                           align-items:center;overflow:hidden}
+  .hfoot .cards.row3 .mcta .cv{width:48px;height:66px}
+  .hfoot .cards.row3 .mcta .tt{font-size:13px;line-height:1.42;overflow-wrap:anywhere;word-break:keep-all}
+  .hfoot .cards.row3 .mcta .tt small{font-size:10.5px;margin-top:2px}
+  .hfoot .cards.row3 .mcta .tag{font-size:9.5px;letter-spacing:.04em}
+  @media (max-width:1100px){.hfoot .cards.row3{grid-template-columns:1fr}
+    .hfoot .cards.row3 .vcta{grid-template-columns:150px minmax(0,1fr)}}
   /* 受け方3本の帯。折り返して「社長1／名」と割れていたので組み直す */
   .hfoot .facts.ways3{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
                       background:rgba(255,255,255,.14);border-radius:12px;overflow:hidden}
@@ -510,6 +513,10 @@
                          color:rgba(255,255,255,.82);white-space:nowrap}
   .hfoot .facts.ways3 u{text-decoration:none;font-size:10.5px;font-weight:900;color:#F5DE5B;
                         margin-top:3px;white-space:nowrap}
+  .hfoot .facts.ways3 u.d{display:block;text-decoration:none;margin-top:6px;padding-top:6px;
+                          border-top:1px solid rgba(255,255,255,.16);font-size:11px;font-weight:600;
+                          line-height:1.5;color:rgba(255,255,255,.82);letter-spacing:.01em}
+  .hfoot .facts.ways3 u.d b.hi{color:#F5DE5B;font-weight:900}
   .hfoot .facts.ways3 .best{background:rgba(20,160,122,.22)}
   @media (max-width:900px){.hfoot .facts.ways3{grid-template-columns:1fr}}
   /* 文字が小さいという指摘（2026-09-12）。本文まわりを一段上げる */
@@ -600,14 +607,14 @@
   .replay{position:absolute;right:16px;top:14px;z-index:4;display:none;align-items:center;gap:6px;background:rgba(7,34,30,.55);border:1px solid rgba(143,224,196,.45);color:#fff;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;backdrop-filter:blur(4px)}
   .replay svg{width:14px;height:14px}
   .replay.show{display:inline-flex}
-  .hfoot{position:relative;z-index:2;display:grid;grid-template-columns:auto 1fr;grid-template-areas:"facts card" "firm card";align-items:center;gap:14px 28px;padding:20px 56px 26px}
-  .hfoot .facts{grid-area:facts}
-  .hfoot .cards{grid-area:card;justify-self:end;display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+  .hfoot{position:relative;z-index:2;display:flex;flex-direction:column;gap:14px;padding:20px 56px 26px}
+  .hfoot .facts{width:100%;max-width:none}
+  .hfoot .cards{width:100%;display:flex;gap:10px;flex-wrap:wrap}
   .hfoot .cards .mcta{max-width:360px;flex:1 1 300px;padding:8px 10px 8px 8px}
   .hfoot .cards .mcta .cv{width:58px;height:82px}
   .hfoot .cards .mcta .tt{font-size:14px}
-  .hfoot .firm{grid-area:firm;margin:0}
-  @media (max-width:900px){.hfoot{grid-template-columns:1fr;grid-template-areas:"facts" "card" "firm"}.hfoot .cards{justify-self:stretch}.hfoot .cards .mcta{max-width:none}}
+  .hfoot .firm{margin:0}
+  @media (max-width:900px){.hfoot .cards .mcta{max-width:none}}
   .mlink{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-size:13.5px;font-weight:700;color:var(--green-deep);text-decoration:none;border-bottom:1.5px solid var(--green-lt);padding-bottom:2px}
   .mlink:hover{color:var(--green)}
   .mlink i{font-style:normal;font-family:var(--latin);font-size:10px;letter-spacing:.14em;background:var(--yellow);color:#1A1A1A;padding:2px 7px;border-radius:999px}
@@ -871,21 +878,21 @@
       <button type="button" class="replay" id="replay" aria-label="もう一度再生"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2.5 8a5.5 5.5 0 1 0 1.6-3.9"/><path d="M2 2.5v3h3"/></svg>もう一度</button>
     </div>
     <div class="hfoot">
-      <div class="facts ways3"><div><b>会場</b><span class="p"><i>50,000</i>円</span><em>5時間・1名</em></div><div><b>訪問</b><span class="p"><i>70,000</i>円</span><em>3時間・社長1名</em></div><div class="best"><b>訪問</b><span class="p"><i>100,000</i>円</span><em>3時間・5名まで</em><u>1名あたり 20,000円</u></div></div>
-      <div class="cards stack"><div class="vwide">
+      <div class="facts ways3">
+        <div><b>会場</b><span class="p"><i>50,000</i>円</span><em>5時間・1名</em><u class="d">会場に集まって、他社の社長とチーム戦</u></div>
+        <div><b>訪問</b><span class="p"><i>70,000</i>円</span><em>3時間・社長1名</em><u class="d">御社にうかがって、社長おひとりに集中</u></div>
+        <div class="best"><b>訪問</b><span class="p"><i>100,000</i>円</span><em>3時間・5名まで</em><u class="d">役員・幹部もまとめて。<b class="hi">1名あたり 20,000円</b></u></div>
+      </div>
+      <div class="cards row3">
         <a class="vcta" id="opGo" href="#" aria-label="映像「時間がもったいない」を見る">
           <span class="th"><img src="media/koby-wide.jpg" alt=""><span class="pl">&#9654;</span></span>
-          <span class="tx"><span class="tag">映像・1分34秒</span>
-          <span class="tt">時間がもったいない<small>AI研修が、いつのまにか遠くなる</small></span></span>
+          <span class="tx"><span class="tag">映像・1分34秒</span><span class="tt">時間がもったいない<small>AI研修が、いつのまにか遠くなる</small></span></span>
         </a>
-        </div>
-        <div class="mrow">
-        <a class="mcta" href="../manga2/" aria-label="漫画『ある経営者の選択 II』を読む"><span class="cv"><img src="../manga2/pages/cover.jpg" alt=""></span><span class="tx"><span class="tag">漫画・全24ページ</span><span class="tt">町工場の社長が、会場で5時間<small>ある経営者の選択 II</small></span></span><span class="go">&rsaquo;</span></a>
-        <a class="mcta" href="../bangai1/" aria-label="番外編を読む"><span class="cv"><img src="../bangai1/pages/cover.jpg" alt=""></span><span class="tx"><span class="tag">番外編・全24ページ</span><span class="tt">営業会社の社長が、御社で3時間<small>番外編「その一か月半」</small></span></span><span class="go">&rsaquo;</span></a>
-        </div>
+        <a class="mcta" href="../manga2/" aria-label="漫画『ある経営者の選択 II』を読む"><span class="cv"><img src="../manga2/pages/cover.jpg" alt=""></span><span class="tx"><span class="tag">漫画・全24ページ</span><span class="tt">町工場の社長が、会場で5時間<small>ある経営者の選択 II</small></span></span></a>
+        <a class="mcta" href="../bangai1/" aria-label="番外編『その一か月半』を読む"><span class="cv"><img src="../bangai1/pages/cover.jpg?v=0912b" alt=""></span><span class="tx"><span class="tag">番外編・全24ページ</span><span class="tt">営業会社の社長が、御社で3時間<small>番外編「その一か月半」</small></span></span></a>
+      </div>
       <p class="firm">レリック社会保険労務士法人<small>AI MANAGEMENT × QUEST-STYLE BOOTCAMP ｜ 2026</small></p>
     </div>
-      </div>
   </div>
 </header>
 
