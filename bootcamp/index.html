@@ -1012,7 +1012,7 @@
       </div>
       <div class="o">
         <div class="vis"><div class="wire"><div class="src"><span>会計</span><span>勤怠・給与</span><span>メール</span><span>カレンダー</span><span>チャット</span></div><div class="arr">→</div><div class="hub">MCP<small>共通の配線口</small></div><div class="arr">→</div><div class="out">AIが読める<small>「先月の粗利は？」「残業が増えた部署は？」に、自社の数字で答える</small></div></div></div>
-        <div class="bd"><div class="n">02</div><h3>MCPで、AIが自社のデータにつながる</h3><p>AIは、渡した情報しか知りません。MCPは、会計・勤怠・メールなどの自社データをAIにつなぐ「配線口」。当日、実際に1本つないで、自社の数字で答えが返ってくるところまで行きます。</p><span class="gloss">MCP（Model Context Protocol）＝AIと社内ツールをつなぐ共通規格</span><div class="waza"><b>身につく技</b>会計・勤怠・メールから数字を引く／必要な仕組みを、その場で作る</div><div class="waza delta"><b>どれだけ変わる</b>粗利の確認：経理に照会して数日 → つないだ数字をその場で</div></div>
+        <div class="bd"><div class="n">02</div><h3>AIが、会社のシステムにつながって動かす</h3><p>AIは、渡した情報しか知りません。つなぎ口のある会計・勤怠・メールは、MCPでAIにつなぎます。当日、実際に1本つないで、自社の数字で答えが返ってくるところまで行きます。つなぎ口のない社内システムや取引先の管理画面は、AIに画面を見せて操作させます。当日は1回やらせて、結果を人が確かめるところまでです。</p><span class="gloss">MCP（Model Context Protocol）＝AIと社内ツールをつなぐ共通規格／画面操作＝AIが画面を見て、マウスとキーボードで操作すること</span><div class="waza"><b>身につく技</b>会計・勤怠・メールから数字を引く／つなぎ口のない画面の入力をAIに頼む／必要な仕組みを、その場で作る</div><div class="waza delta"><b>どれだけ変わる</b>粗利の確認：経理に照会して数日 → つないだ数字をその場で</div></div>
       </div>
       <div class="o">
         <div class="vis"><div class="sort"><div class="col ai"><h4>AIがする</h4><span>見積の下書き</span><span>議事録</span><span>集計・分析</span><span>定型の報告</span><span>一次調査</span></div><div class="col hu"><h4>人がする</h4><span>価格を決める</span><span>採用を決める</span><span>顧客と話す</span><span>最終判断</span><span>関係づくり</span></div><div class="col ex"><h4>専門家がする</h4><span>労務・法務</span><span>税務・会計</span><span>専門設計</span><span>単発の業務</span><span>監査・保証</span></div></div></div>
@@ -1123,7 +1123,7 @@
       <div class="bar">
         <div class="a"><i>0:00</i>課題<br>設定<small>自社のどの仕事を題材にするか決める</small></div>
         <div class="a"><i>0:15</i>反復AIドリル<small>集める・要約・比べる・洗い出す・分析する</small></div>
-        <div class="a"><i>1:25</i>MCP接続<small>会計・勤怠・メールのどれか1本を実際につなぐ</small></div>
+        <div class="a"><i>1:25</i>つなぐ・動かす<small>MCPで1本つなぎ、画面操作を1回やらせる</small></div>
         <div class="b"><i>2:05</i>自社の仕事を1件<small>いま止まっている仕事を、その場で終わらせる</small></div>
         <div class="b"><i>2:40</i>線を引く<small>人・AI・専門家</small></div>
       </div>
@@ -1215,7 +1215,7 @@
     <div class="faq">
       <details open><summary><span class="q">Q1</span>AIをほとんど触ったことがありません。大丈夫ですか？<span class="pl">+</span></summary><div class="a">大丈夫です。事前のオンラインで、自分のPCに Claude Code と OpenAI API を立ち上げるところから一緒に行います。以降は短いドリルの反復なので、触った回数がそのまま技になります。</div></details>
       <details><summary><span class="q">Q2</span>訪問と会場の回、どちらを選べばいいですか？<span class="pl">+</span></summary><div class="a">基本は訪問をおすすめします。日程を御社に合わせられ、題材も御社の実務そのものだからです。社長おひとりなら講師1人が付きっきりで5万円、幹部もご一緒なら講師2人で5名まで10万円（1名あたり2万円）。他社の社長と一緒にわいわい進めたい方は、会場の回（3時間・1名3万円）をお選びください。中身は同じで、違うのは講師が1社のために時間を取るかどうかです。</div></details>
-      <details><summary><span class="q">Q3</span>本当に3時間で終わりますか？<span class="pl">+</span></summary><div class="a">終わらせます。3つの約束（Claude Code・Codexが動く／MCPで自社データにつながる／人・AI・専門家の線が引ける）は、3時間で到達できる分量に設計しています。セットアップは事前に済ませ、当日は説明をほとんどせずに手を動かし続けます。休憩はありません。</div></details>
+      <details><summary><span class="q">Q3</span>本当に3時間で終わりますか？<span class="pl">+</span></summary><div class="a">終わらせます。3つの約束（Claude Code・Codexが動く／AIが会社のシステムにつながって動かす／人・AI・専門家の線が引ける）は、3時間で到達できる分量に設計しています。セットアップは事前に済ませ、当日は説明をほとんどせずに手を動かし続けます。休憩はありません。</div></details>
       <details><summary><span class="q">Q4</span>社員に受けさせたいのですが。<span class="pl">+</span></summary><div class="a">経営者・幹部が優先です。判断する人が受けないと、翌朝の経営会議が変わりません。社員展開は、90日アクションプランの中で設計します。</div></details>
       <details><summary><span class="q">Q5</span>ブートキャンプの後は？<span class="pl">+</span></summary><div class="a">月次1on1（オンライン15分・3か月）で定着を伴走します。AIに渡した業務が実際に回っているか、経営会議の材料が変わったかを一緒に確かめます。さらに上級者（AIが中心のチーム運営）を目指す企業には、FDE（御社に入り、AIを組織に組み込む実装担当）の派遣を90日単位でご案内します。</div></details>
     </div>
@@ -1232,7 +1232,7 @@
       <p class="sub">申込後、15〜20分の事前ヒアリング（オンライン）で題材を決め、うかがう日を確定します。会場の回は経営者優先枠／先着順です。</p>
       <ul class="get">
         <li>Claude Code と Codex が、自分のPCで動く</li>
-        <li>MCPで、AIが自社のデータにつながる</li>
+        <li>AIが、会社のシステムにつながって動かす</li>
         <li>人がすること・AIがすること・専門家がすることの線が引ける</li>
         <li>終わったその日から、AI経営チームと動き出せる</li>
       </ul>
