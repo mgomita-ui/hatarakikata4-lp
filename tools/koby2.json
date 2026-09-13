@@ -334,5 +334,49 @@
    "text": "AIブートキャンプ",
    "cls": "big"
   }
+ ],
+ "sfx": [
+  {
+   "t": 26.55,
+   "file": "media/cine/koby/sfx/sting.wav",
+   "gain": 0.55,
+   "note": "「実施は十一月一日」ガーン"
+  },
+  {
+   "t": 33.3,
+   "file": "media/cine/koby/sfx/explosion.wav",
+   "gain": 0.95,
+   "note": "「もう、やめましょうよ！」爆発"
+  },
+  {
+   "t": 53.45,
+   "file": "media/cine/koby/sfx/whoosh.wav",
+   "gain": 0.55,
+   "note": "赤髪の男が右から入る"
+  },
+  {
+   "t": 54.8,
+   "file": "media/cine/koby/sfx/clang.wav",
+   "gain": 0.85,
+   "note": "腕を掴む瞬間のカキン！（54.9で掴んでいる）"
+  },
+  {
+   "t": 62.95,
+   "file": "media/cine/koby/sfx/don.wav",
+   "gain": 0.9,
+   "note": "「この研修を、終わらせに来た」ドン"
+  },
+  {
+   "t": 67.15,
+   "file": "media/cine/koby/sfx/kiran.wav",
+   "gain": 0.5,
+   "note": "「三時間で、終わります」キラーン"
+  },
+  {
+   "t": 72.95,
+   "file": "media/cine/koby/sfx/deflate.wav",
+   "gain": 0.5,
+   "note": "「……一旦、保留で」ヒュ〜ン"
+  }
  ]
 }

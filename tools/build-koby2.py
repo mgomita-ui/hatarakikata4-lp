@@ -148,9 +148,16 @@ def main():
                  int(t0 * 1000), int(t0 * 1000)))
         ins += ['-i', src]
         segs.append(af)
+    # 効果音。台詞の頭や掴む瞬間に置く（tools/gen-koby2-sfx.py で合成）
+    for fx in d.get('sfx', []):
+        src = os.path.join(ROOT, fx['file'].replace('/', os.sep))
+        ins += ['-i', src]
+        segs.append('aformat=sample_rates=44100:channel_layouts=stereo,volume=%.3f,adelay=%d|%d,apad'
+                    % (fx['gain'], int(fx['t'] * 1000), int(fx['t'] * 1000)))
     fc = ''.join('[%d:a]%s[a%d];' % (i, af, i) for i, af in enumerate(segs))
     fc += ''.join('[a%d]' % i for i in range(len(segs)))
-    fc += 'amix=inputs=%d:normalize=0:duration=longest,atrim=0:%.3f[out]' % (len(segs), total)
+    fc += ('amix=inputs=%d:normalize=0:duration=longest,atrim=0:%.3f,'
+           'alimiter=limit=0.95:level=disabled[out]' % (len(segs), total))
     audio = os.path.join(WORK, 'audio.m4a')
     subprocess.check_call(['ffmpeg', '-y', '-v', 'error', *ins,
                            '-filter_complex', fc, '-map', '[out]',
