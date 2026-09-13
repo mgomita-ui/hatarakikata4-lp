@@ -88,7 +88,7 @@
   var chapters=[[1,'序章'],[9,'五時間'],[19,'翌朝9時'],[21,'受託']];
   var viewer=document.getElementById('viewer'),endEl=document.getElementById('end');
   for(var i=1;i<=TOTAL;i++){var n=('0'+i).slice(-2);var s=document.createElement('section');s.className='slide';s.id='p'+n;
-    s.innerHTML='<img src="pages/p'+n+'.jpg" alt="ページ'+i+'" '+(i>2?'loading="lazy"':'')+' width="1024" height="1536"><span class="n">'+n+' / '+TOTAL+'</span>';
+    s.innerHTML='<img src="pages/p'+n+'.jpg?v=0913a" alt="ページ'+i+'" '+(i>2?'loading="lazy"':'')+' width="1024" height="1536"><span class="n">'+n+' / '+TOTAL+'</span>';
     viewer.insertBefore(s,endEl);}
   var slides=Array.prototype.slice.call(viewer.querySelectorAll('.slide'));
   var nav=document.getElementById('nav');
