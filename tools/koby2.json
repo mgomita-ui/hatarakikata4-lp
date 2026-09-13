@@ -368,15 +368,9 @@
   },
   {
    "t": 67.15,
-   "file": "media/cine/koby/sfx/kiran.wav",
-   "gain": 0.5,
-   "note": "「三時間で、終わります」キラーン"
-  },
-  {
-   "t": 72.95,
-   "file": "media/cine/koby/sfx/deflate.wav",
-   "gain": 0.5,
-   "note": "「……一旦、保留で」ヒュ〜ン"
+   "file": "media/cine/koby/sfx/don.wav",
+   "gain": 0.4,
+   "note": "「三時間で、終わります」さりげないドン"
   }
  ]
 }

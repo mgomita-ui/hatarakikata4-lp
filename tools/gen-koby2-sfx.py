@@ -3,7 +3,7 @@
 
 素材ライブラリを使わず numpy で作る（権利の心配がなく、尺と音色を直せる）。
   explosion  「もう、やめましょうよ！」の爆発
-  clang      赤髪の男が営業の腕を掴んだ瞬間の「カキン！」
+  clang      赤髪の男が営業の腕を掴んだ瞬間の「カキン！」（剣と剣がぶつかる鈍い音）
   whoosh     赤髪の男が画面右から入ってくる
   don        「この研修を、終わらせに来た」の重い一撃
   kiran      「三時間で、終わります」のキラーン
@@ -86,17 +86,21 @@ def explosion():
 
 
 def clang():
-    n = int(1.8 * SR)
-    parts = [(1180, 0.9, 1.0), (2635, 0.55, 0.8), (3907, 0.38, 0.6), (5271, 0.28, 0.5), (7019, 0.18, 0.35), (9410, 0.12, 0.2)]
-    x = np.zeros(n)
+    """剣と剣がぶつかる鈍い音。高い鈴のような響きではなく、重い刃がかち合う短い衝撃と、刃がこすれる音。"""
+    n = int(1.2 * SR)
     t = np.arange(n) / SR
+    parts = [(410, 0.22, 1.0), (733, 0.18, 0.9), (1187, 0.14, 0.7), (1846, 0.10, 0.5), (2690, 0.07, 0.35)]
+    ring = np.zeros(n)
     for f, tau, a in parts:
-        x += a * np.sin(2 * np.pi * f * t * (1 + 0.0015 * np.exp(-t * 30))) * env_exp(n, tau)
-    strike = hp(rng.standard_normal(n), 3000) * env_exp(n, 0.006) * 3
-    x = x + strike
+        ring += a * np.sin(2 * np.pi * f * t * (1 - 0.004 * np.exp(-t * 25))) * env_exp(n, tau)
+    ring = lp(ring, 3000, 2)
+    impact = bp(rng.standard_normal(n), 300, 2500) * env_exp(n, 0.018) * 4
+    thud = np.sin(2 * np.pi * np.cumsum(140 * np.exp(-t * 20) + 60) / SR) * env_exp(n, 0.06) * 1.5
+    scrape = bp(rng.standard_normal(n), 2000, 6000) * np.exp(-np.maximum(t - 0.02, 0) / 0.09) * np.minimum(t / 0.02, 1) * 0.35
+    x = ring + impact + thud + scrape
     x[:int(0.001 * SR)] *= np.linspace(0, 1, int(0.001 * SR))
-    x = reverb(x, 1.0, 0.3)
-    save('clang', stereo(x, 0.15))
+    x = reverb(x, 0.9, 0.25)
+    save('clang', stereo(x, 0.1))
 
 
 def whoosh():
