@@ -49,7 +49,7 @@ Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
     rows = []
     for i, l in enumerate(ls):
         end = ls[i + 1]['cue'] - 0.12 if i + 1 < len(ls) else d['total'] - 0.2
-        end = min(end, l['cue'] + 6.0)
+        end = min(end, l['cue'] + 6.0, l.get('end', 1e9))
         style = 'big' if l.get('cls') == 'big' else 'base'
         text = l['text']
         if l.get('who'):
@@ -101,6 +101,43 @@ def cut_still(s, need, stilldir, out):
                            '-c:v', 'libx264', '-crf', '16', '-preset', 'fast', out])
 
 
+def tv_off(path, sec=0.7):
+    """ブラウン管の電源を切ったように、最後の sec 秒で画面を横線→点→暗転にする。"""
+    import numpy as np
+    from PIL import Image
+    n = int(round(dur(path) * FPS))
+    k = int(round(sec * FPS))
+    raw = subprocess.check_output(['ffmpeg', '-v', 'error', '-i', path, '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'])
+    fr = np.frombuffer(raw, np.uint8).reshape(-1, H, W, 3).copy()
+    n = len(fr)
+    last = Image.fromarray(fr[n - k])
+    for i in range(k):
+        p = i / max(k - 1, 1)
+        canvas = np.zeros((H, W, 3), np.float32)
+        if p < 0.35:  # 上下からつぶれて、白く光る横線へ
+            q = p / 0.35
+            h = max(3, int(H * (1 - q) ** 2))
+            im = np.asarray(last.resize((W, h), Image.BILINEAR), np.float32)
+            im = im * (1 - q) + 255 * q
+            y = (H - h) // 2
+            canvas[y:y + h] = im
+        elif p < 0.7:  # 横線が左右から縮んで点へ
+            q = (p - 0.35) / 0.35
+            w = max(6, int(W * (1 - q) ** 3))
+            y = H // 2
+            canvas[y - 2:y + 2, (W - w) // 2:(W + w) // 2] = 255
+        elif p < 0.85:  # 光る点が残って、消える
+            q = (p - 0.7) / 0.15
+            r = 5
+            canvas[H // 2 - r:H // 2 + r, W // 2 - r:W // 2 + r] = 255 * (1 - q)
+        fr[n - k + i] = canvas.clip(0, 255).astype(np.uint8)
+    tmp = path + '.tv.mp4'
+    subprocess.run(['ffmpeg', '-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', '%dx%d' % (W, H),
+                    '-r', str(FPS), '-i', '-', '-c:v', 'libx264', '-crf', '16', '-preset', 'fast', '-pix_fmt', 'yuv420p', tmp],
+                   input=fr.tobytes(), check=True)
+    os.replace(tmp, path)
+
+
 def main():
     d = json.load(io.open(os.path.join(ROOT, 'tools', 'koby2.json'), encoding='utf-8'))
     os.makedirs(WORK, exist_ok=True)
@@ -118,6 +155,8 @@ def main():
             cut_still(s, need, stilldir, out)
         else:
             cut_clip(s, need, clipdir, out)
+        if s.get('tvoff'):
+            tv_off(out, s['tvoff'])
         parts.append(out)
 
     # 2. つなぐ

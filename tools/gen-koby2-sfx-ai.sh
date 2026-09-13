@@ -17,6 +17,7 @@ DUR[whoosh]=2;    PROMPT[whoosh]="A quick heavy whoosh of a long coat as a man s
 DUR[don]=3;       PROMPT[don]="A single heavy taiko drum hit with deep hall reverb, a dramatic anime 'DON' accent. No music bed, no voices."
 DUR[reveal]=5;   PROMPT[reveal]="Epic cinematic hero reveal: a deep rising whoosh and sub riser that lands on a huge powerful boom as a team of heroes walks toward the camera. Trailer style, confident and cool. No music melody, no voices."
 DUR[title]=3;    PROMPT[title]="Cinematic trailer title hit: one bold metallic impact with a deep boom and a shimmering tail, confident and cool, for a logo appearing. No voices."
+DUR[tvoff]=2;    PROMPT[tvoff]="An old CRT television being switched off: one short electric click-pop and a faint high-pitched whine that collapses instantly into silence. No music, no voices."
 
 names=("$@"); [ ${#names[@]} -eq 0 ] && names=(impact explosion sting whoosh don)
 
