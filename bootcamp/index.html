@@ -469,10 +469,15 @@
         color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:10px;
         background:rgba(255,255,255,.06);transition:.18s}
   .vcta:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
-  .vcta .th{position:relative;border-radius:9px;overflow:hidden;display:block;aspect-ratio:16/9}
+  .vcta .th{position:relative;border-radius:9px;overflow:hidden;display:block;aspect-ratio:16/9;container-type:inline-size}
   .vcta .th img{width:100%;height:100%;object-fit:cover;display:block}
-  .vcta .th .pl{position:absolute;inset:0;display:grid;place-items:center;font-size:22px;
-                color:#fff;background:rgba(4,9,13,.35)}
+  .vcta .th .pl{position:absolute;inset:0;display:grid;place-items:center;background:rgba(4,9,13,.3)}
+  /* 再生ボタン。サムネが116pxまで縮んでも押せると分かる大きさを残す */
+  .vcta .th .pl i{width:clamp(44px,46cqi,76px);aspect-ratio:1;border-radius:50%;background:var(--yellow);
+                  box-shadow:0 6px 18px rgba(0,0,0,.45);display:grid;place-items:center;transition:transform .18s}
+  .vcta .th .pl i:before{content:"";margin-left:12%;border-style:solid;border-color:transparent transparent transparent #1A1A1A;
+                         border-width:.55em 0 .55em .9em;font-size:clamp(15px,13cqi,24px)}
+  .vcta:hover .th .pl i{transform:scale(1.08)}
   .vcta .tx{display:grid;gap:4px;min-width:0}
   .vcta .tag{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;
              letter-spacing:.1em;color:var(--green-lt)}
@@ -961,7 +966,7 @@
       </div>
       <div class="cards row3">
         <a class="vcta" id="opGo" href="#" aria-label="映像「時間がもったいない」を見る">
-          <span class="th"><img src="media/koby-wide.jpg" alt=""><span class="pl">&#9654;</span></span>
+          <span class="th"><img src="media/koby-wide.jpg" alt=""><span class="pl"><i></i></span></span>
           <span class="tx"><span class="tag">映像・1分34秒</span><span class="tt">時間がもったいない<small>AI研修が、いつのまにか遠くなる</small></span></span>
         </a>
         <a class="mcta" href="../manga2/" aria-label="漫画『ある経営者の選択 II』を読む"><span class="cv"><img src="../manga2/pages/cover.jpg" alt=""></span><span class="tx"><span class="tag">漫画・全24ページ</span><span class="tt">町工場の社長が、会場で5時間<small>ある経営者の選択 II</small></span></span></a>

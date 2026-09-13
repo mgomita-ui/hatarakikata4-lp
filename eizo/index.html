@@ -31,6 +31,14 @@
   .player{position:relative;border-radius:15px;overflow:hidden;background:#000;
           box-shadow:0 24px 60px rgba(0,0,0,.45);border:1px solid var(--line)}
   video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000}
+  .big{position:absolute;inset:0;display:grid;place-items:center;border:0;padding:0;cursor:pointer;
+       background:rgba(0,0,0,.28);font-family:inherit;color:#fff}
+  .big i{width:clamp(76px,15vw,120px);aspect-ratio:1;border-radius:50%;background:#F2E27A;
+         box-shadow:0 12px 34px rgba(0,0,0,.5);display:grid;place-items:center;transition:transform .18s}
+  .big i:before{content:"";margin-left:10%;border-style:solid;border-color:transparent transparent transparent #1A1A1A;
+                border-width:.6em 0 .6em 1em;font-size:clamp(20px,3.6vw,30px)}
+  .big:hover i{transform:scale(1.07)}
+  [hidden]{display:none!important}
   .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
   .meta span{font-size:12px;font-weight:700;color:var(--mut);border:1px solid var(--line);
              border-radius:999px;padding:4px 12px}
@@ -64,6 +72,7 @@
       <source src="../bootcamp/media/koby.mp4?v=0913e" type="video/mp4">
       お使いのブラウザでは再生できません。
     </video>
+    <button type="button" class="big" id="bigPlay" aria-label="再生する"><i></i></button>
   </div>
   <div class="meta"><span>1分34秒</span><span>字幕つき</span><span>2026</span></div>
 
@@ -78,5 +87,13 @@
 
   <footer>レリック社会保険労務士法人　AI MANAGEMENT × QUEST-STYLE BOOTCAMP ｜ 2026</footer>
 </div>
+<script>
+  (function(){
+    var v=document.getElementById('v'), b=document.getElementById('bigPlay');
+    b.addEventListener('click',function(){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); });
+    v.addEventListener('play',function(){ b.hidden=true; });
+    v.addEventListener('ended',function(){ b.hidden=false; });
+  })();
+</script>
 </body>
 </html>
