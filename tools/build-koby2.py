@@ -51,8 +51,13 @@ Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
         end = ls[i + 1]['cue'] - 0.12 if i + 1 < len(ls) else d['total'] - 0.2
         end = min(end, l['cue'] + 6.0)
         style = 'big' if l.get('cls') == 'big' else 'base'
+        text = l['text']
+        if l.get('who'):
+            # 話し手の名前を台詞の上に小さく置く。人物が入り乱れる場面で誰の台詞か分かるように
+            fs = 40 if style == 'big' else 34
+            text = '{\\fs%d\\c&H7FD9FF&}%s{\\r}\\N%s' % (fs, l['who'], text)
         rows.append('Dialogue: 0,%s,%s,%s,,0,0,0,,%s'
-                    % (t(l['cue']), t(end), style, l['text']))
+                    % (t(l['cue']), t(end), style, text))
     # 読み速度の確認。速すぎる字幕は読めないので警告だけ出す
     for i, l in enumerate(ls):
         end = ls[i + 1]['cue'] - 0.12 if i + 1 < len(ls) else d['total'] - 0.2
