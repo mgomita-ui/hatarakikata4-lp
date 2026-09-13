@@ -88,6 +88,10 @@
 
   /* hero */
   .hero{padding-top:36px}
+  /* キャッチのステッカー。雰囲気を壊さないよう1枚だけ、カードの右上角に少し傾けて貼る */
+  .hero{position:relative}
+  .hero .stk{position:absolute;z-index:5;top:10px;right:54px;width:clamp(230px,24vw,300px);height:auto;transform:rotate(4deg);filter:drop-shadow(0 8px 16px rgba(0,0,0,.28));pointer-events:none}
+  @media (max-width:760px){.hero .stk{position:relative;display:block;top:auto;right:auto;width:min(64%,250px);margin:0 10px -22px auto;transform:rotate(3deg)}}
   .hero .card{padding:0;overflow:hidden;min-height:560px;display:grid;grid-template-columns:1.05fr .95fr;background:#07221E;color:#fff;position:relative;isolation:isolate}
   .hero .bg{position:absolute;inset:0;z-index:0;background:url(__HERO40__) center right/cover no-repeat;opacity:.85}
   .hero .bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,34,30,.96) 0%,rgba(7,34,30,.88) 42%,rgba(7,34,30,.35) 70%,rgba(7,34,30,.15) 100%)}
@@ -941,6 +945,7 @@
 
 <!-- HERO -->
 <header class="hero page" id="top">
+  <img class="stk" src="media/catch-sticker.png?v=0913a" alt="まだパソコンが自動で動いていない経営者必見！！？" width="720" height="315">
   <div class="card">
     <div class="txt" id="heroTxt">
       <p class="eb">経営者・幹部むけ　AI実習</p>
