@@ -127,7 +127,7 @@
   .op .skip:hover{background:rgba(255,255,255,.26)}
   .op.out{animation:opOut .9s ease forwards}
   /* 見終わったとき：テレビが切れた黒い画面から、サイトがゆっくり浮かび上がる */
-  .op.out.slow{animation:opOut 3.2s cubic-bezier(.45,0,.25,1) forwards}
+  .op.out.slow{animation:opOut 5.5s cubic-bezier(.45,0,.25,1) forwards}
   @keyframes opOut{to{opacity:0;visibility:hidden}}
   .hero .oplink{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:700;color:var(--yellow);text-decoration:underline;text-underline-offset:3px}
   .hero .oplink:hover{color:#fff}
@@ -1417,7 +1417,7 @@
     if(!wrap||!v||!go) return;
     function close(slow){
       wrap.classList.add('out'); if(slow===true) wrap.classList.add('slow');
-      setTimeout(function(){ wrap.classList.remove('on','out','slow'); wrap.hidden=true; v.pause(); document.body.style.overflow=''; }, slow===true?3250:850);
+      setTimeout(function(){ wrap.classList.remove('on','out','slow'); wrap.hidden=true; v.pause(); document.body.style.overflow=''; }, slow===true?5550:850);
       if(hero&&hero.dataset.opPaused){ delete hero.dataset.opPaused; hero.play().catch(function(){}); }
     }
     go.addEventListener('click',function(e){
