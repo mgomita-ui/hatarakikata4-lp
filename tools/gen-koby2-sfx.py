@@ -9,6 +9,7 @@
   kiran      「三時間で、終わります」のキラーン
   deflate    「……一旦、保留で」のヒュ〜ン（しぼむ）
   sting      「実施は十一月一日」のガーン
+  impact     腕を掴んだ瞬間の「ドン！！」（空気が震える重い衝撃）
 """
 import os
 import numpy as np
@@ -174,9 +175,28 @@ def sting():
     save('sting', stereo(x))
 
 
+def impact():
+    """「ドン！！」。拳と剣を止めた瞬間の、空気が震える重い衝撃。低い爆圧＋割れる破裂音＋長い地鳴り。"""
+    n = int(3.2 * SR)
+    t = np.arange(n) / SR
+    f = 110 * np.exp(-t * 9) + 38
+    sub = np.sin(2 * np.pi * np.cumsum(f) / SR) * env_exp(n, 0.7) * 2.2
+    punch = lp(rng.standard_normal(n), 250, 4) * env_exp(n, 0.09) * 7
+    crack = bp(rng.standard_normal(n), 800, 5000) * env_exp(n, 0.025) * 2.5
+    blast = bp(rng.standard_normal(n), 150, 1800) * np.minimum(t / 0.01, 1) * env_exp(n, 0.35) * 1.6
+    rumble = lp(rng.standard_normal(n), 90, 4) * env_exp(n, 1.4) * 5
+    x = sub + punch + crack + blast + rumble
+    x[:int(0.002 * SR)] *= np.linspace(0, 1, int(0.002 * SR))
+    x = np.tanh(x * 0.9)
+    x = reverb(x, 2.0, 0.5)
+    L = x
+    R = np.roll(x, 160)
+    save('impact', np.stack([L, R], axis=1), peak=0.98)
+
+
 if __name__ == '__main__':
     import sys
     names = sys.argv[1:]
-    for fn in (explosion, clang, whoosh, don, kiran, deflate, sting):
+    for fn in (explosion, clang, whoosh, don, kiran, deflate, sting, impact):
         if not names or fn.__name__ in names:
             fn()

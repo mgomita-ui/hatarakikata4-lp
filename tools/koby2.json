@@ -338,39 +338,51 @@
  "sfx": [
   {
    "t": 26.55,
-   "file": "media/cine/koby/sfx/sting.wav",
-   "gain": 0.55,
-   "note": "「実施は十一月一日」ガーン"
+   "file": "media/cine/koby/sfx/sting_2.wav",
+   "gain": 0.6,
+   "note": "「実施は十一月一日」ガーン（AI生成 mirelo）"
   },
   {
    "t": 33.3,
-   "file": "media/cine/koby/sfx/explosion.wav",
-   "gain": 0.95,
-   "note": "「もう、やめましょうよ！」爆発"
+   "file": "media/cine/koby/sfx/explosion_1.wav",
+   "gain": 0.8,
+   "note": "「もう、やめましょうよ！」爆発（AI生成）"
   },
   {
-   "t": 53.45,
-   "file": "media/cine/koby/sfx/whoosh.wav",
-   "gain": 0.55,
-   "note": "赤髪の男が右から入る"
+   "t": 53.3,
+   "file": "media/cine/koby/sfx/whoosh_1.wav",
+   "gain": 0.6,
+   "note": "赤髪の男が右から入る（AI生成）"
   },
   {
-   "t": 54.8,
-   "file": "media/cine/koby/sfx/clang.wav",
-   "gain": 0.85,
-   "note": "腕を掴む瞬間のカキン！（54.9で掴んでいる）"
+   "t": 54.82,
+   "file": "media/cine/koby/sfx/impact_1.wav",
+   "gain": 1.0,
+   "note": "腕を掴む瞬間の「ドン！！」（AI生成・54.9で掴んでいる）"
   },
   {
    "t": 62.95,
-   "file": "media/cine/koby/sfx/don.wav",
-   "gain": 0.9,
-   "note": "「この研修を、終わらせに来た」ドン"
+   "file": "media/cine/koby/sfx/don_1.wav",
+   "gain": 0.8,
+   "note": "「この研修を、終わらせに来た」ドン（AI生成）"
   },
   {
    "t": 67.15,
-   "file": "media/cine/koby/sfx/don.wav",
-   "gain": 0.4,
-   "note": "「三時間で、終わります」さりげないドン"
+   "file": "media/cine/koby/sfx/don_1.wav",
+   "gain": 0.35,
+   "note": "「三時間で、終わります」さりげないドン（AI生成）"
+  },
+  {
+   "t": 85.6,
+   "file": "media/cine/koby/sfx/reveal_1.wav",
+   "gain": 0.8,
+   "note": "講師陣が歩いてくる全体像：うなりが上がって「講師陣も、豊富です」あたりで着地（AI生成）"
+  },
+  {
+   "t": 91.75,
+   "file": "media/cine/koby/sfx/title_2.wav",
+   "gain": 0.85,
+   "note": "「AIブートキャンプ」のタイトルに重い一撃（AI生成）"
   }
  ]
 }
