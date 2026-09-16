@@ -1101,8 +1101,7 @@
     function build(){
       var company=v('company'),name=v('name'),email=v('email'),size=v('size'),topic=v('topic'),bonus=v('bonus'),msg=v('msg');
       lastSubject='【9/24セミナー申込】'+company;
-      lastBody=['レリック社会保険労務士法人 御中','','9月24日（木）10:00-11:00 のセミナーに申し込みます。','','■ 会社名：'+company,'■ お名前・役職：'+name,'■ メールアドレス：'+email,'■ 従業員数：'+size,'■ 関心のあるテーマ：'+topic,'■ ご参加の予定：'+bonus,'■ ご質問：',msg||'（なし）','','※個人情報の取り扱いに同意のうえ送信しています。'].join('
-');
+      lastBody=['レリック社会保険労務士法人 御中','','9月24日（木）10:00-11:00 のセミナーに申し込みます。','','■ 会社名：'+company,'■ お名前・役職：'+name,'■ メールアドレス：'+email,'■ 従業員数：'+size,'■ 関心のあるテーマ：'+topic,'■ ご参加の予定：'+bonus,'■ ご質問：',msg||'（なし）','','※個人情報の取り扱いに同意のうえ送信しています。'].join('\n');
       return 'mailto:'+TO+'?subject='+encodeURIComponent(lastSubject)+'&body='+encodeURIComponent(lastBody);
     }
     f.addEventListener('submit',function(e){
