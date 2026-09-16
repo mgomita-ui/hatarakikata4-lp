@@ -193,10 +193,45 @@ def main():
         ins += ['-i', src]
         segs.append('aformat=sample_rates=44100:channel_layouts=stereo,volume=%.3f,adelay=%d|%d,apad'
                     % (fx['gain'], int(fx['t'] * 1000), int(fx['t'] * 1000)))
+    nbed = len(segs)
+    # 声。行の並び順＝ファイル番号（00.wav〜）。前後の無音を削り、音量をそろえ、必要な行だけ少し速める。
+    vos = []
+    if d.get('vodir'):
+        vodir = os.path.join(ROOT, d['vodir'].replace('/', os.sep))
+        ls = sorted(d['lines'], key=lambda x: x['cue'])
+        for i, l in enumerate(ls):
+            src = os.path.join(vodir, '%02d.wav' % i)
+            if not os.path.exists(src):
+                print('  !! 声がない %02d %s' % (i, l['text']))
+                continue
+            tempo = l.get('vo_tempo', 1.0)
+            prep = os.path.join(WORK, 'vo%02d.wav' % i)
+            subprocess.check_call(['ffmpeg', '-y', '-v', 'error', '-i', src, '-af',
+                'silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.02,areverse,'
+                'silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.05,areverse,'
+                'loudnorm=I=-16:TP=-2:LRA=11,atempo=%.3f,aresample=44100' % tempo,
+                '-ac', '2', prep])
+            vd = dur(prep)
+            nxt = ls[i + 1]['cue'] if i + 1 < len(ls) else total
+            flag = '  !! 次の行に食い込む' if l['cue'] + vd > nxt + 0.02 else ''
+            print('  声 %02d %6.2f + %.2fs（x%.2f）→ %6.2f / 次 %6.2f%s' % (i, l['cue'], vd, tempo, l['cue'] + vd, nxt, flag))
+            ins += ['-i', prep]
+            vos.append('volume=%.3f,adelay=%d|%d,apad' % (l.get('vo_gain', 1.0), int(l['cue'] * 1000), int(l['cue'] * 1000)))
+    segs += vos
     fc = ''.join('[%d:a]%s[a%d];' % (i, af, i) for i, af in enumerate(segs))
-    fc += ''.join('[a%d]' % i for i in range(len(segs)))
-    fc += ('amix=inputs=%d:normalize=0:duration=longest,atrim=0:%.3f,'
-           'alimiter=limit=0.95:level=disabled[out]' % (len(segs), total))
+    if vos:
+        fc += ''.join('[a%d]' % i for i in range(nbed))
+        fc += 'amix=inputs=%d:normalize=0:duration=longest[bed];' % nbed
+        fc += ''.join('[a%d]' % i for i in range(nbed, len(segs)))
+        fc += 'amix=inputs=%d:normalize=0:duration=longest,asplit=2[vo][vosc];' % len(vos)
+        # 声が出ている間だけ、音楽と効果音を下げる
+        fc += '[bed][vosc]sidechaincompress=threshold=0.02:ratio=5:attack=15:release=350[duck];'
+        fc += ('[duck][vo]amix=inputs=2:normalize=0:duration=longest,atrim=0:%.3f,'
+               'alimiter=limit=0.95:level=disabled[out]' % total)
+    else:
+        fc += ''.join('[a%d]' % i for i in range(len(segs)))
+        fc += ('amix=inputs=%d:normalize=0:duration=longest,atrim=0:%.3f,'
+               'alimiter=limit=0.95:level=disabled[out]' % (len(segs), total))
     audio = os.path.join(WORK, 'audio.m4a')
     subprocess.check_call(['ffmpeg', '-y', '-v', 'error', *ins,
                            '-filter_complex', fc, '-map', '[out]',

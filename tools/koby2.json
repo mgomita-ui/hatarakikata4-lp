@@ -262,10 +262,11 @@
   },
   {
    "cue": 26.6,
-   "text": "九月十五日に決めても、実施は十一月一日。"
+   "text": "九月十五日に決めても、実施は十一月一日。",
+   "vo_tempo": 1.05
   },
   {
-   "cue": 30.0,
+   "cue": 30.6,
    "text": "全部わかったうえで、それでも──",
    "cls": "big"
   },
@@ -351,22 +352,23 @@
    "who": "ライバル講師"
   },
   {
-   "cue": 97.4,
-   "end": 99.75,
+   "cue": 97.3,
+   "end": 99.85,
    "text": "「ぜはは、AIの進化は終わらねえ！！」",
    "cls": "big",
-   "who": "ライバル講師"
+   "who": "ライバル講師",
+   "vo_tempo": 1.05
   }
  ],
  "sfx": [
   {
-   "t": 26.55,
+   "t": 26.35,
    "file": "media/cine/koby/sfx/sting_2.wav",
-   "gain": 0.6,
+   "gain": 0.5,
    "note": "「実施は十一月一日」ガーン（AI生成 mirelo）"
   },
   {
-   "t": 33.3,
+   "t": 34.55,
    "file": "media/cine/koby/sfx/explosion_1.wav",
    "gain": 0.8,
    "note": "「もう、やめましょうよ！」爆発（AI生成）"
@@ -384,13 +386,13 @@
    "note": "腕を掴む瞬間の「ドン！！」（AI生成・54.9で掴んでいる）"
   },
   {
-   "t": 62.95,
+   "t": 62.7,
    "file": "media/cine/koby/sfx/don_1.wav",
    "gain": 0.8,
    "note": "「この研修を、終わらせに来た」ドン（AI生成）"
   },
   {
-   "t": 67.15,
+   "t": 66.95,
    "file": "media/cine/koby/sfx/don_1.wav",
    "gain": 0.35,
    "note": "「三時間で、終わります」さりげないドン（AI生成）"
@@ -398,11 +400,11 @@
   {
    "t": 85.6,
    "file": "media/cine/koby/sfx/reveal_1.wav",
-   "gain": 0.8,
+   "gain": 0.55,
    "note": "講師陣が歩いてくる全体像：うなりが上がって「講師陣も、豊富です」あたりで着地（AI生成）"
   },
   {
-   "t": 91.75,
+   "t": 91.55,
    "file": "media/cine/koby/sfx/title_2.wav",
    "gain": 0.85,
    "note": "「AIブートキャンプ」のタイトルに重い一撃（AI生成）"
@@ -414,10 +416,11 @@
    "note": "ライバル講師陣が現れる低いドン（AI生成）"
   },
   {
-   "t": 99.9,
+   "t": 100.05,
    "file": "media/cine/koby/sfx/tvoff_2.wav",
    "gain": 0.9,
    "note": "テレビがプツンと切れる（AI生成）"
   }
- ]
+ ],
+ "vodir": "media/cine/vo/koby_akashi/時間がもったいない"
 }
