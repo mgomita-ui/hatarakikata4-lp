@@ -18,24 +18,56 @@
 </td></tr>
 <tr><td style="padding:8px 28px 28px;">
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">ねらい</h3>
-<p style="margin:0 0 12px;line-height:1.9;">合宿の「三通りの比較：半日 → 2分」を、自社の判断で使います。今週の題材は「来期の値上げ」。AI に前提を先に言わせ、三通りを表で出させ、最後に決めるのは自分。合宿で「前提を出させた」「比較させた」「聞き返した」が AI係数を上げたのと同じ動きです。</p>
+<p style="margin:0 0 12px;line-height:1.9;">研修当日の「三通りの比較：一日仕事 → その場で見比べる」を、自社の判断で使います。題材は当日と同じ「来期の値上げ、据え置き／3%／5%」。研修当日にやったものを、自社データでもう一度（顧客名を伏せた受注の書き出しで十分。用意がなければ受注データ.csv のままで構いません）。AI に前提を先に言わせ、三通りを表で出させ、最後に決めるのは自分。当日、講師が確かめた「前提を出させた」「比較させた」「聞き返した」と同じ動きです。</p>
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">15分の手順</h3>
-<table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">時間</th><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">すること</th></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">0〜2分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">ai-drill</code> で <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">claude</code> を動かす</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">2〜7分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;">下のプロンプトで、前提3つ → 三通りの表 → 確認すべき点2つ、の順に出してもらう</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">7〜10分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>確かめる</strong>：前提3つのうち、自社と違うものを1つ見つけて言い直す</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">10〜13分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>直す</strong>：前提を直した結果、三通りの数字がどう変わったかを見る</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">13〜15分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>決める</strong>：自分の判断を <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">drill_log.md</code> に1行（「今回は据え置き。理由は…」）</td></tr></table>
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">時間</th><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">すること</th></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">0〜2分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">ai-drill</code> で <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">claude</code> を動かす</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">2〜7分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;">下のプロンプトで、前提3つ → 三通りの表 → 確認すべき点2つ、の順に出してもらう</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">7〜10分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>確かめる</strong>：前提3つのうち、自社と違うものを1つ見つけて言い直す</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">10〜13分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>直す</strong>：前提を直した結果、三通りの数字がどう変わったかを見る</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">13〜15分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>記録とダッシュボード（2分）</strong>：自分の判断を <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">drill_log.md</code> に1行（「今回は据え置き。理由は…」）。ダッシュボードに1枚足す（下記）</td></tr></table>
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">使うプロンプト例</h3>
-<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">受注データ.csv をもとに、来期の価格を「据え置き／3%値上げ／5%値上げ」の三通りで比べたい。
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">受注データ.csv（自社の書き出しなら、そのファイル名）をもとに、来期の価格を「据え置き／3%値上げ／5%値上げ」の三通りで比べたい。
 まず、この比較に必要な前提を3つ、あなたの仮置きの数字と一緒に先に言って
 （例：値上げで失う受注の割合、原価率、単価の丸め方）。
 次に、三通りを「売上・粗利・失注リスク」の表にして。
 最後に、これはたたき台なので、私が決める前に確認すべき点を2つ挙げて。</pre>
 <p style="margin:0 0 12px;line-height:1.9;">前提を直すとき：</p>
 <pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">前提の2つ目は違う。うちは原価率が55%。それで三通りを作り直して、変わった箇所だけ教えて。</pre>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">ダッシュボードに1枚足す</h3>
+<p style="margin:0 0 12px;line-height:1.9;">その週の結論と数字が、ダッシュボードの「確認と値上げ」に入ります。</p>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">今週（第4週）のドリルの結果を、ダッシュボードに1枚足して。
+
+作る前に、次の4つを先に私に見せて、私の答えを待って。
+① 結論（1〜2文）
+② 数字（4つまで。どのファイルのどの行・どの列から取ったか。計算した数字は計算式も）
+顧客名・個人名は、前提メモの「名前の扱い」に従う。
+③ 次の一手（何を、誰が、いつまでに）
+④ 人が決めること（1つの問い）と、いまの状態（未決・決定・保留）
+専門家（社労士・税理士・弁護士）に確かめた方がよい点があれば、それも1つだけ挙げて。無ければ挙げない。
+
+私が「OK」と言ったら、ファイルを読み直さずに、見せた内容のまま、次の2つだけを行って。
+・dashboard/data/w（2桁の週番号）-（今の日付と時刻 YYYYMMDD-HHMM）.js を新しく作る
+・dashboard/index.html の「WEEKS:END」の行のすぐ上に、&lt;script src="data/そのファイル名"&gt;&lt;/script&gt; を1行足す
+既にあるファイルは書き換えない・消さない。同じ週をやり直したときも、新しい日時のファイルを足す（新しいものが表示される）。
+
+ファイルの形（この形のまま埋める）
+DASH.add({
+  week: 4,
+  date: "YYYY-MM-DD HH:MM",
+  practice: （練習データなら true、自社の数字なら false）,
+  title: "",
+  conclusion: "",
+  numbers: [ { label: "", value: 数字, unit: "", note: "" } ],
+  source: "",
+  next: { action: "", owner: "", due: "" },
+  decision: { status: "（未決／決定／保留）", question: "", note: "" },
+  expert: { topic: "", question: "" }
+});
+専門家に確かめる点が無ければ、expert の行は入れない。</pre>
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">できたかの確認</h3>
 <ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
-<li style="margin:2px 0;">☐ 前提が、数字つきで先に出てきた</li>
-<li style="margin:2px 0;">☐ 前提を1つ直したら、表の数字が変わった（変わらなければ、前提が使われていない）</li>
-<li style="margin:2px 0;">☐ 三通りのどれにするか、自分の言葉で1行書いた</li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label="前提が、数字つきで先に出てきた" style="margin:7px 0 0;flex:none;"><span>前提が、数字つきで先に出てきた</span></label></li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label="前提を1つ直したら、表の数字が変わった（変わらなければ、前提が使われていない）" style="margin:7px 0 0;flex:none;"><span>前提を1つ直したら、表の数字が変わった（変わらなければ、前提が使われていない）</span></label></li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label="三通りのどれにするか、自分の言葉で1行書いた" style="margin:7px 0 0;flex:none;"><span>三通りのどれにするか、自分の言葉で1行書いた</span></label></li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label="ダッシュボードの進み具合が1つ増えた（第4週の点線が消えた）" style="margin:7px 0 0;flex:none;"><span>ダッシュボードの進み具合が1つ増えた（第4週の点線が消えた）</span></label></li>
 </ul>
-<p style="margin:0 0 12px;line-height:1.9;"><strong>今週のAI係数</strong>：前提を出させた／比較させた（三通り）／聞き返した</p>
+<p style="margin:0 0 12px;line-height:1.9;"><strong>今週の5つの動き</strong>：前提を出させた／比較させた（三通り）／聞き返した</p>
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">今週の変更点（2026年9月6日時点）</h3>
 <ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
 <li style="margin:2px 0;"><strong>Claude の「メモリ」が、チャットと Cowork をまたいで効くようになりました。</strong> 前提を一度伝えると次回も覚えていますが、何を覚えているかは設定の「トピック」で見て、編集・削除できます。「機密の話題」は、自分でオンにしない限りメモリに入りません。自社の原価率のような数字を覚えさせるかどうかは、あなたが決めてください。（2026年8月25日）</li>
@@ -46,10 +78,59 @@
 </ul>
 <p style="margin:0 0 12px;line-height:1.9;">出典：<a href="https://developers.openai.com/codex/changelog" style="color:#1d4ed8;word-break:break-all;">https://developers.openai.com/codex/changelog</a></p>
 <hr style="border:0;border-top:1px solid #e3e3e3;margin:24px 0;">
+
+<div id="report" style="margin:32px 0 8px;padding:18px 20px;border:2px solid #c8a24a;border-radius:8px;background:#fffdf5;">
+  <h3 style="font-size:16px;margin:0 0 8px;line-height:1.5;">今週の報告を送る（30秒）</h3>
+  <p style="margin:0 0 10px;line-height:1.8;font-size:14px;color:#555555;">上の「できたかの確認」のチェックと、下の1行が、そのままメールの本文になります。「できた／詰まった」と1行で十分です。返信の義務はありません。詰まった点には、次の週のメールで答えます。<br>
+  メールで読んでいる方は、ブラウザで開くとチェックがそのまま本文になります：<a href="https://mgomita-ui.github.io/hatarakikata4-lp/bootcamp/drills/week04.html#report" style="color:#1d4ed8;word-break:break-all;">https://mgomita-ui.github.io/hatarakikata4-lp/bootcamp/drills/week04.html#report</a></p>
+  <div style="margin:0 0 10px;font-size:14px;">
+    <label style="margin-right:18px;cursor:pointer;"><input type="radio" name="result" value="できた" checked> できた</label>
+    <label style="cursor:pointer;"><input type="radio" name="result" value="詰まった"> 詰まった</label>
+  </div>
+  <textarea id="note" rows="2" placeholder="1行の記録（例：見積3つできた。消費税の聞き返しが来なかった）" style="width:100%;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;font-size:14px;line-height:1.7;padding:8px 10px;border:1px solid #e3e3e3;border-radius:6px;background:#ffffff;"></textarea>
+  <div style="margin-top:12px;">
+    <a id="sendBtn" href="mailto:m.gomita@canvas-sr.jp?subject=%5B%E3%83%89%E3%83%AA%E3%83%AB%E5%A0%B1%E5%91%8A%5D%20%E7%AC%AC4%E9%80%B1&amp;body=%E7%B5%90%E6%9E%9C%EF%BC%9A%E3%81%A7%E3%81%8D%E3%81%9F%EF%BC%8F%E8%A9%B0%E3%81%BE%E3%81%A3%E3%81%9F%EF%BC%88%E3%81%A9%E3%81%A1%E3%82%89%E3%81%8B%E3%82%92%E6%AE%8B%E3%81%99%EF%BC%89%0D%0A1%E8%A1%8C%E3%81%AE%E8%A8%98%E9%8C%B2%EF%BC%9A%0D%0A" style="display:inline-block;background:#1a1a1a;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:6px;font-size:14px;">今週の報告を送る</a>
+    <span style="font-size:12px;color:#555555;margin-left:10px;">メール作成画面が開きます。送信するのは、あなたです。</span>
+  </div>
+  <div id="fallback" hidden style="margin-top:12px;font-size:13px;color:#555555;line-height:1.7;">画面が開かないときは、下の本文をコピーして <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> へ送ってください。<br>
+  <textarea id="bodyOut" rows="8" readonly style="width:100%;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;font-size:14px;line-height:1.7;padding:8px 10px;border:1px solid #e3e3e3;border-radius:6px;background:#ffffff;margin-top:6px;"></textarea></div>
+</div>
+<script>
+(function(){
+  var btn = document.getElementById('sendBtn');
+  if (!btn) { return; }
+  var HEAD = "[ドリル報告] 第4週　前提を先に言わせ、三通り出させる";
+  var SUBJECT = "[ドリル報告] 第4週";
+  var TO = "m.gomita@canvas-sr.jp";
+  function build(){
+    var lines = [HEAD, ''];
+    var r = document.querySelector('input[name="result"]:checked');
+    lines.push('結果：' + (r ? r.value : '未選択'));
+    var note = (document.getElementById('note').value || '').replace(/\s+/g, ' ').trim();
+    lines.push('1行の記録：' + (note || '（未記入）'));
+    lines.push('');
+    lines.push('できたかの確認：');
+    var chks = document.querySelectorAll('input.chk');
+    for (var i = 0; i < chks.length; i++) {
+      lines.push((chks[i].checked ? '[x] ' : '[ ] ') + chks[i].getAttribute('data-label'));
+    }
+    lines.push('');
+    lines.push('ページ：' + location.href);
+    return lines.join('\r\n');
+  }
+  btn.addEventListener('click', function(){
+    var body = build();
+    btn.href = 'mailto:' + TO + '?subject=' + encodeURIComponent(SUBJECT) + '&body=' + encodeURIComponent(body);
+    document.getElementById('bodyOut').value = body;
+    document.getElementById('fallback').hidden = false;
+  });
+})();
+</script>
+
 </td></tr>
 <tr><td style="padding:18px 28px 24px;border-top:1px solid #e3e3e3;font-size:12px;color:#555555;line-height:1.8;">
-  このドリルは、AI の新機能や仕様変更に合わせて改定しています（最終更新：2026年9月6日）。<br>
-  詰まった点は、月次1on1でお持ちください。ご質問は <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> まで。<br>
+  このドリルは、AI の新機能や仕様変更に合わせて改定しています（最終更新：2026年9月17日）。<br>
+  詰まった点は、上の「今週の報告を送る」から。月次1on1でもお持ちください。ご質問は <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> まで。<br>
   記載の所要時間は当プログラムの設計値です。効果を保証するものではありません。Claude Code、Codex、Claude、MCP はそれぞれの権利者の商標または名称です。<br>
   © 2026 レリック社会保険労務士法人
 </td></tr>

@@ -1,0 +1,8 @@
+# 受講者の個人情報と、動かした痕跡はリポジトリに入れない（運用.md「名簿と報告は、リポジトリに入れない」）
+recipients.csv
+updates/state.json
+log/
+
+# Python の中間物
+tools/__pycache__/
+__pycache__/

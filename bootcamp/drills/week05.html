@@ -18,10 +18,13 @@
 </td></tr>
 <tr><td style="padding:8px 28px 28px;">
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">ねらい</h3>
-<p style="margin:0 0 12px;line-height:1.9;">合宿で通した MCP の1本を、自分のPCでもう一度。今週は一番身近な「フォルダ」をつなぎます。AI は渡した情報しか知りません。MCP はその「配線口」です。つながると、ファイルを毎回貼らなくても「先月の上位3顧客は？」に答えてくれます。</p>
+<p style="margin:0 0 12px;line-height:1.9;">研修当日に通した MCP の1本を、自分のPCでもう一度。今週は一番身近な「フォルダ」をつなぎます。当日、会計ソフトの MCP でつないだ人も、まずフォルダから。AI は渡した情報しか知りません。MCP はその「配線口」です。つながると、ファイルを毎回貼らなくても「先月の上位3顧客は？」に答えてくれます。</p>
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">15分の手順</h3>
-<table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">時間</th><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">すること</th></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">0〜5分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;">Claude Desktop の「設定 → コネクタ（拡張機能）」で、ローカルフォルダ（Filesystem）を追加し、<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">ai-drill</code> を許可する</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">5〜9分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;">Claude Desktop のチャットで、下のプロンプト。ファイルを貼らずに答えが返るかを見る</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">9〜12分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>確かめる</strong>：返ってきた上位3社を、Excel の並べ替えで照合する</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">12〜14分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>直す</strong>：「どのファイルを読んだか」を先に言わせる形に、頼み方を直す</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">14〜15分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>記録</strong>：<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">drill_log.md</code> に1行</td></tr></table>
-<p style="margin:0 0 12px;line-height:1.9;">Claude Code でつなぐ場合は、ターミナルで次を動かします（フォルダの場所は自分のものに）。</p>
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">時間</th><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">すること</th></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">0〜5分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;">ターミナルで <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">ai-drill</code> に移動し <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">claude</code> を動かす。<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">/mcp</code> に drill-files（研修当日につないだフォルダ）が出るか確かめる。出なければ下のコマンドを一度だけ</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">5〜9分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">claude</code> の中で下のプロンプト。ファイルを貼らずに答えが返るかを見る</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">9〜12分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>確かめる</strong>：返ってきた上位3社を、Excel の並べ替えで照合する</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">12〜13分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>直す</strong>：「どのファイルを読んだか」を先に言わせる形に、頼み方を直す</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">13〜15分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>記録とダッシュボード（2分）</strong>：<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">drill_log.md</code> に1行。ダッシュボードに1枚足す（下記）</td></tr></table>
+<p style="margin:0 0 12px;line-height:1.9;">つながっていないときは、ターミナルで次を動かします。研修当日に済ませてあれば、<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">/mcp</code> で drill-files が見えるかだけ確かめて、この枠は飛ばしてください。</p>
+<p style="margin:0 0 12px;line-height:1.9;">Windows（PowerShell）。<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">（ユーザー名）</code> は自分のものに。エクスプローラーで <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">ai-drill</code> を開き、上のアドレス欄に出る場所をそのまま貼っても構いません。</p>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">claude mcp add drill-files -- cmd /c npx -y @modelcontextprotocol/server-filesystem C:\Users\（ユーザー名）\Desktop\ai-drill</pre>
+<p style="margin:0 0 12px;line-height:1.9;">Mac（ターミナル）。</p>
 <pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">claude mcp add drill-files -- npx -y @modelcontextprotocol/server-filesystem ~/Desktop/ai-drill</pre>
 <p style="margin:0 0 12px;line-height:1.9;">つながったかは <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">claude</code> の中で <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">/mcp</code> と入力すると一覧で見えます。</p>
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">使うプロンプト例</h3>
@@ -29,19 +32,54 @@
 読む前に、どのファイルのどの列を使うかを先に言って。</pre>
 <p style="margin:0 0 12px;line-height:1.9;">直すとき：</p>
 <pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">「担当」別にも同じ表を出して。数字の根拠になった行数も添えて。</pre>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">ダッシュボードに1枚足す</h3>
+<p style="margin:0 0 12px;line-height:1.9;">その週の結論と数字が、ダッシュボードの「接続と粗利」に入ります。</p>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">今週（第5週）のドリルの結果を、ダッシュボードに1枚足して。
+
+作る前に、次の4つを先に私に見せて、私の答えを待って。
+① 結論（1〜2文）
+② 数字（4つまで。どのファイルのどの行・どの列から取ったか。計算した数字は計算式も）
+顧客名・個人名は、前提メモの「名前の扱い」に従う。
+③ 次の一手（何を、誰が、いつまでに）
+④ 人が決めること（1つの問い）と、いまの状態（未決・決定・保留）
+専門家（社労士・税理士・弁護士）に確かめた方がよい点があれば、それも1つだけ挙げて。無ければ挙げない。
+
+私が「OK」と言ったら、ファイルを読み直さずに、見せた内容のまま、次の2つだけを行って。
+・dashboard/data/w（2桁の週番号）-（今の日付と時刻 YYYYMMDD-HHMM）.js を新しく作る
+・dashboard/index.html の「WEEKS:END」の行のすぐ上に、&lt;script src="data/そのファイル名"&gt;&lt;/script&gt; を1行足す
+既にあるファイルは書き換えない・消さない。同じ週をやり直したときも、新しい日時のファイルを足す（新しいものが表示される）。
+
+ファイルの形（この形のまま埋める）
+DASH.add({
+  week: 5,
+  date: "YYYY-MM-DD HH:MM",
+  practice: （練習データなら true、自社の数字なら false）,
+  title: "",
+  conclusion: "",
+  numbers: [ { label: "", value: 数字, unit: "", note: "" } ],
+  source: "",
+  next: { action: "", owner: "", due: "" },
+  decision: { status: "（未決／決定／保留）", question: "", note: "" },
+  expert: { topic: "", question: "" }
+});
+専門家に確かめる点が無ければ、expert の行は入れない。</pre>
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">もう片方の相棒でも</h3>
-<p style="margin:0 0 12px;line-height:1.9;">Codex にも同じフォルダをつなげます。</p>
+<p style="margin:0 0 12px;line-height:1.9;">Codex にも同じフォルダをつなげます。研修当日に済ませてあれば、<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">codex</code> の中で <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">/mcp</code> に drill-files が見えるかだけ確かめて、この枠は飛ばしてください。</p>
+<p style="margin:0 0 12px;line-height:1.9;">Windows（PowerShell）：</p>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">codex mcp add drill-files -- cmd /c npx -y @modelcontextprotocol/server-filesystem C:\Users\（ユーザー名）\Desktop\ai-drill</pre>
+<p style="margin:0 0 12px;line-height:1.9;">Mac（ターミナル）：</p>
 <pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">codex mcp add drill-files -- npx -y @modelcontextprotocol/server-filesystem ~/Desktop/ai-drill</pre>
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">できたかの確認</h3>
 <ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
-<li style="margin:2px 0;">☐ ファイルを貼らずに、フォルダの中身をもとに答えが返った</li>
-<li style="margin:2px 0;">☐ 上位3社が、Excel の並べ替えと一致した</li>
-<li style="margin:2px 0;">☐ 「どのファイル・どの列を使ったか」を AI が先に言った</li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label="ファイルを貼らずに、フォルダの中身をもとに答えが返った" style="margin:7px 0 0;flex:none;"><span>ファイルを貼らずに、フォルダの中身をもとに答えが返った</span></label></li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label="上位3社が、Excel の並べ替えと一致した" style="margin:7px 0 0;flex:none;"><span>上位3社が、Excel の並べ替えと一致した</span></label></li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label="「どのファイル・どの列を使ったか」を AI が先に言った" style="margin:7px 0 0;flex:none;"><span>「どのファイル・どの列を使ったか」を AI が先に言った</span></label></li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label="ダッシュボードの進み具合が1つ増えた（第5週の点線が消えた）" style="margin:7px 0 0;flex:none;"><span>ダッシュボードの進み具合が1つ増えた（第5週の点線が消えた）</span></label></li>
 </ul>
-<p style="margin:0 0 12px;line-height:1.9;"><strong>今週のAI係数</strong>：前提を出させた（どのファイル・どの列か）</p>
+<p style="margin:0 0 12px;line-height:1.9;"><strong>今週の5つの動き</strong>：前提を出させた（どのファイル・どの列か）</p>
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">今週の変更点（2026年9月6日時点）</h3>
 <ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
-<li style="margin:2px 0;"><strong>MCP の新しい仕様（2026-07-28版）が出ました。</strong> サーバー側が「普通の Web サービスと同じ形」で動かせるようになり、会計・勤怠などの SaaS 各社が MCP を出しやすくなりました。受講者への影響は「つなげる先が増える」こと。お使いの会計ソフトに MCP があるか、Claude Desktop のコネクタ一覧で月に一度見てください。無ければ CSV 書き出し → フォルダ MCP で十分です。（2026年7月28日公開、8月以降に各社対応）</li>
+<li style="margin:2px 0;"><strong>MCP の新しい仕様（2026-07-28版）が出ました。</strong> サーバー側が「普通の Web サービスと同じ形」で動かせるようになり、会計・勤怠などの SaaS 各社が MCP を出しやすくなりました。受講者への影響は「つなげる先が増える」こと。お使いの会計ソフトに MCP があるか、会計ソフトの案内ページか <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">claude mcp list</code> で月に一度見てください。無ければ CSV 書き出し → フォルダ MCP で十分です。（2026年7月28日公開、8月以降に各社対応）</li>
 </ul>
 <p style="margin:0 0 12px;line-height:1.9;">出典：<a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/" style="color:#1d4ed8;word-break:break-all;">https://blog.modelcontextprotocol.io/posts/2026-07-28/</a></p>
 <ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
@@ -49,10 +87,59 @@
 </ul>
 <p style="margin:0 0 12px;line-height:1.9;">出典：<a href="https://code.claude.com/docs/en/changelog" style="color:#1d4ed8;word-break:break-all;">https://code.claude.com/docs/en/changelog</a></p>
 <hr style="border:0;border-top:1px solid #e3e3e3;margin:24px 0;">
+
+<div id="report" style="margin:32px 0 8px;padding:18px 20px;border:2px solid #c8a24a;border-radius:8px;background:#fffdf5;">
+  <h3 style="font-size:16px;margin:0 0 8px;line-height:1.5;">今週の報告を送る（30秒）</h3>
+  <p style="margin:0 0 10px;line-height:1.8;font-size:14px;color:#555555;">上の「できたかの確認」のチェックと、下の1行が、そのままメールの本文になります。「できた／詰まった」と1行で十分です。返信の義務はありません。詰まった点には、次の週のメールで答えます。<br>
+  メールで読んでいる方は、ブラウザで開くとチェックがそのまま本文になります：<a href="https://mgomita-ui.github.io/hatarakikata4-lp/bootcamp/drills/week05.html#report" style="color:#1d4ed8;word-break:break-all;">https://mgomita-ui.github.io/hatarakikata4-lp/bootcamp/drills/week05.html#report</a></p>
+  <div style="margin:0 0 10px;font-size:14px;">
+    <label style="margin-right:18px;cursor:pointer;"><input type="radio" name="result" value="できた" checked> できた</label>
+    <label style="cursor:pointer;"><input type="radio" name="result" value="詰まった"> 詰まった</label>
+  </div>
+  <textarea id="note" rows="2" placeholder="1行の記録（例：見積3つできた。消費税の聞き返しが来なかった）" style="width:100%;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;font-size:14px;line-height:1.7;padding:8px 10px;border:1px solid #e3e3e3;border-radius:6px;background:#ffffff;"></textarea>
+  <div style="margin-top:12px;">
+    <a id="sendBtn" href="mailto:m.gomita@canvas-sr.jp?subject=%5B%E3%83%89%E3%83%AA%E3%83%AB%E5%A0%B1%E5%91%8A%5D%20%E7%AC%AC5%E9%80%B1&amp;body=%E7%B5%90%E6%9E%9C%EF%BC%9A%E3%81%A7%E3%81%8D%E3%81%9F%EF%BC%8F%E8%A9%B0%E3%81%BE%E3%81%A3%E3%81%9F%EF%BC%88%E3%81%A9%E3%81%A1%E3%82%89%E3%81%8B%E3%82%92%E6%AE%8B%E3%81%99%EF%BC%89%0D%0A1%E8%A1%8C%E3%81%AE%E8%A8%98%E9%8C%B2%EF%BC%9A%0D%0A" style="display:inline-block;background:#1a1a1a;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:6px;font-size:14px;">今週の報告を送る</a>
+    <span style="font-size:12px;color:#555555;margin-left:10px;">メール作成画面が開きます。送信するのは、あなたです。</span>
+  </div>
+  <div id="fallback" hidden style="margin-top:12px;font-size:13px;color:#555555;line-height:1.7;">画面が開かないときは、下の本文をコピーして <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> へ送ってください。<br>
+  <textarea id="bodyOut" rows="8" readonly style="width:100%;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;font-size:14px;line-height:1.7;padding:8px 10px;border:1px solid #e3e3e3;border-radius:6px;background:#ffffff;margin-top:6px;"></textarea></div>
+</div>
+<script>
+(function(){
+  var btn = document.getElementById('sendBtn');
+  if (!btn) { return; }
+  var HEAD = "[ドリル報告] 第5週　MCP の1本目：自社のフォルダをつなぐ";
+  var SUBJECT = "[ドリル報告] 第5週";
+  var TO = "m.gomita@canvas-sr.jp";
+  function build(){
+    var lines = [HEAD, ''];
+    var r = document.querySelector('input[name="result"]:checked');
+    lines.push('結果：' + (r ? r.value : '未選択'));
+    var note = (document.getElementById('note').value || '').replace(/\s+/g, ' ').trim();
+    lines.push('1行の記録：' + (note || '（未記入）'));
+    lines.push('');
+    lines.push('できたかの確認：');
+    var chks = document.querySelectorAll('input.chk');
+    for (var i = 0; i < chks.length; i++) {
+      lines.push((chks[i].checked ? '[x] ' : '[ ] ') + chks[i].getAttribute('data-label'));
+    }
+    lines.push('');
+    lines.push('ページ：' + location.href);
+    return lines.join('\r\n');
+  }
+  btn.addEventListener('click', function(){
+    var body = build();
+    btn.href = 'mailto:' + TO + '?subject=' + encodeURIComponent(SUBJECT) + '&body=' + encodeURIComponent(body);
+    document.getElementById('bodyOut').value = body;
+    document.getElementById('fallback').hidden = false;
+  });
+})();
+</script>
+
 </td></tr>
 <tr><td style="padding:18px 28px 24px;border-top:1px solid #e3e3e3;font-size:12px;color:#555555;line-height:1.8;">
-  このドリルは、AI の新機能や仕様変更に合わせて改定しています（最終更新：2026年9月6日）。<br>
-  詰まった点は、月次1on1でお持ちください。ご質問は <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> まで。<br>
+  このドリルは、AI の新機能や仕様変更に合わせて改定しています（最終更新：2026年9月17日）。<br>
+  詰まった点は、上の「今週の報告を送る」から。月次1on1でもお持ちください。ご質問は <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> まで。<br>
   記載の所要時間は当プログラムの設計値です。効果を保証するものではありません。Claude Code、Codex、Claude、MCP はそれぞれの権利者の商標または名称です。<br>
   © 2026 レリック社会保険労務士法人
 </td></tr>

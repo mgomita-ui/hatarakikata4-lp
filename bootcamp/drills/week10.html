@@ -18,25 +18,58 @@
 </td></tr>
 <tr><td style="padding:8px 28px 28px;">
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">ねらい</h3>
-<p style="margin:0 0 12px;line-height:1.9;">合宿の3枚目「人がすること・AI がすること・専門家がすることの線が引ける」を、自社の全業務で。AI に棚卸しと仮置きをさせ、迷うものには「？」を付けさせる。人を減らすためではなく、人を人にしかできない仕事に戻すためです。最後に「明日 AI に渡す1つ」を決めます。</p>
+<p style="margin:0 0 12px;line-height:1.9;">研修当日の最後に仮置きした三列「人がすること・AI がすること・専門家がすることの線」を、自社の全業務でもう一度。当日の <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">roles.md</code> があれば、それを読ませてから直します。AI に棚卸しと仮置きをさせ、迷うものには「？」を付けさせる。人を減らすためではなく、人を人にしかできない仕事に戻すためです。最後に「明日 AI に渡す1つ」を決めます。</p>
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">15分の手順</h3>
-<table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">時間</th><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">すること</th></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">0〜2分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">claude</code> を動かす。<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">CLAUDE.md</code> に業種・社員数が入っていることを確かめる</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">2〜7分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;">下のプロンプトで、業務20個を三列に仮置きしてもらう</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">7〜11分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>確かめる</strong>：仮置きのうち、自分の実感と違うものを5つ動かす（AI → 人、など）</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">11〜14分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>直す</strong>：決定版を <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">roles.md</code> に保存。「明日 AI に渡す1つ」に印</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">14〜15分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>記録</strong>：<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">drill_log.md</code> に1行</td></tr></table>
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">時間</th><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">すること</th></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">0〜2分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">claude</code> を動かす。<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">CLAUDE.md</code> に業種・社員数が入っていることを確かめる</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">2〜7分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;">下のプロンプトで、業務20個を三列に仮置きしてもらう</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">7〜11分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>確かめる</strong>：仮置きのうち、自分の実感と違うものを5つ動かす（AI → 人、など）</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">11〜13分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>直す</strong>：決定版を <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">roles.md</code> に保存。「明日 AI に渡す1つ」に印</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">13〜15分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>記録とダッシュボード（2分）</strong>：<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">drill_log.md</code> に1行。ダッシュボードに1枚足す（下記）</td></tr></table>
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">使うプロンプト例</h3>
 <pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">うちの業務を20個、部門をまたいで列挙して（CLAUDE.md の業種・規模を前提に）。
+研修当日の roles.md があれば先に読んで、その20個を土台にして。
 それぞれを「AI がする／人がする／専門家がする」の三列に仮置きして、理由を一言ずつ。
 迷うものには「？」を付けて。決めるのは私なので、断定しないで。
 「専門家」は労務・法務・税務・会計のような、資格や責任が要る仕事。</pre>
 <p style="margin:0 0 12px;line-height:1.9;">直すとき：</p>
 <pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">「請求書の作成」は AI へ、「値引きの決定」は人へ、「就業規則の改定」は専門家へ動かして。
 決定版を roles.md に保存して、AI の列から「明日から渡す1つ」を私が選ぶので候補を3つ。</pre>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">ダッシュボードに1枚足す</h3>
+<p style="margin:0 0 12px;line-height:1.9;">その週の結論と数字が、ダッシュボードの「納期と役割」に入ります。専門家に確かめたい点（離職率の数え方、業務委託の線引き など）があれば、ダッシュボードのカードから社労士に聞けます。無理に作らなくて構いません。</p>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">今週（第10週）のドリルの結果を、ダッシュボードに1枚足して。
+
+作る前に、次の4つを先に私に見せて、私の答えを待って。
+① 結論（1〜2文）
+② 数字（4つまで。どのファイルのどの行・どの列から取ったか。計算した数字は計算式も）
+顧客名・個人名は、前提メモの「名前の扱い」に従う。
+③ 次の一手（何を、誰が、いつまでに）
+④ 人が決めること（1つの問い）と、いまの状態（未決・決定・保留）
+専門家（社労士・税理士・弁護士）に確かめた方がよい点があれば、それも1つだけ挙げて。無ければ挙げない。
+
+私が「OK」と言ったら、ファイルを読み直さずに、見せた内容のまま、次の2つだけを行って。
+・dashboard/data/w（2桁の週番号）-（今の日付と時刻 YYYYMMDD-HHMM）.js を新しく作る
+・dashboard/index.html の「WEEKS:END」の行のすぐ上に、&lt;script src="data/そのファイル名"&gt;&lt;/script&gt; を1行足す
+既にあるファイルは書き換えない・消さない。同じ週をやり直したときも、新しい日時のファイルを足す（新しいものが表示される）。
+
+ファイルの形（この形のまま埋める）
+DASH.add({
+  week: 10,
+  date: "YYYY-MM-DD HH:MM",
+  practice: （練習データなら true、自社の数字なら false）,
+  title: "",
+  conclusion: "",
+  numbers: [ { label: "", value: 数字, unit: "", note: "" } ],
+  source: "",
+  next: { action: "", owner: "", due: "" },
+  decision: { status: "（未決／決定／保留）", question: "", note: "" },
+  expert: { topic: "", question: "" }
+});
+専門家に確かめる点が無ければ、expert の行は入れない。</pre>
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">できたかの確認</h3>
 <ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
-<li style="margin:2px 0;">☐ 20個が三列に分かれ、「？」付きのものがあった</li>
-<li style="margin:2px 0;">☐ 自分で5つ動かした</li>
-<li style="margin:2px 0;">☐ <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">roles.md</code> ができ、「明日 AI に渡す1つ」が決まった</li>
-<li style="margin:2px 0;">☐ 専門家の列にある仕事を、AI にやらせていないか見直した</li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label="20個が三列に分かれ、「？」付きのものがあった" style="margin:7px 0 0;flex:none;"><span>20個が三列に分かれ、「？」付きのものがあった</span></label></li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label="自分で5つ動かした" style="margin:7px 0 0;flex:none;"><span>自分で5つ動かした</span></label></li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label="roles.md ができ、「明日 AI に渡す1つ」が決まった" style="margin:7px 0 0;flex:none;"><span><code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">roles.md</code> ができ、「明日 AI に渡す1つ」が決まった</span></label></li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label="専門家の列にある仕事を、AI にやらせていないか見直した" style="margin:7px 0 0;flex:none;"><span>専門家の列にある仕事を、AI にやらせていないか見直した</span></label></li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label="ダッシュボードの進み具合が1つ増えた（第10週の点線が消えた）" style="margin:7px 0 0;flex:none;"><span>ダッシュボードの進み具合が1つ増えた（第10週の点線が消えた）</span></label></li>
 </ul>
-<p style="margin:0 0 12px;line-height:1.9;"><strong>今週のAI係数</strong>：洗い出させて、聞き返した（？印）／前提を出させた（業種・規模）</p>
+<p style="margin:0 0 12px;line-height:1.9;"><strong>今週の5つの動き</strong>：洗い出させて、聞き返した（？印）／前提を出させた（業種・規模）</p>
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">今週の変更点（2026年9月6日時点）</h3>
 <ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
 <li style="margin:2px 0;"><strong>Claude Code に「制限モード」（<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">--restricted</code>）が付きました。</strong> コマンド実行や外部サイトの読み込みを外し、作業フォルダの中のファイルだけを扱う起動方法です。「AI がする」列の仕事を社員に渡すとき、最初はこのモードで渡すと安心です。（Claude Code 2.1.248、2026年8月27日）</li>
@@ -47,10 +80,59 @@
 </ul>
 <p style="margin:0 0 12px;line-height:1.9;">出典：<a href="https://support.claude.com/en/articles/12138966-release-notes" style="color:#1d4ed8;word-break:break-all;">https://support.claude.com/en/articles/12138966-release-notes</a></p>
 <hr style="border:0;border-top:1px solid #e3e3e3;margin:24px 0;">
+
+<div id="report" style="margin:32px 0 8px;padding:18px 20px;border:2px solid #c8a24a;border-radius:8px;background:#fffdf5;">
+  <h3 style="font-size:16px;margin:0 0 8px;line-height:1.5;">今週の報告を送る（30秒）</h3>
+  <p style="margin:0 0 10px;line-height:1.8;font-size:14px;color:#555555;">上の「できたかの確認」のチェックと、下の1行が、そのままメールの本文になります。「できた／詰まった」と1行で十分です。返信の義務はありません。詰まった点には、次の週のメールで答えます。<br>
+  メールで読んでいる方は、ブラウザで開くとチェックがそのまま本文になります：<a href="https://mgomita-ui.github.io/hatarakikata4-lp/bootcamp/drills/week10.html#report" style="color:#1d4ed8;word-break:break-all;">https://mgomita-ui.github.io/hatarakikata4-lp/bootcamp/drills/week10.html#report</a></p>
+  <div style="margin:0 0 10px;font-size:14px;">
+    <label style="margin-right:18px;cursor:pointer;"><input type="radio" name="result" value="できた" checked> できた</label>
+    <label style="cursor:pointer;"><input type="radio" name="result" value="詰まった"> 詰まった</label>
+  </div>
+  <textarea id="note" rows="2" placeholder="1行の記録（例：見積3つできた。消費税の聞き返しが来なかった）" style="width:100%;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;font-size:14px;line-height:1.7;padding:8px 10px;border:1px solid #e3e3e3;border-radius:6px;background:#ffffff;"></textarea>
+  <div style="margin-top:12px;">
+    <a id="sendBtn" href="mailto:m.gomita@canvas-sr.jp?subject=%5B%E3%83%89%E3%83%AA%E3%83%AB%E5%A0%B1%E5%91%8A%5D%20%E7%AC%AC10%E9%80%B1&amp;body=%E7%B5%90%E6%9E%9C%EF%BC%9A%E3%81%A7%E3%81%8D%E3%81%9F%EF%BC%8F%E8%A9%B0%E3%81%BE%E3%81%A3%E3%81%9F%EF%BC%88%E3%81%A9%E3%81%A1%E3%82%89%E3%81%8B%E3%82%92%E6%AE%8B%E3%81%99%EF%BC%89%0D%0A1%E8%A1%8C%E3%81%AE%E8%A8%98%E9%8C%B2%EF%BC%9A%0D%0A" style="display:inline-block;background:#1a1a1a;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:6px;font-size:14px;">今週の報告を送る</a>
+    <span style="font-size:12px;color:#555555;margin-left:10px;">メール作成画面が開きます。送信するのは、あなたです。</span>
+  </div>
+  <div id="fallback" hidden style="margin-top:12px;font-size:13px;color:#555555;line-height:1.7;">画面が開かないときは、下の本文をコピーして <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> へ送ってください。<br>
+  <textarea id="bodyOut" rows="8" readonly style="width:100%;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;font-size:14px;line-height:1.7;padding:8px 10px;border:1px solid #e3e3e3;border-radius:6px;background:#ffffff;margin-top:6px;"></textarea></div>
+</div>
+<script>
+(function(){
+  var btn = document.getElementById('sendBtn');
+  if (!btn) { return; }
+  var HEAD = "[ドリル報告] 第10週　人・AI・専門家の三列";
+  var SUBJECT = "[ドリル報告] 第10週";
+  var TO = "m.gomita@canvas-sr.jp";
+  function build(){
+    var lines = [HEAD, ''];
+    var r = document.querySelector('input[name="result"]:checked');
+    lines.push('結果：' + (r ? r.value : '未選択'));
+    var note = (document.getElementById('note').value || '').replace(/\s+/g, ' ').trim();
+    lines.push('1行の記録：' + (note || '（未記入）'));
+    lines.push('');
+    lines.push('できたかの確認：');
+    var chks = document.querySelectorAll('input.chk');
+    for (var i = 0; i < chks.length; i++) {
+      lines.push((chks[i].checked ? '[x] ' : '[ ] ') + chks[i].getAttribute('data-label'));
+    }
+    lines.push('');
+    lines.push('ページ：' + location.href);
+    return lines.join('\r\n');
+  }
+  btn.addEventListener('click', function(){
+    var body = build();
+    btn.href = 'mailto:' + TO + '?subject=' + encodeURIComponent(SUBJECT) + '&body=' + encodeURIComponent(body);
+    document.getElementById('bodyOut').value = body;
+    document.getElementById('fallback').hidden = false;
+  });
+})();
+</script>
+
 </td></tr>
 <tr><td style="padding:18px 28px 24px;border-top:1px solid #e3e3e3;font-size:12px;color:#555555;line-height:1.8;">
-  このドリルは、AI の新機能や仕様変更に合わせて改定しています（最終更新：2026年9月6日）。<br>
-  詰まった点は、月次1on1でお持ちください。ご質問は <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> まで。<br>
+  このドリルは、AI の新機能や仕様変更に合わせて改定しています（最終更新：2026年9月17日）。<br>
+  詰まった点は、上の「今週の報告を送る」から。月次1on1でもお持ちください。ご質問は <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> まで。<br>
   記載の所要時間は当プログラムの設計値です。効果を保証するものではありません。Claude Code、Codex、Claude、MCP はそれぞれの権利者の商標または名称です。<br>
   © 2026 レリック社会保険労務士法人
 </td></tr>

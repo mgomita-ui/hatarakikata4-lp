@@ -18,25 +18,58 @@
 </td></tr>
 <tr><td style="padding:8px 28px 28px;">
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">ねらい</h3>
-<p style="margin:0 0 12px;line-height:1.9;">合宿の「見積3社分：3時間 → 30秒」を、自分のPCでもう一度。日本語で頼んで、動くものを作る（バイブコーディング）の型を体に入れます。返ってきた見積は完成品ではなく、たたき台です。</p>
+<p style="margin:0 0 12px;line-height:1.9;">研修当日の「見積3社分：半日がかり → その場で」を、自分のPCでもう一度。日本語で頼んで、動くものを作る（バイブコーディング）の型を体に入れます。当日は講師の実演のあとに一度やっています。今度は、聞き返しに自分で答えるところまで一人で。返ってきた見積は完成品ではなく、たたき台です。</p>
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">15分の手順</h3>
-<table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">時間</th><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">すること</th></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">0〜2分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">ai-drill</code> で <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">claude</code> を動かす。第1週の CSV があることを確かめる</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">2〜8分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;">下のプロンプトで、見積3社分を Excel で作ってもらう。<strong>聞き返しが来たら答える</strong></td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">8〜12分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>確かめる</strong>：3ファイルできたか。1社だけ、合計を電卓で照合する</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">12〜14分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>直す</strong>：足りない行（有効期限・支払条件）を足してもらう</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">14〜15分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>記録</strong>：<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">drill_log.md</code> に1行</td></tr></table>
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;"><tr><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">時間</th><th align="left" style="padding:8px 10px;border-bottom:2px solid #1a1a1a;font-weight:700;">すること</th></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">0〜2分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">ai-drill</code> で <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">claude</code> を動かす。受注データ.csv があることを確かめる</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">2〜8分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;">下のプロンプトで、見積3社分を Excel で作ってもらう。<strong>聞き返しが来たら答える</strong></td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">8〜12分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>確かめる</strong>：3ファイルできたか。1社だけ、合計を電卓で照合する</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">12〜13分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>直す</strong>：足りない行（有効期限・支払条件）を足してもらう</td></tr><tr><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;white-space:nowrap;color:#555555;">13〜15分</td><td style="padding:8px 10px;border-bottom:1px solid #e3e3e3;vertical-align:top;"><strong>記録とダッシュボード（2分）</strong>：<code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">drill_log.md</code> に1行。ダッシュボードに1枚足す（下記）</td></tr></table>
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">使うプロンプト例</h3>
 <pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">受注データ.csv の直近1か月から、受注の多い顧客を3社選んで、
 それぞれの見積のたたき台を Excel（.xlsx）で3ファイル作って。
 項目は「品目・数量・単価・小計・消費税・合計」。単価は CSV の単価を使う。
+研修当日の見積ファイルが残っていれば上書きせず、ファイル名の末尾に _w2 を付けて。
 作る前に、分からない点（消費税率、宛名の形式、有効期限）を先に私に聞き返して。</pre>
 <p style="margin:0 0 12px;line-height:1.9;">直すとき：</p>
 <pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">3ファイルとも、合計の下に「有効期限：発行日から30日」「支払条件：月末締め翌月末払い」の2行を足して。
 数字は変えないで。</pre>
+<h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">ダッシュボードに1枚足す</h3>
+<p style="margin:0 0 12px;line-height:1.9;">その週の結論と数字が、ダッシュボードの「受注と見積」に入ります。</p>
+<pre style="font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.7;background:#f1f1ee;border:1px solid #e3e3e3;border-radius:6px;padding:12px 14px;margin:10px 0 14px;white-space:pre-wrap;word-break:break-all;overflow-x:auto;">今週（第2週）のドリルの結果を、ダッシュボードに1枚足して。
+
+作る前に、次の4つを先に私に見せて、私の答えを待って。
+① 結論（1〜2文）
+② 数字（4つまで。どのファイルのどの行・どの列から取ったか。計算した数字は計算式も）
+顧客名・個人名は、前提メモの「名前の扱い」に従う。
+③ 次の一手（何を、誰が、いつまでに）
+④ 人が決めること（1つの問い）と、いまの状態（未決・決定・保留）
+専門家（社労士・税理士・弁護士）に確かめた方がよい点があれば、それも1つだけ挙げて。無ければ挙げない。
+
+私が「OK」と言ったら、ファイルを読み直さずに、見せた内容のまま、次の2つだけを行って。
+・dashboard/data/w（2桁の週番号）-（今の日付と時刻 YYYYMMDD-HHMM）.js を新しく作る
+・dashboard/index.html の「WEEKS:END」の行のすぐ上に、&lt;script src="data/そのファイル名"&gt;&lt;/script&gt; を1行足す
+既にあるファイルは書き換えない・消さない。同じ週をやり直したときも、新しい日時のファイルを足す（新しいものが表示される）。
+
+ファイルの形（この形のまま埋める）
+DASH.add({
+  week: 2,
+  date: "YYYY-MM-DD HH:MM",
+  practice: （練習データなら true、自社の数字なら false）,
+  title: "",
+  conclusion: "",
+  numbers: [ { label: "", value: 数字, unit: "", note: "" } ],
+  source: "",
+  next: { action: "", owner: "", due: "" },
+  decision: { status: "（未決／決定／保留）", question: "", note: "" },
+  expert: { topic: "", question: "" }
+});
+専門家に確かめる点が無ければ、expert の行は入れない。</pre>
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">できたかの確認</h3>
 <ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
-<li style="margin:2px 0;">☐ 作る前に、AI から聞き返しが来た（来なければ、「先に聞き返して」を CLAUDE.md に足す）</li>
-<li style="margin:2px 0;">☐ <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">.xlsx</code> が3つできた</li>
-<li style="margin:2px 0;">☐ 1社分の合計が、電卓の結果と一致した</li>
-<li style="margin:2px 0;">☐ 「たたき台」として受け取り、自分で確かめた箇所が言える</li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label="作る前に、AI から聞き返しが来た（来なければ、「先に聞き返して」を CLAUDE.md に足す）" style="margin:7px 0 0;flex:none;"><span>作る前に、AI から聞き返しが来た（来なければ、「先に聞き返して」を CLAUDE.md に足す）</span></label></li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label=".xlsx が3つできた" style="margin:7px 0 0;flex:none;"><span><code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">.xlsx</code> が3つできた</span></label></li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label="1社分の合計が、電卓の結果と一致した" style="margin:7px 0 0;flex:none;"><span>1社分の合計が、電卓の結果と一致した</span></label></li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label="「たたき台」として受け取り、自分で確かめた箇所が言える" style="margin:7px 0 0;flex:none;"><span>「たたき台」として受け取り、自分で確かめた箇所が言える</span></label></li>
+<li style="list-style:none;margin:4px 0 4px -22px;"><label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" class="chk" data-label="ダッシュボードの進み具合が1つ増えた（第2週の点線が消えた）" style="margin:7px 0 0;flex:none;"><span>ダッシュボードの進み具合が1つ増えた（第2週の点線が消えた）</span></label></li>
 </ul>
-<p style="margin:0 0 12px;line-height:1.9;"><strong>今週のAI係数</strong>：聞き返した（作る前に分からない点を聞き返させる）／前提を出させた</p>
+<p style="margin:0 0 12px;line-height:1.9;"><strong>今週の5つの動き</strong>：聞き返した（作る前に分からない点を聞き返させる）／前提を出させた</p>
 <h3 style="font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid #c8a24a;line-height:1.5;">今週の変更点（2026年9月6日時点）</h3>
 <ul style="margin:6px 0 14px;padding-left:22px;line-height:1.9;">
 <li style="margin:2px 0;"><strong>Claude の新しいモデル「Claude Fable 5.1」が出ました。</strong> 一度に読める量が大きくなり（100万トークン）、1年分の受注 CSV を丸ごと渡しても読めます。Claude Code の <code style="font-family:Consolas,'Courier New',monospace;background:#f1f1ee;padding:1px 4px;border-radius:3px;font-size:13px;">/model</code> で選べます。（2026年9月1日）</li>
@@ -47,10 +80,59 @@
 </ul>
 <p style="margin:0 0 12px;line-height:1.9;">出典：<a href="https://developers.openai.com/codex/changelog" style="color:#1d4ed8;word-break:break-all;">https://developers.openai.com/codex/changelog</a></p>
 <hr style="border:0;border-top:1px solid #e3e3e3;margin:24px 0;">
+
+<div id="report" style="margin:32px 0 8px;padding:18px 20px;border:2px solid #c8a24a;border-radius:8px;background:#fffdf5;">
+  <h3 style="font-size:16px;margin:0 0 8px;line-height:1.5;">今週の報告を送る（30秒）</h3>
+  <p style="margin:0 0 10px;line-height:1.8;font-size:14px;color:#555555;">上の「できたかの確認」のチェックと、下の1行が、そのままメールの本文になります。「できた／詰まった」と1行で十分です。返信の義務はありません。詰まった点には、次の週のメールで答えます。<br>
+  メールで読んでいる方は、ブラウザで開くとチェックがそのまま本文になります：<a href="https://mgomita-ui.github.io/hatarakikata4-lp/bootcamp/drills/week02.html#report" style="color:#1d4ed8;word-break:break-all;">https://mgomita-ui.github.io/hatarakikata4-lp/bootcamp/drills/week02.html#report</a></p>
+  <div style="margin:0 0 10px;font-size:14px;">
+    <label style="margin-right:18px;cursor:pointer;"><input type="radio" name="result" value="できた" checked> できた</label>
+    <label style="cursor:pointer;"><input type="radio" name="result" value="詰まった"> 詰まった</label>
+  </div>
+  <textarea id="note" rows="2" placeholder="1行の記録（例：見積3つできた。消費税の聞き返しが来なかった）" style="width:100%;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;font-size:14px;line-height:1.7;padding:8px 10px;border:1px solid #e3e3e3;border-radius:6px;background:#ffffff;"></textarea>
+  <div style="margin-top:12px;">
+    <a id="sendBtn" href="mailto:m.gomita@canvas-sr.jp?subject=%5B%E3%83%89%E3%83%AA%E3%83%AB%E5%A0%B1%E5%91%8A%5D%20%E7%AC%AC2%E9%80%B1&amp;body=%E7%B5%90%E6%9E%9C%EF%BC%9A%E3%81%A7%E3%81%8D%E3%81%9F%EF%BC%8F%E8%A9%B0%E3%81%BE%E3%81%A3%E3%81%9F%EF%BC%88%E3%81%A9%E3%81%A1%E3%82%89%E3%81%8B%E3%82%92%E6%AE%8B%E3%81%99%EF%BC%89%0D%0A1%E8%A1%8C%E3%81%AE%E8%A8%98%E9%8C%B2%EF%BC%9A%0D%0A" style="display:inline-block;background:#1a1a1a;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:6px;font-size:14px;">今週の報告を送る</a>
+    <span style="font-size:12px;color:#555555;margin-left:10px;">メール作成画面が開きます。送信するのは、あなたです。</span>
+  </div>
+  <div id="fallback" hidden style="margin-top:12px;font-size:13px;color:#555555;line-height:1.7;">画面が開かないときは、下の本文をコピーして <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> へ送ってください。<br>
+  <textarea id="bodyOut" rows="8" readonly style="width:100%;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;font-size:14px;line-height:1.7;padding:8px 10px;border:1px solid #e3e3e3;border-radius:6px;background:#ffffff;margin-top:6px;"></textarea></div>
+</div>
+<script>
+(function(){
+  var btn = document.getElementById('sendBtn');
+  if (!btn) { return; }
+  var HEAD = "[ドリル報告] 第2週　見積3社分のたたき台（バイブコーディング）";
+  var SUBJECT = "[ドリル報告] 第2週";
+  var TO = "m.gomita@canvas-sr.jp";
+  function build(){
+    var lines = [HEAD, ''];
+    var r = document.querySelector('input[name="result"]:checked');
+    lines.push('結果：' + (r ? r.value : '未選択'));
+    var note = (document.getElementById('note').value || '').replace(/\s+/g, ' ').trim();
+    lines.push('1行の記録：' + (note || '（未記入）'));
+    lines.push('');
+    lines.push('できたかの確認：');
+    var chks = document.querySelectorAll('input.chk');
+    for (var i = 0; i < chks.length; i++) {
+      lines.push((chks[i].checked ? '[x] ' : '[ ] ') + chks[i].getAttribute('data-label'));
+    }
+    lines.push('');
+    lines.push('ページ：' + location.href);
+    return lines.join('\r\n');
+  }
+  btn.addEventListener('click', function(){
+    var body = build();
+    btn.href = 'mailto:' + TO + '?subject=' + encodeURIComponent(SUBJECT) + '&body=' + encodeURIComponent(body);
+    document.getElementById('bodyOut').value = body;
+    document.getElementById('fallback').hidden = false;
+  });
+})();
+</script>
+
 </td></tr>
 <tr><td style="padding:18px 28px 24px;border-top:1px solid #e3e3e3;font-size:12px;color:#555555;line-height:1.8;">
-  このドリルは、AI の新機能や仕様変更に合わせて改定しています（最終更新：2026年9月6日）。<br>
-  詰まった点は、月次1on1でお持ちください。ご質問は <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> まで。<br>
+  このドリルは、AI の新機能や仕様変更に合わせて改定しています（最終更新：2026年9月17日）。<br>
+  詰まった点は、上の「今週の報告を送る」から。月次1on1でもお持ちください。ご質問は <a href="mailto:m.gomita@canvas-sr.jp" style="color:#1d4ed8;">m.gomita@canvas-sr.jp</a> まで。<br>
   記載の所要時間は当プログラムの設計値です。効果を保証するものではありません。Claude Code、Codex、Claude、MCP はそれぞれの権利者の商標または名称です。<br>
   © 2026 レリック社会保険労務士法人
 </td></tr>

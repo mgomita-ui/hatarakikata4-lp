@@ -1,13 +1,24 @@
 # -*- coding: utf-8 -*-
-"""drills_12weeks.md → 配信用 HTML メール本文（1回ずつ）を生成する。
+"""drills_12weeks.md → 配信用 HTML（1回ずつ）を生成する。
 
 使い方:  python build_drills.py
-出力:    week00_intro.html, week01.html … week12.html, index.html
+出力:    week00_intro.html, week01.html … week12.html, index.html, all.html
 方針:    プレーンな HTML。外部 CSS・JS・画像なし。インラインスタイルのみ。
+         各週ページの末尾に「今週の報告を送る」（同一ファイル内の JS で mailto を組み立てる）。
+         メール本文に貼った版では JS・チェック・記入欄が落ちるので、ボタンの静的 href にも
+         件名＋2行の本文（結果／1行の記録）を持たせ、週ページ（Web）への案内を1行添える。
+         禁止語 lint を原本と生成物の両方にかけ、見つかれば例外で止まる（ファイルは書かない）。
+         禁止語のリストは tools/weekly_update.py の FORBIDDEN と同じにしておく。
 """
 import html
+import json
 import re
+import sys
 from pathlib import Path
+from urllib.parse import quote
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 
 HERE = Path(__file__).parent
 SRC = HERE / "drills_12weeks.md"
@@ -25,11 +36,51 @@ MONO = "Consolas,'Courier New',monospace"
 ORG = "レリック社会保険労務士法人"
 SERIES = "帰ってからも伸びる：毎週届く15分のドリル"
 CONTACT = "m.gomita@canvas-sr.jp"
-UPDATED = "2026年9月6日"
+PAGE_URL = "https://mgomita-ui.github.io/hatarakikata4-lp/bootcamp/drills/"   # 公開先（週ページのURLの土台）
+UPDATED = "2026年9月17日"
+
+# ---- 禁止語（言い回しの決まり）。部分一致・大文字小文字は区別する ----
+#   「質疑」の「疑」、「講座」の「座」を誤検出しないよう、単体ではなく活用形で見る。
+#   後半は 3時間版への言い換えで消した語（設計書 §0・§1）。差し戻りがあれば build で止まる。
+#   tools/weekly_update.py の FORBIDDEN と同じリストにしておくこと。
+BANNED = [
+    "疑う", "疑い", "疑っ",
+    "座る", "座っ",
+    "打つ", "打って", "打った",
+    "使い倒",
+    "部下",
+    "ChatGPT", "Gemini",
+    "補助金",
+    "社外に出ない",
+    "5時間", "合宿", "AI係数", "駅ナカ",
+]
+
+
+class BannedWordError(Exception):
+    pass
+
+
+def lint(text: str, name: str) -> None:
+    hits = []
+    for no, ln in enumerate(text.splitlines(), 1):
+        for w in BANNED:
+            if w in ln:
+                hits.append(f"  {name}:{no}  「{w}」  {ln.strip()[:80]}")
+    if hits:
+        raise BannedWordError("禁止語が見つかりました。build を中止します。\n" + "\n".join(hits))
 
 
 def esc(t: str) -> str:
     return html.escape(t, quote=False)
+
+
+def attr(t: str) -> str:
+    return html.escape(t, quote=True)
+
+
+def plain(t: str) -> str:
+    """Markdown の装飾（太字・インラインコード）を外した素の文。"""
+    return re.sub(r"[`*]", "", t)
 
 
 def inline(t: str) -> str:
@@ -135,8 +186,16 @@ def md_to_html(md: str) -> str:
                 body = re.sub(r"^\s*(-|\d+\.)\s+", "", it)
                 cb = re.match(r"^\[( |x)\]\s+(.*)$", body)
                 if cb:
-                    box = "☑" if cb.group(1) == "x" else "☐"
-                    body = f"{box} {cb.group(2)}"
+                    # 「できたかの確認」：押せるチェック。報告メールの本文に状態が入る
+                    label = cb.group(2)
+                    checked = " checked" if cb.group(1) == "x" else ""
+                    out.append(
+                        f'<li style="list-style:none;margin:4px 0 4px -22px;">'
+                        f'<label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;">'
+                        f'<input type="checkbox" class="chk" data-label="{attr(plain(label))}"{checked} style="margin:7px 0 0;flex:none;">'
+                        f'<span>{inline(label)}</span></label></li>'
+                    )
+                    continue
                 style = "margin:2px 0;"
                 if indent >= 2:
                     style += "list-style:none;margin-left:6px;color:" + SUB + ";"
@@ -154,11 +213,83 @@ def md_to_html(md: str) -> str:
     return "\n".join(out)
 
 
-def wrap(title: str, kicker: str, body_html: str, week_no: int | None) -> str:
+REPORT_JS = r"""
+(function(){
+  var btn = document.getElementById('sendBtn');
+  if (!btn) { return; }
+  var HEAD = __HEAD__;
+  var SUBJECT = __SUBJECT__;
+  var TO = __TO__;
+  function build(){
+    var lines = [HEAD, ''];
+    var r = document.querySelector('input[name="result"]:checked');
+    lines.push('結果：' + (r ? r.value : '未選択'));
+    var note = (document.getElementById('note').value || '').replace(/\s+/g, ' ').trim();
+    lines.push('1行の記録：' + (note || '（未記入）'));
+    lines.push('');
+    lines.push('できたかの確認：');
+    var chks = document.querySelectorAll('input.chk');
+    for (var i = 0; i < chks.length; i++) {
+      lines.push((chks[i].checked ? '[x] ' : '[ ] ') + chks[i].getAttribute('data-label'));
+    }
+    lines.push('');
+    lines.push('ページ：' + location.href);
+    return lines.join('\r\n');
+  }
+  btn.addEventListener('click', function(){
+    var body = build();
+    btn.href = 'mailto:' + TO + '?subject=' + encodeURIComponent(SUBJECT) + '&body=' + encodeURIComponent(body);
+    document.getElementById('bodyOut').value = body;
+    document.getElementById('fallback').hidden = false;
+  });
+})();
+"""
+
+
+def report_block(week_no: int, title: str, fn: str) -> str:
+    subject = f"[ドリル報告] 第{week_no}週"
+    head = f"{subject}　{title}"
+    # 静的 href：メール本文に貼った版（JS が動かない）から押しても、件名＋2行の本文が入る。
+    # 週ページ（Web）から押したときは JS がチェック内容つきの本文に差し替える。
+    static_body = "結果：できた／詰まった（どちらかを残す）\r\n1行の記録：\r\n"
+    href = f"mailto:{CONTACT}?subject={quote(subject)}&body={quote(static_body)}"
+    page = f"{PAGE_URL}{fn}#report"
+    js = (
+        REPORT_JS.replace("__HEAD__", json.dumps(head, ensure_ascii=False))
+        .replace("__SUBJECT__", json.dumps(subject, ensure_ascii=False))
+        .replace("__TO__", json.dumps(CONTACT))
+    )
+    field = f"width:100%;box-sizing:border-box;font-family:{FONT};font-size:14px;line-height:1.7;padding:8px 10px;border:1px solid {LINE};border-radius:6px;background:#ffffff;"
+    return f"""
+<div id="report" style="margin:32px 0 8px;padding:18px 20px;border:2px solid {ACCENT};border-radius:8px;background:#fffdf5;">
+  <h3 style="font-size:16px;margin:0 0 8px;line-height:1.5;">今週の報告を送る（30秒）</h3>
+  <p style="margin:0 0 10px;line-height:1.8;font-size:14px;color:{SUB};">上の「できたかの確認」のチェックと、下の1行が、そのままメールの本文になります。「できた／詰まった」と1行で十分です。返信の義務はありません。詰まった点には、次の週のメールで答えます。<br>
+  メールで読んでいる方は、ブラウザで開くとチェックがそのまま本文になります：<a href="{page}" style="color:#1d4ed8;word-break:break-all;">{page}</a></p>
+  <div style="margin:0 0 10px;font-size:14px;">
+    <label style="margin-right:18px;cursor:pointer;"><input type="radio" name="result" value="できた" checked> できた</label>
+    <label style="cursor:pointer;"><input type="radio" name="result" value="詰まった"> 詰まった</label>
+  </div>
+  <textarea id="note" rows="2" placeholder="1行の記録（例：見積3つできた。消費税の聞き返しが来なかった）" style="{field}"></textarea>
+  <div style="margin-top:12px;">
+    <a id="sendBtn" href="{attr(href)}" style="display:inline-block;background:{INK};color:#ffffff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:6px;font-size:14px;">今週の報告を送る</a>
+    <span style="font-size:12px;color:{SUB};margin-left:10px;">メール作成画面が開きます。送信するのは、あなたです。</span>
+  </div>
+  <div id="fallback" hidden style="margin-top:12px;font-size:13px;color:{SUB};line-height:1.7;">画面が開かないときは、下の本文をコピーして <a href="mailto:{CONTACT}" style="color:#1d4ed8;">{CONTACT}</a> へ送ってください。<br>
+  <textarea id="bodyOut" rows="8" readonly style="{field}margin-top:6px;"></textarea></div>
+</div>
+<script>{js}</script>
+"""
+
+
+def wrap(title: str, kicker: str, body_html: str, week_no: int | None, extra_html: str = "") -> str:
     badge = f'<div style="font-size:13px;letter-spacing:.12em;color:{ACCENT};font-weight:700;">{esc(kicker)}</div>'
     weekline = ""
     if week_no is not None:
         weekline = f'<div style="font-size:40px;font-weight:800;line-height:1;margin:6px 0 4px;">第{week_no}週</div>'
+    if week_no is not None:
+        stuck = "詰まった点は、上の「今週の報告を送る」から。月次1on1でもお持ちください。"
+    else:
+        stuck = "詰まった点は、各週ページの「今週の報告を送る」から。月次1on1でもお持ちください。"
     return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -179,10 +310,11 @@ def wrap(title: str, kicker: str, body_html: str, week_no: int | None) -> str:
 </td></tr>
 <tr><td style="padding:8px 28px 28px;">
 {body_html}
+{extra_html}
 </td></tr>
 <tr><td style="padding:18px 28px 24px;border-top:1px solid {LINE};font-size:12px;color:{SUB};line-height:1.8;">
   このドリルは、AI の新機能や仕様変更に合わせて改定しています（最終更新：{esc(UPDATED)}）。<br>
-  詰まった点は、月次1on1でお持ちください。ご質問は <a href="mailto:{CONTACT}" style="color:#1d4ed8;">{CONTACT}</a> まで。<br>
+  {stuck}ご質問は <a href="mailto:{CONTACT}" style="color:#1d4ed8;">{CONTACT}</a> まで。<br>
   記載の所要時間は当プログラムの設計値です。効果を保証するものではありません。Claude Code、Codex、Claude、MCP はそれぞれの権利者の商標または名称です。<br>
   © 2026 {esc(ORG)}
 </td></tr>
@@ -194,8 +326,15 @@ def wrap(title: str, kicker: str, body_html: str, week_no: int | None) -> str:
 """
 
 
+def write_html(fn: str, content: str) -> None:
+    lint(content, fn)
+    (HERE / fn).write_text(content, encoding="utf-8")
+
+
 def main():
     md = SRC.read_text(encoding="utf-8")
+    # 原本の禁止語チェック（ここで止まれば何も書かない）
+    lint(md, SRC.name)
     # 本文の最初の H1 は捨てる
     md = re.sub(r"^# .*\n", "", md, count=1)
     # 週ごとに分割
@@ -217,17 +356,17 @@ def main():
     intro_md = intro.replace("## このドリルの使い方", "### このドリルの使い方")
     intro_md = re.sub(r"(?m)^---\s*$", "", intro_md)
     intro_html = md_to_html(intro_md + "\n" + appendix.replace("## 付録", "### 付録"))
-    (HERE / "week00_intro.html").write_text(
-        wrap("はじめに：使い方と、最初の準備（10分）", "WEEKLY DRILL ｜ WEEK 0", intro_html, None), encoding="utf-8"
+    write_html(
+        "week00_intro.html",
+        wrap("はじめに：使い方と、最初の準備（10分）", "WEEKLY DRILL ｜ WEEK 0", intro_html, None),
     )
 
-    base = "https://mgomita-ui.github.io/hatarakikata4-lp/bootcamp/drills/"
     rows = []
     all_parts = [f'<h2 style="font-size:20px;margin:28px 0 10px;">第0週　はじめに：使い方と、最初の準備（10分）</h2>', intro_html]
     for num, title, body in weeks:
         body_html = md_to_html(body)
         fn = f"week{num:02d}.html"
-        (HERE / fn).write_text(wrap(title, f"WEEKLY DRILL ｜ WEEK {num}", body_html, num), encoding="utf-8")
+        write_html(fn, wrap(title, f"WEEKLY DRILL ｜ WEEK {num}", body_html, num, report_block(num, title, fn)))
         aim = re.search(r"### ねらい\n\n(.+?)\n", body)
         aim_txt = aim.group(1).strip() if aim else ""
         rows.append(
@@ -241,20 +380,22 @@ def main():
 
     index = (
         f'<p style="line-height:1.9;">ブートキャンプの受講者に、毎週月曜の朝に1回ずつ届く15分のドリルです。'
-        f'型はいつも「頼む → 動かす → 確かめる → 直す」。合宿の3つの約束'
-        f'（Claude Code と Codex が自分のPCで動く／MCP で自社の数字につながる／計算は Codex、文章は Claude）と揃えてあります。</p>'
+        f'型はいつも「頼む → 動かす → 確かめる → 直す」。研修の3つの約束'
+        f'（Claude Code と Codex が、自分のPCで動く／AIが、会社のシステムにつながって動かす／人がすること・AIがすること・専門家がすることの線が引ける）と揃えてあります。'
+        f'各週の末尾の「今週の報告を送る」で、できた／詰まったを1行で知らせてください。</p>'
         f'<p style="line-height:1.9;"><a href="week00_intro.html" style="color:#1d4ed8;font-weight:700;">第0週　はじめに：使い方と、最初の準備（10分）</a> から始めてください。</p>'
         f'<table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;margin:12px 0;font-size:15px;">{"".join(rows)}</table>'
         f'<p style="line-height:1.9;font-size:13px;color:{SUB};">全12週を1ページで読む：<a href="all.html" style="color:#1d4ed8;">all.html</a>　／　原本（Markdown）：'
         f'<a href="drills_12weeks.md" style="color:#1d4ed8;">drills_12weeks.md</a><br>'
         f'「今週の変更点」は配信週に改定します（現在は {esc(UPDATED)} 時点）。</p>'
     )
-    (HERE / "index.html").write_text(wrap("毎週届く、15分のドリル", "WEEKLY DRILL ｜ 全12週", index, None), encoding="utf-8")
+    write_html("index.html", wrap("毎週届く、15分のドリル", "WEEKLY DRILL ｜ 全12週", index, None))
     toc = "".join(f'<li><a href="#week{n:02d}" style="color:#1d4ed8;">第{n}週　{esc(t)}</a></li>' for n, t, _ in weeks)
-    all_html = f'<p style="line-height:1.9;">全12週を1ページにまとめた版です。<a href="index.html" style="color:#1d4ed8;">週ごとのページ一覧はこちら</a>。</p><ol style="line-height:2;padding-left:22px;">{toc}</ol>' + "\n".join(all_parts)
-    (HERE / "all.html").write_text(wrap("毎週届く、15分のドリル（全12週・通し）", "WEEKLY DRILL ｜ ALL", all_html, None), encoding="utf-8")
+    all_html = f'<p style="line-height:1.9;">全12週を1ページにまとめた版です。<a href="index.html" style="color:#1d4ed8;">週ごとのページ一覧はこちら</a>。報告は各週のページから送れます。</p><ol style="line-height:2;padding-left:22px;">{toc}</ol>' + "\n".join(all_parts)
+    write_html("all.html", wrap("毎週届く、15分のドリル（全12週・通し）", "WEEKLY DRILL ｜ ALL", all_html, None))
     print("wrote index.html, all.html, week00_intro.html")
+    print("lint: ok（禁止語なし）")
 
 
 if __name__ == "__main__":
-    main()
+    main()  # 禁止語があれば BannedWordError で止まる（終了コード 1）
