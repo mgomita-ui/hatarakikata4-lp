@@ -928,6 +928,41 @@
   .concl:before{content:"";position:absolute;top:-40%;left:-20%;width:40%;height:180%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.08),transparent);transform:skewX(-20deg);animation:sheen 6s ease-in-out infinite}
   @keyframes sheen{0%,70%{left:-40%}100%{left:130%}}
   @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.hero h1 .ch,.hero .q,.hero .sub,.hero .cta,.hero .facts,.hero .firm,.hero .eb{animation:none;opacity:1;transform:none}.tilt{transform:none!important}.sort span,.tl .bar div{opacity:1;transform:none;animation:none}.wire .src span,.wire .arr:after,.wire .hub,.concl:before{animation:none}}
+
+/* 新CHAP.02：3つの到達点が、これほしの土台になる（2026-10-03） */
+.kh-link{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+.kh-link .c{display:flex;flex-direction:column;align-items:stretch}
+.kh-link .up{background:var(--green-deep);color:#fff;border-radius:12px;padding:14px 16px;min-height:98px}
+.kh-link .up small{display:block;font-family:Poppins,sans-serif;font-size:12px;color:#8FE0C4;letter-spacing:.08em}
+.kh-link .up b{display:block;font-size:16px;line-height:1.45;margin-top:2px}
+.kh-link .wire{width:0;height:34px;align-self:center;border-left:3px solid var(--green);position:relative}
+.kh-link .wire:after{content:"";position:absolute;left:-7.5px;bottom:-4px;border:6px solid transparent;border-top:8px solid var(--green)}
+.kh-link .dn{background:var(--green-soft);border:1.5px solid var(--green);border-radius:12px;padding:14px 16px;flex:1}
+.kh-link .dn b{display:block;font-size:16px;color:var(--green-deep);line-height:1.45}
+.kh-link .dn span{display:block;font-size:13.5px;color:var(--ink-2);margin-top:4px;line-height:1.6}
+.kh-flow{margin-top:26px;background:var(--mint);border-radius:14px;padding:18px;display:grid;grid-template-columns:auto 30px 1.2fr 30px 1fr 30px 1.1fr;align-items:center}
+.kh-flow .src{display:flex;flex-direction:column;gap:6px}
+.kh-flow .src span{font-size:13px;font-weight:700;background:#fff;border:1px solid var(--line);border-radius:6px;padding:5px 10px;text-align:center}
+.kh-flow .ar{text-align:center;color:var(--green);font-weight:900}
+.kh-flow .box{border-radius:10px;padding:12px;text-align:center;font-size:14px;line-height:1.5;background:#fff}
+.kh-flow .box b{display:block;font-size:15px}
+.kh-flow .ai{border:1.5px solid var(--slate);color:var(--slate)}
+.kh-flow .hu{border:1.5px solid var(--gold);color:var(--gold)}
+.kh-flow .out{display:flex;flex-direction:column;gap:6px}
+.kh-flow .out span{font-size:13px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:5px 10px}
+.kh-sup{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.kh-sup div{border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:14px;color:var(--ink-2);background:#fff}
+.kh-sup div b{display:block;font-size:15px;color:var(--green-deep)}
+.kh-note{margin-top:14px;font-size:13.5px;color:var(--ink-3)}
+.kh-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+@media(max-width:860px){
+  .kh-link{grid-template-columns:1fr;gap:14px}
+  .kh-link .up{min-height:0}
+  .kh-flow{grid-template-columns:1fr;gap:6px}
+  .kh-flow .ar{transform:rotate(90deg)}
+  .kh-flow .src,.kh-flow .out{flex-direction:row;flex-wrap:wrap;justify-content:center}
+  .kh-sup{grid-template-columns:1fr}
+}
 </style>
 
 <div class="ribbon rb-tl" aria-hidden="true"><svg viewBox="0 0 560 420"><path d="M-40 60 C120 -20 260 40 330 140 C400 240 330 380 120 420 L-40 420Z" fill="#14A07A" opacity=".85"/><path d="M-40 140 C90 60 210 100 250 190 C290 280 220 380 60 420 L-40 420Z" fill="#0F5F52" opacity=".9"/><path d="M-40 230 C60 190 130 220 150 290 C170 360 110 410 20 420 L-40 420Z" fill="#8FE0C4" opacity=".55"/></svg></div>
@@ -939,7 +974,7 @@
       <span>レリック<small>社会保険労務士法人</small></span>
     </a>
     <div class="nav-links">
-      <a href="#three">できること</a><a href="#how">受け方</a><a href="#design">研修プログラム</a><a href="#onsite">助成金を使わない理由</a><a href="#spec">受講要項</a><a href="#before">申込前の確認</a><a href="#faq">Q&amp;A</a><a href="../manga2/">漫画</a>
+      <a href="#three">できること</a><a href="#korehoshi">これほし</a><a href="#how">受け方</a><a href="#design">研修プログラム</a><a href="#onsite">助成金を使わない理由</a><a href="#spec">受講要項</a><a href="#before">申込前の確認</a><a href="#faq">Q&amp;A</a><a href="../manga2/">漫画</a>
       <a class="btn btn-primary" style="padding:9px 16px;font-size:13px" href="#apply">受講を申し込む</a>
     </div>
   </div>
@@ -1040,9 +1075,41 @@
   </section>
 </div>
 
+<!-- 02 これほしの土台（2026-10-03 追加） -->
+<div class="chap" id="korehoshi">
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">02</div><h2>その3つは、毎日の連絡を任せる準備になる</h2><p>自分のPCでAIを動かし、自社の情報につなぎ、人が決める線を引く。<br><b>その土台の上で、連絡の整理と返信の準備を「これほし」に。</b></p></div><div class="r" style="background:linear-gradient(135deg,#0F5F52,#14A07A 55%,#A8762E)"></div></div>
+</div>
+<div class="page">
+  <section class="card">
+    <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h20l10 10-10 10h-6l8-8-8-8H10v28H4z" fill="#0F5F52"/><path d="M18 24l12 12h-8L12 26z" fill="#14A07A"/></svg>
+    <h2 class="one">3つの到達点が、<span class="y">これほしの土台</span>になる。</h2>
+    <p class="sub1">これほしは、LINE公式アカウント・チャットワーク・メールの連絡を1つの受信箱に集め、届いた時点でAIが要点と返信の下書きを用意する道具です。ブートキャンプは、それを使いこなすための下準備。ただし、これほしを入れることは受講の条件ではありません。研修だけでも、3つは持ち帰れます。</p>
+    <div class="kh-link">
+      <div class="c"><div class="up"><small>01</small><b>Claude Code と Codex が、自分のPCで動く</b></div><div class="wire"></div><div class="dn"><b>ふだんのAIから、受信箱を開く</b><span>コピペなしで、会話と添付を読ませる（どこでも扉）</span></div></div>
+      <div class="c"><div class="up"><small>02</small><b>AIが、会社のシステムにつながって動かす</b></div><div class="wire"></div><div class="dn"><b>受信箱と、案件の経緯につなぐ</b><span>案件ごとの「これまで」をAIが覚えて引き継ぐ（一子相伝・社長版）</span></div></div>
+      <div class="c"><div class="up"><small>03</small><b>人・AI・専門家の線が引ける</b></div><div class="wire"></div><div class="dn"><b>準備はAI、送るのは人</b><span>判断が要る案件は、専門家へ相談する</span></div></div>
+    </div>
+    <div class="kh-flow" aria-label="これほしの流れ">
+      <div class="src"><span>LINE公式</span><span>チャットワーク</span><span>メール</span></div>
+      <div class="ar">→</div>
+      <div class="box ai"><b>AIが準備する</b>要点3行と、返信の下書き</div>
+      <div class="ar">→</div>
+      <div class="box hu"><b>本人が送る</b>宛先と全文を見て</div>
+      <div class="ar">→</div>
+      <div class="out"><span>やること・相手待ち・日程が残る</span><span>朝6時、今日の段取りがLINEに</span></div>
+    </div>
+    <div class="kh-sup">
+      <div><b>受講後の3か月（受講料に含む）</b>毎週のドリル配信と月次1on1で、研修で身につけた使い方を定着させます。</div>
+      <div><b>その後も続けるなら（任意・別契約）</b>これほしの導入と、続けてのフォロー（定期配信・勉強会）。3か月の伴走が終わるときにご案内します。</div>
+    </div>
+    <p class="kh-note">研修当日につなぐのは、会計・勤怠・メールのいずれか1本です。これほしの導入・接続は、別途ご相談ください。</p>
+    <div class="kh-cta"><a class="btn btn-primary" href="https://mgomita-ui.github.io/korehoshi-site/">これほしで、連絡がどう変わるか見る</a><a class="btn btn-ghost" href="#apply">まずは御社で3時間</a></div>
+  </section>
+</div>
+
 <!-- 02 受け方 -->
 <div class="chap" id="how">
-  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">02</div><h2>受け方は、3つあります</h2><p>基本は、こちらが御社にうかがう3時間です。<br><b>日程さえ合えば、今日からでも。</b></p></div><div class="r" style="background:linear-gradient(135deg,#14A07A,#0F5F52 60%,#2E6A8A)"></div></div>
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">03</div><h2>受け方は、3つあります</h2><p>基本は、こちらが御社にうかがう3時間です。<br><b>日程さえ合えば、今日からでも。</b></p></div><div class="r" style="background:linear-gradient(135deg,#14A07A,#0F5F52 60%,#2E6A8A)"></div></div>
 </div>
 <div class="page">
   <section class="card">
@@ -1079,7 +1146,7 @@
 
 <!-- 03 助成金を使わない理由（受け方によらず共通） -->
 <div class="chap" id="onsite">
-  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">03</div><h2>あえて、助成金を使いません</h2><p>制度が悪いのではありません。<br><b>この研修には、合わないだけです。</b></p></div><div class="r" style="background:linear-gradient(135deg,#A8762E,#2E6A8A 55%,#0F5F52)"></div></div>
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">04</div><h2>あえて、助成金を使いません</h2><p>制度が悪いのではありません。<br><b>この研修には、合わないだけです。</b></p></div><div class="r" style="background:linear-gradient(135deg,#A8762E,#2E6A8A 55%,#0F5F52)"></div></div>
 </div>
 <div class="page">
   <section class="card">
@@ -1118,7 +1185,7 @@
 
 <!-- 04 3時間の中身 -->
 <div class="chap" id="design">
-  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">04</div><h2>研修プログラム</h2><p>説明はほとんどしません。ずっと手を動かす時間です。<br><b>訪問も会場の回も、3時間。</b></p></div><div class="r" style="background:linear-gradient(135deg,#1E6FC2,#2E6A8A 60%,#0F5F52)"></div></div>
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">05</div><h2>研修プログラム</h2><p>説明はほとんどしません。ずっと手を動かす時間です。<br><b>訪問も会場の回も、3時間。</b></p></div><div class="r" style="background:linear-gradient(135deg,#1E6FC2,#2E6A8A 60%,#0F5F52)"></div></div>
 </div>
 <div class="page">
   <section class="card">
@@ -1142,7 +1209,7 @@
 
 <!-- 06 受講要項 -->
 <div class="chap" id="spec">
-  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">05</div><h2>受講要項</h2><p>訪問は日程を御社に合わせます。会場の回は経営者優先枠／先着順。<br><b>次の経営は、ここから始まる。</b></p></div><div class="r"></div></div>
+  <div class="in"><div class="l"><div class="lab">CHAP.</div><div class="n">06</div><h2>受講要項</h2><p>訪問は日程を御社に合わせます。会場の回は経営者優先枠／先着順。<br><b>次の経営は、ここから始まる。</b></p></div><div class="r"></div></div>
 </div>
 <div class="page">
   <section class="card">
@@ -1170,7 +1237,7 @@
             <i><b>他社の社長と一緒に、わいわい</b><em>各自の仕事を1件持ち込みます。他社の進め方も持ち帰れます</em></i></div>
         </div>
         <p class="sn">中身は同じ3時間です。違うのは、講師が1社のために時間を取るかどうか。</p>
-        <dl><dt>対象</dt><dd>年商5〜30億円／社員10〜100名／経営者・幹部</dd><dt>持参</dt><dd>ノートPC ＋ Claude／ChatGPT／Geminiの有料アカウント（ログイン済み）</dd></dl></div>
+        <dl><dt>対象</dt><dd>年商5〜30億円／社員10〜100名／経営者・幹部</dd><dt>持参</dt><dd>ノートPC ＋ Claude と OpenAI の有料アカウント（両方・ログイン済み）</dd></dl></div>
       <div class="box"><div class="hd">受講に含まれるもの（どちらも同じ）</div><ul class="two"><li>本編（3時間）</li><li>事前ヒアリング（オンライン15〜20分）</li><li>事前のPCセットアップ（オンライン）</li><li>Claude Code 稼働環境一式（構成資料・実行コマンド）</li><li>毎週のドリル配信（3か月・AIの新機能や仕様変更に合わせて改定）</li><li>AI経営チーム設計図（CMO・CFO・CTO・CIO 4役の定義書）</li><li>90日アクションプラン</li><li>月次1on1（オンライン15分・3か月伴走）</li></ul></div>
     </div>
     <div class="keys">
@@ -1195,9 +1262,9 @@
       <div class="box"><div class="hd">受講料のほかに必要なもの</div>
         <dl>
           <dt>PC</dt><dd>ノートPC1台（社長ご自身のもの）。幹部プランは人数分</dd>
-          <dt>AIの契約</dt><dd>Claude または ChatGPT の有料アカウント1つ。月額はご負担いただきます。両方は要りません</dd>
+          <dt>AIの契約</dt><dd>Claude と OpenAI の有料アカウントを、両方ご用意ください（必須）。月額はご負担いただきます</dd>
           <dt>交通費</dt><dd>東京・大阪への訪問は受講料に含みます。その他の地域は提携講師が対応し、別途お見積りします</dd>
-          <dt>その後の費用</dt><dd>毎週のドリルと月次1on1（3か月）は受講料に含みます。FDE派遣は別サービスで、別途お見積りです</dd>
+          <dt>その後の費用</dt><dd>毎週のドリルと月次1on1（3か月）は受講料に含みます。FDE派遣は別サービスで、別途お見積りです。受信箱「これほし」を入れる場合は別契約です（通常版 設定5万円・社長版 10万円。続けてのフォローは任意で月1万円から）</dd>
         </dl>
       </div>
       <div class="box"><div class="hd">データの扱い</div>
@@ -1220,7 +1287,7 @@
     <p class="eb">Q&amp;A</p>
     <h2 class="t">よくいただくご質問</h2>
     <div class="faq">
-      <details open><summary><span class="q">Q1</span>AIをほとんど触ったことがありません。大丈夫ですか？<span class="pl">+</span></summary><div class="a">大丈夫です。事前のオンラインで、自分のPCに Claude Code と OpenAI API を立ち上げるところから一緒に行います。以降は短いドリルの反復なので、触った回数がそのまま技になります。</div></details>
+      <details open><summary><span class="q">Q1</span>AIをほとんど触ったことがありません。大丈夫ですか？<span class="pl">+</span></summary><div class="a">大丈夫です。事前のオンラインで、自分のPCに Claude Code と Codex を立ち上げるところから一緒に行います。以降は短いドリルの反復なので、触った回数がそのまま技になります。</div></details>
       <details><summary><span class="q">Q2</span>訪問と会場の回、どちらを選べばいいですか？<span class="pl">+</span></summary><div class="a">基本は訪問をおすすめします。日程を御社に合わせられ、題材も御社の実務そのものだからです。社長おひとりなら講師1人が付きっきりで5万円、幹部もご一緒なら講師2人で5名まで10万円（1名あたり2万円）。他社の社長と一緒にわいわい進めたい方は、会場の回（3時間・1名3万円）をお選びください。中身は同じで、違うのは講師が1社のために時間を取るかどうかです。</div></details>
       <details><summary><span class="q">Q3</span>本当に3時間で終わりますか？<span class="pl">+</span></summary><div class="a">終わらせます。3つの約束（Claude Code・Codexが動く／AIが会社のシステムにつながって動かす／人・AI・専門家の線が引ける）は、3時間で到達できる分量に設計しています。セットアップは事前に済ませ、当日は説明をほとんどせずに手を動かし続けます。休憩はありません。</div></details>
       <details><summary><span class="q">Q4</span>社員に受けさせたいのですが。<span class="pl">+</span></summary><div class="a">経営者・幹部が優先です。判断する人が受けないと、翌朝の経営会議が変わりません。社員展開は、90日アクションプランの中で設計します。</div></details>
@@ -1243,7 +1310,7 @@
         <li>人がすること・AIがすること・専門家がすることの線が引ける</li>
         <li>終わったその日から、AI経営チームと動き出せる</li>
       </ul>
-      <p class="micro">受講料（税別）。訪問は3時間・社長1名50,000円（講師1人）、幹部5名まで100,000円（講師2人）。会場の回は3時間・1名30,000円・少人数2〜6名。持参：ノートPC＋AI3社の有料アカウント。</p>
+      <p class="micro">受講料（税別）。訪問は3時間・社長1名50,000円（講師1人）、幹部5名まで100,000円（講師2人）。会場の回は3時間・1名30,000円・少人数2〜6名。持参：ノートPC＋Claude と OpenAI の有料アカウント（両方）。</p>
       <p class="firm">レリック社会保険労務士法人<small>AI MANAGEMENT × QUEST-STYLE BOOTCAMP ｜ 2026</small></p>
     </div>
     <form class="cf" id="cform" novalidate>
@@ -1422,7 +1489,7 @@
     }
     go.addEventListener('click',function(e){
       e.preventDefault();
-      if(!v.getAttribute('src')) wrap.hidden=false; v.setAttribute('src','media/koby.mp4?v=0916a');
+      if(!v.getAttribute('src')) wrap.hidden=false; v.setAttribute('src','media/koby.mp4?v=1004a');
       wrap.hidden=false; wrap.classList.add('on'); document.body.style.overflow='hidden';
       if(hero&&!hero.paused){ hero.pause(); hero.dataset.opPaused='1'; }
       var p=v.play();

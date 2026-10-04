@@ -72,7 +72,12 @@ def cut_clip(s, need, srcdir, out):
     src = os.path.join(srcdir, s['clip'] + '.mp4')
     have = dur(src) - s['in']
     vf = 'scale=%d:%d:force_original_aspect_ratio=increase,crop=%d:%d,fps=%d' % (W, H, W, H, FPS)
-    if have < need - 0.02:
+    pad = 0.5
+    if have < need - 0.02 and s.get('pad_end'):
+        # 伸ばさずに最終フレームで埋める。口と声の時間を変えたくないカットで、埋めた区間を tvoff で潰すとき用
+        print('  %s 素材 %.2fs < 必要 %.2fs → 末尾 %.2fs を最終フレームで埋める' % (s['clip'], have, need, need - have))
+        pad = need - have + 0.5
+    elif have < need - 0.02:
         rate = need / have
         if rate > 1.5:
             print('  !! %s 素材 %.2fs < 必要 %.2fs (%.2fx) 伸ばしすぎ' % (s['clip'], have, need, rate))
@@ -81,7 +86,7 @@ def cut_clip(s, need, srcdir, out):
         vf = 'setpts=%.4f*PTS,' % rate + vf
     # 秒数で切ると fps 変換の丸めで1フレーム足りなくなる。フレーム数で切り、足りない分は最終フレームを複製
     frames = int(round(need * FPS))
-    vf += ',tpad=stop_mode=clone:stop_duration=0.5'
+    vf += ',tpad=stop_mode=clone:stop_duration=%.2f' % pad
     subprocess.check_call(['ffmpeg', '-y', '-v', 'error', '-ss', str(s['in']), '-i', src,
                            '-vf', vf, '-frames:v', str(frames), '-an',
                            '-c:v', 'libx264', '-crf', '16', '-preset', 'fast', out])
