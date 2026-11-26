@@ -33,7 +33,7 @@ CODEBG = "#f1f1ee"
 FONT = "-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif"
 MONO = "Consolas,'Courier New',monospace"
 
-ORG = "レリック社会保険労務士法人"
+ORG = "株式会社メディアパートナーズ"
 SERIES = "帰ってからも伸びる：毎週届く15分のドリル"
 CONTACT = "m.gomita@canvas-sr.jp"
 PAGE_URL = "https://mgomita-ui.github.io/hatarakikata4-lp/bootcamp/drills/"   # 公開先（週ページのURLの土台）
